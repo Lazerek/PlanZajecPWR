@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace TestPlanParser
+namespace PlanZajec.Parser
 {
     class Program
     {
@@ -21,14 +21,14 @@ namespace TestPlanParser
             var datas = new List<GroupData>();
 
             if (groupArray == null) return;
-            datas.AddRange(groupArray.Select(searchLine));
+            datas.AddRange(groupArray.Select(SearchLine));
             foreach (var gd in datas)
             {
                 Console.WriteLine(gd.ToString());
             }
         }
 
-        static GroupData searchLine(string[] lines)
+        static GroupData SearchLine(string[] lines)
         {
             var startLooking = false;
             var index = 0;
@@ -70,10 +70,10 @@ namespace TestPlanParser
                             int indextd = lines[i].IndexOf("<td>", StringComparison.Ordinal);
                             int indextd2 = lines[i].IndexOf("</td>", StringComparison.Ordinal);
                             var arrDataIMiejsce = lines[i].Substring(indextd + 5, indextd2 - indextd - 5).Split(',');
-                            string Data = arrDataIMiejsce[0];
-                            string Miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
-                            temporary.Data = Data;
-                            temporary.Miejsce = Miejsce;
+                            string data = arrDataIMiejsce[0];
+                            string miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
+                            temporary.Data = data;
+                            temporary.Miejsce = miejsce;
                             break;
                     }
                 }

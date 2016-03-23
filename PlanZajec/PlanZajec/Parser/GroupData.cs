@@ -1,4 +1,4 @@
-﻿namespace TestPlanParser
+﻿namespace PlanZajec.Parser
 {
     internal class GroupData
     {
