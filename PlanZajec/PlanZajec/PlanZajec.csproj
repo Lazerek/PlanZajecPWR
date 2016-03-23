@@ -115,6 +115,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parser\GroupData.cs" />
+    <Compile Include="Parser\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
