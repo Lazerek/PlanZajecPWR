@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec.DataModel;
+using PlanZajec.DataAccessLayer;
 
 namespace PlanZajec
 {
@@ -22,7 +24,13 @@ namespace PlanZajec
     {
         public MainWindow()
         {
+
             InitializeComponent();
+           using (var unitWork = new UnitOfWork(new PlanPwrContext()))
+           {
+                //unitWork.Kursy.Add(new Kursy() { NazwaKursu = "cos" });
+                //unitWork.SaveChanges();
+            }
         }
     }
 }
