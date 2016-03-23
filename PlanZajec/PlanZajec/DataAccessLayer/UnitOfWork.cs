@@ -32,11 +32,6 @@ namespace PlanZajec.DataAccessLayer
 
         public IProwadzacyRepository Prowadzacy { get; private set; }
 
-        public int Complete()
-        {
-            return _context.SaveChanges();
-        }
-
         public void Dispose()
         {
             _context.Dispose();
@@ -44,7 +39,7 @@ namespace PlanZajec.DataAccessLayer
 
         public int SaveChanges()
         {
-            throw new NotImplementedException();
+            return _context.SaveChanges();
         }
     }
 }

@@ -28,8 +28,8 @@ namespace PlanZajec
             InitializeComponent();
            using (var unitWork = new UnitOfWork(new PlanPwrContext()))
            {
-                //unitWork.Kursy.Add(new Kursy() { NazwaKursu = "cos" });
-                //unitWork.SaveChanges();
+                unitWork.Bloki.Add(new Blok() { KodBloku="jakis" });
+                unitWork.SaveChanges();
             }
         }
     }
