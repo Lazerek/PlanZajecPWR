@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="Wpf.PrzegladanieGrup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="530">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width ="580" Height="530" Margin="10,15,10,10">
+            <TabItem Header="Przeglądanie grup zajeciowych">
+                    <DataGrid Name="dgUsers" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="139" Header="Godziny" Binding="{Binding atr1name}" />
+                        <DataGridTextColumn Width="139" Header="Przedmiot" Binding="{Binding atr2name}" />
+                        <DataGridTextColumn Width="139" Header="Prowadzący" Binding="{Binding atr3name}" />
+                        <DataGridTextColumn Width="139" Header="Sala" Binding="{Binding atr4name}" />
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Details}" Margin="10" />
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

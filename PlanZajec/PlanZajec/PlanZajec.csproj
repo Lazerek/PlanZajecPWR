@@ -81,7 +81,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrzegladanieGrup.xaml.cs">
+      <DependentUpon>PrzegladanieGrup.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Grupa.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -109,14 +115,28 @@
     <Compile Include="DataAccessLayer\PlanPwrContext.cs" />
     <Compile Include="DataModel\Plany.cs" />
     <Compile Include="DataModel\Prowadzacy.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Grupa.xaml.cs">
+      <DependentUpon>Grupa.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PraweMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PrzegladanieGrup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\GroupData.cs" />
     <Compile Include="Parser\Program.cs" />
+    <Compile Include="PraweMenu.xaml.cs">
+      <DependentUpon>PraweMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
