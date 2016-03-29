@@ -81,6 +81,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProwadzacyMenu.xaml.cs">
+      <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PrzegladanieGrup.xaml.cs">
       <DependentUpon>PrzegladanieGrup.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
     <Page Include="PraweMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProwadzacyMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PrzegladanieGrup.xaml">
       <Generator>MSBuild:Compile</Generator>

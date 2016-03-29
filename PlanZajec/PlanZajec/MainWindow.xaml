@@ -11,8 +11,7 @@
             <ColumnDefinition Width="600"></ColumnDefinition>
             <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid x:Name = "LMenu" Grid.Row="1">
-        </Grid>
+        <Grid x:Name = "LMenu"/>
         <Grid x:Name = "RMenu" Grid.Row="1" Grid.Column="2">
         </Grid>
     </Grid>

@@ -7,12 +7,13 @@
              d:DesignHeight="600" d:DesignWidth="200" VerticalAlignment="Top">
     <Grid>
         <ComboBox Width ="140" Height="25" Margin="5,10,55,525">
-            <ComboBoxItem IsSelected="True">Przeglądanie grup</ComboBoxItem>
+            <ComboBoxItem IsSelected="True" Selected="OnSelectedGroups">Przeglądanie grup</ComboBoxItem>
+            <ComboBoxItem Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
         <Image x:Name="optImg" Height="25" Width="25" Margin="145,10,5,525" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,37,25,0">
-            <Grid x:Name="Grupy" Height="507" HorizontalAlignment="Left" VerticalAlignment="Top" Width="170" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            <Grid x:Name="PrawePodmenu" Height="507" HorizontalAlignment="Left" VerticalAlignment="Top" Width="170" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             </Border>
     </Grid>
 </UserControl>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec;
 
 namespace Wpf
 {
@@ -23,7 +24,27 @@ namespace Wpf
         public PraweMenu()
         {
             InitializeComponent();
-            Grupy.Children.Add(new Grupa());
+            PrawePodmenu.Children.Add(new Grupa());
+        }
+
+        private void OnSelectedLecturers(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null) return;
+            if (PrawePodmenu.Children.Count > 0)
+            {
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            }
+            PrawePodmenu.Children.Add(new ProwadzacyMenu());
+        }
+
+        private void OnSelectedGroups(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null) return;
+            if (PrawePodmenu.Children.Count > 0)
+            {
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            }
+            PrawePodmenu.Children.Add(new Grupa());
         }
     }
 }
