@@ -30,7 +30,7 @@ namespace Wpf
             InitializeComponent();
             LMenu.Children.Add(new PrzegladanieGrup());
             RMenu.Children.Add(new PraweMenu());
-            //Parser.Run();
+            Parser.Run();
 
             using (var unitWork = new UnitOfWork(new PlanPwrContext()))
             {
