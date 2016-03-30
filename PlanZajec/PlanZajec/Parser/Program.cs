@@ -24,6 +24,7 @@ namespace PlanZajec.Parser
             datas.AddRange(groupArray.Select(SearchLine));
             foreach (var gd in datas)
             {
+
                 Console.WriteLine(gd.ToString());
             }
         }
