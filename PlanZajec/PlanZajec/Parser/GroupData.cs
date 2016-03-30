@@ -9,9 +9,11 @@
         public string FormaZajec { get; set; }
         public string Data { get; set; }
         public string Miejsce { get; set; }
+        public string Potok { get; set; }
+        public string LiczbaMiejsc { get; set; }
 
         public GroupData(string kodGrupy, string kodKursu, string nazwaKursu, string prowadzacy, string formaZajec,
-            string dataIMiejsce)
+            string dataIMiejsce, string potok, string liczbaMiejsc)
         {
             KodGrupy = kodGrupy;
             KodKursu = kodKursu;
@@ -21,10 +23,12 @@
             var arrDataIMiejsce = dataIMiejsce.Split(',');
             Data = arrDataIMiejsce[0];
             Miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
+            Potok = potok;
+            LiczbaMiejsc = liczbaMiejsc;
         }
 
         public GroupData(string kodGrupy, string kodKursu, string nazwaKursu, string prowadzacy, string formaZajec,
-            string data, string miejsce)
+            string data, string miejsce, string potok, string liczbaMiejsc)
         {
             KodGrupy = kodGrupy;
             KodKursu = kodKursu;
@@ -33,6 +37,8 @@
             FormaZajec = formaZajec;
             Data = data;
             Miejsce = miejsce;
+            Potok = potok;
+            LiczbaMiejsc = liczbaMiejsc;
         }
         public GroupData()
         {}
