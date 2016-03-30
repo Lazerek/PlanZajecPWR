@@ -60,7 +60,7 @@ namespace PlanZajec.Parser
                 }
                 if(jest==-1)
                 {
-                    var kr=new Kursy() { KodKursu = KodKursu, NazwaKursu = NazwaKursu }
+                    var kr = new Kursy() {KodKursu = KodKursu, NazwaKursu = NazwaKursu};
                     uw.Kursy.Add(kr);
                     uw.SaveChanges();
                     return kr;
@@ -83,7 +83,7 @@ namespace PlanZajec.Parser
                 }
                 if (jest == -1)
                 {
-                    var pr= new Prowadzacy() { Nazwisko = nazwisko, Imie = imie, Tytul = tytul }
+                    var pr = new Prowadzacy() {Nazwisko = nazwisko, Imie = imie, Tytul = tytul};
                     uw.Prowadzacy.Add(pr);
                     uw.SaveChanges();
                     return pr;

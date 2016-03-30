@@ -6,17 +6,20 @@ using System.Text.RegularExpressions;
 
 namespace PlanZajec.Parser
 {
-    class Program
+    class Parser
     {
-
         public static void Run()
-        {   
-            var folderPath = @"D:\Clouds\Google Drive\Studia - Semestr VI\[ZPI] Zespołowe przedsięwzięcie inżynierskie\resources\";
+        {
+            var folderPath =
+                @"D:\Clouds\Google Drive\Studia - Semestr VI\[ZPI] Zespołowe przedsięwzięcie inżynierskie\resources\";
             var fileEntries = Directory.GetFiles(folderPath);
-            List<string[]> groupArray = null;
+            List<string[]> groupArray = new List<string[]>();
             foreach (var fullFileText in fileEntries.Select(File.ReadAllLines))
             {
-                groupArray = GetGroupRawData(fullFileText);
+                foreach (var rawGroup in GetGroupRawData(fullFileText))
+                {
+                    groupArray.Add(rawGroup);
+                }
             }
             var datas = new List<GroupData>();
 
@@ -24,7 +27,7 @@ namespace PlanZajec.Parser
             datas.AddRange(groupArray.Select(SearchLine));
             foreach (var gd in datas)
             {
-                Console.WriteLine(gd.ToString());
+                ZapisDoBazy.zapisz(gd);
             }
         }
 
@@ -71,9 +74,12 @@ namespace PlanZajec.Parser
                             int indextd2 = lines[i].IndexOf("</td>", StringComparison.Ordinal);
                             var arrDataIMiejsce = lines[i].Substring(indextd + 5, indextd2 - indextd - 5).Split(',');
                             string data = arrDataIMiejsce[0];
-                            string miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
+                            if (arrDataIMiejsce.Length > 2)
+                            {
+                                string miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
+                                temporary.Miejsce = miejsce;
+                            }
                             temporary.Data = data;
-                            temporary.Miejsce = miejsce;
                             break;
                     }
                 }
@@ -93,10 +99,10 @@ namespace PlanZajec.Parser
         {
             Regex regex = new Regex(@"<a name=.hrefGrupyZajecioweKursuTabela\d{6}.> </a>");
             List<string[]> result = new List<string[]>();
-            
+
             var indexes = new List<int>();
 
-            for (int i = 0; i<textArray.Length; i++)
+            for (int i = 0; i < textArray.Length; i++)
             {
                 Match mt = regex.Match(textArray[i]);
                 if (mt.Success)
@@ -104,8 +110,8 @@ namespace PlanZajec.Parser
                     indexes.Add(i);
                 }
             }
-            var groupSize = indexes[1] - indexes[0];
-
+            //var groupSize = indexes[1] - indexes[0];
+            var groupSize = 87;
             for (int i = 0; i < indexes.Count; i++)
             {
                 string[] partOfResult = new string[groupSize];
