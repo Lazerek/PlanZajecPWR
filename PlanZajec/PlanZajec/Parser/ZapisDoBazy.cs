@@ -13,9 +13,9 @@ namespace PlanZajec.Parser
     {
         public static void zapisz(GroupData gd)
         {
-            using (var uw = new UnitOfWork(new PlanPwrContext())) 
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-                var kr = NowyKurs(gd.KodKursu, gd.NazwaKursu);
+                var kr = NowyKurs(gd.KodKursu, gd.NazwaKursu,uw);
                 String pr = gd.Prowadzacy;
                 int count = 0;
                 for (int i = 0; i < pr.Length; i++)
@@ -38,9 +38,42 @@ namespace PlanZajec.Parser
                 }
 
                 String Tytul = pr.Substring(0, j - 1);
-                var pro = NowyProwadzacy(Imie, Nazwisko, Tytul);
+                var pro = NowyProwadzacy(Imie, Nazwisko, Tytul,uw);
+
                 //do rozbicia Miejsce na sale i budynek oraz Data na dzień oraz godzinę!!!
-                uw.GrupyZajeciowe.Add(new GrupyZajeciowe() { KodGrupy = gd.KodGrupy, TypZajec = gd.FormaZajec, Dzień=gd.Data, Godzina=gd.Data, Sala=gd.Miejsce, Budynek=gd.Miejsce, Prowadzacy=pro, Kursy=kr });
+                    String Budynek = "";
+                    String Sala = "";
+                if (gd.Miejsce!=null)
+                {
+                    //BUD. C-6 SALA 130
+                    var budynekSala = gd.Miejsce.Split(' ');
+                    Budynek = budynekSala[2];
+                    Sala = budynekSala[4];
+                }
+
+                var dzienGodzina = gd.Data.Split(' ');
+                String Dzien = dzienGodzina[0];
+                String Godzina = dzienGodzina[1];
+                var ileNaIle = new string[2];
+                long miejsca=0;
+                long maxMiejsca=0;
+                if (gd.LiczbaMiejsc != "")
+                {
+                    ileNaIle = gd.LiczbaMiejsc.Split('/');
+                    miejsca = long.Parse(ileNaIle[0]);
+                    maxMiejsca = long.Parse(ileNaIle[1]);
+                }
+
+
+
+
+
+              
+                uw.GrupyZajeciowe.Add(new GrupyZajeciowe() { KodGrupy = gd.KodGrupy,
+                    TypZajec = gd.FormaZajec, Dzień=Dzien, Godzina=Godzina, Sala=Sala,
+                    Budynek =Budynek, Potok=gd.Potok, Miejsca=maxMiejsca,
+                    ZajeteMiejsca =miejsca, IdProwadzacego=pro.IdProwadzacego,
+                    KodKursu =kr.KodKursu, Kursy=kr,Prowadzacy=pro});
                 uw.SaveChanges();
               
                                                
@@ -53,9 +86,9 @@ namespace PlanZajec.Parser
         /// <param name="KodKursu"></param>
         /// <param name="NazwaKursu"></param>
         /// <returns></returns>
-        static Kursy NowyKurs(String KodKursu, String NazwaKursu)
+        static Kursy NowyKurs(String KodKursu, String NazwaKursu,UnitOfWork uw)
         {
-            using (var uw = new UnitOfWork(new PlanPwrContext()))
+           
             {
                 int jest =-1;
                 var table = uw.Kursy.GetAll();
@@ -83,9 +116,9 @@ namespace PlanZajec.Parser
         /// <param name="nazwisko"></param>
         /// <param name="tytul"></param>
         /// <returns></returns>
-        static Prowadzacy NowyProwadzacy(String imie, String nazwisko, String tytul)
+        static Prowadzacy NowyProwadzacy(String imie, String nazwisko, String tytul, UnitOfWork uw)
         {
-            using (var uw = new UnitOfWork(new PlanPwrContext()))
+          
             {
                 int jest = -1;
                 var table = uw.Prowadzacy.GetAll();

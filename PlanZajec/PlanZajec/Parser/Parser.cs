@@ -11,7 +11,7 @@ namespace PlanZajec.Parser
         public static void Run()
         {
             var folderPath =
-                @"D:\Clouds\Google Drive\Studia - Semestr VI\[ZPI] Zespołowe przedsięwzięcie inżynierskie\resources\";
+                @"C:\Users\kinga\Desktop\documents-export-2016-03-30";
             var fileEntries = Directory.GetFiles(folderPath);
             List<string[]> groupArray = new List<string[]>();
             foreach (var fullFileText in fileEntries.Select(File.ReadAllLines))
@@ -56,6 +56,7 @@ namespace PlanZajec.Parser
                             break;
                         //liczba miejsc
                         case 13:
+                            temporary.LiczbaMiejsc = lines[i].Trim();
                             break;
                         //prowadzacy
                         case 46:
@@ -67,6 +68,7 @@ namespace PlanZajec.Parser
                             break;
                         //potok
                         case 61:
+                            temporary.Potok = lines[i].Trim();
                             break;
                         //data i miejsce
                         case 66:
