@@ -40,7 +40,10 @@ namespace PlanZajec.Parser
                 String Tytul = pr.Substring(0, j - 1);
                 var pro = NowyProwadzacy(Imie, Nazwisko, Tytul);
                 //do rozbicia Miejsce na sale i budynek oraz Data na dzień oraz godzinę!!!
-                uw.GrupyZajeciowe.Add(new GrupyZajeciowe() { KodGrupy = gd.KodGrupy, TypZajec = gd.FormaZajec, Dzień=gd.Data, Godzina=gd.Data, Sala=gd.Miejsce, Budynek=gd.Miejsce, Prowadzacy=pro, Kursy=kr });
+                uw.GrupyZajeciowe.Add(new GrupyZajeciowe() { KodGrupy = gd.KodGrupy,
+                    TypZajec = gd.FormaZajec,
+                    Dzień =gd.Data,
+                    Godzina =gd.Data, Sala=gd.Miejsce, Budynek=gd.Miejsce, Prowadzacy=pro, Kursy=kr });
                 uw.SaveChanges();
               
                                                
