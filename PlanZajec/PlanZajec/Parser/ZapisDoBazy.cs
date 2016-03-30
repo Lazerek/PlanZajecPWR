@@ -47,7 +47,13 @@ namespace PlanZajec.Parser
             }
 
         }
-       static Kursy NowyKurs(String KodKursu, String NazwaKursu)
+        /// <summary>
+        /// To dodaje nowego kursu jeżeli nie ma go w bazie
+        /// </summary>
+        /// <param name="KodKursu"></param>
+        /// <param name="NazwaKursu"></param>
+        /// <returns></returns>
+        static Kursy NowyKurs(String KodKursu, String NazwaKursu)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
@@ -60,7 +66,7 @@ namespace PlanZajec.Parser
                 }
                 if(jest==-1)
                 {
-                    var kr = new Kursy() {KodKursu = KodKursu, NazwaKursu = NazwaKursu};
+                    var kr = new Kursy() { KodKursu = KodKursu, NazwaKursu = NazwaKursu };
                     uw.Kursy.Add(kr);
                     uw.SaveChanges();
                     return kr;
@@ -70,6 +76,13 @@ namespace PlanZajec.Parser
             }
 
         }
+        /// <summary>
+        /// To dodaje nowego prowadzącego jeżeli nie ma go w bazie
+        /// </summary>
+        /// <param name="imie"></param>
+        /// <param name="nazwisko"></param>
+        /// <param name="tytul"></param>
+        /// <returns></returns>
         static Prowadzacy NowyProwadzacy(String imie, String nazwisko, String tytul)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -83,7 +96,7 @@ namespace PlanZajec.Parser
                 }
                 if (jest == -1)
                 {
-                    var pr = new Prowadzacy() {Nazwisko = nazwisko, Imie = imie, Tytul = tytul};
+                    var pr = new Prowadzacy() { Nazwisko = nazwisko, Imie = imie, Tytul = tytul };
                     uw.Prowadzacy.Add(pr);
                     uw.SaveChanges();
                     return pr;
