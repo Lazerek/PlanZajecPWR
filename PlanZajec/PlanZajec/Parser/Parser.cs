@@ -23,7 +23,7 @@ namespace PlanZajec.Parser
             }
             var datas = new List<GroupData>();
 
-            if (groupArray == null) return;
+            if (groupArray.Count==0) return;
             datas.AddRange(groupArray.Select(SearchLine));
             foreach (var gd in datas)
             {
