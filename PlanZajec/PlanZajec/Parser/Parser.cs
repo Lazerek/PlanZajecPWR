@@ -11,7 +11,7 @@ namespace PlanZajec.Parser
         public static void Run()
         {
             var folderPath =
-                @"C:\Users\kinga\Desktop\documents-export-2016-03-30";
+                @"../../TestResources";
             var fileEntries = Directory.GetFiles(folderPath);
             List<string[]> groupArray = new List<string[]>();
             foreach (var fullFileText in fileEntries.Select(File.ReadAllLines))
