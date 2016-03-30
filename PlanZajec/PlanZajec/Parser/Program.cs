@@ -10,7 +10,7 @@ namespace PlanZajec.Parser
     {
 
         public static void Run()
-        {
+        {   
             var folderPath = @"D:\Clouds\Google Drive\Studia - Semestr VI\[ZPI] Zespołowe przedsięwzięcie inżynierskie\resources\";
             var fileEntries = Directory.GetFiles(folderPath);
             List<string[]> groupArray = null;
