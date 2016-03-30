@@ -138,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\GroupData.cs" />
-    <Compile Include="Parser\Program.cs" />
+    <Compile Include="Parser\Parser.cs" />
     <Compile Include="PraweMenu.xaml.cs">
       <DependentUpon>PraweMenu.xaml</DependentUpon>
     </Compile>

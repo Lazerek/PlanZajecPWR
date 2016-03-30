@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec.Parser;
 
 namespace Wpf
 {
@@ -29,6 +30,7 @@ namespace Wpf
             InitializeComponent();
             LMenu.Children.Add(new PrzegladanieGrup());
             RMenu.Children.Add(new PraweMenu());
+            Parser.Run();
 
             using (var unitWork = new UnitOfWork(new PlanPwrContext()))
             {
