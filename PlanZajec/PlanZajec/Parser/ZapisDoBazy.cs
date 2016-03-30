@@ -64,17 +64,37 @@ namespace PlanZajec.Parser
                     maxMiejsca = long.Parse(ileNaIle[1]);
                 }
 
+                bool jest = false;
+                var yolo = uw.GrupyZajeciowe.GetAll();
+                for (int i = 0; i < yolo.Count(); i++)
+                {
+                    if (yolo.ElementAt(i).KodGrupy.Equals(gd.KodGrupy))
+                        jest = true;
+                }
 
 
 
+                if (jest == false)
+                {
+                    uw.GrupyZajeciowe.Add(new GrupyZajeciowe()
+                    {
+                        KodGrupy = gd.KodGrupy,
+                        TypZajec = gd.FormaZajec,
+                        Dzień = Dzien,
+                        Godzina = Godzina,
+                        Sala = Sala,
+                        Budynek = Budynek,
+                        Potok = gd.Potok,
+                        Miejsca = maxMiejsca,
+                        ZajeteMiejsca = miejsca,
+                        IdProwadzacego = pro.IdProwadzacego,
+                        KodKursu = kr.KodKursu,
+                        Kursy = kr,
+                        Prowadzacy = pro
+                    });
+                    uw.SaveChanges();
+                }
 
-              
-                uw.GrupyZajeciowe.Add(new GrupyZajeciowe() { KodGrupy = gd.KodGrupy,
-                    TypZajec = gd.FormaZajec, Dzień=Dzien, Godzina=Godzina, Sala=Sala,
-                    Budynek =Budynek, Potok=gd.Potok, Miejsca=maxMiejsca,
-                    ZajeteMiejsca =miejsca, IdProwadzacego=pro.IdProwadzacego,
-                    KodKursu =kr.KodKursu, Kursy=kr,Prowadzacy=pro});
-                uw.SaveChanges();
               
                                                
             }
