@@ -5,11 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="200" Background="#FF9C3F3F">
-    <Grid>
-        <Grid.BindingGroup>
-            <BindingGroup Name="Lecturers"/>
-        </Grid.BindingGroup>
-
-    </Grid>
+             d:DesignHeight="500" d:DesignWidth="200">
+    <DataGrid Name="dgLectures" AutoGenerateColumns="true" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Items}" >
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Tekst" Binding="{MultiBinding Nazwisko, Imie}"></DataGridTextColumn>
+        </DataGrid.Columns>
+    </DataGrid>
 </UserControl>

@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
-using PlanZajec.Model.ViewModel;
 
 namespace PlanZajec.ViewModels
 {
-    class ProwadzacyViewModel : ViewModel
+    public class ProwadzacyViewModel : ViewModel
     {
         public List<Prowadzacy> Items { get; set; }
 
-        //public 
+        public ProwadzacyViewModel()
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                Items = uw.Prowadzacy.GetAll().ToList();
+            }
+        }
     }
 }
