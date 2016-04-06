@@ -29,8 +29,7 @@ namespace Wpf
             InitializeComponent();
             lpm = false;
             oo = new OknoOpcji();
-            loadOptImg();
-            PrawePodmenu.Children.Add(new Grupa());
+            PrawePodmenu.Children.Add(new KafelekGrup());
         }
 
         private void OnSelectedLecturers(object sender, RoutedEventArgs e)
@@ -50,12 +49,7 @@ namespace Wpf
             {
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             }
-            PrawePodmenu.Children.Add(new Grupa());
-        }
-
-        public void loadOptImg()
-        {
-            optImg.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "..\\..\\..\\Views\\Images\\gear.png"));
+            PrawePodmenu.Children.Add(new KafelekGrup());
         }
 
         public void imgClick1(object sender, MouseEventArgs e)
@@ -77,6 +71,16 @@ namespace Wpf
         public void imgClickC(object sender, MouseEventArgs e)
         {
             lpm = false;
+        }
+
+        private void OnSelectedMojeKafle(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null) return;
+            if (PrawePodmenu.Children.Count > 0)
+            {
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            }
+            PrawePodmenu.Children.Add(new KafelekGrup());
         }
     }
 }
