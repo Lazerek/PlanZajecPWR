@@ -22,11 +22,11 @@ namespace Wpf
 
     public partial class PrzegladanieGrup : UserControl
     {
-        private PrzegladanieGrupView viewModel;
+        private PrzegladanieGrupViewModel viewModel;
         public PrzegladanieGrup()
         {
             InitializeComponent();
-            viewModel = new PrzegladanieGrupView();
+            viewModel = new PrzegladanieGrupViewModel();
             this.DataContext = viewModel;
         }
 
