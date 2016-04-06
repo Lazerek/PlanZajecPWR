@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfEF6MainPOApp.Model.ViewModel
+namespace PlanZajec.Model.ViewModel
 {
     /// <summary>
     /// Klasa abstrakcyjna udostępniająca możliwość powiadamiania składowych o zmianach w viewmodelu
