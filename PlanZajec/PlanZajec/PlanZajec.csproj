@@ -78,20 +78,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parser\ZapisDoBazy.cs" />
-    <Compile Include="ProwadzacyMenu.xaml.cs">
+    <Compile Include="Views\ProwadzacyMenu.xaml.cs">
       <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PrzegladanieGrup.xaml.cs">
+    <Compile Include="Views\PrzegladanieGrup.xaml.cs">
       <DependentUpon>PrzegladanieGrup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl1.xaml.cs">
+    <Compile Include="Views\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
-    <Page Include="Grupa.xaml">
+    <Page Include="Views\Grupa.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -119,26 +119,26 @@
     <Compile Include="DataAccessLayer\PlanPwrContext.cs" />
     <Compile Include="DataModel\Plany.cs" />
     <Compile Include="DataModel\Prowadzacy.cs" />
-    <Compile Include="Grupa.xaml.cs">
+    <Compile Include="Views\Grupa.xaml.cs">
       <DependentUpon>Grupa.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PraweMenu.xaml">
+    <Page Include="Views\PraweMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ProwadzacyMenu.xaml">
+    <Page Include="Views\ProwadzacyMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PrzegladanieGrup.xaml">
+    <Page Include="Views\PrzegladanieGrup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControl1.xaml">
+    <Page Include="Views\UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -146,7 +146,7 @@
   <ItemGroup>
     <Compile Include="Parser\GroupData.cs" />
     <Compile Include="Parser\Parser.cs" />
-    <Compile Include="PraweMenu.xaml.cs">
+    <Compile Include="Views\PraweMenu.xaml.cs">
       <DependentUpon>PraweMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -200,6 +200,9 @@
     <Resource Include="TestResources\win_L.txt" />
     <Resource Include="TestResources\win_w.txt" />
     <Resource Include="TestResources\zpi.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />
