@@ -4,15 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
+    
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="10,15,10,10">
             <TabItem Header="Przeglądanie grup zajeciowych">
-                    <DataGrid Name="dgUsers" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid Name="dgUsers" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="dgUsers_SelectionChanged" ItemsSource="{Binding Items}" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="Dzień i Godzina" Binding="{Binding atr1name}" />
-                        <DataGridTextColumn Width="*" Header="Przedmiot" Binding="{Binding atr2name}" />
-                        <DataGridTextColumn Width="*" Header="Prowadzący" Binding="{Binding atr3name}" />
-                        <DataGridTextColumn Width="*" MaxWidth="120" Header="Sala" Binding="{Binding atr4name}" />
+                        <DataGridTextColumn Width="*" Header="KodGrupy" Binding="{Binding KodGrupy}" />
+                        <DataGridTextColumn Width="*" Header="TypZajec" Binding="{Binding TypZajec}" />
+                        <DataGridTextColumn Width="*" Header="Dzień" Binding="{Binding Dzień}" />
+                        <DataGridTextColumn Width="*" Header="Godzina" Binding="{Binding Godzina}" />
+                        <DataGridTextColumn Width="*" Header="Sala" Binding="{Binding Sala}" />
+                        <DataGridTextColumn Width="*" Header="Budynek" Binding="{Binding Budynek}" />
+                        <DataGridTextColumn Width="*" Header="Miejsca" Binding="{Binding Miejsca}" />
+                        <DataGridTextColumn Width="*" Header="ZajeteMiejsca" Binding="{Binding ZajeteMiejsca}" />
+                        <DataGridTextColumn Width="*" Header="Potok" Binding="{Binding Potok}" />
+                        <DataGridTextColumn Width="*" Header="IdProwadzacego" Binding="{Binding IdProwadzacego}" />
+                        <DataGridTextColumn Width="*" Header="KodKursu" Binding="{Binding KodKursu}" />
                     </DataGrid.Columns>
                     <DataGrid.RowDetailsTemplate>
                         <DataTemplate>
