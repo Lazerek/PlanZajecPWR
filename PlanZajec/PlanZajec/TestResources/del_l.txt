@@ -1,0 +1,3397 @@
+
+<HTML>
+   <HEAD>
+      <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <TITLE>Politechnika Wrocławska
+    
+        - Studia - ﻿
+    Zapisy - przeglądanie grup zajęciowych</TITLE>
+      <link type="text/css" href="scripts/lib/themes/default/ui.all.css" rel="stylesheet">
+      <LINK REL="stylesheet" TYPE="text/css" HREF="DesignPortalu/Portal.css"><script type="text/javascript" src="scripts/lib/jquery-1.3.2.min.js"></script><script type="text/javascript" src="scripts/lib/ui.core.js"></script><script type="text/javascript" src="scripts/lib/ui.draggable.js"></script><script type="text/javascript" src="scripts/lib/ui.resizable.js"></script><script type="text/javascript" src="scripts/lib/ui.dialog.js"></script><script type="text/javascript" src="scripts/cookies.js"></script><script SRC="DesignPortalu/preload.js"></script><script language="JavaScript">var isPrintingMode = false;</script><script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-16891790-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+   </HEAD>
+   <BODY CLASS="PORTAL">
+      <DIV id="helpdialog" title="Pomoc" style="display: none; padding: 3mm 1mm"></DIV>
+      <TABLE CLASS="KONTENER" CELLPADDING="0" CELLSPACING="0" BORDER="0">
+         <TR>
+            <TD ALIGN="center" VALIGN="top">
+               <div id="cookiesInfo" style="display: none">
+                  <TABLE CLASS="MAIN_COOKIES" ALIGN="center" CELLPADDING="3" CELLSPACING="3" id="COOKIESPORTALU">
+                     <TR>
+                        <TD CLASS="INFO_BOLD">
+          Nowe zasady dotyczące COOKIES
+        </TD>
+                     </TR>
+                     <TR>
+                        <TD CLASS="info">
+                           <p>Informujemy, że na naszej stronie używamy tzw. plików „cookies” (tłum. „ciasteczek”) oraz podobnych technologii. Czynimy to mając na celu działania o charakterze statystycznym, pragnąć dostosować system do indywidualnych potrzeb użytkownika oraz mając na względzie ułatwienie korzystania z naszego serwisu. Korzystanie z Edukacja.CL oznacza zatem, iż ustawienia i informacje dotyczące serwisu zapisywane będą w pamięci urządzenia, z którego odbywa się dostęp do systemu. 
+Jeśli chcesz możesz zmienić ustawienia swojej przeglądarki internetowej, a także zapoznać się ze szczegółowymi informacjami w naszej <a target="_blank" href="cookieInfo.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==">polityce plików cookies</a>.</p>
+                        </TD>
+                     </TR>
+                     <TR>
+                        <TD ALIGN="right" CLASS="info"><input style="width:10%" type="button" value="Zamknij" class="PRZYCISK zamknijCookie">
+                        </TD>
+                     </TR>
+                  </TABLE>
+               </div>
+               <TABLE CLASS="MAIN" ALIGN="center" CELLPADDING="0" CELLSPACING="0" id="GORAPORTALU">
+                  <TR>
+                     <TD CLASS="MAIN">
+                        <TABLE CLASS="TYTUL_PORTALU">
+                           <TR>
+                              <TD CLASS="TYTUL"></TD>
+                           </TR>
+                        </TABLE>
+                     </TD>
+                  </TR>
+                  <TR>
+                     <TD CLASS="MAIN" ALIGN="right">
+                        <TABLE CLASS="ZAKLADKI">
+                           <TR>
+                              <TD title="" CLASS="ZAKLADKA_LE"></TD>
+                              <TD title="" CLASS="ZAKLADKA_SR">
+			<A href="/EdukacjaWeb/start.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" CLASS="ZAKLADKA" title="Rekrutacja">Rekrutacja</A>
+                              </TD>
+                              <TD title="" CLASS="ZAKLADKA_PR"></TD>
+                              <TD title="" CLASS="ZAKLADKA_AKT_LE"></TD>
+                              <TD title="" CLASS="ZAKLADKA_AKT_SR">
+			<A href="/EdukacjaWeb/studia.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" CLASS="ZAKLADKA_AKT" title="Studia">Studia</A>
+                              </TD>
+                              <TD title="" CLASS="ZAKLADKA_AKT_PR"></TD>
+                              <TD title="" CLASS="ZAKLADKA_LE"></TD>
+                              <TD title="" CLASS="ZAKLADKA_SR">
+			<A href="/EdukacjaWeb/uczelnia.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" CLASS="ZAKLADKA" title="Uczelnia">Uczelnia</A>
+                              </TD>
+                              <TD title="" CLASS="ZAKLADKA_PR"></TD>
+                           </TR>
+                        </TABLE>
+                     </TD>
+                  </TR>
+                  <TR>
+                     <TD CLASS="MAIN">
+                        <TABLE CLASS="LINIA_POD_ZAK" WIDTH="986" ALIGN="center">
+                           <TR>
+                              <TD CLASS="LINIA_POD"></TD>
+                           </TR>
+                        </TABLE>
+                     </TD>
+                  </TR>
+                  <TR>
+                     <TD CLASS="MAIN">
+                        <table CLASS="MENU_I_CENTRUM">
+                           <tr>
+                              <TD CLASS="LEWA_KOMORKA" align="center" VALIGN="top" ROWSPAN="2">
+                                 <table CLASS="TLO_DLA_MENU" ALIGN="center">
+                                    <tr>
+                                       <td ALIGN="center">
+                                          <TABLE CLASS="ZALOGOWANY" align="center">
+			
+			<tr>
+			<td  CLASS="LINIA">
+			</td>
+			</tr>
+			
+			<tr>
+			<td CLASS="ZALOGOWANY_GRAF">
+			</td>
+			</tr>
+	
+			<tr>
+			<td CLASS="ZALOGOWANY_UZYT" 
+
+>
+&nbsp;	Łukasz &nbsp;	Gonczarik
+			</td>
+			</tr>
+<TR>
+                                                <TD align="center">
+                                                   <TABLE CLASS="GUZIKI_ZALOGOWANY" align="center">
+                                                      <TR>
+                                                         <form method="post" action="/EdukacjaWeb/logOutUser.do" CLASS="G_WYL" align="right"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                                                            <td><input name="wyloguj" type="submit" CLASS="BUTTON_WYLOGUJ" title="Wyloguj" value=" ">
+                                                            </td>
+                                                         </form>
+                                                         <td CLASS="ODSTEP_GUZ_ZAL"></td>
+                                                         <form method="post" action="/EdukacjaWeb/changePassword.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                                                            <td CLASS="G_ZMH" align="left"><input type="submit" CLASS="BUTTON_HASLO" title="Zmień hasło" value=" ">
+                                                            </td>
+                                                         </form>
+                                                      </TR>
+                                                   </TABLE>
+                                                </TD>
+                                             </TR>
+                                          </TABLE>
+                                          <TABLE CLASS="GUZIKI_PODDZIALOW" ALIGN="center">
+                                             <TR>
+                                                <TD CLASS="LINIA"></TD>
+                                             </TR>
+                                             <TR>
+                                                <TD CLASS="DOSTEPNE_OPCJE_GRAF"></TD>
+                                             </TR>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/zawartoscSkrzynkiPocztowej.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=defaultPostBox" title="Wiadomości">Wiadomości</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/startRejestracjaOsobyKandydata.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" title="Dane osobowe">Dane osobowe</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/obslugaDokumentow.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=Entry" title="Obsługa dokumentów">Obsługa dokumentów</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/indeks.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Indeks">Indeks</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/ocenySluchacza.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Oceny">Oceny</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/bilanse.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Bilans dorobku">Bilans dorobku</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/rozkladyZajec.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Rozkłady zajęć">Rozkłady zajęć</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/nowePodanie.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=RefreshIssues" title="Złóż podanie">Złóż podanie</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/rejestrSpraw.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=EntryIssues" title="Moje sprawy">Moje sprawy</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/oplaty.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Opłaty">Opłaty</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/rozrachunki.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Przeglądanie operacji">Wpłaty/wypłaty</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/pokazInformatoryZapisow.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=refresh&amp;rowIterator=RekrutacjaViewIterator" title="Informatory o zapisach">Informatory o zapisach</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td CLASS="GUZIK_AKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" CLASS="GUZIK_AKT" title="Zapisy">Zapisy</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/przydzialMiejsc.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=WyborSluchacza" title="Akademiki">Akademiki</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/preferencjeKontaktu.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" title="Preferencje kontaktu">Preferencje kontaktu</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" href="/EdukacjaWeb/kontaktStudia.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" title="Kontakt">Kontakt</A>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td class="LINIA"></td>
+                                             </tr>
+                                             <tr>
+                                                <td id="cela1" CLASS="GUZIK_NIEAKT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A CLASS="GUZIK" target="_blank" href="/EdukacjaWeb/zglaszanieBledow.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==" title="Zgłaszanie błędów">Zgłaszanie błędów</A>
+                                                </td>
+                                             </tr>
+                                          </TABLE>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td CLASS="LINIA"></td>
+                                    </tr>
+                                 </table>
+                              </TD>
+                              <TD CLASS="SRODKOWA_KOMORKA" valign="top" ROWSPAN="2"></TD>
+                              <td CLASS="PRAWA_KOMORKA" valign="top">
+                                 <table CLASS="CENTER_TRESC" CELLPADDING="10" CELLSPACING="0">
+                                    <tr>
+                                       <td VALIGN="top">
+                                          <HR><B>﻿
+    Zapisy - przeglądanie grup zajęciowych</B>
+                                          <HR>﻿
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/EdukacjaWeb/scripts/utils.js"></script>
+
+<!-- naglowek strony -->
+<a name="hrefZapisyNaglowek"></a>
+
+<!-- -->
+
+
+    <!-- bledy -->
+    
+    
+    <!-- -->
+
+
+<!-- specjalne info: GORA -->
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    
+  
+
+  
+
+  
+
+
+
+  
+  
+  
+  
+    
+  
+  
+  
+  
+    
+      
+       
+          
+      
+    
+      
+      
+    
+      
+      
+    
+  
+
+
+
+
+
+
+
+
+<!--  -->
+
+<!-- zawartosc -->
+<script>
+window.onload = function(){
+
+    var polaKodGrupy=document.getElementsByName("kodGrupy");
+    if(polaKodGrupy.length > 0){
+        polaKodGrupy[0].focus();
+    }
+}
+
+function validate() {
+    
+    var polaKodGrupy=document.getElementsByName("kodGrupy");
+    if(polaKodGrupy.length > 0){
+        var kod = polaKodGrupy[0];
+        if(''==kod.value) {
+            alert('Pole Kod grupy z nie może być puste.');
+            kod.focus();
+            return false;
+        }
+    }
+    return true;
+}
+
+function pytanie() {
+
+    var result = true;
+    var answer = confirm('Wypisanie z grupy spowoduje udostępnienie zwolnionego miejsca w grupie innym słuchaczom. Czy na pewno wykonać wypisanie z grupy?');
+    if (answer)
+    {
+      result = true;
+    } else
+    {
+      result = false;
+    }
+    return result;
+}
+
+function pytaniePrezapisy() {
+
+    var result = true;
+    var answer = confirm('Czy na pewno wykonać zapis zgodnie z prezapisami?');
+    if (answer)
+    {
+      result = true;
+    } else
+    {
+      result = false;
+    }
+    return result;
+}
+
+</script>
+
+<a name="hrefZapisySzczSlu"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table width="100%">
+  <tr>
+    
+      <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?event=ForwardZapisy&href=#hrefZapisySzczSlu"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+        <td width="1%">
+          
+            <input type="submit" name="event_ZmianaSzczegolowSluchacza" class="PRZYCISK" title="Pokaż szczegóły..." value="+"/>
+          
+          
+        </td>
+      </form>
+    
+ 
+    <td>
+      <b>
+        Dane słuchacza
+      </b>
+    </td>
+  </tr>
+</table>
+
+
+  
+    <!-- zawartosc -->
+    <table class="KOLOROWA" width="100%" cellspacing="1" cellpadding="1">
+      <tr>
+        <td class="BIALA_RIGHT" width="20%">
+          Przedmiot kształcenia<input type="button" class="tt" onclick="infobox(this, 'Opis studiów słuchacza, czyli między innymi: rodzaj studiów, jego wydział, kierunek studiów, specjalność, specjalizacja, system i stopień studiów, miejsce studiowania, system ocen i typ kalendarza akademickiego.');">
+        </td>
+        <td class="BIALA_LEFT">
+          PO-W08-INF- - -ST-Ii-WRO- - - - - -PWR1-DWU
+        </td>
+      </tr>
+    </table>
+  
+
+
+
+
+
+<!-- sluchacz: koniec -->
+<br/>
+
+<!-- zapisy: poczatek -->
+<table width="100%">
+  <tr>
+    <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefZapisySzczSlu"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+      <td width="1%">
+        
+          <input type="submit" name="event_ZmianaSzczegulowZapisow" class="PRZYCISK" title="Pokaż szczegóły..." value="+"/>
+        
+        
+      </td>
+    </form>
+    <td>
+      <b>
+        Zapisy
+      </b>
+    </td>
+  </tr>
+</table>
+
+
+  <!-- zawartosc -->
+  <table class="KOLOROWA" width="100%" cellspacing="1" cellpadding="1">
+    <tr>
+      <td class="BIALA_RIGHT" width="20%">
+        Nazwa
+      </td>
+      
+        <td class="BIALA_LEFT">
+          W08_Wydz_Zapisy_s_letni_2015/2016_ST_INF 
+        </td>
+      
+      
+    </tr>
+  </table>
+
+
+
+<!-- zapisy: koniec -->
+
+</br>
+
+
+
+
+  ﻿
+
+
+
+
+
+
+
+
+
+
+<script>
+
+  function zatwierdzFormularz(nazwaFormularza, zdarzenie) {
+    var formularz = document.forms[nazwaFormularza];
+    var akcja = formularz.action;
+  
+    if (formularz.action.indexOf("event")==-1) {
+      formularz.action = akcja + "?event=" + zdarzenie + "&href=#hrefKryteriumFiltrowania";
+    } else {
+      formularz.action = akcja + "&event=" + zdarzenie + "&href=#hrefKryteriumFiltrowania";
+    }
+    formularz.submit();
+  }
+
+  function resetujFormularzWyszukiwania() {
+
+    document.getElementById('filtrKodGrupy').value="";
+    document.getElementById('filtrKodKursu').value="";
+    document.getElementById('filtrNazwaKursu').value="";
+    document.getElementById('filtrInePrNazwisko').value="";
+
+    var list_lov_control_name = document.getElementsByName('ineJorSymbol');
+    for(i = 0; i < list_lov_control_name.length; i++){
+      list_lov_control_name[i].value = "";
+    }
+    var list_lov_control_name = document.getElementsByName('ineJorId');
+    for(i = 0; i < list_lov_control_name.length; i++){
+      list_lov_control_name[i].value = "";
+    }
+
+    document.getElementById('filtrGrupyWDniu').value="";
+    document.getElementById('filtrGodzOd').value="";
+    document.getElementById('filtrGodzDo').value="";
+    
+    document.getElementById('filtrCzyRez').value="";
+    document.getElementById('filtrCzyPowt').value="";
+    document.getElementById('filtrCzyZabl').value="";
+    if (document.getElementById('filtrTylkoWolne') != null)
+    {
+      document.getElementById('filtrTylkoWolne').checked = false;
+    }
+    if (document.getElementById('filtrBezKolizji') != null)
+    {
+      document.getElementById('filtrBezKolizji').checked = false;
+    }
+  }  
+ 
+</script>
+<a name="hrefKryteriumFiltrowania"></a>
+<!-- filtr -- poczatek -->
+
+
+
+
+  <table class="KOLOROWA" border="0" cellpadding="1" cellspacing="1" width="100%">
+    <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?event=ZapiszFiltr" id="ZapisyFormFiltr"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+      <tr>  
+        <td class="NORMAL_CENTROWANY" colspan="2">
+          <b>Parametry wyszukiwania</b>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          <table class="CENTER_TRESC" border="0" cellpadding="3" cellspacing="3" width="100%">  
+            <tr>
+              <td class="BIALA" align="right" width="25%">
+                Kryterium filtrowania kursów              
+              </td>
+              <td class="BIALA">
+                <select name="KryteriumFiltrowania" style="width: 75%;" onchange="zatwierdzFormularz('ZapisyFormFiltr', 'wyborKryterium')">
+                  <option value="">
+                    - - -
+                  </option>
+                  
+                    <option value="Z_PLANU" selected>
+                      Z planu studiów, do których słuchacz ma uprawnienia
+                    </option>
+                  
+                  <option value="Z_WEKTORA_ZAP" >
+                    Z wektora zapisowego, do których słuchacz ma uprawnienia
+                  </option>
+                  <option value="KURSY_POWTORKOWE" >
+                    Kursy powtórkowe
+                  </option>
+                  
+                    <option value="KURSY_ZALEGLE" >
+                      Kursy zaległe
+                    </option>
+                  
+                  
+                    <option value="KURSY_Z_PREZAPISOW" >
+                      Kursy z prezapisów
+                    </option>
+                  
+                </select>
+              </td>
+            </tr>
+            
+              <tr>
+                <td class="BIALA" align="right">
+                  Przedmiot kształcenia<input type="button" class="tt" onclick="infobox(this, 'Opis studiów słuchacza, czyli między innymi: rodzaj studiów, jego wydział, kierunek studiów, specjalność, specjalizacja, system i stopień studiów, miejsce studiowania, system ocen i typ kalendarza akademickiego.');">,<br>wiązka Pn i Ps
+                </td>
+                <td class="BIALA">
+                  <!-- determine the LOV value attributes -->
+                  
+                  
+            
+                  <!-- lov component -->
+                  
+                  
+                  
+                  
+                  
+                  
+              
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+
+  
+
+
+
+
+
+<script language="JavaScript">
+  function zatwierdzFormularzLov(form, zdarzenie, wartosc) {
+    var formularz = document.forms[form];
+    var akcja = formularz.action;
+    if (formularz.action.indexOf("event")==-1) {
+      formularz.action = akcja + "?event=" + zdarzenie + "&cl_edu_web_lov_control_name=" + wartosc;
+    } else {
+      formularz.action = akcja + "&event=" + zdarzenie + "&cl_edu_web_lov_control_name=" + wartosc;
+    }
+    formularz.submit();
+  }
+  function clearLov(lov_control_name) {
+    var list_lov_control_name = document.getElementsByName(lov_control_name);
+    for(i = 0; i < list_lov_control_name.length; i++){
+      list_lov_control_name[i].value = "";
+    }
+  }
+</script>
+
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+  <tr>
+      <td class="biala" style="width: 100%">
+        
+        
+        
+          <input type="text" name="uczWppNazwa" value="PO-W08-INF- - -ST-Ii-WRO- - - - - -PWR1-DWU, W_PO-W08-INF- - -ST-Ii-WRO (2013/2014)/V4" style="width: 100%" disabled="disabled" />
+        
+        
+        <input type="hidden" name="uczWppNazwa" value="PO-W08-INF- - -ST-Ii-WRO- - - - - -PWR1-DWU, W_PO-W08-INF- - -ST-Ii-WRO (2013/2014)/V4" />
+        <input type="hidden" name="uczWppNazwa" value="93698" />
+        <input type="hidden" name="uczWppId" value="93698" />
+        
+        <input type="hidden" name="uczWppNazwa_cl_edu_web_lov_handlerClass" value="cl.edu.web.controller.logic.studiowanie.zapisy.WiazkiPnPsLovHandler" />
+        <input type="hidden" name="uczWppNazwa_cl_edu_web_lov_callback" value="/zapisy.do?event=forwardZapisy" />
+        <input type="hidden" name="uczWppNazwa_cl_edu_web_lov_callback_href" value="hrefKryteriumFiltrowania" />
+      </td>
+      <td class="biala">
+        
+        
+          <input type="button" name="event_NoEvent" value="Wybierz..." onclick="zatwierdzFormularzLov('ZapisyFormFiltr', 'openLov', 'uczWppNazwa');" style="width: 60" class="przycisk">
+        
+      </td>
+      
+  </tr>
+</table>
+                  <!-- -->      
+                </td>
+              </tr>
+              <tr>
+                <td class="BIALA" align="right">
+                  Plan studiów<input type="button" class="tt" onclick="infobox(this, 'Określa zestaw kursów obowiązkowych i wybieralnych (w ramach bloków kursów wybieralnych) w układzie semestralnym, z wymiarem godzinowym (godziny ZZU i CNPS), z trybem realizacji i przyporządkowanymi liczbami punktów (ECTS), z dodatkowym oznaczeniem grup kursów, a w nich kursów cząstkowych i końcowych; określa także zestaw egzaminów w układzie semestralnym oraz liczby dopuszczalnego deficytu punktów po poszczególnych semestrach.');">
+                </td>
+                <td class="BIALA">
+                  <select name="UczPpsId" style="width: 100%;" onchange="zatwierdzFormularz('ZapisyFormFiltr', 'wyborPlanu');">
+                    
+                    
+                    <option value="178934" selected>
+                      PO-W08-INF- - -ST-Ii-WRO-/2013/V4
+                    </option>
+                    
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="BIALA" align="right">
+                  Semestr
+                </td>
+                <td class="BIALA">
+                  <select name="UczSppId" style="width: 20%;" onchange="zatwierdzFormularz('ZapisyFormFiltr', 'wyborSemestru');">
+                    
+                    
+                    <option value="1111967" >
+                      1
+                    </option>
+                    
+                    <option value="1111962" >
+                      2
+                    </option>
+                    
+                    <option value="1111963" >
+                      3
+                    </option>
+                    
+                    <option value="1111964" >
+                      4
+                    </option>
+                    
+                    <option value="1111965" >
+                      5
+                    </option>
+                    
+                    <option value="1111966" selected>
+                      6
+                    </option>
+                    
+                    <option value="1111961" >
+                      7
+                    </option>
+                    
+                  </select>
+                </td>
+              </tr>
+            
+  
+            
+          </table>
+        </td>
+      </tr>
+      <!-- filtr dla grup zajeciowych -->
+      <tr>  
+        <td class="NORMAL_LEFT" colspan="2">
+          <b>Kryteria fitrowania grup zajęciowych</b>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          <table class="CENTER_TRESC" border="0" cellpadding="3" cellspacing="3" width="100%">  
+            <tr>
+              <td class="BIALA" align="right" width="25%">
+                Kod grupy zajęciowej<input type="button" class="tt" onclick="infobox(this, 'Jednoznaczny identyfikator grupy zajęciowej w semestrze akademickim.');">
+              </td>
+              <td class="BIALA">
+                <input type="text" name="filtrKodGrupy" maxlength="8" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="BIALA" align="right">
+                Kod kursu
+              </td>
+              <td class="BIALA">
+                <input type="text" name="filtrKodKursu" maxlength="20" size="40" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="BIALA" align="right">
+                Nazwa kursu
+              </td>
+              <td class="BIALA">
+                <input type="text" name="filtrNazwaKursu" maxlength="30" size="60" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="BIALA" align="right">
+                Nazwisko prowadzącego
+              </td>
+              <td class="BIALA">
+                <input type="text" name="filtrInePrNazwisko" maxlength="35" size="60" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="BIALA" align="right">
+                Jednostka organizująca grupy
+              </td>
+              <td class="BIALA">
+  
+                <!-- determine the LOV value attributes -->
+                
+                
+          
+                <!-- lov component -->
+                
+                
+                
+                
+                
+                
+                
+                
+            
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+
+  
+
+
+
+
+
+<script language="JavaScript">
+  function zatwierdzFormularzLov(form, zdarzenie, wartosc) {
+    var formularz = document.forms[form];
+    var akcja = formularz.action;
+    if (formularz.action.indexOf("event")==-1) {
+      formularz.action = akcja + "?event=" + zdarzenie + "&cl_edu_web_lov_control_name=" + wartosc;
+    } else {
+      formularz.action = akcja + "&event=" + zdarzenie + "&cl_edu_web_lov_control_name=" + wartosc;
+    }
+    formularz.submit();
+  }
+  function clearLov(lov_control_name) {
+    var list_lov_control_name = document.getElementsByName(lov_control_name);
+    for(i = 0; i < list_lov_control_name.length; i++){
+      list_lov_control_name[i].value = "";
+    }
+  }
+</script>
+
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+  <tr>
+      <td class="biala" style="width: 100%">
+        
+        
+        
+          <input type="text" name="ineJorSymbol" value="" style="width: 100%" disabled="disabled" />
+        
+        
+        <input type="hidden" name="ineJorSymbol" value="" />
+        <input type="hidden" name="ineJorSymbol" value="" />
+        <input type="hidden" name="ineJorId" value="" />
+        
+        <input type="hidden" name="ineJorSymbol_cl_edu_web_lov_handlerClass" value="cl.edu.web.common.lov.handlers.JednostkiOrganizacyjneLovHandler" />
+        <input type="hidden" name="ineJorSymbol_cl_edu_web_lov_callback" value="/zapisy.do?event=forwardZapisy" />
+        <input type="hidden" name="ineJorSymbol_cl_edu_web_lov_callback_href" value="hrefKryteriumFiltrowania" />
+      </td>
+      <td class="biala">
+        
+        
+          <input type="button" name="event_NoEvent" value="Wybierz..." onclick="zatwierdzFormularzLov('ZapisyFormFiltr', 'openLov', 'ineJorSymbol');" style="width: 60" class="przycisk">
+        
+      </td>
+      
+          
+          <td class="biala">  
+            <input type="button" name="event_NoEvent" value="Wyczyść" onclick="clearLov('ineJorSymbol');clearLov('ineJorId');" style="width: 60" class="przycisk">   
+          </td>
+        
+        
+      
+  </tr>
+</table>
+                <!-- -->      
+  
+              </td>
+            </tr>
+            <tr>
+              <td class="BIALA" align="right">
+                Grupy zajęciowe w dniu
+              </td>
+              <td class="BIALA" align="left">
+                <select name="filtrGrupyWDniu">
+                  <option value="">
+                    - - -
+                  </option>
+                  <option value="pn" >
+                    Poniedziałek
+                  </option>
+                  <option value="wt" >
+                    Wtorek
+                  </option>
+                  <option value="śr" >
+                    Środa
+                  </option>
+                  <option value="cz" >
+                    Czwartek
+                  </option>
+                  <option value="pt" >
+                    Piątek
+                  </option>
+                  <option value="so" >
+                    Sobota
+                  </option>
+                  <option value="n" >
+                    Niedziela
+                  </option>
+                </select>
+              </td>
+            </tr>
+  
+            <tr>
+              <td class="BIALA" align="right">
+                Grupy zajęciowe od godz.
+                </br>(format GG:MM)
+              </td>
+              <td class="BIALA">
+                <table>
+                  <tr>
+                    <td>
+                      <input type="text" name="filtrGodzOd" maxlength="5" size="10" value="">
+                    </td>
+                    <td>
+                      do godz.
+                      </br>(format GG:MM)
+                    </td>
+                    <td>
+                      <input type="text" name="filtrGodzDo" maxlength="5" size="10" value="">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="BIALA" align="right">
+                Grupy zajęciowe rezerwowe
+              </td>
+              <td class="BIALA" align="left">
+                <table width="100%">
+                  <tr>
+                    <td align="left">
+                      <select name="filtrCzyRez">
+                        <option value="">
+                          - - -
+                        </option>
+                        <option value="T" >
+                          Tylko rezerwowe
+                        </option>
+                        <option value="N" >
+                          Bez rezerwowych
+                        </option>
+                      </select>
+                    </td>
+                    
+                      <td class="BIALA" align="right">
+                        <input name="filtrTylkoWolne" type="checkbox"  enabled />
+                      </td>
+                      <td class="BIALA" align="left" width="60%">
+                        Tylko wolne miejsca
+                      </td>
+                    
+                  </tr>
+                </table>
+              </td>
+            </tr>
+  
+            <tr>
+              <td class="BIALA" align="right">
+                Grupy zajęciowe powtórkowe
+              </td>
+              <td class="BIALA" align="left">
+                <table width="100%">
+                  <tr>
+                    <td align="left">
+                      <select name="filtrCzyPowt">
+                        <option value="">
+                          - - -
+                        </option>
+                        <option value="T" >
+                          Tylko powtórkowe
+                        </option>
+                        <option value="N" >
+                          Bez powtórkowych
+                        </option>
+                      </select>
+                    </td>
+                    
+                      <td class="BIALA" align="right">
+                        <input name="filtrBezKolizji" type="checkbox"  enabled />
+                      </td>
+                      <td class="BIALA" align="left" width="60%">
+                        Bez kolizji z zapisanymi
+                      </td>
+                    
+                  </tr>
+                </table>
+              </td>
+            </tr>          
+  
+            <tr>
+              <td class="BIALA" align="right">
+                Grupy zajęciowe zablokowane
+              </td>
+              <td class="BIALA">
+                <table width="100%">
+                  <tr>
+                    <td align="left">
+                      <select name="filtrCzyZabl">
+                        <option value="">
+                          - - -
+                        </option>
+                        <option value="T" >
+                          Tylko zablokowane
+                        </option>
+                        <option value="N" >
+                          Bez zablokowanych
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>          
+  
+          </table>
+        </td>
+      </tr>
+     
+      <tr>
+        <td class="BIALA" colspan="2" align="center">
+          <input type="button" name="event_NoEvent" value="Szukaj" onclick="zatwierdzFormularz('ZapisyFormFiltr', 'submitForm')" class="PRZYCISK">   
+          <input type="button" name="event_NoEvent" value="Wyczyść" onclick="resetujFormularzWyszukiwania()" class="PRZYCISK">   
+        </td>
+      </tr>
+    </form>
+  </table>
+  <!-- filtr -- koniec -->
+  
+  <br>
+  <!-- kursy/grupy/bloki: poczatek -->
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+  <a name="hrefKursyGrupyBlokiTabela"></a>
+  <b>
+    Kursy/Bloki/Grupy
+  </b>
+  <table class="KOLOROWA" width="100%" cellspacing="1" cellpadding="1">
+    <tr>
+      <td class="NAGLOWEK_CIENKI" width="15%">
+        Rodzaj
+      </td>
+      <td class="NAGLOWEK_CIENKI" width="20%">
+        Kod
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Nazwa
+      </td>
+      <td class="NAGLOWEK_CIENKI" width="15%">
+        Akcja
+      </td>
+    </tr>
+  
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239292"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C3185D5D00000D3C0000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ003563W
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Bezpieczeństwo i ochrona danyc
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239292">
+                        <input type="hidden" name="uczKurId" value="239292">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239294"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C3185D5F00000D3D0000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ003564L
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Hurtownie danych
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239294">
+                        <input type="hidden" name="uczKurId" value="239294">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239293"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C3185D5E00000D3E0000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ003564W
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Hurtownie danych
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239293">
+                        <input type="hidden" name="uczKurId" value="239293">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239298"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C3185D6300000D3F0000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ003565L
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Sztuczna intelig. i inż.wiedzy
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239298">
+                        <input type="hidden" name="uczKurId" value="239298">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239295"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C3185D6000000D400000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ003565W
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Sztuczna intelig. i inż.wiedzy
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239295">
+                        <input type="hidden" name="uczKurId" value="239295">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239598"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C318606300000D410000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ005210S
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Proseminarium inżynierskie
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239598">
+                        <input type="hidden" name="uczKurId" value="239598">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239301"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C3185E0200000D420000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ005211P
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Zespołowe przedsięwzięcie inż.
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239301">
+                        <input type="hidden" name="uczKurId" value="239301">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaKurs239955"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=0002000000044B75727300000004C318643800000D430000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ005235Q
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Praktyka studencka
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td align="center">
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyBlokiTabelaKurs239955">
+                        <input type="hidden" name="uczKurId" value="239955">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form>
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaBlok1276960"> </a>
+        
+          
+            <td class="WYBRANA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=000200000004426C6F6B00000005C4021C463D00000D440000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz"><b>
+                  Blok
+                </b></a>
+            </td>
+          
+          
+        
+  
+        
+          
+            <td class="WYBRANA" align="left">
+              INZ111857BK
+            </td>
+          
+          
+        
+  
+        
+          
+            <td class="WYBRANA" align="left">
+               W08-INF-ST-Ii./6Moduł M_5
+            </td>
+          
+          
+        
+  
+        
+          
+            <td class="WYBRANA" align="center">
+              <table width="100%">
+                
+                
+              </table>
+            </td>
+          
+          
+            
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyBlokiTabelaBlok1276958"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyBlokuRow&key=000200000004426C6F6B00000005C4021C463B00000D450000015398FE85FA&positionIterator=KursyGrupyBlokiPLNROViewIterator&href=#hrefKursyGrupyBlokiTabela" title="Wybierz wiersz">Blok</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ111858BK
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+               W08-INF-ST-Ii./6Moduł M_6
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                
+              </table>
+            </td>
+          
+            
+      </tr>
+    
+    
+    <tr>
+      <td class="biala" colspan="4">
+        <!-- pagingPanel: start -->
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+  
+  
+  
+  
+    
+      
+    
+    
+  
+  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+      
+    
+    
+    
+      
+      
+        
+      
+    
+  
+    
+    
+      
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <table class="paging-panel">
+    <tr>
+    <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefKursyGrupyBlokiTabela"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+      <input type="hidden" name="pagingIterName" value="KursyGrupyBlokiPLNROViewIterator">
+      <input type="hidden" name="pagingRangeStart" value="" id="pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId">
+      
+      
+      
+        <input type="hidden" name="event" value="positionIterRangeStartKGB">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <td class="paging-td">
+        
+        
+          
+            <input type="submit" value="&lt&lt&lt" onclick="setNewRangeStart('pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId', '0')" class="paging-shift-btn">
+          
+          
+        
+        
+        
+        
+          
+          
+            <input type="submit" value="&lt&lt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+          
+        
+        <span class="paging-numeric-span">
+          
+            
+              
+              
+                <input type="submit" value="0" onclick="setNewRangeStart('pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId', '-10')" class="paging-numeric-btn">
+              
+            
+          
+            
+              
+              
+                <input type="submit" value="1" onclick="setNewRangeStart('pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId', '0')" class="paging-numeric-btn">
+              
+            
+          
+          
+          
+          
+            ...
+            <input type="submit" value="2" onclick="setNewRangeStart('pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId', '10.0')" class="paging-numeric-btn">
+          
+        </span>
+      
+        
+        
+          
+            <input type="submit" value="&gt&gt" onclick="setNewRangeStart('pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId', '-10.0')" class="paging-shift-btn">
+          
+          
+        
+        
+        
+        
+          
+            <input type="submit" value="&gt&gt&gt" onclick="setNewRangeStart('pagingRangeStartKursyGrupyBlokiPLNROViewIteratorId', '10')" class="paging-shift-btn">
+          
+          
+        
+      
+      </td>
+      </form>
+      </tr>
+    </table>
+  
+  
+
+
+
+<script>
+  function setNewRangeStart(paramId, paramValue)
+  {
+    document.getElementById(paramId).value = paramValue;
+  }
+  function getRoundValue(val)
+  {
+    var res = val.toString();
+    alert(res);
+    var res = val.substr(0, val.indexOf("."));
+    alert(res);
+    return res
+  }
+</script>
+        <!-- pagingPanel: end -->
+      </td>
+    </tr>
+    
+    
+    
+  </table>
+  <br/>
+
+
+  
+    
+  
+    
+      
+      
+      
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+<!-- kursy/grupy bloku: poczatek -->
+
+  <a name="hrefKursyGrupyWBlokuTabela"></a>
+  <b>
+    Kursy/Grupy w bloku
+  </b>
+  <table class="KOLOROWA" width="100%" cellspacing="1" cellpadding="1">
+    <tr>
+      <td class="NAGLOWEK_CIENKI" width="15%">
+        Rodzaj
+      </td>
+      <td class="NAGLOWEK_CIENKI" width="20%">
+        Kod
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Nazwa
+      </td>
+      <td class="NAGLOWEK_CIENKI" width="15%">
+        Akcja
+      </td>
+    </tr>
+  
+    
+      <tr>
+        <a name="hrefKursyGrupyWBlokuTabelaKurs239305"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyWBlokuRow&key=0002000000044B75727300000004C3185E0600000D470000015398FE85FA&positionIterator=KursyGrupyWBloku_PLN_B00_ROViewIterator&href=#hrefKursyGrupyWBlokuTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ005233L
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Administrowanie syst Microsoft
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td>
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyWBlokuTabelaKurs239305">
+                        <input type="hidden" name="uczKurId" value="239305">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form> 
+                
+              </table>
+            </td>
+          
+        
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyWBlokuTabelaKurs239303"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyWBlokuRow&key=0002000000044B75727300000004C3185E0400000D480000015398FE85FA&positionIterator=KursyGrupyWBloku_PLN_B00_ROViewIterator&href=#hrefKursyGrupyWBlokuTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ005233W
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Administrowanie syst Microsoft
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td>
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyWBlokuTabelaKurs239303">
+                        <input type="hidden" name="uczKurId" value="239303">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form> 
+                
+              </table>
+            </td>
+          
+        
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyWBlokuTabelaKurs239308"> </a>
+        
+          
+            <td class="WYBRANA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyWBlokuRow&key=0002000000044B75727300000004C3185E0900000D490000015398FE85FA&positionIterator=KursyGrupyWBloku_PLN_B00_ROViewIterator&href=#hrefKursyGrupyWBlokuTabela" title="Wybierz wiersz"><b>
+                  Kurs
+                </b></a>
+            </td>
+          
+          
+        
+  
+        
+          
+            <td class="WYBRANA" align="left">
+              INZ005234L
+            </td>
+          
+          
+        
+  
+        
+          
+            <td class="WYBRANA" align="left">
+              Administrowanie serw. Linux
+            </td>
+          
+          
+        
+  
+        
+          
+            <td class="WYBRANA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td>
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyWBlokuTabelaKurs239308">
+                        <input type="hidden" name="uczKurId" value="239308">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form> 
+                
+              </table>
+            </td>
+          
+          
+        
+      </tr>
+    
+      <tr>
+        <a name="hrefKursyGrupyWBlokuTabelaKurs239306"> </a>
+        
+          
+          
+            <td class="BIALA" align="left">
+              <a href="/EdukacjaWeb/zapisy.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==&event=wyborKursuGrupyWBlokuRow&key=0002000000044B75727300000004C3185E0700000D4A0000015398FE85FA&positionIterator=KursyGrupyWBloku_PLN_B00_ROViewIterator&href=#hrefKursyGrupyWBlokuTabela" title="Wybierz wiersz">Kurs</a>
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              INZ005234W
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="left">
+              Administrowanie serw. Linux
+            </td>
+          
+        
+  
+        
+          
+          
+            <td class="BIALA" align="center">
+              <table width="100%">
+                
+                  <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                    <tr>
+                      <td>
+                        <input type="hidden" name="rodzajKursu" value="Z">
+                        <input type="hidden" name="powrotHref" value="hrefKursyGrupyWBlokuTabelaKurs239306">
+                        <input type="hidden" name="uczKurId" value="239306">
+                        <input type="submit" name="event_SzczegolyGrupy" value="Szczegóły kursu" style="width:100%" class="PRZYCISK">      
+                      </td>
+                    </tr>
+                  </form> 
+                
+              </table>
+            </td>
+          
+        
+      </tr>
+    
+
+    <tr>
+      <td class="biala" colspan="4">
+        <!-- pagingPanel: start -->
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+  
+  
+  
+  
+    
+      
+    
+    
+  
+  
+  
+  
+  
+  
+    
+    
+      
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+  
+    
+    
+      
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <table class="paging-panel">
+    <tr>
+    <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefKursyGrupyWBlokuTabela"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+      <input type="hidden" name="pagingIterName" value="KursyGrupyWBloku_PLN_B00_ROViewIterator">
+      <input type="hidden" name="pagingRangeStart" value="" id="pagingRangeStartKursyGrupyWBloku_PLN_B00_ROViewIteratorId">
+      
+      
+      
+        <input type="hidden" name="event" value="positionIterRangeStartKGwB">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <td class="paging-td">
+        
+        
+          
+          
+            <input type="submit" value="&lt&lt&lt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+        
+        
+        
+          
+          
+            <input type="submit" value="&lt&lt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+          
+        
+        <span class="paging-numeric-span">
+          
+            
+              
+                <input type="submit" value="1" onclick="setNewRangeStart('pagingRangeStartKursyGrupyWBloku_PLN_B00_ROViewIteratorId', '0')" disabled="disabled" class="paging-numeric-btn-disabled">
+              
+              
+            
+          
+          
+          
+          
+        </span>
+      
+        
+        
+          
+          
+            <input type="submit" value="&gt&gt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+        
+        
+        
+          
+          
+            <input type="submit" value="&gt&gt&gt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+      
+      </td>
+      </form>
+      </tr>
+    </table>
+  
+  
+
+
+
+<script>
+  function setNewRangeStart(paramId, paramValue)
+  {
+    document.getElementById(paramId).value = paramValue;
+  }
+  function getRoundValue(val)
+  {
+    var res = val.toString();
+    alert(res);
+    var res = val.substr(0, val.indexOf("."));
+    alert(res);
+    return res
+  }
+</script>
+        <!-- pagingPanel: end -->
+      </td>
+    </tr>
+    
+    
+    
+  </table>
+  <br/>
+
+<!-- kursy/grupy bloku: koniec -->
+
+  
+        
+        
+        
+          
+          
+          
+          
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/EdukacjaWeb/scripts/zap.js"></script>
+
+
+
+
+  <a name="hrefGrupyZajecioweKursuTabela"></a>
+  <b>
+    Grupy zajęciowe
+  </b>
+  <table class="KOLOROWA" width="100%" cellspacing="1" cellpadding="1">
+    <tr>
+      <td class="NAGLOWEK_CIENKI" rowspan="3">
+        Kod grupy
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Kod kursu
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Nazwa kursu
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Liczba</br>zap. / miejsc
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Powtórkowa
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Rezerwowa
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Język prow.
+      </td>
+      <td class="NAGLOWEK_CIENKI" rowspan="3" width="18%">
+        Akcja
+      </td>
+    </tr>
+    <tr>
+      <td class="NAGLOWEK_CIENKI">
+        Prowadzący
+      </td>
+      <td class="NAGLOWEK_CIENKI">
+        Forma zajęć
+      </td>
+      <td class="NAGLOWEK_CIENKI" rowspan="2">
+        Przeznacz.
+      </td>
+      <td class="NAGLOWEK_CIENKI" rowspan="2">
+        Odpłatna
+      </td>
+      <td class="NAGLOWEK_CIENKI" rowspan="2">
+        Główna</br>w potoku
+      </td>
+      <td class="NAGLOWEK_CIENKI" rowspan="2">
+        Potok
+      </td>
+    </tr>
+    <tr>
+      <td class="NAGLOWEK_CIENKI" colspan="2" width="40%">
+        Termin, budynek, sala
+      </td>
+    </tr>
+
+  
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590381"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            15/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590381"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590381">
+                  <input type="hidden" name="rowId" value="590381">
+                  <input type="hidden" name="rowKod" value="Z00-53a">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Dr inż.                                                                                                      Krzysztof                           Chudzik
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          delfin1
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> pn 09:15-11:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590381">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590381">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590382"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            16/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590382"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590382">
+                  <input type="hidden" name="rowId" value="590382">
+                  <input type="hidden" name="rowKod" value="Z00-53b">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Mgr inż.                                                                                                      Błażej                           Święcicki
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          delfin2
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> pn 13:15-15:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590382">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590382">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590383"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            15/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590383"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590383">
+                  <input type="hidden" name="rowId" value="590383">
+                  <input type="hidden" name="rowKod" value="Z00-53c">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Mgr inż.                                                                                                      Błażej                           Święcicki
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          delfin1
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> pn 15:15-16:55, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590383">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590383">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590388"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            15/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590388"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590388">
+                  <input type="hidden" name="rowId" value="590388">
+                  <input type="hidden" name="rowKod" value="Z00-53h">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Dr inż.                                                                                                      Krzysztof                           Chudzik
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          delfin2
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> wt 07:30-09:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590388">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590388">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590387"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            15/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590387"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590387">
+                  <input type="hidden" name="rowId" value="590387">
+                  <input type="hidden" name="rowKod" value="Z00-53g">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Dr inż.                                                                                                      Krzysztof                           Chudzik
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          delfin1
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> wt 09:15-11:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590387">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590387">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590384"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            15/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590384"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590384">
+                  <input type="hidden" name="rowId" value="590384">
+                  <input type="hidden" name="rowKod" value="Z00-53d">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Dr inż.                                                                                                      Krzysztof                           Chudzik
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          delfin2
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> cz 07:30-09:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590384">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590384">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590385"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            15/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590385"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590385">
+                  <input type="hidden" name="rowId" value="590385">
+                  <input type="hidden" name="rowKod" value="Z00-53e">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Dr inż.                                                                                                      Krzysztof                           Chudzik
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> cz 09:15-11:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590385">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590385">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+      
+      
+
+      <tr>
+        <a name="hrefGrupyZajecioweKursuTabela590386"> </a>
+        <td class="BIALA" align="center" width="15%" rowspan="3">
+          Z00-00a
+        </td>
+        <td class="BIALA">
+          INZ000000L
+        </td>
+        <td class="BIALA">
+          Badanie wpływu zasolenia wody na wygodę życia delfinów
+        </td>
+        <td class="BIALA" align="center">
+            
+          
+            14/15
+            
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center">
+          polski
+        </td>
+        <td width="18%" class="BIALA" align="center" rowspan="3" valign="top">
+          <table width="100%">
+            
+            <tr>
+              <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590386"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <td align="center">
+                  <input type="hidden" name="powrotHref" value="hrefGrupyZajecioweKursuTabela590386">
+                  <input type="hidden" name="rowId" value="590386">
+                  <input type="hidden" name="rowKod" value="Z00-53f">
+                  <input type="hidden" name="positionIterator" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+                  <input style="width:100%" type="submit" name="event_OdswiezGrupe" class="PRZYCISK" title="Odśwież informację o grupie" value="Odśwież"/>
+                </td>
+              </form> 
+            </tr>
+            
+            
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA">
+          Dr inż.                                                                                                      Krzysztof                           Chudzik
+        </td>
+        <td class="BIALA">
+          Zajęcia laboratoryjne
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />        
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          <input type="checkbox"  disabled />
+        </td>
+        <td class="BIALA" align="center" rowspan="2">
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="BIALA" colspan="2" align="left">
+           <table>  <tr>  <td> cz 11:15-13:00, bud. D-2, sala 333b </td>  </tr>  </table> 
+          
+            <form name="TerminyGrupyForm" method="post" action="/EdukacjaWeb/terminyGrupy.do" style="display:inline"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+                <input type="hidden" name="grzId" value="590386">
+                <input type="hidden" name="paramPowrotAction" value="/zapisy.do?href=#hrefGrupyZajecioweKursuTabela590386">
+                <input type="hidden" name="paramPowrotEvent" value="event_SzczegolyGrupyPowrot">
+                <input type="hidden" name="paramPowrotButtonBundle" value="zapisy">
+                <input type="hidden" name="paramPowrotButtonKey" value="button.terminyGrupy.powrot">
+                <input type="submit" name="event_PokazTerminy" value="Szczegółowy terminarz" style="width:100%" class="PRZYCISK">      
+            </form>
+          
+        </td>
+      </tr>
+      
+
+      
+    
+    
+    <tr>
+      <td class="biala" colspan="8">
+        <!-- pagingPanel: start -->
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+  
+  
+  
+  
+    
+      
+    
+    
+  
+  
+  
+  
+  
+  
+    
+    
+      
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+  
+    
+    
+      
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <table class="paging-panel">
+    <tr>
+    <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefGrupyZajecioweKursuTabela"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+      <input type="hidden" name="pagingIterName" value="GrupyZajecioweKursu_PLN_BK0_ROViewIterator">
+      <input type="hidden" name="pagingRangeStart" value="" id="pagingRangeStartGrupyZajecioweKursu_PLN_BK0_ROViewIteratorId">
+      
+      
+      
+        <input type="hidden" name="event" value="positionIterRangeStartGZK">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <td class="paging-td">
+        
+        
+          
+          
+            <input type="submit" value="&lt&lt&lt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+        
+        
+        
+          
+          
+            <input type="submit" value="&lt&lt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+          
+        
+        <span class="paging-numeric-span">
+          
+            
+              
+                <input type="submit" value="1" onclick="setNewRangeStart('pagingRangeStartGrupyZajecioweKursu_PLN_BK0_ROViewIteratorId', '0')" disabled="disabled" class="paging-numeric-btn-disabled">
+              
+              
+            
+          
+          
+          
+          
+        </span>
+      
+        
+        
+          
+          
+            <input type="submit" value="&gt&gt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+        
+        
+        
+          
+          
+            <input type="submit" value="&gt&gt&gt" disabled="disabled" class="paging-shift-btn-disabled">
+          
+        
+      
+      </td>
+      </form>
+      </tr>
+    </table>
+  
+  
+
+
+
+<script>
+  function setNewRangeStart(paramId, paramValue)
+  {
+    document.getElementById(paramId).value = paramValue;
+  }
+  function getRoundValue(val)
+  {
+    var res = val.toString();
+    alert(res);
+    var res = val.substr(0, val.indexOf("."));
+    alert(res);
+    return res
+  }
+</script>
+        <!-- pagingPanel: end -->
+      </td>
+    </tr>
+    
+    
+    
+  </table>
+  <br/>
+
+
+        
+      
+    
+  
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- kursy/grupy/bloki: koniec -->
+  
+  
+
+
+
+  
+  
+
+<br>
+<hr/>
+<table>
+  <tr>
+    
+    <td>
+      <form name="ZapisyForm" method="post" action="/EdukacjaWeb/zapisy.do?href=#hrefZapisySzczSlu"><input type="hidden" name="clEduWebSESSIONTOKEN" value="SMTQ1ODU2MDcyMzUwMQ=="><input type="hidden" name="cl.edu.web.TOKEN" value="FMTQ1ODU2MTc0NjEwNA==">
+        <input type="submit" name="event_NoAction" value="Powrót do zapisów w semestrze" class="PRZYCISK">      
+      </form> 
+    </td>
+  </tr>
+</table>
+<!-- specjalne info: DOL -->
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+<!--  -->
+
+
+
+
+
+<script type="text/javascript" src="scripts/monit.js"></script>
+</td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <TR>
+                              <TD CLASS="NAVIGATOR_NEW" ALIGN="right" VALIGN="bottom" HEIGHT="20">
+                                 <TABLE ALIGN="right">
+                                    <TD onclick="document.location.href='mainPage.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ=='" CLASS="GUZIK_HOME" id="_stronaGlownaa" TITLE="Strona główna">&nbsp;</TD>
+                                    <TD onclick="window.open('helpDajMi.do?clEduWebSESSIONTOKEN=SMTQ1ODU2MDcyMzUwMQ==','Pomoc')" CLASS="GUZIK_HELP" id="_stronaPomocy" TITLE="Pomoc">&nbsp;</TD>
+                                 </TABLE>
+                              </TD>
+                           </TR>
+                        </table>
+                     </TD>
+                  </TR>
+                  <tr>
+                     <td class="main">
+                        <table class="linia_pod_zak" width="986" align="center">
+                           <tr>
+                              <td class="linia_koncowa"></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td class="main">
+                        <table width="986" cellpadding="0" cellspacing="0" border="0">
+                           <tr>
+                              <td class="info" width="4"></td>
+                              <td class="info" align="left" height="20" valign="middle"><a href="javascript:alert('System: Edukacja.CL\nSygnity SA\nWersja: 1.3 (build 2522)\n');">Edukacja 1.3</a>
+        | <a href="mailto:admin_jsos@pwr.wroc.pl" class="info">webmaster</a>
+                              </td>
+                              <td class="info" align="right" height="20" valign="middle">
+        copyright &copy; Sygnity SA &nbsp;&nbsp;</td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+               </TABLE>
+            </TD>
+         </TR>
+      </TABLE>
+   </BODY>
+</HTML>
