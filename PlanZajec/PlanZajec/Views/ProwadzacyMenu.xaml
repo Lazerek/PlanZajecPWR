@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="200" Background="#FF9C3F3F">
     <Grid>
-            
+        <Grid.BindingGroup>
+            <BindingGroup Name="Lecturers"/>
+        </Grid.BindingGroup>
+
     </Grid>
 </UserControl>

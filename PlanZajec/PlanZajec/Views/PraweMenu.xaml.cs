@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PlanZajec;
+using PlanZajec.Views;
 
 namespace Wpf
 {
@@ -54,7 +55,7 @@ namespace Wpf
 
         public void loadOptImg()
         {
-            optImg.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "..\\..\\..\\Images\\gear.png"));
+            optImg.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "..\\..\\..\\Views\\Images\\gear.png"));
         }
 
         public void imgClick1(object sender, MouseEventArgs e)
