@@ -21,9 +21,14 @@ namespace Wpf
     /// </summary>
     public partial class PraweMenu : UserControl
     {
+        bool lpm;
+        OknoOpcji oo;
         public PraweMenu()
         {
             InitializeComponent();
+            lpm = false;
+            oo = new OknoOpcji();
+            loadOptImg();
             PrawePodmenu.Children.Add(new Grupa());
         }
 
@@ -45,6 +50,32 @@ namespace Wpf
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             }
             PrawePodmenu.Children.Add(new Grupa());
+        }
+
+        public void loadOptImg()
+        {
+            optImg.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "..\\..\\..\\Images\\gear.png"));
+        }
+
+        public void imgClick1(object sender, MouseEventArgs e)
+        {
+            lpm = true;
+        }
+        public void imgClick2(object sender, MouseEventArgs e)
+        {
+            if (lpm)
+            {
+                if (!oo.IsVisible)
+                {
+                    oo = new OknoOpcji();
+                    oo.Show();
+                }
+            }
+        }
+
+        public void imgClickC(object sender, MouseEventArgs e)
+        {
+            lpm = false;
         }
     }
 }

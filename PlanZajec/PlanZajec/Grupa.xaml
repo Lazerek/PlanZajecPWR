@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="130" VerticalAlignment="Top">
-              <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,25,5">
-        <Grid Height="60" HorizontalAlignment="Left"  Name="grid1" VerticalAlignment="Top" Width="170">
+              <Border BorderBrush="#acacac" BorderThickness="1" Width="160" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,25,5">
+        <Grid Height="80" HorizontalAlignment="Left"  Name="grid1" VerticalAlignment="Top" Width="160">
             <TextBlock Margin="5,5,5,5"> 
-            Nazwa Kursu<LineBreak/>Prowadzacy<LineBreak/>Godzina<LineBreak/>
+            Nazwa Kursu<LineBreak/>Prowadzacy<LineBreak/>Dzień i godzina<LineBreak/>Sala<LineBreak/>
             </TextBlock>
         </Grid>
             </Border>

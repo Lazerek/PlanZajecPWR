@@ -24,6 +24,7 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             prePrareDB();
@@ -45,6 +46,11 @@ namespace Wpf
 
         }
 
+        private void resizeElements()
+        {
+
+        }
+
         private void prePrareDB()
         {
             string dbName = "Super-egatron-5000X-DB.sqlite";
@@ -58,7 +64,6 @@ namespace Wpf
             //string fullP = Path.GetFullPath("Super-egatron-5000X-DB.sqlite");
             //System.Diagnostics.Debug.WriteLine(fullP);
         }
-
 
     }
 }

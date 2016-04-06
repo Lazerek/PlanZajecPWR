@@ -3,17 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="530">
+             mc:Ignorable="d">
     <Grid>
-        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width ="580" Height="530" Margin="10,15,10,10">
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="10,15,10,10">
             <TabItem Header="Przeglądanie grup zajeciowych">
                     <DataGrid Name="dgUsers" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="139" Header="Godziny" Binding="{Binding atr1name}" />
-                        <DataGridTextColumn Width="139" Header="Przedmiot" Binding="{Binding atr2name}" />
-                        <DataGridTextColumn Width="139" Header="Prowadzący" Binding="{Binding atr3name}" />
-                        <DataGridTextColumn Width="139" Header="Sala" Binding="{Binding atr4name}" />
+                        <DataGridTextColumn Width="*" Header="Dzień i Godzina" Binding="{Binding atr1name}" />
+                        <DataGridTextColumn Width="*" Header="Przedmiot" Binding="{Binding atr2name}" />
+                        <DataGridTextColumn Width="*" Header="Prowadzący" Binding="{Binding atr3name}" />
+                        <DataGridTextColumn Width="*" MaxWidth="120" Header="Sala" Binding="{Binding atr4name}" />
                     </DataGrid.Columns>
                     <DataGrid.RowDetailsTemplate>
                         <DataTemplate>
