@@ -11,19 +11,15 @@ using PlanZajec.DataAccessLayer;
 namespace PlanZajec.ViewModels
 {
 
-    public class PrzegladanieGrupView : ViewModel
+    public class PrzegladanieGrupViewModel : ViewModel
     {
         public List<GrupyZajeciowe> Items { get; set; }
-        public PrzegladanieGrupView()
+        public PrzegladanieGrupViewModel()
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Items = uw.GrupyZajeciowe.GetAll().ToList();
-                for(int i=0;i<Items.Count();i++)
-                {
-                    System.Diagnostics.Debug.WriteLine(Items);
-                    
-                }
+                
                 
 
             }

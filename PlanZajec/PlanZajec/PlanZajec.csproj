@@ -81,7 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
-    <Compile Include="ViewModels\PrzegladanieGrupView.cs" />
+    <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
@@ -220,7 +220,9 @@
     <Resource Include="TestResources\win_w.txt" />
     <Resource Include="TestResources\zpi.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="TestResources\del_l.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Images\gear.png" />
   </ItemGroup>
