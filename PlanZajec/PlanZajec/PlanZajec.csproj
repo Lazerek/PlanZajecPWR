@@ -219,7 +219,9 @@
     <Resource Include="TestResources\win_w.txt" />
     <Resource Include="TestResources\zpi.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="TestResources\del_l.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Images\gear.png" />
   </ItemGroup>
