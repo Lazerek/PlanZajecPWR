@@ -30,9 +30,6 @@ namespace Wpf
             this.DataContext = viewModel;
         }
 
-        private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
