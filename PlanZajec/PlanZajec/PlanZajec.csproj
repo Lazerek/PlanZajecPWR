@@ -92,12 +92,6 @@
     <Compile Include="Views\OknoOpcji.xaml.cs">
       <DependentUpon>OknoOpcji.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PanelGrupKaflowych.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\PanelGrupKaflowych.Designer.cs">
-      <DependentUpon>PanelGrupKaflowych.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ProwadzacyMenu.xaml.cs">
       <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
     </Compile>
