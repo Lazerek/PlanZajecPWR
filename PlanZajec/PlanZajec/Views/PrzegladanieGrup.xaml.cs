@@ -12,17 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using PlanZajec.ViewModels;
 namespace Wpf
 {
     /// <summary>
     /// Interaction logic for PrzegladanieGrup.xaml
     /// </summary>
+    /// 
+
     public partial class PrzegladanieGrup : UserControl
     {
+        private PrzegladanieGrupView viewModel;
         public PrzegladanieGrup()
         {
             InitializeComponent();
+            viewModel = new PrzegladanieGrupView();
+            this.DataContext = viewModel;
+        }
+
+        private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
