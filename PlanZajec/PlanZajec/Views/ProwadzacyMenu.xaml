@@ -14,11 +14,11 @@
         <conventers:MultiValueConverter x:Key="MultiValueConverter" />
     </UserControl.Resources>
     <Grid d:DataContext="d:DesignInstance Type=lcl:ProwadzacyViewModel">
-        <DataGrid Name="DgUsers" IsReadOnly="True" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Items}">
+        <DataGrid Name="DgUsers" GridLinesVisibility="None" IsReadOnly="True" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Items}">
             <DataGrid.Columns>
+                <DataGridTextColumn CanUserSort="False" Width="*" Header="Tytuł" Binding="{Binding Tytul}" />
                 <DataGridTextColumn Width="*" Header="Nazwisko" Binding="{Binding Nazwisko}" />
                 <DataGridTextColumn Width="*" Header="Imie" Binding="{Binding Imie}" />
-                <DataGridTextColumn Width="*" Header="Tytuł" Binding="{Binding Tytul}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
