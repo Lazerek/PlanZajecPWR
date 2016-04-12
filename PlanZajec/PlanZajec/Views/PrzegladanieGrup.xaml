@@ -8,7 +8,7 @@
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="10,15,10,10">
             <TabItem Header="Przeglądanie grup zajeciowych">
-                <DataGrid Name="dgUsers" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="dgUsers_SelectionChanged" ItemsSource="{Binding Items}" >
+                <DataGrid Name="dgUsers" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" IsReadOnly ="True"  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ItemsSource="{Binding Items}" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="*" Header="KodGrupy" Binding="{Binding KodGrupy}" />
                         <DataGridTextColumn Width="*" Header="TypZajec" Binding="{Binding TypZajec}" />
@@ -22,11 +22,7 @@
                         <DataGridTextColumn Width="*" Header="IdProwadzacego" Binding="{Binding IdProwadzacego}" />
                         <DataGridTextColumn Width="*" Header="KodKursu" Binding="{Binding KodKursu}" />
                     </DataGrid.Columns>
-                    <DataGrid.RowDetailsTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Details}" Margin="10" />
-                        </DataTemplate>
-                    </DataGrid.RowDetailsTemplate>
+                    
                 </DataGrid>
             </TabItem>
         </TabControl>
