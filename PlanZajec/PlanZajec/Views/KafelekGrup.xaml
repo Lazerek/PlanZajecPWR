@@ -4,8 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec.Views"
+             xmlns:converters="clr-namespace:PlanZajec.Views.Converters"
+             xmlns:diagnostic="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="300">
+             d:DesignHeight="130" d:DesignWidth="200"
+             Width="200"
+             Height="130">
+
+    <UserControl.Resources>
+        <converters:TypZajecToColorConterter x:Key="TypZajecToColorConv"/>
+    </UserControl.Resources>
+
 
     <UserControl.RenderTransform>
         <TransformGroup>
@@ -16,25 +25,25 @@
         </TransformGroup>
     </UserControl.RenderTransform>
 
-    <Border BorderThickness="2" BorderBrush="Black" CornerRadius="0,1,1,0" Background="White">
+    <Border BorderThickness="2" BorderBrush="Black" CornerRadius="0,1,1,0" Background="White" >
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Border BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="0">
-                <Rectangle Fill="#FF0101EE"/>
+                <Rectangle Fill="{Binding TypZajec, Converter={StaticResource TypZajecToColorConv}}"/>
                 <!-- Binding -->
             </Border>
-            <Grid Grid.Column="1" Margin="20">
+            <Grid Grid.Column="1" Margin="15" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.2*"/>
                     <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.3*"/>
                     <RowDefinition Height="0.02*"/>
                     <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="0.2*"/>
                     <RowDefinition Height="0.2*"/>
                 </Grid.RowDefinitions>
 
@@ -43,29 +52,62 @@
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="80*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Wtorek" FontSize="16" Grid.Column="0"/>
-                    <TextBlock Text="17:15-18:45" FontSize="16" Grid.Column="1"/>
+                    <TextBlock Text="{Binding Dzień}" Grid.Column="0"/>
+                    <TextBlock Text="{Binding Godzina}" Grid.Column="1"/>
                 </Grid>
 
 
-                <TextBlock Grid.Row="2" Text="HD - Hurtowanie danych" VerticalAlignment="Bottom" FontSize="16"/>
+
+                <Grid Grid.Row="2" VerticalAlignment="Bottom" MaxWidth="180" Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Kursy.SkrotKursu}" FontSize="14" Grid.Column="0"/>
+                    <TextBlock Text=" - " FontSize="14" Grid.Column="1"/>
+                    <TextBlock Text="{Binding Kursy.NazwaKursu}" FontSize="14" Grid.Column="2" />
+                    
+                </Grid>
+                <WrapPanel Orientation="Vertical"  >
+                    
+                </WrapPanel>
+
+                
                 <!-- Do przeanalizowanie -->
                 <Path Grid.Row="3" Stroke="Black" StrokeThickness="2" Stretch="Fill">
                     <Path.Data>
                         <LineGeometry StartPoint="0,0" EndPoint="1,0" />
                     </Path.Data>
                 </Path>
-                <TextBlock Grid.Row="4" Text="prof. Ziutek Adam" VerticalAlignment="Top"/>
+                <!--<TextBlock Grid.Row="4" Text="prof. Ziutek Adam" VerticalAlignment="Top"/>-->
+                <WrapPanel Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <TextBlock  Text="{Binding Prowadzacy.Tytul}" />
+                    <TextBlock Text=" "/>
+                    <TextBlock  Text="{Binding Prowadzacy.Nazwisko}" />
+                    <TextBlock Text=" "/>
+                    <TextBlock Text="{Binding Prowadzacy.Imie}" />
+                </WrapPanel>
 
+
+                <DockPanel Grid.Row="6">
+                    
+                    
+                    
+                </DockPanel>
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="30*"/>
                         <ColumnDefinition Width="20*" />
                     </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="s. 409 Bud. B-4" FontSize="10" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    <TextBlock Text="TP" FontSize="16" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <WrapPanel Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <TextBlock Text="s. " FontSize="9"  />
+                        <TextBlock Text="{Binding Sala}" FontSize="9"/>
+                        <TextBlock Text=" Bud. " FontSize="9"/>
+                        <TextBlock Text="{Binding Budynek}" FontSize="9"/>
+                    </WrapPanel>
+                    <TextBlock Text="TP/TN..." FontSize="14" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
 
             </Grid>

@@ -32,5 +32,24 @@ namespace PlanZajec.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupyZajeciowe> GrupyZajeciowe { get; set; }
+
+        [NotMapped]
+        public string SkrotKursu
+        {
+            get
+            {
+                string[] sp = NazwaKursu.Split();
+                string result = "";
+                for(int i=0; i<sp.Length; i++)
+                {
+                    if(sp.Length > 0)
+                    {
+                        result += Char.ToUpper(sp[i][0]);
+                    }
+                }
+                return result;
+            }
+        }
+
     }
 }

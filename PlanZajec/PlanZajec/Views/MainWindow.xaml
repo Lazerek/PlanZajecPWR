@@ -4,14 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf"
+
         mc:Ignorable="d"
         Title="Plan" VerticalAlignment="Stretch" Height="600" Width="800" MinHeight="600" HorizontalAlignment="Stretch"  MinWidth="800">
+
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="580" Width="*"/>
-            <ColumnDefinition MinWidth="200" Width="200"></ColumnDefinition>
+            <ColumnDefinition MinWidth="560" Width="*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition MinWidth="230" Width="230"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid x:Name = "LMenu"/>
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
         <Grid x:Name = "RMenu" Grid.Row="1" Grid.Column="2">
         </Grid>
     </Grid>

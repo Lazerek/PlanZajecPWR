@@ -80,7 +80,7 @@ namespace Wpf
             {
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             }
-            PrawePodmenu.Children.Add(new KafelekGrup());
+            PrawePodmenu.Children.Add(new PanelPrzegladaniaKafelekView());
         }
     }
 }

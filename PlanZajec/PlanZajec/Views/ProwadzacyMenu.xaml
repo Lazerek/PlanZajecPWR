@@ -8,7 +8,8 @@
              d:DesignHeight="500" d:DesignWidth="200">
     <DataGrid Name="dgLectures" AutoGenerateColumns="true" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Items}" >
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Prowadzacy" Binding="{Binding Nazwisko, Imie}"/>
+            <DataGridTextColumn Header="Prowadzacy" Binding="{Binding Nazwisko}"/>
+            <DataGridTextColumn Header="Prowadzacy" Binding="{Binding Imie}"/>
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

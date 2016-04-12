@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using PlanZajec.DataModel;
 using PlanZajec.DataAccessLayer.IRepositories;
 
+using System.Data.Entity; //Ważne!
+
+
 namespace PlanZajec.DataAccessLayer.Repositories
 {
     public class GrupyZajecioweRepository : Repository<GrupyZajeciowe>, IGrupyZajecioweRepository
@@ -18,6 +21,16 @@ namespace PlanZajec.DataAccessLayer.Repositories
         {
             get { return Context as PlanPwrContext; }
         }
+
+        public IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelations()
+        {
+            return PlanPwrContext.GrupyZajeciowe
+                .Include(g => g.Prowadzacy)
+                .Include(g => g.Kursy)
+                .ToList();
+        }
+
+
 
     }
 }
