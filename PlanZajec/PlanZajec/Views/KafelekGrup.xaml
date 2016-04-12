@@ -5,13 +5,70 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="White" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.333*"/>
-            <RowDefinition Height="0.667*"/>
-        </Grid.RowDefinitions>
-        
+             d:DesignHeight="200" d:DesignWidth="300">
 
-    </Grid>
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+            <SkewTransform AngleX="0" AngleY="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform x:Name="UserControlToolTipXY" X="0" Y="0"/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+
+    <Border BorderThickness="2" BorderBrush="Black" CornerRadius="0,1,1,0" Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="Black" BorderThickness="1,1,1,1" Grid.Column="0">
+                <Rectangle Fill="#FF0101EE"/>
+                <!-- Binding -->
+            </Border>
+            <Grid Grid.Column="1" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="80*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Wtorek" FontSize="16" Grid.Column="0"/>
+                    <TextBlock Text="17:15-18:45" FontSize="16" Grid.Column="1"/>
+                </Grid>
+
+
+                <TextBlock Grid.Row="2" Text="HD - Hurtowanie danych" VerticalAlignment="Bottom" FontSize="16"/>
+                <!-- Do przeanalizowanie -->
+                <Path Grid.Row="3" Stroke="Black" StrokeThickness="2" Stretch="Fill">
+                    <Path.Data>
+                        <LineGeometry StartPoint="0,0" EndPoint="1,0" />
+                    </Path.Data>
+                </Path>
+                <TextBlock Grid.Row="4" Text="prof. Ziutek Adam" VerticalAlignment="Top"/>
+
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="s. 409 Bud. B-4" FontSize="10" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <TextBlock Text="TP" FontSize="16" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>

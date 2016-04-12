@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec
 {
@@ -20,9 +21,12 @@ namespace PlanZajec
     /// </summary>
     public partial class ProwadzacyMenu : UserControl
     {
+        public ProwadzacyViewModel ViewModel;
         public ProwadzacyMenu()
         {
             InitializeComponent();
+            ViewModel = new ProwadzacyViewModel();
+            DataContext = ViewModel;
         }
     }
 }
