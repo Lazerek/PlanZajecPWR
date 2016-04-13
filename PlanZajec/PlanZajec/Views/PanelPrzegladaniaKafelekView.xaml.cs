@@ -32,6 +32,9 @@ namespace PlanZajec.Views
             System.Diagnostics.Debug.WriteLine("Kliknieto!");
         }
 
-
+        private void menuInitializeMy(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("#GregD:"+sender);
+        }
     }
 }

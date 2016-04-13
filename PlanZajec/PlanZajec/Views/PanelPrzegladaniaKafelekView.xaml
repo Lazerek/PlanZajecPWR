@@ -13,19 +13,21 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <local:KafelekGrup Margin="4" VerticalAlignment="Stretch"/>
+                        <local:KafelekGrup Margin="4" VerticalAlignment="Stretch">
+                            <local:KafelekGrup.ContextMenu >
+                                <ContextMenu Initialized="menuInitializeMy">
+                                    <MenuItem Header="Dodaj do planu" Click="klinkieteMenu">
+                                        <MenuItem.Icon>
+                                            <Image Source="Images/addIcon.png" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </local:KafelekGrup.ContextMenu>
+                        </local:KafelekGrup>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <ListBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Dodaj do planu" Click="klinkieteMenu">
-                        <MenuItem.Icon>
-                            <Image Source="Images/addIcon.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </ListBox.ContextMenu>
+
         </ListBox>
     </Grid>
 </UserControl>
