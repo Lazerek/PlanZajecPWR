@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="OknoOpcji" Height="300" Width="300">
     <Grid>
-        
+        <TextBox x:Name="textBoxFiltr" HorizontalAlignment="Left" Height="23" Margin="86,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="buttonFiltr" Content="Szukaj Potoku" HorizontalAlignment="Left" Height="23" Margin="86,97,0,0" VerticalAlignment="Top" Width="120" Click="buttonFiltr_Click"/>
+        <Button x:Name="buttonSzukajProwadzacy" Content="Szukaj po prowadzących" HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Width="157" Height="25" Click="buttonSzukajProwadzacy_Click"/>
+        <TextBox x:Name="textBoxprowadzacy" HorizontalAlignment="Left" Height="23" Margin="27,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+
     </Grid>
 </Window>

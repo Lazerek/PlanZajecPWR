@@ -22,6 +22,7 @@ namespace Wpf
 
     public partial class PrzegladanieGrup : UserControl
     {
+        
         private PrzegladanieGrupViewModel viewModel;
         public PrzegladanieGrup()
         {
@@ -29,7 +30,7 @@ namespace Wpf
             viewModel = new PrzegladanieGrupViewModel();
             this.DataContext = viewModel;
         }
+       
 
-        
     }
 }

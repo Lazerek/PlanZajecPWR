@@ -51,6 +51,15 @@ namespace Wpf
             }
             PrawePodmenu.Children.Add(new KafelekGrup());
         }
+        private void OnSelectedLecturersOpinion(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null)
+                return;
+            if (PrawePodmenu.Children.Count > 0)
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            PrawePodmenu.Children.Add(new ProwadzacyOpinie());
+            
+        }
 
         public void imgClick1(object sender, MouseEventArgs e)
         {
