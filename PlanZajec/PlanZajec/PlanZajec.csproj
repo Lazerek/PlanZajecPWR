@@ -90,6 +90,9 @@
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\Converters\OcenaConventer.cs" />
     <Compile Include="Views\Converters\TypZajecToColorConterter.cs" />
+    <Compile Include="Views\EdycjaLiczbyMiejsc.xaml.cs">
+      <DependentUpon>EdycjaLiczbyMiejsc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
     <Compile Include="Views\Grupa.xaml.cs">
       <DependentUpon>Grupa.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\EdycjaLiczbyMiejsc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\KafelekGrup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
