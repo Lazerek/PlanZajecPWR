@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanZajec.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf;
 
 namespace PlanZajec.Views
 {
@@ -22,6 +24,12 @@ namespace PlanZajec.Views
         public OknoOpcji()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Coś");
+            PrzegladanieGrupViewModel.aaa.PrzegladanieProwadzacy(textBox.Text);
         }
     }
 }
