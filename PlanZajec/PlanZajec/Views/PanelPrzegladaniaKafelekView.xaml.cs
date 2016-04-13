@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanZajec.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,17 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Wpf
+namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for Grupa.xaml
+    /// Interaction logic for PanelPrzegladaniaKafelekView.xaml
     /// </summary>
-    public partial class Grupa : UserControl
+    public partial class PanelPrzegladaniaKafelekView : UserControl
     {
-        public Grupa()
+        public PanelPrzegladaniaKafelekView()
         {
             InitializeComponent();
+            DataContext = new PanelPrzegladaniaKafelekViewModel();
         }
+
+        private void klinkieteMenu(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Kliknieto!");
+        }
+
 
     }
 }

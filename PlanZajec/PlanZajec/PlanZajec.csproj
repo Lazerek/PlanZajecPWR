@@ -81,9 +81,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Conventers\MultiValueConverter.cs" />
+    <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\Converters\TypZajecToColorConterter.cs" />
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
     </Compile>
@@ -94,19 +96,15 @@
     <Compile Include="Views\OknoOpcji.xaml.cs">
       <DependentUpon>OknoOpcji.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PanelPrzegladaniaKafelekView.xaml.cs">
+      <DependentUpon>PanelPrzegladaniaKafelekView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProwadzacyMenu.xaml.cs">
       <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrzegladanieGrup.xaml.cs">
       <DependentUpon>PrzegladanieGrup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\Grupa.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -131,8 +129,8 @@
     <Compile Include="DataAccessLayer\PlanPwrContext.cs" />
     <Compile Include="DataModel\Plany.cs" />
     <Compile Include="DataModel\Prowadzacy.cs" />
-    <Compile Include="Views\Grupa.xaml.cs">
-      <DependentUpon>Grupa.xaml</DependentUpon>
+    <Compile Include="Views\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\KafelekGrup.xaml">
       <SubType>Designer</SubType>
@@ -143,6 +141,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\OknoOpcji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PanelPrzegladaniaKafelekView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,8 +161,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\UserControl1.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Images\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\addIcon.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

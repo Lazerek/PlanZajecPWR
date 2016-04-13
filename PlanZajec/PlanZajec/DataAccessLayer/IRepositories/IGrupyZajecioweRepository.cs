@@ -9,5 +9,8 @@ namespace PlanZajec.DataAccessLayer.IRepositories
 {
     public interface IGrupyZajecioweRepository : IRepository<GrupyZajeciowe>
     {
+        IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelations();
+
+
     }
 }

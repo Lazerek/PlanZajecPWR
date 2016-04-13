@@ -12,18 +12,12 @@ namespace PlanZajec.ViewModels
     public class ProwadzacyViewModel : INotifyPropertyChanged
     {
         public List<Prowadzacy> Items { get; set; }
-        public List<string> NazwyProwadzacych { get; set; } 
 
         public ProwadzacyViewModel()
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Items = uw.Prowadzacy.GetAll().ToList();
-                NazwyProwadzacych = new List<string>();
-                foreach (var prow in Items)
-                {
-                    NazwyProwadzacych.Add(prow.Imie + " " + prow.Nazwisko + " " + prow.Tytul);
-                }
             }
         }
 
