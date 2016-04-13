@@ -30,6 +30,7 @@ namespace Wpf
             viewModel = new PrzegladanieGrupViewModel();
             this.DataContext = viewModel;
         }
+       
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanZajec.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,12 @@ namespace PlanZajec.Views
         public OknoOpcji()
         {
             InitializeComponent();
+        }
+
+        private void buttonSzukajProwadzacy_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Coś");
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.PrzegladanieProwadzacy(textBoxprowadzacy.Text);
         }
 
         private void buttonFiltr_Click(object sender, RoutedEventArgs e)

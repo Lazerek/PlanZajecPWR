@@ -4,22 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec"
-             xmlns:conventers="clr-namespace:PlanZajec.Conventers"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
-             xmlns:viewModels="clr-namespace:PlanZajec.ViewModels"
-             xmlns:dataModel="clr-namespace:PlanZajec.DataModel"
+             xmlns:converters="clr-namespace:PlanZajec.Views.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="200">
     <UserControl.Resources>
-        <conventers:MultiValueConverter x:Key="MultiValueConverter" />
+        <converters:OcenaConventer x:Key="OcenaConventer"/>
     </UserControl.Resources>
-    
-    <Grid d:DataContext="d:DesignInstance Type=lcl:ProwadzacyViewModel">
-        <DataGrid Name="DgUsers" GridLinesVisibility="None" IsReadOnly="True" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Items}">
+    <Grid d:DataContext="d:DesignInstance Type=lcl:ProwadzacyViewModel" Width="Auto" Height="Auto">
+        <DataGrid GridLinesVisibility="None" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Items}">
             <DataGrid.Columns>
                 <DataGridTextColumn CanUserSort="False" Width="*" Header="Tytuł" Binding="{Binding Tytul}" />
                 <DataGridTextColumn Width="*" Header="Nazwisko" Binding="{Binding Nazwisko}" />
                 <DataGridTextColumn Width="*" Header="Imie" Binding="{Binding Imie}" />
+                <DataGridTextColumn Width="*" Header="Ocena" Binding="{Binding Ocena, Converter={StaticResource OcenaConventer}}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
