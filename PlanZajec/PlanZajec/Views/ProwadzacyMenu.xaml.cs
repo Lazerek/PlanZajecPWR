@@ -28,5 +28,10 @@ namespace PlanZajec
             ViewModel = new ProwadzacyViewModel();
             DataContext = ViewModel;
         }
+
+        private void SzukajTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

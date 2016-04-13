@@ -11,9 +11,9 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="560" Width="*"/>
+            <ColumnDefinition MinWidth="560" Width="3*"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition MinWidth="230" Width="230"></ColumnDefinition>
+            <ColumnDefinition MinWidth="230" Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid x:Name = "LMenu"/>
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
