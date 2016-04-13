@@ -11,17 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PlanZajec.Views;
+using PlanZajec.ViewModels;
+using Wpf;
 
 namespace PlanZajec.Views
 {
     /// <summary>
     /// Interaction logic for OknoOpcji.xaml
     /// </summary>
+    /// 
     public partial class OknoOpcji : Window
     {
+        private PrzegladanieGrupViewModel viewModel;
         public OknoOpcji()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+             String potoczek;
+             potoczek = textBox.Text;
+             PrzegladanieGrupViewModel.temp.przegladanieFiltrowanie(potoczek);
         }
     }
 }
