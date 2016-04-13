@@ -29,17 +29,18 @@ namespace PlanZajec.Views
             InitializeComponent();
         }
 
-        private void buttonSzukajProwadzacy_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Coś");
-            PrzegladanieGrupViewModel.przegladanieGrupViewModel.PrzegladanieProwadzacy(textBoxprowadzacy.Text);
-        }
+       
 
         private void buttonFiltr_Click(object sender, RoutedEventArgs e)
         {
              String potoczek;
              potoczek = textBoxFiltr.Text;
              PrzegladanieGrupViewModel.temp.przegladanieFiltrowanie(potoczek);
+        }
+
+        private void textBoxprowadzacy_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.PrzegladanieProwadzacy(textBoxprowadzacy.Text);
         }
     }
 }

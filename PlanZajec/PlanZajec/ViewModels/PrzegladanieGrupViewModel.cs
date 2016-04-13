@@ -60,7 +60,7 @@ namespace PlanZajec.ViewModels
                 List<long?> idP = new List<long?>();
                 for(int i=0;i<pro.Count();i++)
                 {
-                    if(pro.ElementAt(i).Nazwisko.Equals(Nazwisko))
+                    if(pro.ElementAt(i).Nazwisko.StartsWith(Nazwisko, StringComparison.OrdinalIgnoreCase))
                         idP.Add(pro.ElementAt(i).IdProwadzacego);
                 }
                 List<GrupyZajeciowe> temp = uw.GrupyZajeciowe.GetAll().ToList();
