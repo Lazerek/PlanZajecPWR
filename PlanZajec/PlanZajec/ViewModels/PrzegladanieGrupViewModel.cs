@@ -14,11 +14,11 @@ namespace PlanZajec.ViewModels
     public class PrzegladanieGrupViewModel : ViewModel
     {
         public List<GrupyZajeciowe> Items { get; set; }
-        public static PrzegladanieGrupViewModel aaa;
+        public static PrzegladanieGrupViewModel przegladanieGrupViewModel;
 
         public PrzegladanieGrupViewModel()
         {
-            aaa = this;
+            przegladanieGrupViewModel = this;
             
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {

@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="OknoOpcji" Height="300" Width="300">
     <Grid>
-        <Button x:Name="button" Content="Szukaj po prowadzących" HorizontalAlignment="Left" Margin="48,24,0,0" VerticalAlignment="Top" Width="157" Height="42" Click="button_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="60,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="buttonSzukajProwadzacy" Content="Szukaj po prowadzących" HorizontalAlignment="Left" Margin="48,24,0,0" VerticalAlignment="Top" Width="157" Height="42" Click="buttonSzukajProwadzacy_Click"/>
+        <TextBox x:Name="textBoxprowadzacy" HorizontalAlignment="Left" Height="23" Margin="60,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

@@ -26,10 +26,10 @@ namespace PlanZajec.Views
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void buttonSzukajProwadzacy_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Coś");
-            PrzegladanieGrupViewModel.aaa.PrzegladanieProwadzacy(textBox.Text);
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.PrzegladanieProwadzacy(textBoxprowadzacy.Text);
         }
     }
 }
