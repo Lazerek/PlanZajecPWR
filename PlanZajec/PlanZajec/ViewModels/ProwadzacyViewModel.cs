@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
@@ -15,6 +16,7 @@ namespace PlanZajec.ViewModels
 
         public ProwadzacyViewModel()
         {
+            
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Items = uw.Prowadzacy.GetAll().ToList();
@@ -28,10 +30,31 @@ namespace PlanZajec.ViewModels
             {
                 List<Prowadzacy> pro = uw.Prowadzacy.GetAll().ToList();
                 List<Prowadzacy> temp =new List<Prowadzacy>();
-                for (int i = 0; i < pro.Count(); i++)
+                str = Regex.Replace(str, @"\s+", " ");
+                string[] arrStr = str.Trim().Split(' ');
+                //
+                var first = true;
+                foreach (var prowTemp in arrStr)
                 {
-                    if (pro.ElementAt(i).Nazwisko.StartsWith(str,StringComparison.OrdinalIgnoreCase) || pro.ElementAt(i).Imie.StartsWith(str, StringComparison.OrdinalIgnoreCase))
-                        temp.Add(pro.ElementAt(i));
+                    for (int i = 0; i < pro.Count(); i++)
+                    {
+                        if (pro.ElementAt(i).Nazwisko.StartsWith(prowTemp, StringComparison.OrdinalIgnoreCase)
+                            || pro.ElementAt(i).Imie.StartsWith(prowTemp, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (!temp.Contains(pro.ElementAt(i)) && first)
+                            {
+                                temp.Add(pro.ElementAt(i));
+                            }
+                        }
+                        else
+                        {
+                            if (temp.Contains(pro.ElementAt(i)))
+                            {
+                                temp.Remove(pro.ElementAt(i));
+                            }
+                        }
+                    }
+                    first = false;
                 }
                 Items = temp;
                 NotifyPropertyChanged("Items");
