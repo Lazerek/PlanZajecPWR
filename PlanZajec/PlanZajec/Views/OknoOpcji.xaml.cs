@@ -29,10 +29,10 @@ namespace PlanZajec.Views
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void buttonFiltr_Click(object sender, RoutedEventArgs e)
         {
              String potoczek;
-             potoczek = textBox.Text;
+             potoczek = textBoxFiltr.Text;
              PrzegladanieGrupViewModel.temp.przegladanieFiltrowanie(potoczek);
         }
     }
