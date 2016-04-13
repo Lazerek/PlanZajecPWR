@@ -85,6 +85,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
+    <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\Converters\OcenaConventer.cs" />
@@ -107,6 +108,9 @@
     </Compile>
     <Compile Include="Views\ProwadzacyMenu.xaml.cs">
       <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProwadzacyOpinie.xaml.cs">
+      <DependentUpon>ProwadzacyOpinie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrzegladanieGrup.xaml.cs">
       <DependentUpon>PrzegladanieGrup.xaml</DependentUpon>
@@ -165,6 +169,10 @@
     <Page Include="Views\ProwadzacyMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProwadzacyOpinie.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PrzegladanieGrup.xaml">
       <Generator>MSBuild:Compile</Generator>
