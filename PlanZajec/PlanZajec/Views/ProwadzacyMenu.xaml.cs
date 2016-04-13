@@ -31,7 +31,8 @@ namespace PlanZajec
 
         private void SzukajTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            throw new NotImplementedException();
+           
+            ViewModel.FiltrujProwadzacych(szukajTextBox.Text);
         }
     }
 }
