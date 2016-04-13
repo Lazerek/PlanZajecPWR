@@ -56,7 +56,7 @@ namespace PlanZajec.Views
                     }
                     if (exist != -1)
                     {
-                        k[exist].Miejsca = liczbaMiejsc;
+                        k[exist].ZajeteMiejsca = liczbaMiejsc;
                     }
                     else
                     {
