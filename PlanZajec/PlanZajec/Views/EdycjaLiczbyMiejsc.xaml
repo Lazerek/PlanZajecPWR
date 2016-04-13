@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="EdycjaLiczbyMiejsc" Height="110" Width="200" ResizeMode="NoResize">
+        Title="Edytuj liczbę miejsc" Height="110" Width="200" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="tb" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="174"/>
         <Button x:Name="AnulujButton" Content="Anuluj" HorizontalAlignment="Left" Margin="22,47,0,0" VerticalAlignment="Top" Width="75" Click="Anuluj"/>
