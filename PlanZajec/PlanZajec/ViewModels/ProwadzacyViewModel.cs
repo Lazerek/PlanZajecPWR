@@ -30,7 +30,7 @@ namespace PlanZajec.ViewModels
                 List<Prowadzacy> temp =new List<Prowadzacy>();
                 for (int i = 0; i < pro.Count(); i++)
                 {
-                    if (pro.ElementAt(i).Nazwisko.StartsWith(str) || pro.ElementAt(i).Imie.StartsWith(str))
+                    if (pro.ElementAt(i).Nazwisko.StartsWith(str,StringComparison.OrdinalIgnoreCase) || pro.ElementAt(i).Imie.StartsWith(str, StringComparison.OrdinalIgnoreCase))
                         temp.Add(pro.ElementAt(i));
                 }
                 Items = temp;
