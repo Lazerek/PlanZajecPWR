@@ -33,12 +33,12 @@ namespace PlanZajec.Views
             this.kodGrupy = kodGrupy;
         }
 
-        public void Anuluj()
+        public void Anuluj(object sender, EventArgs e)
         {
             Close();
         }
 
-        public void Ok(object sender)
+        public void Ok(object sender, EventArgs e)
         {
             long liczbaMiejsc = 0;
             if(Int64.TryParse(tb.Text, out liczbaMiejsc))
