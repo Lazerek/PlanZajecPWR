@@ -13,26 +13,31 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PlanZajec.ViewModels;
+using PlanZajec.DataModel;
 
 namespace PlanZajec
 {
     /// <summary>
     /// Interaction logic for ProwadzacyMenu.xaml
     /// </summary>
-    public partial class ProwadzacyMenu : UserControl
+    public partial class ProwadzacyOpinie : UserControl
     {
-        public ProwadzacyViewModel ViewModel;
-        public ProwadzacyMenu()
+        public ProwadzacyOpinieViewModel ViewModel;
+        public ProwadzacyOpinie()
         {
             InitializeComponent();
-            ViewModel = new ProwadzacyViewModel();
+            ViewModel = new ProwadzacyOpinieViewModel();
             DataContext = ViewModel;
+            foreach(Prowadzacy pr in ViewModel.ComboBoxItems)
+                comboBox.Items.Add(pr.Tytul + " " + pr.Imie + " " + pr.Nazwisko);
+            for (int i = 1; i < 11; i++)
+                comboBox1.Items.Add(i);
+            int rowIndex = comboBox.SelectedIndex;
         }
 
-        private void SzukajTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-           
-            ViewModel.FiltrujProwadzacych(szukajTextBox.Text);
+
         }
     }
 }
