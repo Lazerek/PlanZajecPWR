@@ -10,8 +10,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ComboBox Width ="170" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0">
-            <ComboBoxItem IsSelected="True" Selected="OnSelectedGroups">Przeglądanie grup</ComboBoxItem>
-            <ComboBoxItem Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
+            <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedMojeKafle">Przeglądanie kafli</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>

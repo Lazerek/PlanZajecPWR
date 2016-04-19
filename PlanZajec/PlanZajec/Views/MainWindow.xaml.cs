@@ -27,7 +27,7 @@ namespace Wpf
 
         public MainWindow()
         {
-            prePrareDB();
+            DataBaseReturnPoint.PrePrareDB();
             InitializeComponent();
             LMenu.Children.Add(new PrzegladanieGrup());
             RMenu.Children.Add(new PraweMenu());
@@ -51,19 +51,7 @@ namespace Wpf
 
         }
 
-        private void prePrareDB()
-        {
-            string dbName = "Super-egatron-5000X-DB.sqlite";
-            string dbPathOutsideBinDebug = "../../" + dbName;
-            bool fileExist = File.Exists(dbName);
-            if (!fileExist && File.Exists(dbPathOutsideBinDebug))
-            {
-                System.Diagnostics.Debug.WriteLine("Kopiuje DB do bin/debug");
-                File.Copy(dbPathOutsideBinDebug,dbName);
-            }
-            //string fullP = Path.GetFullPath("Super-egatron-5000X-DB.sqlite");
-            //System.Diagnostics.Debug.WriteLine(fullP);
-        }
+
 
     }
 }

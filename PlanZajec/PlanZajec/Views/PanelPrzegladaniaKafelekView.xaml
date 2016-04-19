@@ -9,7 +9,7 @@
              x:Name="PanelKafliUserControl"
              >
     <Grid>
-        <ListBox ItemsSource="{Binding ListaGrupZajeciowych}" >
+        <ListBox ItemsSource="{Binding Items}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
     <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
@@ -212,6 +213,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Super-egatron-5000X-DB.sqlite" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

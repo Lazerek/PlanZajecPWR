@@ -49,6 +49,8 @@ namespace PlanZajec.DataModel
         [StringLength(2147483647)]
         public string KodKursu { get; set; }
 
+        public string TypTygodnia { get; set; }
+        
         public virtual Kursy Kursy { get; set; }
 
         public virtual Prowadzacy Prowadzacy { get; set; }
