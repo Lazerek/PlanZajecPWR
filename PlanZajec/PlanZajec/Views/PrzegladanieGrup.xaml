@@ -17,13 +17,11 @@
                         <DataGridTextColumn Width="*" Header="KodGrupy" Binding="{Binding KodGrupy}" />
                         <!--<DataGridTextColumn Width="*" Header="Skrót" Binding="{Binding Kursy.SkrotKursu}" />-->
                         <DataGridTextColumn Width="*" Header="NazwaKursu" Binding="{Binding Kursy.NazwaKursu}" />
-                        <DataGridTextColumn Width="*" Header="TypZajec" Binding="{Binding TypZajec}" />
-                        
+                        <DataGridTextColumn Width="*" Header="TypZajec" Binding="{Binding TypZajec}" />                        
                         <DataGridTextColumn Width="*" Header="Dzień" Binding="{Binding Dzień}" />
                         <DataGridTextColumn Width="*" Header="Tydzień" Binding="{Binding Tydzien}" />
                         <DataGridTextColumn Width="*" Header="Godzina" Binding="{Binding Godzina}" />
-                        <DataGridTextColumn Width="*" Header="TypTygodnia" Binding="{Binding TypTygodnia}" />
-                        
+                        <DataGridTextColumn Width="*" Header="Godzina Zakończenia" Binding="{Binding GodzinaKoniec}" />                       
                         <DataGridTextColumn Width="*" Header="Sala" Binding="{Binding Sala}" />
                         <DataGridTextColumn Width="*" Header="Budynek" Binding="{Binding Budynek}" />
                         <DataGridTextColumn Width="*" Header="ZajeteMiejsca" Binding="{Binding ZajeteMiejsca}" />

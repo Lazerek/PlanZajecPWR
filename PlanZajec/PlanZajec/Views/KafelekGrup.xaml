@@ -57,8 +57,8 @@
                         <ColumnDefinition Width="80*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="{Binding Dzień}" Grid.Column="0" Grid.RowSpan="2"/>
-                    <TextBlock Text="{Binding Godzina}" Grid.Column="1" Grid.RowSpan="2" Margin="51,0,0,0"/>
-                    <TextBlock Text="{Binding GodzinaKoniec}" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,53,0"/>
+                    <TextBlock Text="{Binding GodzinaKoniec}" Grid.Column="1" Grid.RowSpan="2" Margin="51,0,0,0"/>
+                    <TextBlock Text="{Binding Godzina}" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,53,0"/>
                 </Grid>
 
 
