@@ -36,5 +36,10 @@ namespace PlanZajec.Views
         {
             System.Diagnostics.Debug.WriteLine("#GregD:"+sender);
         }
+
+        private void PrepareOpenContextMenu(object sender, ContextMenuEventArgs e)
+        {
+            
+        }
     }
 }

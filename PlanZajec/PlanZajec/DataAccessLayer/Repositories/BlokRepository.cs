@@ -18,5 +18,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
         {
             get { return Context as PlanPwrContext; }
         }
+
+
     }
 }

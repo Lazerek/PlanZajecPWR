@@ -5,6 +5,7 @@ using System.Windows;
 using PlanZajec.Parser;
 using PlanZajec.Views;
 using System;
+using PlanZajec.CommonInformations;
 
 namespace Wpf
 {
@@ -17,6 +18,22 @@ namespace Wpf
         public MainWindow()
         {
             DataBaseReturnPoint.PrePrareDB();
+            Parser.Run();
+            using(var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            {
+                if( unitOfWork.Plany.Count() < 1)
+                {
+                    Plany plan = new Plany() { };
+                    unitOfWork.Plany.Add(plan);
+                    unitOfWork.SaveChanges();
+                    ActChosenPlanSingleton.Instance.SetPlan (plan);
+                }
+                else
+                {
+                    ActChosenPlanSingleton.Instance.SetPlan(unitOfWork.Plany.GetFirstOrDefault());
+                }
+            }
+
             InitializeComponent();
             LMenu.Children.Add(new LeweMenu());
             RMenu.Children.Add(new PraweMenu());

@@ -75,6 +75,17 @@ namespace Wpf
             lpm = false;
         }
 
+        public void OnSelectedFiltrujGrupy(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null) return;
+            if (PrawePodmenu.Children.Count > 0)
+            {
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            }
+            PrawePodmenu.Children.Add(new FiltrujGrupy());
+
+        }
+
         private void OnSelectedMojeKafle(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
