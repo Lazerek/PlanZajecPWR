@@ -29,10 +29,11 @@ namespace Wpf
         public MainWindow()
         {
             DataBaseReturnPoint.PrePrareDB();
+            Parser.Run();
             InitializeComponent();
             LMenu.Children.Add(new PrzegladanieGrup());
             RMenu.Children.Add(new PraweMenu());
-            Parser.Run();
+           
 
             using (var unitWork = new UnitOfWork(new PlanPwrContext()))
             {
