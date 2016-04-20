@@ -48,12 +48,17 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="80*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Dzień}" Grid.Column="0"/>
-                    <TextBlock Text="{Binding Godzina}" Grid.Column="1"/>
+                    <TextBlock Text="{Binding Dzień}" Grid.Column="0" Grid.RowSpan="2"/>
+                    <TextBlock Text="{Binding GodzinaKoniec}" Grid.Column="1" Grid.RowSpan="2" Margin="51,0,0,0"/>
+                    <TextBlock Text="{Binding Godzina}" Grid.Column="1" Grid.RowSpan="2" Margin="0,0,53,0"/>
                 </Grid>
 
 
@@ -67,13 +72,14 @@
                     <TextBlock Text="{Binding Kursy.SkrotKursu}" FontSize="14" Grid.Column="0"/>
                     <TextBlock Text=" - " FontSize="14" Grid.Column="1"/>
                     <TextBlock Text="{Binding Kursy.NazwaKursu}" FontSize="14" Grid.Column="2" />
-                    
+                    <TextBlock Text=" - " FontSize="14" Grid.Column="1"/>
+
                 </Grid>
                 <WrapPanel Orientation="Vertical"  >
-                    
+
                 </WrapPanel>
 
-                
+
                 <!-- Do przeanalizowanie -->
                 <Path Grid.Row="3" Stroke="Black" StrokeThickness="2" Stretch="Fill">
                     <Path.Data>
@@ -91,9 +97,9 @@
 
 
                 <DockPanel Grid.Row="6">
-                    
-                    
-                    
+
+
+
                 </DockPanel>
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
@@ -107,7 +113,7 @@
                         <TextBlock Text=" Bud. " FontSize="9"/>
                         <TextBlock Text="{Binding Budynek}" FontSize="9"/>
                     </WrapPanel>
-                    <TextBlock Text="TP/TN..." FontSize="14" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding Tydzien}" FontSize="9" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
 
             </Grid>
