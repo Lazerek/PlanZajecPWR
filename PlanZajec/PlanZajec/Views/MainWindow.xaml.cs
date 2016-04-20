@@ -62,5 +62,58 @@ namespace Wpf
             ParserWindow pw = new ParserWindow();
             pw.Show();
         }
+
+        public void menuNowyPlan(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void menuOtworz(object sender, EventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Plan zajęć (*.txt)|*.txt";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                //metoda() - otwiera plan
+            }
+        }
+
+        public void menuZapisz(object sender, EventArgs e)
+        {
+
+        }
+
+        public void menuZapiszJako(object sender, EventArgs e)
+        {
+
+        }
+
+        public void menuDrukuj(object sender, EventArgs e)
+        {
+
+        }
+
+        public void menuEksportujPDF(object sender, EventArgs e)
+        {
+
+        }
+
+        public void menuEksportujPlikGraficzny(object sender, EventArgs e)
+        {
+
+        }
+
+        public void menuZakoncz(object sender, EventArgs e)
+        {
+
+        }
+
+        public void menuInformacje(object sender, EventArgs e)
+        {
+
+        }
     }
 }

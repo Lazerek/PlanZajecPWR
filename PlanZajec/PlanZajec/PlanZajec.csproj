@@ -98,8 +98,8 @@
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LeweMenu.xaml.cs">
-      <DependentUpon>LeweMenu.xaml</DependentUpon>
+    <Compile Include="Views\RMenu.xaml.cs">
+      <DependentUpon>RMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -165,7 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LeweMenu.xaml">
+    <Page Include="Views\RMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
