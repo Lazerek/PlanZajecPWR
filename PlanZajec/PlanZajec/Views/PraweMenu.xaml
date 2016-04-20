@@ -16,9 +16,7 @@
             <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
         <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,37,10,10">
-            <Grid x:Name="PrawePodmenu" Height="Auto"
-                  MinHeight="505"
-                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="200" Width="Auto" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            <Grid x:Name="PrawePodmenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             </Border>
     </Grid>
 </UserControl>

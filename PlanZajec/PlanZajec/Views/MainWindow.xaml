@@ -25,6 +25,9 @@
                 <Separator />
                 <MenuItem Header="_Zakończ" />
             </MenuItem>
+            <MenuItem Header="_Narzędzia">
+                <MenuItem Header="Uruchom parser" Click="uruchomParser"/>
+            </MenuItem>
             <MenuItem Header="_O programie">
                 <MenuItem Header="Informacje o wersji" />
             </MenuItem>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using PlanZajec.Parser;
 using PlanZajec.Views;
+using System;
 
 namespace Wpf
 {
@@ -37,6 +38,13 @@ namespace Wpf
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        //MENU
+
+        public void uruchomParser(object sender, EventArgs e)
+        {
+
         }
     }
 }
