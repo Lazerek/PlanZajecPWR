@@ -35,13 +35,13 @@
 
         <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="500" Width="3*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition MinWidth="150" Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid x:Name = "LMenu"/>
+                <ColumnDefinition MinWidth="150" Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition MinWidth="500" Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name = "LMenu" Grid.Column="2"/>
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
-        <Grid x:Name = "RMenu" Grid.Row="1" Grid.Column="2">
+            <Grid x:Name = "RMenu" Grid.Column="0">
         </Grid>
     </Grid>
 </DockPanel>

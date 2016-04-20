@@ -94,6 +94,9 @@
     <Compile Include="Views\EdycjaLiczbyMiejsc.xaml.cs">
       <DependentUpon>EdycjaLiczbyMiejsc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FiltrujGrupy.xaml.cs">
+      <DependentUpon>FiltrujGrupy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
     <Compile Include="DataModel\Plany.cs" />
     <Compile Include="DataModel\Prowadzacy.cs" />
     <Page Include="Views\EdycjaLiczbyMiejsc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FiltrujGrupy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
