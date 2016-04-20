@@ -7,7 +7,7 @@ namespace PlanZajec.DataModel
     using System.Data.Entity.Spatial;
 
     [Table("Plany")]
-    public partial class Plany
+    public partial class Plany : IEquatable<Plany>
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plany()
@@ -23,5 +23,10 @@ namespace PlanZajec.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupyZajeciowe> GrupyZajeciowe { get; set; }
+
+        public bool Equals(Plany other)
+        {
+            return IdPlanu == other.IdPlanu;
+        }
     }
 }
