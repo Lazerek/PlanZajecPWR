@@ -57,9 +57,9 @@ namespace PlanZajec.Parser
                 String GodzinaP = "";
                 String GodzinaK = "";
                 String Dzien1 = Dzien.Substring(0, 2);
-                String Tydzien = "Całkowity";
+                String Tydzien = "//";
                 if (Dzien.Count() > 3)
-                    Tydzien = Dzien.Substring(3);
+                    Tydzien = Dzien.Substring(3,2);
                 if (Godzina.Count()>8)
                 {
                  

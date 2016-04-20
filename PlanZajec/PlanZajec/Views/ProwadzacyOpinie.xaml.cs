@@ -30,13 +30,19 @@ namespace PlanZajec
             DataContext = ViewModel;
             foreach(Prowadzacy pr in ViewModel.ComboBoxItems)
                 comboBox.Items.Add(pr.Tytul + " " + pr.Imie + " " + pr.Nazwisko);
-            for (int i = 1; i < 11; i++)
-                comboBox1.Items.Add(i);
+            
             int rowIndex = comboBox.SelectedIndex;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+        private void onChange(object sender, RoutedEventArgs e)
+        {
+           string[] wynik= ViewModel.dajOpinie(comboBox.SelectedValue+"");
+           textBox.Text = wynik[0];
+           Ocena.Text = wynik[1];
 
         }
     }
