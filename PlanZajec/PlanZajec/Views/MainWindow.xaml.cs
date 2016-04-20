@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Windows;
 using PlanZajec.Parser;
 using PlanZajec.Views;
-using PlanZajec.CommonInformations;
 using System;
+using PlanZajec.CommonInformations;
 
 namespace Wpf
 {
