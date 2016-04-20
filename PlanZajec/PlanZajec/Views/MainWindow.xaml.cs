@@ -2,6 +2,7 @@
 using PlanZajec.DataModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -52,6 +53,9 @@ namespace Wpf
         }
 
 
-
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
