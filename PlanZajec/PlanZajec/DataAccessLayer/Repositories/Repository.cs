@@ -17,7 +17,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
             Context = context;
         }
 
-        public TEntity Get(int id)
+        public virtual TEntity Get(long id)
         {
             // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
             // such as Courses or Authors, and we need to use the generic Set() method to access them.

@@ -22,6 +22,16 @@ namespace PlanZajec.DataAccessLayer.Repositories
             get { return Context as PlanPwrContext; }
         }
 
+        public override GrupyZajeciowe Get(long id)
+        {
+            return null;
+        }
+
+        public GrupyZajeciowe Get(string kodGrupy)
+        {
+            return PlanPwrContext.GrupyZajeciowe.FirstOrDefault(g => g.KodGrupy.Equals(kodGrupy));
+        }
+
         public IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelations()
         {
             return PlanPwrContext.GrupyZajeciowe
@@ -29,6 +39,8 @@ namespace PlanZajec.DataAccessLayer.Repositories
                 .Include(g => g.Kursy)
                 .ToList();
         }
+
+
 
 
 

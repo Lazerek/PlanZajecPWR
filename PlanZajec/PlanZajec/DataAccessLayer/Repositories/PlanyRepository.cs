@@ -33,6 +33,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
         public bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, Plany plan)
         {
             PlanPwrContext.GrupyZajeciowe.Attach(grupa);
+            PlanPwrContext.Plany.Attach(plan);
             bool result = false;
             if(!grupa.Plany.Contains(plan))
             {
@@ -51,6 +52,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
         public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa, Plany plan)
         {
             PlanPwrContext.GrupyZajeciowe.Attach(grupa);
+            PlanPwrContext.Plany.Attach(plan);
             bool result = false;
             if (grupa.Plany.Contains(plan))
             {

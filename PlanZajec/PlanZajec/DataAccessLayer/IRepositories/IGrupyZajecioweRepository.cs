@@ -11,6 +11,8 @@ namespace PlanZajec.DataAccessLayer.IRepositories
     {
         IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelations();
 
+        GrupyZajeciowe Get(string kodGrupy);
+        
 
     }
 }

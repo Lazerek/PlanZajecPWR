@@ -1,4 +1,7 @@
-﻿using PlanZajec.ViewModels;
+﻿using PlanZajec.CommonInformations;
+using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +42,73 @@ namespace PlanZajec.Views
 
         private void PrepareOpenContextMenu(object sender, ContextMenuEventArgs e)
         {
-            
+            KafelekGrup kafelek = sender as KafelekGrup;
+            GrupyZajeciowe grupa = kafelek.DataContext as GrupyZajeciowe;
+            System.Diagnostics.Debug.WriteLine("@@@PanelPrzegladaniaKafelekView|Greg|->"+ grupa);
+
+            FrameworkElement fe = e.Source as FrameworkElement;
+            fe.ContextMenu = GetContextMenu(grupa);
+        }
+
+        private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
+        {
+            System.Diagnostics.Debug.WriteLine("@@@Greg|->GetContextMenu)");
+            ContextMenu theMenu = new ContextMenu();
+            MenuItem menuAddOrRemovFromPlan = new MenuItem();
+
+            using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            {
+                GrupyZajeciowe grupaUW = unitOfWork.GrupyZajeciowe.Get(grupa.KodGrupy);
+                grupaToAddOrDeleteFromPlan = grupaUW;
+                if (!planContain(grupaUW.Plany, ActChosenPlanSingleton.Instance.Plan))
+                {
+                    menuAddOrRemovFromPlan.Header = "Dodaj do planu";
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
+                }
+                else
+                {
+                    menuAddOrRemovFromPlan.Header = "Usuń z planu";
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);
+                }
+                theMenu.Items.Add(menuAddOrRemovFromPlan);
+            }
+            var testowyItem = new MenuItem() { Header = "testowy"};
+            theMenu.Items.Add(testowyItem);
+            return theMenu;
+
+        }
+
+        private bool planContain(ICollection<Plany> plany, Plany wybPlan)
+        {
+            foreach(Plany plan in plany)
+            {
+                if(plan.IdPlanu == wybPlan.IdPlanu)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        private GrupyZajeciowe grupaToAddOrDeleteFromPlan = null;
+
+        private void OnAddToPlanHandler(object sender, RoutedEventArgs e)
+        {
+            KafelekGrup kafel = sender as KafelekGrup;
+            using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            {
+                unitOfWork.Plany.DodajGrupeZajeciowaDoPlanu(grupaToAddOrDeleteFromPlan);
+            }
+        }
+
+        private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)
+        {
+            KafelekGrup kafel = sender as KafelekGrup;
+            using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            {
+                unitOfWork.Plany.UsunGrupeZajeciowaZPlanu(grupaToAddOrDeleteFromPlan);
+            }
         }
     }
 }
