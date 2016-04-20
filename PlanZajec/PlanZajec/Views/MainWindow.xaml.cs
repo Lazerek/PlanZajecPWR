@@ -2,6 +2,7 @@
 using PlanZajec.DataModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,11 @@ namespace Wpf
 
         public MainWindow()
         {
-            Parser.Run();
-            prePrareDB();
+            DataBaseReturnPoint.PrePrareDB();
             InitializeComponent();
             LMenu.Children.Add(new PrzegladanieGrup());
             RMenu.Children.Add(new PraweMenu());
-            
+            Parser.Run();
 
             using (var unitWork = new UnitOfWork(new PlanPwrContext()))
             {
@@ -52,19 +52,10 @@ namespace Wpf
 
         }
 
-        private void prePrareDB()
-        {
-            string dbName = "Super-egatron-5000X-DB.sqlite";
-            string dbPathOutsideBinDebug = "../../" + dbName;
-            bool fileExist = File.Exists(dbName);
-            if (!fileExist && File.Exists(dbPathOutsideBinDebug))
-            {
-                System.Diagnostics.Debug.WriteLine("Kopiuje DB do bin/debug");
-                File.Copy(dbPathOutsideBinDebug,dbName);
-            }
-            //string fullP = Path.GetFullPath("Super-egatron-5000X-DB.sqlite");
-            //System.Diagnostics.Debug.WriteLine(fullP);
-        }
 
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

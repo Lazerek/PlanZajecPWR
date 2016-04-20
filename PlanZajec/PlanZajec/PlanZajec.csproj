@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
     <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
@@ -115,7 +116,7 @@
     <Compile Include="Views\PrzegladanieGrup.xaml.cs">
       <DependentUpon>PrzegladanieGrup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControl1.xaml.cs">
+    <Compile Include="Views\TestFunctions\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -178,7 +179,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserControl1.xaml">
+    <Page Include="Views\TestFunctions\UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -212,6 +213,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Super-egatron-5000X-DB.sqlite" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

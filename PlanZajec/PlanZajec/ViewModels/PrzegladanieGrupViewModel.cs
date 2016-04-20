@@ -25,7 +25,7 @@ namespace PlanZajec.ViewModels
             temp = this;
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-                Items = uw.GrupyZajeciowe.GetAll().ToList();
+                Items = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
             }
         }
         public void przegladanieFiltrowanie(String potok)
@@ -33,7 +33,7 @@ namespace PlanZajec.ViewModels
             ItemsChanged = new List<GrupyZajeciowe>();
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-                Items = uw.GrupyZajeciowe.GetAll().ToList();
+                Items = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
             }
                 foreach(GrupyZajeciowe gz in Items)
                 {
@@ -63,7 +63,7 @@ namespace PlanZajec.ViewModels
                     if(pro.ElementAt(i).Nazwisko.StartsWith(Nazwisko, StringComparison.OrdinalIgnoreCase))
                         idP.Add(pro.ElementAt(i).IdProwadzacego);
                 }
-                List<GrupyZajeciowe> temp = uw.GrupyZajeciowe.GetAll().ToList();
+                List<GrupyZajeciowe> temp = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
                 Items = new List<GrupyZajeciowe>();
                for(int i=0; i<temp.Count();i++)
                 {

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PlanZajec;
 using PlanZajec.Views;
+using PlanZajec.ViewModels;
 
 namespace Wpf
 {
@@ -29,7 +30,7 @@ namespace Wpf
             InitializeComponent();
             lpm = false;
             oo = new OknoOpcji();
-            PrawePodmenu.Children.Add(new KafelekGrup());
+            PrawePodmenu.Children.Add(new ProwadzacyMenu());
         }
 
         private void OnSelectedLecturers(object sender, RoutedEventArgs e)
@@ -42,15 +43,7 @@ namespace Wpf
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
         }
 
-        private void OnSelectedGroups(object sender, RoutedEventArgs e)
-        {
-            if (PrawePodmenu == null) return;
-            if (PrawePodmenu.Children.Count > 0)
-            {
-                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
-            }
-            PrawePodmenu.Children.Add(new KafelekGrup());
-        }
+        
         private void OnSelectedLecturersOpinion(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)
@@ -89,7 +82,7 @@ namespace Wpf
             {
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             }
-            PrawePodmenu.Children.Add(new PanelPrzegladaniaKafelekView());
+            PrawePodmenu.Children.Add(new PanelPrzegladaniaKafelekView() { DataContext = PrzegladanieGrupViewModel.przegladanieGrupViewModel});
         }
     }
 }

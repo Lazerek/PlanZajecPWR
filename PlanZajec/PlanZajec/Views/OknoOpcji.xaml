@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="OknoOpcji" Height="300" Width="300">
+        Title="OknoOpcji" Height="300" Width="300" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="textBoxFiltr" HorizontalAlignment="Left" Height="23" Margin="86,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="buttonFiltr" Content="Szukaj Potoku" HorizontalAlignment="Left" Height="23" Margin="86,97,0,0" VerticalAlignment="Top" Width="120" Click="buttonFiltr_Click"/>

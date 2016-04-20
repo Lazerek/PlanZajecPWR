@@ -24,7 +24,7 @@ namespace PlanZajec.Views
         public PanelPrzegladaniaKafelekView()
         {
             InitializeComponent();
-            DataContext = new PanelPrzegladaniaKafelekViewModel();
+            //DataContext = new PanelPrzegladaniaKafelekViewModel();
         }
 
         private void klinkieteMenu(object sender, RoutedEventArgs e)
