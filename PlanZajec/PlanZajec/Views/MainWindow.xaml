@@ -6,20 +6,40 @@
         xmlns:local="clr-namespace:Wpf"
 
         mc:Ignorable="d"
-        Title="Plan" VerticalAlignment="Stretch" Height="600" Width="800" MinHeight="600" HorizontalAlignment="Stretch"  MinWidth="800"
+        Title="Plan" VerticalAlignment="Stretch" Height="615" Width="800" MinHeight="615" HorizontalAlignment="Stretch"  MinWidth="800"
         Closing="MainWindow_OnClosing"
 >
 
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Plik">
+                <MenuItem Header="_Nowy plan" />
+                <Separator />
+                <MenuItem Header="_Otwórz..." />
+                <MenuItem Header="_Zapisz" />
+                <MenuItem Header="_Zapisz jako..." />
+                <Separator />
+                <MenuItem Header="_Drukuj" />
+                <MenuItem Header="_Eksportuj jako PDF" />
+                <MenuItem Header="_Eksportuj jako plik graficzny" />
+                <Separator />
+                <MenuItem Header="_Zakończ" />
+            </MenuItem>
+            <MenuItem Header="_O programie">
+                <MenuItem Header="Informacje o wersji" />
+            </MenuItem>
+        </Menu>
 
-    <Grid>
+        <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="560" Width="3*"/>
+            <ColumnDefinition MinWidth="500" Width="3*"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition MinWidth="230" Width="*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="150" Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid x:Name = "LMenu"/>
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
         <Grid x:Name = "RMenu" Grid.Row="1" Grid.Column="2">
         </Grid>
     </Grid>
+</DockPanel>
 </Window>

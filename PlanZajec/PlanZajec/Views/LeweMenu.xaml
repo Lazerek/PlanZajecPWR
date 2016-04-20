@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <TabControl Name="LewyTabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="10,15,10,10" SelectionChanged="LewyTabControl_OnSelectionChanged" ItemsSource="{Binding}">
+    <TabControl Name="LewyTabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="10,15,5,10" SelectionChanged="LewyTabControl_OnSelectionChanged" ItemsSource="{Binding}">
         <TabControl.Resources>
             <DataTemplate x:Key="TabHeader" DataType="TabItem">
                 <DockPanel>
