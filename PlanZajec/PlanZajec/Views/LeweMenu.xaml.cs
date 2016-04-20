@@ -52,6 +52,8 @@ namespace PlanZajec.Views
         private TabItem AddScheduleTabItem()
         {
             //TODO foreach tab last index +1 == name
+
+            //var last = _tabItems.Max(t=>t.Name.Replace())
             int count = _tabItems.Count;
 
             // create new tab item
@@ -62,9 +64,8 @@ namespace PlanZajec.Views
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
 
-            //Plan pl = new Plan();
-            //tab.Content = pl;
-            // add controls to tab item, this case I added just a textbox
+            PlanView pl = new PlanView();
+            tab.Content = pl;
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);

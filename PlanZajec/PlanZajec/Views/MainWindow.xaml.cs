@@ -17,7 +17,6 @@ namespace Wpf
         public MainWindow()
         {
             DataBaseReturnPoint.PrePrareDB();
-            Parser.Run();
             InitializeComponent();
             LMenu.Children.Add(new LeweMenu());
             RMenu.Children.Add(new PraweMenu());
@@ -42,9 +41,10 @@ namespace Wpf
 
         //MENU
 
-        public void uruchomParser(object sender, EventArgs e)
+        public void ShowParserWindow(object sender, EventArgs e)
         {
-
+            ParserWindow pw = new ParserWindow();
+            pw.Show();
         }
     }
 }
