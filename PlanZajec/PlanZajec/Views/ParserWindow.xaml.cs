@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Wpf;
 
 namespace PlanZajec.Views
 {
@@ -15,7 +16,7 @@ namespace PlanZajec.Views
         private void RunParserButton_OnClick(object sender, RoutedEventArgs e)
         {
             Parser.Parser.Run();
-            
+           
         }
     }
 }
