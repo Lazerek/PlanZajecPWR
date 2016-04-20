@@ -54,6 +54,26 @@ namespace PlanZajec.Parser
                 var dzienGodzina = gd.Data.Split(' ');
                 String Dzien = dzienGodzina[0];
                 String Godzina = dzienGodzina[1];
+                String GodzinaP = "";
+                String GodzinaK = "";
+                String Dzien1 = Dzien.Substring(0, 2);
+                String Tydzien = "Całkowity";
+                if (Dzien.Count() > 3)
+                    Tydzien = Dzien.Substring(3);
+                if (Godzina.Count()>8)
+                {
+                 
+                    GodzinaP = Godzina.Substring(0, 5);         
+                    GodzinaK = Godzina.Substring(6);
+                   
+                }
+                else
+                {
+                    GodzinaP = Godzina;
+                    GodzinaK = Godzina;
+
+                }
+               
                 var ileNaIle = new string[2];
                 long miejsca=0;
                 long maxMiejsca=0;
@@ -76,12 +96,15 @@ namespace PlanZajec.Parser
 
                 if (jest == false)
                 {
+                    
                     uw.GrupyZajeciowe.Add(new GrupyZajeciowe()
                     {
                         KodGrupy = gd.KodGrupy,
                         TypZajec = gd.FormaZajec,
-                        Dzień = Dzien,
-                        Godzina = Godzina,
+                        Dzień = Dzien1,
+                        Tydzien = Tydzien,
+                        Godzina = GodzinaP,
+                        GodzinaKoniec = GodzinaK,
                         Sala = Sala,
                         Budynek = Budynek,
                         Potok = gd.Potok,

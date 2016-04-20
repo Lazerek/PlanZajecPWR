@@ -29,7 +29,15 @@ namespace PlanZajec.DataModel
 
         [Required]
         [StringLength(2147483647)]
+        public string Tydzien { get; set; }
+
+        [Required]
+        [StringLength(2147483647)]
         public string Godzina { get; set; }
+
+        [Required]
+        [StringLength(2147483647)]
+        public string GodzinaKoniec { get; set; }
 
         [StringLength(2147483647)]
         public string Sala { get; set; }

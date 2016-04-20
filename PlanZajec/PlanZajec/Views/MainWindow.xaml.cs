@@ -27,11 +27,12 @@ namespace Wpf
 
         public MainWindow()
         {
+            Parser.Run();
             prePrareDB();
             InitializeComponent();
             LMenu.Children.Add(new PrzegladanieGrup());
             RMenu.Children.Add(new PraweMenu());
-            Parser.Run();
+            
 
             using (var unitWork = new UnitOfWork(new PlanPwrContext()))
             {
