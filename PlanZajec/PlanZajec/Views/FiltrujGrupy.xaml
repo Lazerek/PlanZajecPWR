@@ -5,10 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="200">
-    <Grid Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Nazwa kursu" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Stretch" Height="23" Margin="10,31,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
+             d:DesignHeight="500" d:DesignWidth="200">
+    <Grid Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Grid.Row ="0" Content="Nazwa kursu" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="nazwaK" Grid.Row ="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Grid.Row ="2" Content="Prowadzący" HorizontalAlignment="Left" Height="29"  VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="nazwa2" Grid.Row ="3" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Grid.Row ="4" Content="Kod Grupy" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="nazwa3" Grid.Row ="5" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Grid.Row ="6" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="nazwa4" Grid.Row ="7" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Grid.Row ="8" Content="Potok" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="nazwa5" Grid.Row ="9" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_wsz" Content="Wszystko" HorizontalAlignment="Left"  Grid.Row="11" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_wyk" Content="Wykład" HorizontalAlignment="Left"  Grid.Row="12" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="13" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_sem" Content="Seminarium" HorizontalAlignment="Left"  Grid.Row="15" VerticalAlignment="Top"/>
+        <Button x:Name="clear" Content="Button" Grid.Row="17" Width="75" Click="wyczyscFiltr" HorizontalAlignment="Right" Margin="0,0,10,0"/>
     </Grid>
 </UserControl>
