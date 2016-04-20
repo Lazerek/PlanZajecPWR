@@ -13,23 +13,23 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Plik">
-                <MenuItem Header="_Nowy plan" />
+                <MenuItem Header="_Nowy plan" Click="menuNowyPlan"/>
                 <Separator />
-                <MenuItem Header="_Otwórz..." />
-                <MenuItem Header="_Zapisz" />
-                <MenuItem Header="_Zapisz jako..." />
+                <MenuItem Header="_Otwórz..." Click="menuOtworz"/>
+                <MenuItem Header="_Zapisz" Click="menuZapisz"/>
+                <MenuItem Header="_Zapisz jako..." Click="menuZapiszJako"/>
                 <Separator />
-                <MenuItem Header="_Drukuj" />
-                <MenuItem Header="_Eksportuj jako PDF" />
-                <MenuItem Header="_Eksportuj jako plik graficzny" />
+                <MenuItem Header="_Drukuj" Click="menuDrukuj"/>
+                <MenuItem Header="_Eksportuj jako PDF" Click="menuEksportujPDF"/>
+                <MenuItem Header="_Eksportuj jako plik graficzny" Click="menuEksportujPlikGraficzny"/>
                 <Separator />
-                <MenuItem Header="_Zakończ" />
+                <MenuItem Header="_Zakończ" Click="menuZakoncz"/>
             </MenuItem>
             <MenuItem Header="_Narzędzia">
                 <MenuItem Header="Uruchom parser" Click="ShowParserWindow"/>
             </MenuItem>
             <MenuItem Header="_O programie">
-                <MenuItem Header="Informacje o wersji" />
+                <MenuItem Header="Informacje o wersji" Click="menuInformacje"/>
             </MenuItem>
         </Menu>
 

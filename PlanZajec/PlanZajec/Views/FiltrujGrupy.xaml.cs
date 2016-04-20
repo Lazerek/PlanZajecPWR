@@ -24,5 +24,10 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
         }
+
+        public void wyczyscFiltr(object sender, EventArgs e)
+        {
+
+        }
     }
 }
