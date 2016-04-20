@@ -18,7 +18,6 @@ namespace Wpf
         public MainWindow()
         {
             DataBaseReturnPoint.PrePrareDB();
-            Parser.Run();
             using(var unitOfWork = new UnitOfWork(new PlanPwrContext()))
             {
                 if( unitOfWork.Plany.Count() < 1)

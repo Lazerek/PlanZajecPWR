@@ -12,8 +12,8 @@ namespace PlanZajec.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var ocena = value as int?;
-            return value as int? ?? 0;
+            var ocena = value as double?;
+            return value as double? ?? 0;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
