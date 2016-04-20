@@ -33,7 +33,7 @@
         <TextBox x:Name="nazwa2" Grid.Row ="3" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label3" Grid.Row ="4" Content="Kod Grupy" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="nazwa3" Grid.Row ="5" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Grid.Row ="6" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+        <Label x:Name="label4" Grid.Row ="6" Content="Kod Kursu" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="nazwa4" Grid.Row ="7" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label5" Grid.Row ="8" Content="Potok" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="nazwa5" Grid.Row ="9" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -42,6 +42,6 @@
         <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="13" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_sem" Content="Seminarium" HorizontalAlignment="Left"  Grid.Row="15" VerticalAlignment="Top"/>
-        <Button x:Name="clear" Content="Button" Grid.Row="17" Width="75" Click="wyczyscFiltr" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+        <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="17" Width="90" Click="wyczyscFiltr" HorizontalAlignment="Right" Margin="0,0,10,0"/>
     </Grid>
 </UserControl>
