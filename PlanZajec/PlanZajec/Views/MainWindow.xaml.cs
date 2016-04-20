@@ -5,6 +5,7 @@ using System.Windows;
 using PlanZajec.Parser;
 using PlanZajec.Views;
 using PlanZajec.CommonInformations;
+using System;
 
 namespace Wpf
 {
@@ -53,6 +54,14 @@ namespace Wpf
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        //MENU
+
+        public void ShowParserWindow(object sender, EventArgs e)
+        {
+            ParserWindow pw = new ParserWindow();
+            pw.Show();
         }
     }
 }

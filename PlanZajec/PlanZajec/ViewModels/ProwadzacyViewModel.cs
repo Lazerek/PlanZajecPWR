@@ -33,7 +33,7 @@ namespace PlanZajec.ViewModels
                 str = Regex.Replace(str, @"\s+", " ");
                 string[] arrStr = str.Trim().Split(' ');
                 //
-                var first = true;
+                var firstWord = true;
                 foreach (var prowTemp in arrStr)
                 {
                     for (int i = 0; i < pro.Count(); i++)
@@ -41,7 +41,7 @@ namespace PlanZajec.ViewModels
                         if (pro.ElementAt(i).Nazwisko.StartsWith(prowTemp, StringComparison.OrdinalIgnoreCase)
                             || pro.ElementAt(i).Imie.StartsWith(prowTemp, StringComparison.OrdinalIgnoreCase))
                         {
-                            if (!temp.Contains(pro.ElementAt(i)) && first)
+                            if (!temp.Contains(pro.ElementAt(i)) && firstWord)
                             {
                                 temp.Add(pro.ElementAt(i));
                             }
@@ -54,7 +54,7 @@ namespace PlanZajec.ViewModels
                             }
                         }
                     }
-                    first = false;
+                    firstWord = false;
                 }
                 Items = temp;
                 NotifyPropertyChanged("Items");
