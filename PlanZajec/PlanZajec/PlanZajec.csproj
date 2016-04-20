@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommonInformations\ActChosenPlanSingleton.cs" />
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
@@ -93,6 +94,9 @@
     <Compile Include="Views\Converters\TypZajecToColorConterter.cs" />
     <Compile Include="Views\EdycjaLiczbyMiejsc.xaml.cs">
       <DependentUpon>EdycjaLiczbyMiejsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FiltrujGrupy.xaml.cs">
+      <DependentUpon>FiltrujGrupy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
@@ -109,6 +113,12 @@
     </Compile>
     <Compile Include="Views\PanelPrzegladaniaKafelekView.xaml.cs">
       <DependentUpon>PanelPrzegladaniaKafelekView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ParserWindow.xaml.cs">
+      <DependentUpon>ParserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanView.xaml.cs">
+      <DependentUpon>PlanView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProwadzacyMenu.xaml.cs">
       <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
@@ -150,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\FiltrujGrupy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\KafelekGrup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +181,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PanelPrzegladaniaKafelekView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ParserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
