@@ -20,14 +20,14 @@ namespace PlanZajec.Views
     /// <summary>
     /// Interaction logic for LeweMenu.xaml
     /// </summary>
-    public partial class LeweMenu : UserControl
+    public partial class PanelGlowny : UserControl
     {
 
         private List<TabItem> _tabItems;
         //tab that make adding possible
         private TabItem _tabAdd;
 
-        public LeweMenu()
+        public PanelGlowny()
         {
             InitializeComponent();
             _tabItems = new List<TabItem>();
