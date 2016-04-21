@@ -14,9 +14,17 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        /// <summary>
+        /// !!!
+        /// !!!
+        /// TODO MAKE THE FUCKING COMMENTS
+        /// TODO IT'S HARD TO READ THAT SHIT LATER
+        /// !!!
+        /// !!!
+        /// </summary>
         public MainWindow()
         {
+            //DATABASE LOAD
             DataBaseReturnPoint.PrePrareDB();
             using(var unitOfWork = new UnitOfWork(new PlanPwrContext()))
             {
@@ -32,12 +40,13 @@ namespace Wpf
                     ActChosenPlanSingleton.Instance.SetPlan(unitOfWork.Plany.GetFirstOrDefault());
                 }
             }
-
+            //Initialize window
             InitializeComponent();
             LMenu.Children.Add(new LeweMenu());
             RMenu.Children.Add(new PraweMenu());
-           
 
+            //TODO And that s*it if for what?
+            //TODO IF FOR TESTING THEN CLEAN YOUR S*HIT
             using (var unitWork = new UnitOfWork(new PlanPwrContext()))
             {
                 var bloki = unitWork.Bloki.GetAll();
@@ -45,11 +54,11 @@ namespace Wpf
                 {
                     System.Diagnostics.Debug.WriteLine(blok.KodBloku);
                 }
-                
                 //unitWork.SaveChanges();
             }
 
         }
+
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
