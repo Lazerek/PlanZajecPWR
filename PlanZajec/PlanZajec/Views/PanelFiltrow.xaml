@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Wpf.PraweMenu"
+﻿<UserControl x:Class="Wpf.PanelFiltrow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,14 +9,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox  Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,10,0,0">
+        <ComboBox  Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,10,5,0">
             <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedMojeKafle">Przeglądanie kafli</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedFiltrujGrupy">Filtruj grupy</ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
-        <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,37,0,10">
+        <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,37,5,10">
             <Grid x:Name="PrawePodmenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             </Border>
     </Grid>

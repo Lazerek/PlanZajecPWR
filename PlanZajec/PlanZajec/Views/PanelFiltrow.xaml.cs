@@ -21,11 +21,11 @@ namespace Wpf
     /// <summary>
     /// Interaction logic for PraweMenu.xaml
     /// </summary>
-    public partial class PraweMenu : UserControl
+    public partial class PanelFiltrow : UserControl
     {
         bool lpm;
         OknoOpcji oo;
-        public PraweMenu()
+        public PanelFiltrow()
         {
             InitializeComponent();
             lpm = false;

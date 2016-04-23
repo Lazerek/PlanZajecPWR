@@ -98,8 +98,8 @@
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RMenu.xaml.cs">
-      <DependentUpon>RMenu.xaml</DependentUpon>
+    <Compile Include="Views\PanelGlowny.xaml.cs">
+      <DependentUpon>PanelGlowny.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -165,7 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RMenu.xaml">
+    <Page Include="Views\PanelGlowny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PraweMenu.xaml">
+    <Page Include="Views\PanelFiltrow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -213,8 +213,8 @@
   <ItemGroup>
     <Compile Include="Parser\GroupData.cs" />
     <Compile Include="Parser\Parser.cs" />
-    <Compile Include="Views\PraweMenu.xaml.cs">
-      <DependentUpon>PraweMenu.xaml</DependentUpon>
+    <Compile Include="Views\PanelFiltrow.xaml.cs">
+      <DependentUpon>PanelFiltrow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

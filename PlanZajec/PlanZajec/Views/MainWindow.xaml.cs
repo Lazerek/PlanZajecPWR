@@ -41,8 +41,8 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            LMenu.Children.Add(new LeweMenu());
-            RMenu.Children.Add(new PraweMenu());
+            LMenu.Children.Add(new PanelGlowny());
+            RMenu.Children.Add(new PanelFiltrow());
 
             //TODO And that s*it if for what?
             //TODO IF FOR TESTING THEN CLEAN YOUR S*HIT
