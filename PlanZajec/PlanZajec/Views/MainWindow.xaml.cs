@@ -2,7 +2,6 @@
 using PlanZajec.DataModel;
 using System.ComponentModel;
 using System.Windows;
-using PlanZajec.Parser;
 using PlanZajec.Views;
 using System;
 using PlanZajec.CommonInformations;
