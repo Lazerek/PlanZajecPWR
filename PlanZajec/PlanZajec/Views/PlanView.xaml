@@ -16,7 +16,20 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="2000"/>
             </Grid.ColumnDefinitions>
-            <Grid Row="1" Column="1" VerticalAlignment="Stretch">
+            <Grid Name="TabelaGrup" Row="1" Column="1" VerticalAlignment="Stretch"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"  />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />                 
+                </Grid.RowDefinitions>
+                
                 <Grid.Background>
                     <ImageBrush ImageSource="Images/grid_v3.png"/>
                 </Grid.Background>

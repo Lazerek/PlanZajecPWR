@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="CommonInformations\ActChosenPlanSingleton.cs" />
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
+    <Compile Include="ViewModels\GrupaTamplateViewModel.cs" />
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\PlanViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
@@ -95,6 +96,9 @@
     </Compile>
     <Compile Include="Views\FiltrujGrupy.xaml.cs">
       <DependentUpon>FiltrujGrupy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrupaZajeciowaTemplate.xaml.cs">
+      <DependentUpon>GrupaZajeciowaTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
@@ -162,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FiltrujGrupy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GrupaZajeciowaTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
