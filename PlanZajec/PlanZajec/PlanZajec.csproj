@@ -83,6 +83,7 @@
     <Compile Include="CommonInformations\ActChosenPlanSingleton.cs" />
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
+    <Compile Include="ViewModels\PlanViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
     <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
