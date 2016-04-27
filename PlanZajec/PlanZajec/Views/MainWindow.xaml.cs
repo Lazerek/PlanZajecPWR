@@ -41,8 +41,8 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            LMenu.Children.Add(new PanelGlowny());
-            RMenu.Children.Add(new PanelFiltrow());
+            PGlowny.Children.Add(new PanelGlowny());
+            PFiltrow.Children.Add(new PanelFiltrow(this));
 
             //TODO And that s*it if for what?
             //TODO IF FOR TESTING THEN CLEAN YOUR S*HIT
@@ -91,37 +91,59 @@ namespace Wpf
 
         public void menuZapisz(object sender, EventArgs e)
         {
+            //metoda spawdzajaca dla kazdego planu czy ma sciezke zapisu +
+            string fileText = "Wyjscie";
+
+            Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
+            {
+                Filter = "Plan zajęć (*.txt)|*.txt"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                System.IO.File.WriteAllText(dialog.FileName, fileText);
+            }
 
         }
 
         public void menuZapiszJako(object sender, EventArgs e)
         {
+            string fileText = "Wyjscie";
 
+            Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
+            {
+                Filter = "Plan zajęć (*.txt)|*.txt"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                System.IO.File.WriteAllText(dialog.FileName, fileText);
+            }
         }
 
         public void menuDrukuj(object sender, EventArgs e)
         {
-
+            //metoda drukujaca
         }
 
         public void menuEksportujPDF(object sender, EventArgs e)
         {
-
+            //metoda eksportujaca
         }
 
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
-
+            //metoda eksportujaca
         }
 
         public void menuZakoncz(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         public void menuInformacje(object sender, EventArgs e)
         {
-
+            //okno z informacjami
         }
     }
 }

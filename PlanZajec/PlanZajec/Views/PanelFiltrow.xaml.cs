@@ -25,12 +25,23 @@ namespace Wpf
     {
         bool lpm;
         OknoOpcji oo;
+        private MainWindow parent;
+
         public PanelFiltrow()
         {
             InitializeComponent();
             lpm = false;
             oo = new OknoOpcji();
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
+        }
+
+        public PanelFiltrow(MainWindow parent)
+        {
+            InitializeComponent();
+            lpm = false;
+            oo = new OknoOpcji();
+            PrawePodmenu.Children.Add(new ProwadzacyMenu());
+            this.parent = parent;
         }
 
         private void OnSelectedLecturers(object sender, RoutedEventArgs e)
@@ -94,6 +105,24 @@ namespace Wpf
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             }
             PrawePodmenu.Children.Add(new PanelPrzegladaniaKafelekView() { DataContext = PrzegladanieGrupViewModel.przegladanieGrupViewModel});
+        }
+
+        private void gButtonClicked(object sender, RoutedEventArgs e)
+        {
+            if (parent.kolumna1.MinWidth == 15)
+            {
+                parent.kolumna1.MinWidth = 150;
+                parent.kolumna1.MaxWidth = int.MaxValue;
+                parent.kolumna1.Width = new GridLength(1, GridUnitType.Star);
+                fButton.Content = "◀";
+            }
+            else
+            {
+                parent.kolumna1.MinWidth = 15;
+                parent.kolumna1.MaxWidth = 15;
+                parent.kolumna1.Width = new GridLength(15, GridUnitType.Pixel);
+                fButton.Content = "▶";
+            }
         }
     }
 }
