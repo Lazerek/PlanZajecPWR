@@ -39,7 +39,7 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition MinWidth="500" Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name = "PFiltrow" Grid.Column="0"/>
+            <Grid x:Name = "PFiltrow" Grid.Column="0" />
             <GridSplitter x:Name="Splitter" Width="5" Grid.Column="1" HorizontalAlignment="Stretch" />
             <Grid x:Name = "PGlowny" Grid.Column="2"/>
     </Grid>

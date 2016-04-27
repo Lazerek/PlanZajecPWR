@@ -65,6 +65,7 @@ namespace PlanZajec.Views
                 {
                     menuAddOrRemovFromPlan.Header = "Dodaj do planu";
                     menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
+                    CommandManager.InvalidateRequerySuggested();
                 }
                 else
                 {

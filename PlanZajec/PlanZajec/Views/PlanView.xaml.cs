@@ -1,44 +1,31 @@
-﻿using PlanZajec.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for PlanView.xaml
+    ///     Interaction logic for PlanView.xaml
     /// </summary>
     public partial class PlanView : UserControl
     {
-        private PlanViewModel viewModel;
+        private readonly PlanViewModel viewModel;
       
-
         public PlanView()
         {
-           
             InitializeComponent();
             TabelaGrup.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             viewModel = new PlanViewModel();
-            this.DataContext = viewModel;
+            DataContext = viewModel;
            
-            for (int i = 0; i < viewModel.Kafelki.Count; i++)
+            for (var i = 0; i < viewModel.Kafelki.Count; i++)
             {
-                int tempR = 0;
+                var tempR = 0;
                 double tempC = 0;
-                switch(viewModel.ListaGrupZajeciowych[i].Dzień)
+                switch (viewModel.ListaGrupZajeciowych[i].Dzień)
                 {
-                    case "pn": tempR = 0;
+                    case "pn":
+                        tempR = 0;
                         break;
                     case "wt":
                         tempR = 1;
@@ -59,7 +46,7 @@ namespace PlanZajec.Views
                         tempR = 6;
                         break;
                 }
-                string godzina = viewModel.ListaGrupZajeciowych[i].Godzina;
+                var godzina = viewModel.ListaGrupZajeciowych[i].Godzina;
                 var tempS = godzina.Split(':');
 
               
@@ -69,10 +56,9 @@ namespace PlanZajec.Views
                 var tempChild = viewModel.Kafelki[i];
                     TabelaGrup.Children.Add(tempChild);
                 Grid.SetRow(tempChild, tempR);
-                Thickness margin = tempChild.Margin;
-                margin.Left = ((int)tempC);
+                var margin = tempChild.Margin;
+                margin.Left = (int) tempC;
                 tempChild.Margin = margin;
-
             }
         }
     }

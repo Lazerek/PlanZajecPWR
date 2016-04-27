@@ -23,11 +23,21 @@ namespace PlanZajec.Views
         public FiltrujGrupy()
         {
             InitializeComponent();
+            cb_wsz.IsChecked = true;
         }
 
         public void wyczyscFiltr(object sender, EventArgs e)
         {
-
+            nazwaK.Text = "";
+            nazwaP.Text = "";
+            nazwaKG.Text = "";
+            nazwaKK.Text = "";
+            nazwaPot.Text = "";
+            cb_wsz.IsChecked = true;
+            cb_wyk.IsChecked = false;
+            cb_lab.IsChecked = false;
+            cb_pro.IsChecked = false;
+            cb_sem.IsChecked = false;
         }
     }
 }
