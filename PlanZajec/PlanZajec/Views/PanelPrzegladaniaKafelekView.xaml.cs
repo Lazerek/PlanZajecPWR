@@ -61,6 +61,7 @@ namespace PlanZajec.Views
                 GrupyZajeciowe grupaUW = unitOfWork.GrupyZajeciowe.Get(grupa.KodGrupy);
                 grupaToAddOrDeleteFromPlan = grupaUW;
                 if (!planContain(grupaUW.Plany, ActChosenPlanSingleton.Instance.Plan))
+                //if (grupaUW.Plany.Contains(ActChosenPlanSingleton.Instance.Plan))
                 {
                     menuAddOrRemovFromPlan.Header = "Dodaj do planu";
                     menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);

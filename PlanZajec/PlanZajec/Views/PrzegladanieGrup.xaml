@@ -2,12 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:PlanZajec.Views.Converters"
              mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <converters:ZajetoscToColorConterter x:Key="ZajetyConv"/>
+    </UserControl.Resources>
     <Grid>
         <DataGrid Name="DgUsers" Width="Auto" MinWidth ="500" Height="Auto" MinHeight="400" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" IsReadOnly ="True" ScrollViewer.HorizontalScrollBarVisibility="Visible"  ItemsSource="{Binding Items}" >
-            <DataGrid.Columns>
+            <DataGrid.Columns  >
                 <DataGridTextColumn Width="*" Header="KodGrupy" Binding="{Binding KodGrupy}" />
                 <!--<DataGridTextColumn Width="*" Header="Skrót" Binding="{Binding Kursy.SkrotKursu}" />-->
                 <DataGridTextColumn Width="*" Header="NazwaKursu" Binding="{Binding Kursy.NazwaKursu}" />
@@ -18,7 +21,8 @@
                 <DataGridTextColumn Width="*" Header="Godzina Zakończenia" Binding="{Binding GodzinaKoniec}" />
                 <DataGridTextColumn Width="*" Header="Sala" Binding="{Binding Sala}" />
                 <DataGridTextColumn Width="*" Header="Budynek" Binding="{Binding Budynek}" />
-                <DataGridTextColumn Width="*" Header="ZajeteMiejsca" Binding="{Binding ZajeteMiejsca}" />
+                <DataGridTextColumn Width="*" Header="ZajeteMiejsca"  Binding="{Binding ZajeteMiejsca}"/>
+                <DataGridCheckBoxColumn Width="*" Header="Wolna" Binding="{Binding Wolna, Mode=OneWay}" IsReadOnly="True" />
                 <DataGridTextColumn Width="*" Header="Miejsca" Binding="{Binding Miejsca}" />
                 <DataGridTextColumn Width="*" Header="Potok" Binding="{Binding Potok}" />
                 <DataGridTextColumn Width="*" Header="Tytuł" Binding="{Binding Prowadzacy.Tytul}" />

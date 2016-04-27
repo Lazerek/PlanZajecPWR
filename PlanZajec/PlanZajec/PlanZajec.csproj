@@ -88,6 +88,7 @@
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\Converters\OcenaConventer.cs" />
+    <Compile Include="Views\Converters\ZajetoscToColorConterter.cs" />
     <Compile Include="Views\Converters\TypZajecToColorConterter.cs" />
     <Compile Include="Views\EdycjaLiczbyMiejsc.xaml.cs">
       <DependentUpon>EdycjaLiczbyMiejsc.xaml</DependentUpon>

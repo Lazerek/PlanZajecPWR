@@ -29,5 +29,9 @@ namespace PlanZajec.DataModel
             System.Diagnostics.Debug.WriteLine("@@@Grag->EqualsPlany");
             return IdPlanu == other.IdPlanu;
         }
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Plany);
+        }
     }
 }
