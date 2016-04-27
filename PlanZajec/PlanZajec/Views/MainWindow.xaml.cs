@@ -13,14 +13,6 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        /// <summary>
-        /// !!!
-        /// !!!
-        /// TODO MAKE THE FUCKING COMMENTS
-        /// TODO IT'S HARD TO READ THAT SHIT LATER
-        /// !!!
-        /// !!!
-        /// </summary>
         public MainWindow()
         {
             //DATABASE LOAD
@@ -43,19 +35,6 @@ namespace Wpf
             InitializeComponent();
             PGlowny.Children.Add(new PanelGlowny());
             PFiltrow.Children.Add(new PanelFiltrow(this));
-
-            //TODO And that s*it if for what?
-            //TODO IF FOR TESTING THEN CLEAN YOUR S*HIT
-            using (var unitWork = new UnitOfWork(new PlanPwrContext()))
-            {
-                var bloki = unitWork.Bloki.GetAll();
-                foreach(var blok in bloki)
-                {
-                    System.Diagnostics.Debug.WriteLine(blok.KodBloku);
-                }
-                //unitWork.SaveChanges();
-            }
-
         }
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
