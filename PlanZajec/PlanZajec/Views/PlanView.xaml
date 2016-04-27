@@ -13,9 +13,19 @@
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="2000"/>
             </Grid.ColumnDefinitions>
+            <Grid Row="1" Column="0">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/days.png"/>
+                </Grid.Background>
+            </Grid>
+            <Grid Row="0" Column="1" Margin="0,-5,0,5">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/time.png"/>
+                </Grid.Background>
+            </Grid>
             <Grid Name="TabelaGrup" Row="1" Column="1" VerticalAlignment="Stretch"  >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

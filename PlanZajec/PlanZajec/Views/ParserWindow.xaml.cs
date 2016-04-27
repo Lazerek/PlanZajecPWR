@@ -22,7 +22,7 @@ namespace PlanZajec.Views
             MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
             if (window != null)
             {
-                foreach (PrzegladanieGrup przegladanieGrup in window.LMenu.Children.OfType<PrzegladanieGrup>())
+                foreach (PrzegladanieGrup przegladanieGrup in window.PFiltrow.Children.OfType<PrzegladanieGrup>())
                 {
                     przegladanieGrup.DgUsers.Items.Refresh();
                 }

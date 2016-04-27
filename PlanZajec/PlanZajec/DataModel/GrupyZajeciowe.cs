@@ -63,8 +63,20 @@ namespace PlanZajec.DataModel
 
         public virtual Prowadzacy Prowadzacy { get; set; }
 
+        [NotMapped]
+        public bool Wolna
+        {
+            get
+            {
+                return Miejsca.HasValue && ZajeteMiejsca.HasValue ? ZajeteMiejsca.Value < Miejsca.Value : true;
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plany> Plany { get; set; }
+
+
+
 
         public bool Equals(GrupyZajeciowe other)
         {
