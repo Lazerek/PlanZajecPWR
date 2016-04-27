@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" Height="125.5" Width="190.5">
     <Grid Name="Kafel" Margin="0,0,0,18" Background="#FF2CA22C"  >
-
+        <Border BorderBrush="Black" BorderThickness="2">
 
         <Grid Grid.Row="0" Margin="0,0,0,90" >
             <TextBlock x:Name="Start"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.329,0.135" Width="35"/>
@@ -14,6 +14,7 @@
             <TextBlock x:Name="Tydzen"  HorizontalAlignment="Left" Margin="142,0,0,0" VerticalAlignment="Top" Width="48"/>
             <TextBlock x:Name="ConstMysl" Text="-" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="13"/>
         </Grid>
+            </Border>
         <Grid Margin="0,23,0,61" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="78*"/>
