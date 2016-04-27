@@ -7,10 +7,43 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-        <Grid Height="Auto" Width="2000" VerticalAlignment="Stretch">
-            <Grid.Background>
-                <ImageBrush ImageSource="Images/planGrid2.jpeg"/>
-            </Grid.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="2000"/>
+            </Grid.ColumnDefinitions>
+            <Grid Row="1" Column="0">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/days.png"/>
+                </Grid.Background>
+            </Grid>
+            <Grid Row="0" Column="1">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/time.png"/>
+                </Grid.Background>
+            </Grid>
+            <Grid Name="TabelaGrup" Row="1" Column="1" VerticalAlignment="Stretch"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"  />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />                 
+                </Grid.RowDefinitions>
+                
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/grid_v3.png"/>
+                </Grid.Background>
+            </Grid>
         </Grid>
     </ScrollViewer>
 </UserControl>
