@@ -63,8 +63,8 @@ namespace PlanZajec.Views
                 var tempS = godzina.Split(':');
 
               
-                double t = 3200;
-                tempC = (t/(60*14)*(int.Parse(tempS[0]) * 60 + int.Parse(tempS[1])))-7*60-(t-400);
+                double  t = 3200;
+                tempC = ( t/(60*14)*(int.Parse( tempS[0]) * 60 + int.Parse( tempS[1])))-7*60-( t-400);
                 
                 var tempChild = viewModel.Kafelki[i];
                     TabelaGrup.Children.Add(tempChild);
