@@ -64,20 +64,23 @@ namespace Wpf
         }
 
         //MENU
-
+        //Menu - Wyświetlenie parsera
         public void ShowParserWindow(object sender, EventArgs e)
         {
             ParserWindow pw = new ParserWindow();
             pw.Show();
         }
 
+        //Menu - Utworzenie nowego planu
         public void menuNowyPlan(object sender, EventArgs e)
         {
-            
+            //TODO
         }
 
+        //Menu - Otwarcie planu z pliku
         public void menuOtworz(object sender, EventArgs e)
         {
+            //TODO
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Plan zajęć (*.txt)|*.txt";
@@ -85,13 +88,13 @@ namespace Wpf
             if (result == true)
             {
                 string filename = dlg.FileName;
-                //metoda() - otwiera plan
             }
         }
 
+        //Menu - Zapis planów do plików
         public void menuZapisz(object sender, EventArgs e)
         {
-            //metoda spawdzajaca dla kazdego planu czy ma sciezke zapisu +
+            //TODO
             string fileText = "Wyjscie";
 
             Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
@@ -106,8 +109,10 @@ namespace Wpf
 
         }
 
+        //Menu - Funkcja Zapisz jako
         public void menuZapiszJako(object sender, EventArgs e)
         {
+            //TODO
             string fileText = "Wyjscie";
 
             Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
@@ -121,29 +126,34 @@ namespace Wpf
             }
         }
 
+        //Menu - Metoda drukująca plan
         public void menuDrukuj(object sender, EventArgs e)
         {
-            //metoda drukujaca
+            //TODO
         }
 
+        //Menu - Metoda eksportująca plan do pliku PDF
         public void menuEksportujPDF(object sender, EventArgs e)
         {
-            //metoda eksportujaca
+            //TODO
         }
 
+        //Menu - Metoda eksportująca plan do pliku graficznego
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
-            //metoda eksportujaca
+            //TODO
         }
 
+        //Menu - Metoda kończąca działanie programu
         public void menuZakoncz(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Menu - Metoda wyświetlająca okienko z informacjami o programie
         public void menuInformacje(object sender, EventArgs e)
         {
-            //okno z informacjami
+            //TODO
         }
     }
 }
