@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <TabControl Name="LewyTabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="0,10,10,10"
+                Width="Auto" MinWidth ="560" Height="Auto" MinHeight="530" Margin="0,10,5,5"
                 SelectionChanged="LewyTabControl_OnSelectionChanged" ItemsSource="{Binding}">
         <TabControl.Resources>
             <DataTemplate x:Key="TabHeader" DataType="TabItem">

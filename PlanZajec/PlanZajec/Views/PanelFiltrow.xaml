@@ -8,16 +8,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox  Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,10,20,0">
+        <ComboBox  Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5,10,20,0">
             <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedGrupy">Przeglądanie grup</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedFiltrujGrupy">Filtruj grupy</ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
-        <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,37,20,0">
+        <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,37,20,5">
             <Grid x:Name="PrawePodmenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             </Border>
-        <Button x:Name="fButton" Content="◀" HorizontalAlignment="Right" Margin="0,10,0,0" VerticalAlignment="Stretch" Width="15" Click="gButtonClicked"/>
+        <Button x:Name="fButton" Content="◀" HorizontalAlignment="Right" Margin="0,10,0,5" VerticalAlignment="Stretch" Width="15" Click="gButtonClicked"/>
     </Grid>
 </UserControl>
