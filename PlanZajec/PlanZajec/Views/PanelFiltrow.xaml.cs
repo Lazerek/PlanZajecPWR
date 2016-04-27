@@ -97,7 +97,7 @@ namespace Wpf
 
         }
 
-        private void OnSelectedMojeKafle(object sender, RoutedEventArgs e)
+        private void OnSelectedGrupy(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
             if (PrawePodmenu.Children.Count > 0)

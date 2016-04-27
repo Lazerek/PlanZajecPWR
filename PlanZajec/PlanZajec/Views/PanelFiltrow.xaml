@@ -3,15 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d"
-             d:VerticalAlignment="Stretch" d:HorizontalAlignment="Stretch">
+             mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ComboBox  Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,10,20,0">
             <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
-            <ComboBoxItem Selected="OnSelectedMojeKafle">Przeglądanie kafli</ComboBoxItem>
+            <ComboBoxItem Selected="OnSelectedGrupy">Przeglądanie grup</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedFiltrujGrupy">Filtruj grupy</ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>
