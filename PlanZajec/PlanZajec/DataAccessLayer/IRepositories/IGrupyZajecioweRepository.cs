@@ -12,7 +12,7 @@ namespace PlanZajec.DataAccessLayer.IRepositories
         IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelations();
 
         GrupyZajeciowe Get(string kodGrupy);
-        
+        bool InThePlan(string kodGrupy, long idPlanu);
 
     }
 }

@@ -24,20 +24,21 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class PanelPrzegladaniaKafelekView : UserControl
     {
+
+        private Image addIcon ;
+        private Image minusIcon;
+
         public PanelPrzegladaniaKafelekView()
         {
             InitializeComponent();
             //DataContext = new PanelPrzegladaniaKafelekViewModel();
+            addIcon = new Image() { Source = new BitmapImage(new Uri("Images/addIcon.png", UriKind.Relative)) };
+            minusIcon = new Image() { Source = new BitmapImage(new Uri("Images/minusIcon.png", UriKind.Relative)) };           
         }
 
         private void klinkieteMenu(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Kliknieto!");
-        }
-
-        private void menuInitializeMy(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("#GregD:"+sender);
         }
 
         private void PrepareOpenContextMenu(object sender, ContextMenuEventArgs e)
@@ -50,6 +51,7 @@ namespace PlanZajec.Views
             fe.ContextMenu = GetContextMenu(grupa);
         }
 
+
         private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
         {
             System.Diagnostics.Debug.WriteLine("@@@Greg|->GetContextMenu)");
@@ -60,38 +62,24 @@ namespace PlanZajec.Views
             {
                 GrupyZajeciowe grupaUW = unitOfWork.GrupyZajeciowe.Get(grupa.KodGrupy);
                 grupaToAddOrDeleteFromPlan = grupaUW;
-                if (!planContain(grupaUW.Plany, ActChosenPlanSingleton.Instance.Plan))
-                //if (grupaUW.Plany.Contains(ActChosenPlanSingleton.Instance.Plan))
+                if(unitOfWork.GrupyZajeciowe.InThePlan(grupa.KodGrupy, ActChosenPlanSingleton.Instance.IdPlanu))
                 {
-                    menuAddOrRemovFromPlan.Header = "Dodaj do planu";
-                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
-                    CommandManager.InvalidateRequerySuggested();
+                    menuAddOrRemovFromPlan.Header = "Usuń z planu";
+                    menuAddOrRemovFromPlan.Icon = minusIcon;
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);             
                 }
                 else
                 {
-                    menuAddOrRemovFromPlan.Header = "Usuń z planu";
-                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);
+                    menuAddOrRemovFromPlan.Header = "Dodaj do planu";
+                    menuAddOrRemovFromPlan.Icon = addIcon;
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
+                    CommandManager.InvalidateRequerySuggested();
                 }
                 theMenu.Items.Add(menuAddOrRemovFromPlan);
-            }
-            var testowyItem = new MenuItem() { Header = "testowy"};
-            theMenu.Items.Add(testowyItem);
+            }            
             return theMenu;
 
         }
-
-        private bool planContain(ICollection<Plany> plany, Plany wybPlan)
-        {
-            foreach(Plany plan in plany)
-            {
-                if(plan.IdPlanu == wybPlan.IdPlanu)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
 
         private GrupyZajeciowe grupaToAddOrDeleteFromPlan = null;
 

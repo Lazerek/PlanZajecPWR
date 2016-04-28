@@ -7,6 +7,8 @@ using PlanZajec.DataModel;
 using PlanZajec.DataAccessLayer.IRepositories;
 using PlanZajec.CommonInformations;
 
+using System.Data.Entity;
+
 namespace PlanZajec.DataAccessLayer.Repositories
 {
     public class PlanyRepository : Repository<Plany>, IPlanyRepository
@@ -32,10 +34,17 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, Plany plan)
         {
-            PlanPwrContext.GrupyZajeciowe.Attach(grupa);
-            PlanPwrContext.Plany.Attach(plan);
+            if(!PlanPwrContext.Set<GrupyZajeciowe>().Local.Any(e => e.KodGrupy == grupa.KodGrupy))
+            {
+                PlanPwrContext.GrupyZajeciowe.Attach(grupa);
+            }
+            if (!PlanPwrContext.Set<Plany>().Local.Any(e => e.IdPlanu == plan.IdPlanu))
+            {
+                PlanPwrContext.Plany.Attach(plan);
+            }
+            
             bool result = false;
-            if(!grupa.Plany.Contains(plan))
+            if(!grupa.Plany.Any(pl => pl.IdPlanu == plan.IdPlanu))
             {
                 plan.GrupyZajeciowe.Add(grupa);
                 Context.SaveChanges();
@@ -51,10 +60,16 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa, Plany plan)
         {
-            PlanPwrContext.GrupyZajeciowe.Attach(grupa);
-            PlanPwrContext.Plany.Attach(plan);
+            if (!PlanPwrContext.Set<GrupyZajeciowe>().Local.Any(e => e.KodGrupy == grupa.KodGrupy))
+            {
+                PlanPwrContext.GrupyZajeciowe.Attach(grupa);
+            }
+            if (!PlanPwrContext.Set<Plany>().Local.Any(e => e.IdPlanu == plan.IdPlanu))
+            {
+                PlanPwrContext.Plany.Attach(plan);
+            }
             bool result = false;
-            if (grupa.Plany.Contains(plan))
+            if (grupa.Plany.Any(pl => pl.IdPlanu == plan.IdPlanu))
             {
                 plan.GrupyZajeciowe.Remove(grupa);
                 Context.SaveChanges();
@@ -69,5 +84,17 @@ namespace PlanZajec.DataAccessLayer.Repositories
         {
             return PlanPwrContext.Plany.FirstOrDefault();
         }
+
+
+        //TODO: Greg
+        public IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelation(long id)
+        {
+            // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
+            // such as Courses or Authors, and we need to use the generic Set() method to access them.
+            return PlanPwrContext.GrupyZajeciowe.Where(g => g.Plany.Any(pl => pl.IdPlanu == id))
+                .Include(g => g.Prowadzacy)
+                .Include(g => g.Kursy); //. GrupyZajeciowe.;
+        }
+
     }
 }

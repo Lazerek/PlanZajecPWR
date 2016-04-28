@@ -40,6 +40,13 @@ namespace PlanZajec.DataAccessLayer.Repositories
                 .ToList();
         }
 
+        public bool InThePlan(string kodGrupy, long idPlanu) {
+            //PlanPwrContext.Set<GrupyZajeciowe>().Local.Any()
+            GrupyZajeciowe grupa = PlanPwrContext.Set<GrupyZajeciowe>().Find(kodGrupy);
+            return grupa.Plany.Any(pl => pl.IdPlanu == idPlanu);
+
+        }
+
 
 
 

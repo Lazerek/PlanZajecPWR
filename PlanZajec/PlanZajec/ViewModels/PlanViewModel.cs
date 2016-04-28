@@ -25,7 +25,7 @@ namespace PlanZajec.ViewModels
                 {
                     var temp = new GrupaZajeciowaTemplate(gr.KodGrupy);
                     
-                   var okno= Application.Current.Windows.OfType<MainWindow>().First();
+                    var okno= Application.Current.Windows.OfType<MainWindow>().First();
                     var a = okno.DataContext as PlanView;
                     System.Diagnostics.Debug.WriteLine(a);
                     Kafelki.Add(temp);

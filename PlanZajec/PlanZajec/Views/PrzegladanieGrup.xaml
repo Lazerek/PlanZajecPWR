@@ -29,6 +29,7 @@
                 <DataGridTextColumn Width="*" Header="Nazwisko" Binding="{Binding Prowadzacy.Nazwisko}" />
                 <DataGridTextColumn Width="*" Header="Imie" Binding="{Binding Prowadzacy.Imie}" />
                 <DataGridTextColumn Width="*" Header="KodKursu" Binding="{Binding KodKursu}" />
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
