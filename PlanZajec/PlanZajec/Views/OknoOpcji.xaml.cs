@@ -35,12 +35,12 @@ namespace PlanZajec.Views
         {
              String potoczek;
              potoczek = textBoxFiltr.Text;
-             PrzegladanieGrupViewModel.temp.przegladanieFiltrowanie(potoczek);
+           //  PrzegladanieGrupViewModel.temp.przegladanieFiltrowanie(potoczek);
         }
 
         private void textBoxprowadzacy_TextChanged(object sender, TextChangedEventArgs e)
         {
-            PrzegladanieGrupViewModel.przegladanieGrupViewModel.PrzegladanieProwadzacy(textBoxprowadzacy.Text);
+           // PrzegladanieGrupViewModel.przegladanieGrupViewModel.PrzegladanieProwadzacy(textBoxprowadzacy.Text);
         }
     }
 }

@@ -44,13 +44,13 @@ namespace PlanZajec.Views
 
         private void filtruj_Click(object sender, RoutedEventArgs e)
         {
-            PrzegladanieGrupViewModel.temp.filtrujNazwaKursu(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
+            PrzegladanieGrupViewModel.temp.Filtruj(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
         }
 
         private void filtrujEnter(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
-                PrzegladanieGrupViewModel.temp.filtrujNazwaKursu(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
+                PrzegladanieGrupViewModel.temp.Filtruj(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
         }
     }
 }
