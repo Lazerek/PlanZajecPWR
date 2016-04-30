@@ -37,11 +37,11 @@
         <TextBox x:Name="nazwaKK" KeyDown="filtrujEnter" Grid.Row ="7" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label5" Grid.Row ="8" Content="Potok" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="nazwaPot" KeyDown="filtrujEnter" Grid.Row ="9" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cb_wsz" Content="Wszystko" HorizontalAlignment="Left"  Grid.Row="11" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cb_wyk" Content="Wykład" HorizontalAlignment="Left"  Grid.Row="12" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="13" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cb_sem" Content="Seminarium" HorizontalAlignment="Left"  Grid.Row="15" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_wsz" Content="Wszystko" HorizontalAlignment="Left"  Grid.Row="11" VerticalAlignment="Top" Checked="checkBoxWszystko_Checked"  Unchecked="check"/>
+        <CheckBox x:Name="cb_wyk" Content="Wykład" HorizontalAlignment="Left"  Grid.Row="12" VerticalAlignment="Top" Checked="check"  Unchecked="check"/>
+        <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="13" VerticalAlignment="Top" Checked="check"  Unchecked="check"/>
+        <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top" Checked="check"  Unchecked="check"/>
+        <CheckBox x:Name="cb_cw" Content="Cwiczenia" HorizontalAlignment="Left"  Grid.Row="15" VerticalAlignment="Top" Checked="check"  Unchecked="check"/>
         <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="17" Width="94" Click="wyczyscFiltr" HorizontalAlignment="Right" Margin="0,0,14,0"/>
         <Button x:Name="filtruj" Content="Filtruj" HorizontalAlignment="Left" Grid.Row="17" Width="67" Click="filtruj_Click"/>
     </Grid>

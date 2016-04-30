@@ -39,7 +39,7 @@ namespace PlanZajec.Views
             cb_wyk.IsChecked = false;
             cb_lab.IsChecked = false;
             cb_pro.IsChecked = false;
-            cb_sem.IsChecked = false;
+            cb_cw.IsChecked = false;
         }
 
         private void filtruj_Click(object sender, RoutedEventArgs e)
@@ -52,5 +52,33 @@ namespace PlanZajec.Views
             if(e.Key == Key.Enter)
                 PrzegladanieGrupViewModel.temp.Filtruj(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
         }
+        private void checkBoxWszystko_Checked(object sender, RoutedEventArgs e)
+        {
+            FiltrujCheckBox();
+            cb_wyk.IsChecked = true;
+            cb_lab.IsChecked = true;
+            cb_pro.IsChecked = true;
+            cb_cw.IsChecked = true;
+        }
+        private void FiltrujCheckBox()
+        {
+            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false;
+            if (cb_cw.IsChecked == true)
+                cwiczenia = true;
+            if (cb_lab.IsChecked == true)
+                lab = true;
+            if (cb_pro.IsChecked == true)
+                projekt = true;
+            if (cb_wyk.IsChecked == true)
+                wyklad = true;
+            if (cb_wsz.IsChecked == true)
+                wszystko = true;
+            PrzegladanieGrupViewModel.temp.FiltrCheckBox(lab, cwiczenia, projekt, wszystko, wyklad);
+        }
+        private void check(object sender, RoutedEventArgs e)
+        {
+            FiltrujCheckBox();
+        }
+
     }
 }
