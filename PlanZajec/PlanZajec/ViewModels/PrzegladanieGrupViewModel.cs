@@ -77,6 +77,63 @@ namespace PlanZajec.ViewModels
             }
 
         }
+        public void FiltrowanieGrup(String potok, String nazwisko, String kodGrupy, String nazwaKursu, String kodKursu)
+        {
+            ItemsChanged = new List<GrupyZajeciowe>();
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                List<Prowadzacy> prowadzacy = uw.Prowadzacy.GetAll().ToList();
+                Items = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
+            }
+            foreach(GrupyZajeciowe gz in Items)
+            {
+            }
+        }
+
+        public void filtrujNazwaKursu(String nazwaKursu, String potok, String kodGrupy, String kodKursu, String prowadzacy)
+        {
+            ItemsChanged = new List<GrupyZajeciowe>();
+            List<Kursy> kursy = new List<Kursy>();
+            List<Prowadzacy> prowadzacyList = new List<Prowadzacy>();
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                Items = uw.GrupyZajeciowe.GetAll().ToList();
+                kursy = uw.Kursy.GetAll().ToList();
+            }
+            if(nazwaKursu.Equals("") && potok.Equals("") && kodGrupy.Equals("") && kodKursu.Equals(""))
+            {
+                foreach (GrupyZajeciowe gz in Items)
+                    ItemsChanged.Add(gz);
+            }
+            foreach(GrupyZajeciowe gz in Items)
+            {
+                foreach(Kursy kr in kursy)
+                {
+                    if (kr.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >=0 && gz.KodKursu==kr.KodKursu && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase))
+                        ItemsChanged.Add(gz);
+                }
+            }
+            Items.Clear();
+            Items = new List<GrupyZajeciowe>();
+            if (!prowadzacy.Equals(""))
+            {
+                foreach (GrupyZajeciowe gz in ItemsChanged)
+                {
+                    foreach (Prowadzacy pr in prowadzacyList)
+                    {
+                        if (pr.IdProwadzacego == gz.IdProwadzacego && pr.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                            Items.Add(gz);
+                    }
+                }
+            }
+            else
+            {
+                foreach (GrupyZajeciowe gz in ItemsChanged)
+                    Items.Add(gz);
+            }
+            ItemsChanged.Clear();
+            NotifyPropertyChange("Items");
+        }
        
     }
 }

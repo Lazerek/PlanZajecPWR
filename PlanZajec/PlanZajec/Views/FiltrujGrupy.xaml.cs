@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
@@ -20,6 +21,7 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class FiltrujGrupy : UserControl
     {
+        private PrzegladanieGrupViewModel viewModel;
         public FiltrujGrupy()
         {
             InitializeComponent();
@@ -38,6 +40,17 @@ namespace PlanZajec.Views
             cb_lab.IsChecked = false;
             cb_pro.IsChecked = false;
             cb_sem.IsChecked = false;
+        }
+
+        private void filtruj_Click(object sender, RoutedEventArgs e)
+        {
+            PrzegladanieGrupViewModel.temp.filtrujNazwaKursu(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
+        }
+
+        private void filtrujEnter(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+                PrzegladanieGrupViewModel.temp.filtrujNazwaKursu(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
         }
     }
 }
