@@ -8,7 +8,7 @@ namespace PlanZajec.Parser
 {
     class Parser
     {
-        public static void Run()
+        public static bool Run()
         {
             var folderPath =
                 @"../../TestResources";
@@ -23,12 +23,13 @@ namespace PlanZajec.Parser
             }
             var datas = new List<GroupData>();
 
-            if (groupArray.Count==0) return;
+            if (groupArray.Count==0) return false;
             datas.AddRange(groupArray.Select(SearchLine));
             foreach (var gd in datas)
             {
                 ZapisDoBazy.zapisz(gd);
             }
+            return true;
         }
 
         static GroupData SearchLine(string[] lines)
