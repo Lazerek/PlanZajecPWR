@@ -89,7 +89,10 @@ namespace PlanZajec.Views
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
             {
                 unitOfWork.Plany.DodajGrupeZajeciowaDoPlanu(grupaToAddOrDeleteFromPlan);
+               
+
             }
+            PlanView.Aktualizuj();
         }
 
         private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)

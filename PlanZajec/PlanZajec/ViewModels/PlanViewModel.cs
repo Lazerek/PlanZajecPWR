@@ -11,7 +11,7 @@ using Wpf;
 
 namespace PlanZajec.ViewModels
 {
-    class PlanViewModel
+    class PlanViewModel:ViewModel
     {
         public List<GrupyZajeciowe> ListaGrupZajeciowych { get; private set; }
         public List<GrupaZajeciowaTemplate> Kafelki { get; private set; }

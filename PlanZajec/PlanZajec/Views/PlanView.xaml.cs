@@ -9,15 +9,21 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class PlanView : UserControl
     {
-        private readonly PlanViewModel viewModel;
-      
+        private  PlanViewModel viewModel;
+        private static PlanView pv;
         public PlanView()
         {
             InitializeComponent();
             TabelaGrup.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             viewModel = new PlanViewModel();
             DataContext = viewModel;
+            rysujPlan();
+            pv = this;
            
+           
+        }
+        private void rysujPlan()
+        {
             for (var i = 0; i < viewModel.Kafelki.Count; i++)
             {
                 var tempR = 0;
@@ -49,17 +55,36 @@ namespace PlanZajec.Views
                 var godzina = viewModel.ListaGrupZajeciowych[i].Godzina;
                 var tempS = godzina.Split(':');
 
-              
-                double  t = 3200;
-                tempC = ( t/(60*14)*(int.Parse( tempS[0]) * 60 + int.Parse( tempS[1])))-7*60-( t-400);
-                
+
+                double t = 3200;
+                tempC = (t / (60 * 14) * (int.Parse(tempS[0]) * 60 + int.Parse(tempS[1]))) - 7 * 60 - (t - 400);
+
                 var tempChild = viewModel.Kafelki[i];
-                    TabelaGrup.Children.Add(tempChild);
+                TabelaGrup.Children.Add(tempChild);
                 Grid.SetRow(tempChild, tempR);
                 var margin = tempChild.Margin;
-                margin.Left = (int) tempC;
+                margin.Left = (int)tempC;
                 tempChild.Margin = margin;
+             
+                         
+                
             }
+
+        }
+        private void usun()
+        {
+            foreach(var gr in viewModel.Kafelki)
+            {
+                TabelaGrup.Children.Remove(gr);
+            }
+           
+        }
+        public static void Aktualizuj()
+        {
+            pv.viewModel = new PlanViewModel();
+            pv.DataContext = pv.viewModel;
+            pv.usun();
+            pv.rysujPlan();
         }
     }
 }
