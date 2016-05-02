@@ -34,10 +34,11 @@ namespace PlanZajec
             int rowIndex = comboBox.SelectedIndex;
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Zapisz(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void onChange(object sender, RoutedEventArgs e)
         {
            string[] wynik= ViewModel.dajOpinie(comboBox.SelectedValue+"");

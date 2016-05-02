@@ -29,24 +29,21 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa)
         {
-            return DodajGrupeZajeciowaDoPlanu(grupa, ActChosenPlanSingleton.Instance.Plan);
+            return DodajGrupeZajeciowaDoPlanu(grupa, ActChosenPlanSingleton.Instance.IdPlanu);
         }
 
-        public bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, Plany plan)
+        public bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, long idPlanu)
         {
             if(!PlanPwrContext.Set<GrupyZajeciowe>().Local.Any(e => e.KodGrupy == grupa.KodGrupy))
             {
                 PlanPwrContext.GrupyZajeciowe.Attach(grupa);
             }
-            if (!PlanPwrContext.Set<Plany>().Local.Any(e => e.IdPlanu == plan.IdPlanu))
-            {
-                PlanPwrContext.Plany.Attach(plan);
-            }
-            
+            Plany planWybrany = PlanPwrContext.Plany.Include(pl => pl.GrupyZajeciowe).FirstOrDefault(pl => pl.IdPlanu == idPlanu);
+
             bool result = false;
-            if(!grupa.Plany.Any(pl => pl.IdPlanu == plan.IdPlanu))
+            if(!grupa.Plany.Any(pl => pl.IdPlanu == idPlanu))
             {
-                plan.GrupyZajeciowe.Add(grupa);
+                planWybrany.GrupyZajeciowe.Add(grupa);
                 Context.SaveChanges();
                 result = true;
             }
@@ -55,23 +52,22 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa)
         {
-            return UsunGrupeZajeciowaZPlanu(grupa, ActChosenPlanSingleton.Instance.Plan);
+            return UsunGrupeZajeciowaZPlanu(grupa, ActChosenPlanSingleton.Instance.IdPlanu);
         }
 
-        public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa, Plany plan)
+        public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa, long idPlanu)
         {
-            if (!PlanPwrContext.Set<GrupyZajeciowe>().Local.Any(e => e.KodGrupy == grupa.KodGrupy))
+            if (!PlanPwrContext.Set<GrupyZajeciowe>().Local.Any(e => e.KodGrupy.Equals(grupa.KodGrupy)))
             {
                 PlanPwrContext.GrupyZajeciowe.Attach(grupa);
             }
-            if (!PlanPwrContext.Set<Plany>().Local.Any(e => e.IdPlanu == plan.IdPlanu))
-            {
-                PlanPwrContext.Plany.Attach(plan);
-            }
+
+            Plany planWybrany = PlanPwrContext.Plany.Include(pl => pl.GrupyZajeciowe).FirstOrDefault(pl => pl.IdPlanu == idPlanu);
+
             bool result = false;
-            if (grupa.Plany.Any(pl => pl.IdPlanu == plan.IdPlanu))
+            if (grupa.Plany.Any(pl => pl.IdPlanu == idPlanu))
             {
-                plan.GrupyZajeciowe.Remove(grupa);
+                planWybrany.GrupyZajeciowe.Remove(grupa);
                 Context.SaveChanges();
                 result = true;
             }
@@ -82,7 +78,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public Plany GetFirstOrDefault()
         {
-            return PlanPwrContext.Plany.FirstOrDefault();
+            return PlanPwrContext.Plany.Include(pl => pl.GrupyZajeciowe).FirstOrDefault();
         }
 
 
@@ -96,5 +92,8 @@ namespace PlanZajec.DataAccessLayer.Repositories
                 .Include(g => g.Kursy); //. GrupyZajeciowe.;
         }
 
+
+
+        
     }
 }
