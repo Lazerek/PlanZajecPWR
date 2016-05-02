@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
@@ -9,82 +8,93 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class PlanView : UserControl
     {
-        private  PlanViewModel viewModel;
         private static PlanView pv;
+        private PlanViewModel viewModel;
+
         public PlanView()
         {
             InitializeComponent();
-            TabelaGrup.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             viewModel = new PlanViewModel();
             DataContext = viewModel;
-            rysujPlan();
+            NarysujPlan();
             pv = this;
-           
-           
         }
-        private void rysujPlan()
+
+        private void NarysujPlan()
         {
             for (var i = 0; i < viewModel.Kafelki.Count; i++)
             {
-                var tempR = 0;
-                double tempC = 0;
+                var kafelek = viewModel.Kafelki[i];
+                var numerDnia = 0;
                 switch (viewModel.ListaGrupZajeciowych[i].Dzień)
                 {
                     case "pn":
-                        tempR = 0;
+                        numerDnia = 0;
                         break;
                     case "wt":
-                        tempR = 1;
+                        numerDnia = 1;
                         break;
                     case "śr":
-                        tempR = 2;
+                        numerDnia = 2;
                         break;
                     case "cz":
-                        tempR = 3;
+                        numerDnia = 3;
                         break;
                     case "pt":
-                        tempR = 4;
+                        numerDnia = 4;
                         break;
                     case "sb":
-                        tempR = 5;
+                        numerDnia = 5;
                         break;
                     case "nd":
-                        tempR = 6;
+                        numerDnia = 6;
                         break;
                 }
-                var godzina = viewModel.ListaGrupZajeciowych[i].Godzina;
-                var tempS = godzina.Split(':');
+                //poprawka dla 14 row
+                numerDnia *= 2;
 
+                var godzinaRozpoczeciaString = viewModel.ListaGrupZajeciowych[i].Godzina;
+                var godzinaRozpoczecia = int.Parse(godzinaRozpoczeciaString.Split(':')[0]) - 1 +
+                                         (int.Parse(godzinaRozpoczeciaString.Split(':')[1]) <= 30 ? 0 : 1);
+                var godzinaZakonczeniaString = viewModel.ListaGrupZajeciowych[i].GodzinaKoniec;
+                var godzinaZakonczenia = int.Parse(godzinaZakonczeniaString.Split(':')[0]) - 1 +
+                                         (int.Parse(godzinaZakonczeniaString.Split(':')[1]) <= 30 ? 0 : 1);
+                var czasTrwania = godzinaZakonczenia - godzinaRozpoczecia;
 
-                double t = 3200;
-                tempC = (t / (60 * 14) * (int.Parse(tempS[0]) * 60 + int.Parse(tempS[1]))) - 7 * 60 - (t - 400);
+                TabelaGrup.Children.Add(kafelek);
+                switch (viewModel.ListaGrupZajeciowych[i].Tydzien)
+                {
+                    case "//":
+                        Grid.SetRow(kafelek, numerDnia); Grid.SetRowSpan(kafelek, 2);
+                        break;
+                    case "TN":
+                        Grid.SetRow(kafelek, numerDnia);
+                        break;
+                    case "TP":
+                        Grid.SetRow(kafelek, numerDnia+1);
+                        break;
 
-                var tempChild = viewModel.Kafelki[i];
-                TabelaGrup.Children.Add(tempChild);
-                Grid.SetRow(tempChild, tempR);
-                var margin = tempChild.Margin;
-                margin.Left = (int)tempC;
-                tempChild.Margin = margin;
-             
-                         
-                
+                }
+                Grid.SetColumn(kafelek, godzinaRozpoczecia - 6);
+                Grid.SetColumnSpan(kafelek, czasTrwania);
+
             }
-
         }
-        private void usun()
+
+        private void Usun()
         {
-            foreach(var gr in viewModel.Kafelki)
+            foreach (var gr in viewModel.Kafelki)
             {
                 TabelaGrup.Children.Remove(gr);
             }
-           
         }
+
         public static void Aktualizuj()
         {
             pv.viewModel = new PlanViewModel();
             pv.DataContext = pv.viewModel;
-            pv.usun();
-            pv.rysujPlan();
+            pv.Usun();
+            pv.NarysujPlan();
         }
     }
 }
