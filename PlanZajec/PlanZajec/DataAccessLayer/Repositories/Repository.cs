@@ -19,8 +19,6 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public virtual TEntity Get(long id)
         {
-            // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
-            // such as Courses or Authors, and we need to use the generic Set() method to access them.
             return Context.Set<TEntity>().Find(id);
         }
 
@@ -60,7 +58,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
             Context.Set<TEntity>().AddRange(entities);
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
             Context.Set<TEntity>().Remove(entity);
         }

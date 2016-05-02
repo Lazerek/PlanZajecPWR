@@ -85,15 +85,24 @@ namespace PlanZajec.DataAccessLayer.Repositories
         //TODO: Greg
         public IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelation(long id)
         {
-            // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
-            // such as Courses or Authors, and we need to use the generic Set() method to access them.
             return PlanPwrContext.GrupyZajeciowe.Where(g => g.Plany.Any(pl => pl.IdPlanu == id))
                 .Include(g => g.Prowadzacy)
                 .Include(g => g.Kursy); //. GrupyZajeciowe.;
         }
 
+        public override void Remove(Plany entity)
+        {
+            Plany planDoUsuniecia = PlanPwrContext.Plany.Include(pl => pl.GrupyZajeciowe).
+                SingleOrDefault(pl => pl.IdPlanu == entity.IdPlanu);
+            if(planDoUsuniecia != null)
+            {
+                foreach(GrupyZajeciowe grupa in planDoUsuniecia.GrupyZajeciowe.ToList())
+                {
+                    planDoUsuniecia.GrupyZajeciowe.Remove(grupa);
+                }
+                Context.Set<Plany>().Remove(planDoUsuniecia);
+            }
+        }  
 
-
-        
     }
 }
