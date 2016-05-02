@@ -102,9 +102,9 @@ namespace PlanZajec.Views
                         break;
                 }
                 string godzinaRozpoczeciaString = viewModel.ListaGrupZajeciowych[i].Godzina;
-                int godzinaRozpoczecia = int.Parse(godzinaRozpoczeciaString.Split(':')[0])-1;
+                int godzinaRozpoczecia = int.Parse(godzinaRozpoczeciaString.Split(':')[0])-1 + ((int.Parse(godzinaRozpoczeciaString.Split(':')[1])) <= 30 ? 0 : 1);
                 string godzinaZakonczeniaString = viewModel.ListaGrupZajeciowych[i].GodzinaKoniec;
-                int godzinaZakonczenia = int.Parse(godzinaZakonczeniaString.Split(':')[0])-1;
+                int godzinaZakonczenia = int.Parse(godzinaZakonczeniaString.Split(':')[0])-1 + ((int.Parse(godzinaZakonczeniaString.Split(':')[1])) <= 30 ? 0 : 1);
                 int czasTrwania = godzinaZakonczenia - godzinaRozpoczecia;
                 
                 //var t = TabelaGrup.ColumnDefinitions.First(e => Grid.GetColumn(e) == godzinaRozpoczecia);
