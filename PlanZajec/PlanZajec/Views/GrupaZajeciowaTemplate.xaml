@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" d:DesignHeight="150" d:DesignWidth="150" >
     <Border Name="Otoczka" BorderBrush="Black" BorderThickness="2">
-        <Grid Name="Kafel"  >
+        <Grid Name="Kafel" Background="White" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
