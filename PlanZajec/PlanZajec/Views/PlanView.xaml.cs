@@ -14,9 +14,6 @@ namespace PlanZajec.Views
         public PlanView()
         {
             InitializeComponent();
-            //Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            //var t = DesiredSize.Width;
-
             viewModel = new PlanViewModel();
             DataContext = viewModel;
             NarysujPlan();
@@ -60,10 +57,6 @@ namespace PlanZajec.Views
                 var godzinaZakonczenia = int.Parse(godzinaZakonczeniaString.Split(':')[0]) - 1 +
                                          (int.Parse(godzinaZakonczeniaString.Split(':')[1]) <= 30 ? 0 : 1);
                 var czasTrwania = godzinaZakonczenia - godzinaRozpoczecia;
-
-                //var t = TabelaGrup.ColumnDefinitions.First(e => Grid.GetColumn(e) == godzinaRozpoczecia);
-                //var uiElement = TabelaGrup.Children;//.Cast<UIElement>().ToArray();//.First(e => Grid.GetRow(e) == numerDnia && Grid.GetColumn(e) == godzinaRozpoczecia);
-
 
                 TabelaGrup.Children.Add(kafelek);
                 Grid.SetRow(kafelek, numerDnia);
