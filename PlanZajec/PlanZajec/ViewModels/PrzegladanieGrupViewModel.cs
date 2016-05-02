@@ -30,6 +30,16 @@ namespace PlanZajec.ViewModels
                 ItemsNoChange = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
             }
         }
+        public void czyscFiltrownie()
+        {
+            Items.Clear();
+            Items = new List<GrupyZajeciowe>();
+            foreach(GrupyZajeciowe gz in ItemsNoChange)
+            {
+                Items.Add(gz);
+            }
+            NotifyPropertyChange("Items");
+        }
         public void Filtruj(String nazwaKursu, String potok, String kodGrupy, String kodKursu, String prowadzacy)
         {
             ItemsChanged = new List<GrupyZajeciowe>();
@@ -43,6 +53,40 @@ namespace PlanZajec.ViewModels
             foreach (GrupyZajeciowe gz in ItemsChanged)
                 Items.Add(gz);
             NotifyPropertyChange("Items");
+        }
+        public void Filtruj2(String nazwaKursu, String potok, String kodGrupy, String kodKursu, String prowadzacy, Boolean lab, Boolean cwiczenia, Boolean projekt, Boolean wszystko, Boolean wyklad)
+        {
+            ItemsChanged = new List<GrupyZajeciowe>();
+            String labString = "Zajęcia laboratoryjne";
+            String projektString = "Projekt";
+            String cwiczeniaString = "Ćwiczenia";
+            String wykladString = "Wykład";
+            if (wszystko)
+            {
+                foreach (GrupyZajeciowe gz in ItemsNoChange)
+                {
+                    if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0))
+                        ItemsChanged.Add(gz);
+                }
+            }
+            else
+            {
+                foreach (GrupyZajeciowe gz in ItemsNoChange)
+                {
+                    if (lab && (gz.TypZajec.Equals(labString)) || (projekt && gz.TypZajec.Equals(projektString)) || (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)))
+                    {
+                        if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0))
+                            ItemsChanged.Add(gz);
+                    }
+                }
+            }
+            Items.Clear();
+            Items = new List<GrupyZajeciowe>();
+            foreach (GrupyZajeciowe gz in ItemsChanged)
+                Items.Add(gz);
+            ItemsChanged.Clear();
+            NotifyPropertyChange("Items");
+
         }
         /*(public void Filtruj(String nazwaKursu, String potok, String kodGrupy, String kodKursu, String prowadzacy)
         {
