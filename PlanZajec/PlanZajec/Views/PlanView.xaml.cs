@@ -50,6 +50,9 @@ namespace PlanZajec.Views
                         numerDnia = 6;
                         break;
                 }
+                //poprawka dla 14 row
+                numerDnia *= 2;
+
                 var godzinaRozpoczeciaString = viewModel.ListaGrupZajeciowych[i].Godzina;
                 var godzinaRozpoczecia = int.Parse(godzinaRozpoczeciaString.Split(':')[0]) - 1 +
                                          (int.Parse(godzinaRozpoczeciaString.Split(':')[1]) <= 30 ? 0 : 1);
@@ -59,9 +62,22 @@ namespace PlanZajec.Views
                 var czasTrwania = godzinaZakonczenia - godzinaRozpoczecia;
 
                 TabelaGrup.Children.Add(kafelek);
-                Grid.SetRow(kafelek, numerDnia);
+                switch (viewModel.ListaGrupZajeciowych[i].Tydzien)
+                {
+                    case "//":
+                        Grid.SetRow(kafelek, numerDnia); Grid.SetRowSpan(kafelek, 2);
+                        break;
+                    case "TN":
+                        Grid.SetRow(kafelek, numerDnia);
+                        break;
+                    case "TP":
+                        Grid.SetRow(kafelek, numerDnia+1);
+                        break;
+
+                }
                 Grid.SetColumn(kafelek, godzinaRozpoczecia - 6);
                 Grid.SetColumnSpan(kafelek, czasTrwania);
+
             }
         }
 
