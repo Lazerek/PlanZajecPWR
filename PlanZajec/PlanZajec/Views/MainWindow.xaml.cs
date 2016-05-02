@@ -134,5 +134,11 @@ namespace Wpf
         {
             //TODO
         }
+
+        public void ReloadWindowComponents()
+        {
+            PGlowny.Children.Add(new PanelGlowny());
+            PFiltrow.Children.Add(new PanelFiltrow(this));
+        }
     }
 }

@@ -18,14 +18,11 @@ namespace PlanZajec.Views
 
         private void RunParserButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Parser.Parser.Run();
-            MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
-            if (window != null)
+            bool loaded = Parser.Parser.Run();
+            if (loaded)
             {
-                foreach (PrzegladanieGrup przegladanieGrup in window.PFiltrow.Children.OfType<PrzegladanieGrup>())
-                {
-                    przegladanieGrup.DgUsers.Items.Refresh();
-                }
+                MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
+                window.ReloadWindowComponents();
             }
         }
     }

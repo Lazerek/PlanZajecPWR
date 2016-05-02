@@ -44,23 +44,34 @@ namespace PlanZajec.Views
 
         private void filtruj_Click(object sender, RoutedEventArgs e)
         {
-            PrzegladanieGrupViewModel.temp.Filtruj(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
+            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false;
+            if (cb_cw.IsChecked == true)
+                cwiczenia = true;
+            if (cb_lab.IsChecked == true)
+                lab = true;
+            if (cb_pro.IsChecked == true)
+                projekt = true;
+            if (cb_wyk.IsChecked == true)
+                wyklad = true;
+            if (cb_wsz.IsChecked == true)
+                wszystko = true;
+            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, lab, cwiczenia, projekt, wszystko, wyklad);
         }
 
         private void filtrujEnter(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
-                PrzegladanieGrupViewModel.temp.Filtruj(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text);
+            if (e.Key == Key.Enter)
+                wlaczFiltr();
         }
         private void checkBoxWszystko_Checked(object sender, RoutedEventArgs e)
         {
-            FiltrujCheckBox();
+            wlaczFiltr();
             cb_wyk.IsChecked = true;
             cb_lab.IsChecked = true;
             cb_pro.IsChecked = true;
             cb_cw.IsChecked = true;
         }
-        private void FiltrujCheckBox()
+        private void wlaczFiltr()
         {
             Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false;
             if (cb_cw.IsChecked == true)
@@ -73,12 +84,26 @@ namespace PlanZajec.Views
                 wyklad = true;
             if (cb_wsz.IsChecked == true)
                 wszystko = true;
-            PrzegladanieGrupViewModel.temp.FiltrCheckBox(lab, cwiczenia, projekt, wszystko, wyklad);
+            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, lab, cwiczenia, projekt, wszystko, wyklad);
         }
         private void check(object sender, RoutedEventArgs e)
         {
-            FiltrujCheckBox();
+            wlaczFiltr();
         }
 
+        private void wyczyscFiltr(object sender, RoutedEventArgs e)
+        {
+            cb_wsz.IsChecked = true;
+            cb_wyk.IsChecked = true;
+            cb_lab.IsChecked = true;
+            cb_pro.IsChecked = true;
+            cb_cw.IsChecked = true;
+            nazwaK.Text = "";
+            nazwaKG.Text = "";
+            nazwaKK.Text = "";
+            nazwaP.Text = "";
+            nazwaPot.Text = "";
+            PrzegladanieGrupViewModel.temp.czyscFiltrownie();
+        }
     }
 }

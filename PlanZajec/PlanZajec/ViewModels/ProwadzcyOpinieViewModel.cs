@@ -61,6 +61,30 @@ namespace PlanZajec.ViewModels
             }
             return wynik;
         }
+
+        public void ZapiszOpinie(string pr, int index, string opinia, string ocena)
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                var prow = uw.Prowadzacy.GetAll().ToList();
+                foreach (Prowadzacy p in prow)
+                {
+                    System.Diagnostics.Debug.WriteLine(p.IdProwadzacego + " " + index);
+                    if (p.IdProwadzacego == index)
+                    {
+                        System.Diagnostics.Debug.WriteLine(p.IdProwadzacego + " " + p.Nazwisko + " " + index + " " + opinia);
+                        p.Opis = opinia;
+                        double ocenaDoZapisu;
+                        if(double.TryParse(ocena, out ocenaDoZapisu))
+                        {
+                            if(ocenaDoZapisu >= 2.0f && ocenaDoZapisu <= 5.5f)
+                                p.Ocena = double.Parse(ocena);
+                        }             
+                    }
+                }
+                uw.SaveChanges();
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propertyName)
