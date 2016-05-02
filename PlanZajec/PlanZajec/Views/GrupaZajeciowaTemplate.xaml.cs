@@ -30,10 +30,24 @@ namespace PlanZajec.Views
             Start.Text = viewModel.GrupZaj.Godzina;
             Koniec.Text = viewModel.GrupZaj.GodzinaKoniec;
             Nazwa.Text = viewModel.nazwa;
+            if(!viewModel.GrupZaj.Tydzien.Equals("//"))
             Tydzen.Text = viewModel.GrupZaj.Tydzien;
             Budynek.Text = viewModel.GrupZaj.Budynek;
             Sala.Text = viewModel.GrupZaj.Sala;
-           // Kafel.SetBinding(, new Binding { Source = viewModel.GrupZaj });
+            String typZajec = viewModel.GrupZaj.TypZajec;
+            Color colResult;
+            switch (typZajec)
+            {
+                case "Wykład": colResult = Colors.Green; break;
+                case "Zajęcia laboratoryjne": colResult = Colors.Blue; break;
+                case "Projekt": colResult = Colors.Indigo; break;
+                case "Seminarium": colResult = Colors.LightBlue; break;
+                case "Praktyka": colResult = Colors.Yellow; break;
+                default: colResult = Colors.Black; break;
+            }
+            SolidColorBrush solidResult = new SolidColorBrush(colResult);
+            Otoczka.BorderBrush = solidResult;
+            
         }
     }
 }
