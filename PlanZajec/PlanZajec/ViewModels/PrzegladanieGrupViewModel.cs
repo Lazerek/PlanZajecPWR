@@ -11,7 +11,7 @@ using PlanZajec.DataAccessLayer;
 namespace PlanZajec.ViewModels
 {
 
-    public class PrzegladanieGrupViewModel : ViewModel
+    public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
     {
         public List<GrupyZajeciowe> Items { get; set; }
         public List<GrupyZajeciowe> ItemsNoChange { get; set; }
@@ -162,6 +162,19 @@ namespace PlanZajec.ViewModels
                 Items.Add(gz);
             ItemsChanged.Clear();
             NotifyPropertyChange("Items");
+        }
+
+        public void ZmienLiczbeMiejsc(string kodGrupy, long lMiejsc)
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                var gr = uw.GrupyZajeciowe.GetAll().ToList();
+                GrupyZajeciowe g = gr.Find(s => s.KodGrupy == kodGrupy);
+                System.Diagnostics.Debug.WriteLine(g.KodGrupy + " " + kodGrupy);
+                System.Diagnostics.Debug.WriteLine(g.KodGrupy + " " + g.KodKursu + " " + g.IdProwadzacego);
+                g.ZajeteMiejsca = lMiejsc;
+                uw.SaveChanges();
+            }
         }
     }
 }
