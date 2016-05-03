@@ -21,6 +21,9 @@ namespace PlanZajec.DataModel
         [StringLength(2147483647)]
         public string WolneDni { get; set; }
 
+        [StringLength(2147483647)]
+        public string NazwaPlanu { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupyZajeciowe> GrupyZajeciowe { get; set; }
 

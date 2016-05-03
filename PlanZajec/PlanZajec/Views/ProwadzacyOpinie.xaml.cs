@@ -40,12 +40,13 @@ namespace PlanZajec
             int rowIndex = comboBox.SelectedIndex;
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Zapisz(object sender, RoutedEventArgs e)
         {
             int rowIndex = comboBox.SelectedIndex;
             ViewModel.ZapiszOpinie(comboBox.SelectedIndex + "", tab[rowIndex], textBox.Text, Ocena.Text);
             System.Diagnostics.Debug.WriteLine(rowIndex);
         }
+
         private void onChange(object sender, RoutedEventArgs e)
         {
            string[] wynik= ViewModel.dajOpinie(comboBox.SelectedValue+"");

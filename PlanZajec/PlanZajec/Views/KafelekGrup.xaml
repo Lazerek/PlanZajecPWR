@@ -8,8 +8,7 @@
              xmlns:diagnostic="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="130" d:DesignWidth="200"
-             Width="200"
-             Height="130">
+             >
 
     <UserControl.Resources>
         <converters:TypZajecToColorConterter x:Key="TypZajecToColorConv"/>

@@ -21,7 +21,7 @@ namespace Wpf
             {
                 if( unitOfWork.Plany.Count() < 1)
                 {
-                    Plany plan = new Plany() { };
+                    Plany plan = new Plany() { NazwaPlanu = "Główny"};
                     unitOfWork.Plany.Add(plan);
                     unitOfWork.SaveChanges();
                     ActChosenPlanSingleton.Instance.SetPlan (plan);
