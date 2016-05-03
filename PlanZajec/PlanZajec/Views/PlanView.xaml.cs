@@ -19,7 +19,6 @@ namespace PlanZajec.Views
             NarysujPlan();
             pv = this;
         }
-
         private void NarysujPlan()
         {
             for (var i = 0; i < viewModel.Kafelki.Count; i++)
@@ -54,10 +53,10 @@ namespace PlanZajec.Views
                 numerDnia *= 2;
 
                 var godzinaRozpoczeciaString = viewModel.ListaGrupZajeciowych[i].Godzina;
-                var godzinaRozpoczecia = int.Parse(godzinaRozpoczeciaString.Split(':')[0]) - 1 +
+                var godzinaRozpoczecia = int.Parse(godzinaRozpoczeciaString.Split(':')[0]) +
                                          (int.Parse(godzinaRozpoczeciaString.Split(':')[1]) <= 30 ? 0 : 1);
                 var godzinaZakonczeniaString = viewModel.ListaGrupZajeciowych[i].GodzinaKoniec;
-                var godzinaZakonczenia = int.Parse(godzinaZakonczeniaString.Split(':')[0]) - 1 +
+                var godzinaZakonczenia = int.Parse(godzinaZakonczeniaString.Split(':')[0]) +
                                          (int.Parse(godzinaZakonczeniaString.Split(':')[1]) <= 30 ? 0 : 1);
                 var czasTrwania = godzinaZakonczenia - godzinaRozpoczecia;
 
@@ -73,14 +72,11 @@ namespace PlanZajec.Views
                     case "TP":
                         Grid.SetRow(kafelek, numerDnia+1);
                         break;
-
                 }
-                Grid.SetColumn(kafelek, godzinaRozpoczecia - 6);
+                Grid.SetColumn(kafelek, godzinaRozpoczecia - 7);
                 Grid.SetColumnSpan(kafelek, czasTrwania);
-
             }
         }
-
         private void Usun()
         {
             foreach (var gr in viewModel.Kafelki)
