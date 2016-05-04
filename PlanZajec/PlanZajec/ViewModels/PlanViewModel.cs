@@ -33,5 +33,25 @@ namespace PlanZajec.ViewModels
                 //ListaGrupZajeciowych[0];
             }
         }
+        public void aktualizuj()
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                Kafelki = new List<GrupaZajeciowaTemplate>();
+                ListaGrupZajeciowych = uw.Plany.Get(1).GrupyZajeciowe.ToList();
+                foreach (GrupyZajeciowe gr in ListaGrupZajeciowych)
+                {
+                    var temp = new GrupaZajeciowaTemplate(gr.KodGrupy);
+
+                    var okno = Application.Current.Windows.OfType<MainWindow>().First();
+                    var a = okno.DataContext as PlanView;
+                    System.Diagnostics.Debug.WriteLine(a);
+                    Kafelki.Add(temp);
+                    NotifyPropertyChange("ListaGrupZajeciowych");
+                    NotifyPropertyChange("Kafelki");
+                }
+                //ListaGrupZajeciowych[0];
+            }
+        }
     }
 }

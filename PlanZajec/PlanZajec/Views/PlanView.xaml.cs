@@ -90,9 +90,14 @@ namespace PlanZajec.Views
 
         public static void Aktualizuj()
         {
-            pv.viewModel = new PlanViewModel();
-            pv.DataContext = pv.viewModel;
+            pv.viewModel.aktualizuj();
             pv.Usun();
+            pv.NarysujPlan();
+        }
+        public static void Aktualizuj1()
+        {
+            pv.Usun();
+            pv.viewModel.aktualizuj();
             pv.NarysujPlan();
         }
         /// <summary>
