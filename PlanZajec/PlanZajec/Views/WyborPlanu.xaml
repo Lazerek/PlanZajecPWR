@@ -6,16 +6,30 @@
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <ItemsControl ItemsSource="{Binding Pola}" Grid.Column="1" Grid.Row="1">
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <UniformGrid Rows="{Binding Size}" Columns="{Binding Size}"/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+        <Label Content="Wybierz plan:" Grid.Row="0" VerticalAlignment="Center"/>
+
+        <ItemsControl ItemsSource="{Binding Plany}" Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button x:Name="PlanButton" BorderThickness="0"  Background="Transparent"  
+                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" MouseEnter="ButtonPlanMouseEnter" Click="WywierzPlan" >
+                        <Button.Content>
+                            <local:KafelPlanu MinWidth="200" MinHeight="200" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave"/>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
 </UserControl>

@@ -11,16 +11,16 @@ using Wpf;
 
 namespace PlanZajec.ViewModels
 {
-    class PlanViewModel:ViewModel
+    public class PlanViewModel:ViewModel
     {
         public List<GrupyZajeciowe> ListaGrupZajeciowych { get; private set; }
         public List<GrupaZajeciowaTemplate> Kafelki { get; private set; }
-        public PlanViewModel()
+        public PlanViewModel(long id)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Kafelki=new List<GrupaZajeciowaTemplate>();
-                ListaGrupZajeciowych = uw.Plany.Get(1).GrupyZajeciowe.ToList();
+                ListaGrupZajeciowych = uw.Plany.Get(id).GrupyZajeciowe.ToList();
                 foreach(GrupyZajeciowe gr in ListaGrupZajeciowych)
                 {
                     var temp = new GrupaZajeciowaTemplate(gr.KodGrupy);

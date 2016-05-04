@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CommonInformations\ActChosenPlanSingleton.cs" />
+    <Compile Include="CommonInformations\ObslugaWidokuWieluPlanów.cs" />
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\GrupaTamplateViewModel.cs" />
     <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\WyborPlanuViewModel.cs" />
     <Compile Include="Views\Converters\OcenaConventer.cs" />
     <Compile Include="Views\Converters\ZajetoscToColorConterter.cs" />
     <Compile Include="Views\Converters\TypZajecToColorConterter.cs" />
@@ -103,6 +105,9 @@
     </Compile>
     <Compile Include="Views\KafelekGrup.xaml.cs">
       <DependentUpon>KafelekGrup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KafelPlanu.xaml.cs">
+      <DependentUpon>KafelPlanu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PanelGlowny.xaml.cs">
       <DependentUpon>PanelGlowny.xaml</DependentUpon>
@@ -178,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\KafelekGrup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KafelPlanu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

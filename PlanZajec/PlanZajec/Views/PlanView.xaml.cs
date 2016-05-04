@@ -11,10 +11,10 @@ namespace PlanZajec.Views
         private static PlanView pv;
         private PlanViewModel viewModel;
 
-        public PlanView()
+        public PlanView(PlanViewModel plan)
         {
             InitializeComponent();
-            viewModel = new PlanViewModel();
+            viewModel = plan;
             DataContext = viewModel;
             NarysujPlan();
             pv = this;
@@ -91,7 +91,7 @@ namespace PlanZajec.Views
 
         public static void Aktualizuj()
         {
-            pv.viewModel = new PlanViewModel();
+            pv.viewModel = new PlanViewModel(777777777777777L);
             pv.DataContext = pv.viewModel;
             pv.Usun();
             pv.NarysujPlan();
