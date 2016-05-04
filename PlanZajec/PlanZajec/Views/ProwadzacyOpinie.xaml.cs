@@ -38,6 +38,7 @@ namespace PlanZajec
                 i++;
             }
             int rowIndex = comboBox.SelectedIndex;
+            comboBox.SelectedIndex = 0;
         }
 
         private void Zapisz(object sender, RoutedEventArgs e)
