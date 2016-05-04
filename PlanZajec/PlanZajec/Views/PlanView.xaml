@@ -116,7 +116,7 @@
                 </Grid>
             </Grid>
             
-            <Grid Name="TabelaGrup" Row="1" Column="1" VerticalAlignment="Stretch"  >
+            <Grid Name="TabelaGrup" Row="1" Column="1" VerticalAlignment="Stretch"  SizeChanged="TabelaGrup_OnSizeChanged" Background="White">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -149,9 +149,6 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid.Background>
-                    <ImageBrush ImageSource="Images/grid_v3.png"/>
-                </Grid.Background>
             </Grid>
             
         </Grid>

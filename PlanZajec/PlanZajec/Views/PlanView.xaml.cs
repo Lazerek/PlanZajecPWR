@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
@@ -91,6 +94,66 @@ namespace PlanZajec.Views
             pv.DataContext = pv.viewModel;
             pv.Usun();
             pv.NarysujPlan();
+        }
+        /// <summary>
+        /// TabelaGrup resize handler
+        /// </summary>
+        /// <param name="sender">In this function sender == TabelaGrup</param>
+        /// <param name="e">New sizes</param>
+        private void TabelaGrup_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var sizeOfTile = new Size(e.NewSize.Width / 7, e.NewSize.Height / 7);
+            TabelaGrup.Background = CreateGridBrush(new Rect(0, 0, e.NewSize.Width, e.NewSize.Height), sizeOfTile);
+        }
+        /// <summary>
+        /// Static function that returns painted grid
+        /// Basic Template from http://stackoverflow.com/questions/6434284/how-to-draw-gridline-on-wpf-canvas, posted by Jeff Mercado
+        /// </summary>
+        /// <param name="bounds">Specify starting position and length(startingX,startingY,availableWidth,availableHeight)</param>
+        /// <param name="tileSize">Size of one tile</param>
+        /// <returns></returns>
+        static Brush CreateGridBrush(Rect bounds, Size tileSize)
+        {
+            var gridColor = Brushes.Black;
+            var gridThickness = 1.0;
+            var tileRect = new Rect(tileSize);
+
+            var gridTile = new DrawingBrush
+            {
+                Stretch = Stretch.None,
+                TileMode = TileMode.Tile,
+                Viewport = tileRect,
+                ViewportUnits = BrushMappingMode.Absolute,
+                Drawing = new GeometryDrawing
+                {
+                    Pen = new Pen(gridColor, gridThickness),
+                    Geometry = new GeometryGroup
+                    {
+                        Children = new GeometryCollection
+                {
+                    new LineGeometry(tileRect.TopLeft, tileRect.TopRight),
+                    new LineGeometry(tileRect.BottomLeft, tileRect.BottomRight),
+                    new LineGeometry(tileRect.TopLeft, tileRect.BottomLeft),
+                    new LineGeometry(tileRect.TopRight, tileRect.BottomRight)
+                }
+                    }
+                }
+            };
+
+            var offsetGrid = new DrawingBrush
+            {
+                Stretch = Stretch.None,
+                AlignmentX = AlignmentX.Left,
+                AlignmentY = AlignmentY.Top,
+                Transform = new TranslateTransform(bounds.Left, bounds.Top),
+                Drawing = new GeometryDrawing
+                {
+                    Geometry = new RectangleGeometry(new Rect(bounds.Size)),
+                    Brush = gridTile
+                }
+            };
+
+            return offsetGrid;
         }
     }
 }
