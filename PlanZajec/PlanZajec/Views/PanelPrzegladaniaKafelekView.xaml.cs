@@ -92,7 +92,7 @@ namespace PlanZajec.Views
                
 
             }
-            PlanView.Aktualizuj();
+            PlanView.RefreshSchedule();
         }
 
         private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)
