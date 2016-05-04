@@ -173,6 +173,7 @@ namespace PlanZajec.ViewModels
                 System.Diagnostics.Debug.WriteLine(g.KodGrupy + " " + kodGrupy);
                 System.Diagnostics.Debug.WriteLine(g.KodGrupy + " " + g.KodKursu + " " + g.IdProwadzacego);
                 g.ZajeteMiejsca = lMiejsc;
+                Items.Find(s => s.KodGrupy == kodGrupy).ZajeteMiejsca = lMiejsc;
                 uw.SaveChanges();
             }
         }

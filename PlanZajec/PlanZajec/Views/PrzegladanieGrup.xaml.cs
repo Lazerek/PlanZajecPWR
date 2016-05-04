@@ -55,6 +55,7 @@ namespace Wpf
             e.Handled = regex.IsMatch(e.Text);
         }
 
+        
         void onTextboxLeave(object sender, RoutedEventArgs e)
         {
             GrupyZajeciowe gz = (GrupyZajeciowe)DgUsers.CurrentCell.Item;

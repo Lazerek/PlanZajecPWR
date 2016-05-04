@@ -9,8 +9,8 @@
         <converters:ZajetoscToColorConterter x:Key="ZajetyConv"/>
     </UserControl.Resources>
     <Grid>
-        <DataGrid Name="DgUsers" Width="Auto" MinWidth ="500" Height="Auto" MinHeight="400" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" IsReadOnly ="True" ScrollViewer.HorizontalScrollBarVisibility="Visible"  ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}" >
-            <DataGrid.Columns  >
+        <DataGrid Name="DgUsers" Width="Auto" MinWidth ="500" Height="Auto" MinHeight="400" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" IsReadOnly ="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}" >
+            <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="KodGrupy" Binding="{Binding KodGrupy}" />
                 <!--<DataGridTextColumn Width="*" Header="Skrót" Binding="{Binding Kursy.SkrotKursu}" />-->
                 <DataGridTextColumn Width="*" Header="NazwaKursu" Binding="{Binding Kursy.NazwaKursu}" />
