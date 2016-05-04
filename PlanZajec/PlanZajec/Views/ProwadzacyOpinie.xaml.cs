@@ -42,14 +42,29 @@ namespace PlanZajec
 
         private void Zapisz(object sender, RoutedEventArgs e)
         {
+            Boolean changeText = false;
             int rowIndex = comboBox.SelectedIndex;
-            ViewModel.ZapiszOpinie(comboBox.SelectedIndex + "", tab[rowIndex], textBox.Text, Ocena.Text);
-            System.Diagnostics.Debug.WriteLine(rowIndex);
+            changeText = ViewModel.ZapiszOpinie(comboBox.SelectedIndex + "", tab[rowIndex], textBox.Text, Ocena.Text);
+            System.Diagnostics.Debug.WriteLine(Ocena.Text);
+            Ocena.Text.Replace('.', ',');
+            System.Diagnostics.Debug.WriteLine(Ocena.Text);
+            if (changeText)
+            {
+                OcenaLabel.Content = "Niedozwolona ocena!";
+                OcenaLabel.Foreground = new SolidColorBrush(Colors.Red);
+            }else
+            {
+                OcenaLabel.Content = "Zapisano!";
+                OcenaLabel.Foreground = new SolidColorBrush(Color.FromRgb(0,0,0));
+            }
+            
         }
 
         private void onChange(object sender, RoutedEventArgs e)
         {
-           string[] wynik= ViewModel.dajOpinie(comboBox.SelectedValue+"");
+            OcenaLabel.Content = "Wpisz ocenę od 2,0 do 5,5";
+            OcenaLabel.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            string[] wynik= ViewModel.dajOpinie(comboBox.SelectedValue+"");
            textBox.Text = wynik[0];
            Ocena.Text = wynik[1];
         }
