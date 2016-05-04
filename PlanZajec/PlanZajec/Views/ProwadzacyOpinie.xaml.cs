@@ -44,10 +44,9 @@ namespace PlanZajec
         {
             Boolean changeText = false;
             int rowIndex = comboBox.SelectedIndex;
-            changeText = ViewModel.ZapiszOpinie(comboBox.SelectedIndex + "", tab[rowIndex], textBox.Text, Ocena.Text);
-            System.Diagnostics.Debug.WriteLine(Ocena.Text);
-            Ocena.Text.Replace('.', ',');
-            System.Diagnostics.Debug.WriteLine(Ocena.Text);
+            String ocena = Ocena.Text;
+            ocena = ocena.Replace('.', ',');
+            changeText = ViewModel.ZapiszOpinie(comboBox.SelectedIndex + "", tab[rowIndex], textBox.Text, ocena);
             if (changeText)
             {
                 OcenaLabel.Content = "Niedozwolona ocena!";
@@ -57,9 +56,7 @@ namespace PlanZajec
                 OcenaLabel.Content = "Zapisano!";
                 OcenaLabel.Foreground = new SolidColorBrush(Color.FromRgb(0,0,0));
             }
-            
         }
-
         private void onChange(object sender, RoutedEventArgs e)
         {
             OcenaLabel.Content = "Wpisz ocenę od 2,0 do 5,5";
