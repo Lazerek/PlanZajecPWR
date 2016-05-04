@@ -37,14 +37,17 @@ namespace Wpf
         void onCheckBoxClick(object sender, RoutedEventArgs e)
         {
             GrupyZajeciowe gz = (GrupyZajeciowe)DgUsers.CurrentCell.Item;
-            if (gz.ZajeteMiejsca < gz.Miejsca){
-                gz.ZajeteMiejsca = gz.Miejsca;
-                viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, (long)gz.Miejsca);
-            }else{
-                gz.ZajeteMiejsca = gz.Miejsca - 1;
-                viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, (long)gz.Miejsca - 1);
+            CheckBox c = (CheckBox)sender;
+            if (!c.IsChecked.Value)
+            {
+                gz.ZajeteMiejsca = gz.Miejsca.Value;
+                viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, gz.Miejsca.Value);
+                DgUsers.Items.Refresh();
             }
-            DgUsers.Items.Refresh();
+            else
+            {
+                c.IsChecked = false;
+            }
         }
         void checkText(object sender, TextCompositionEventArgs e)
         {
@@ -57,10 +60,26 @@ namespace Wpf
             GrupyZajeciowe gz = (GrupyZajeciowe)DgUsers.CurrentCell.Item;
             long l = 0;
             tbox = (TextBox)sender;
-            if (long.TryParse(tbox.Text, out l))
+            if(tbox.Text.Length != 0)
             {
-                gz.ZajeteMiejsca = l;
-                viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, l);
+                if (long.TryParse(tbox.Text, out l))
+                {
+                    if(l > -1 && l < gz.Miejsca)
+                    {
+                        gz.ZajeteMiejsca = l;
+                        viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, l);
+                    }
+                    else
+                    {
+                        gz.ZajeteMiejsca = gz.Miejsca;
+                        viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, (long)gz.Miejsca);
+                    }
+                }
+            }
+            else
+            {
+                gz.ZajeteMiejsca = 0;
+                viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, 0);
             }
         }
     }
