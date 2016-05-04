@@ -102,7 +102,7 @@ namespace PlanZajec.Views
             {
                 unitOfWork.Plany.UsunGrupeZajeciowaZPlanu(grupaToAddOrDeleteFromPlan);
             }
-            PlanView.Aktualizuj1();
+            PlanView.RefreshSchedule();
         }
     }
 }
