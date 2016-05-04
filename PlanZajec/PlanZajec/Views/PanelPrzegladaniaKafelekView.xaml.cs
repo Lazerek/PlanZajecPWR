@@ -92,7 +92,7 @@ namespace PlanZajec.Views
                
 
             }
-            PlanView.Aktualizuj();
+            PlanView.RefreshSchedule();
         }
 
         private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)
@@ -102,6 +102,7 @@ namespace PlanZajec.Views
             {
                 unitOfWork.Plany.UsunGrupeZajeciowaZPlanu(grupaToAddOrDeleteFromPlan);
             }
+            PlanView.RefreshSchedule();
         }
     }
 }

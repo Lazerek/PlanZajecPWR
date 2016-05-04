@@ -36,5 +36,7 @@ namespace PlanZajec.DataModel
         {
             return Equals(obj as Plany);
         }
+        //TODO Fix warning Object.Equals(object o) but does not override Object.GetHashCode
+
     }
 }

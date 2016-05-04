@@ -62,8 +62,9 @@ namespace PlanZajec.ViewModels
             return wynik;
         }
 
-        public void ZapiszOpinie(string pr, int index, string opinia, string ocena)
+        public Boolean ZapiszOpinie(string pr, int index, string opinia, string ocena)
         {
+            Boolean returnValue = false;
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 var prow = uw.Prowadzacy.GetAll().ToList();
@@ -75,15 +76,19 @@ namespace PlanZajec.ViewModels
                         System.Diagnostics.Debug.WriteLine(p.IdProwadzacego + " " + p.Nazwisko + " " + index + " " + opinia);
                         p.Opis = opinia;
                         double ocenaDoZapisu;
-                        if(double.TryParse(ocena, out ocenaDoZapisu))
+                        ocena.Replace('.', ',');
+                        if (double.TryParse(ocena, out ocenaDoZapisu))
                         {
-                            if(ocenaDoZapisu >= 2.0f && ocenaDoZapisu <= 5.5f)
+                            if (ocenaDoZapisu >= 2.0f && ocenaDoZapisu <= 5.5f)
                                 p.Ocena = double.Parse(ocena);
+                            else
+                                returnValue = true;
                         }             
                     }
                 }
                 uw.SaveChanges();
             }
+            return returnValue;
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

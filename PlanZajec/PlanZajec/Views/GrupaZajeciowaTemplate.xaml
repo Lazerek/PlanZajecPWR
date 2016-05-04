@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" d:DesignHeight="150" d:DesignWidth="150" >
     <Border Name="Otoczka" BorderBrush="Black" BorderThickness="2">
-        <Grid Name="Kafel" Background="White" >
-
+        <Grid Name="Kafel" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -29,8 +28,8 @@
             <Grid Column="2" Row="0">
                 <TextBlock x:Name="Koniec"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto"/>
             </Grid>
-            <Grid  Row="1" ColumnSpan="3">
-                <TextBlock x:Name="Nazwa"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto"/>
+            <Grid  Row="1" Grid.Column="0" ColumnSpan="3">
+                <TextBlock x:Name="Nazwa"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto" TextTrimming="CharacterEllipsis"/>
             </Grid>
             <Grid Column="0" Row="2">
                 <TextBlock x:Name="Budynek"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"/>
