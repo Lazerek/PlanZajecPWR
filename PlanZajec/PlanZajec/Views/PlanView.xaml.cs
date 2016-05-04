@@ -102,16 +102,12 @@ namespace PlanZajec.Views
         /// </summary>
         public static void RefreshSchedule()
         {
-            _pv._planViewModel.aktualizuj();
-           _pv.Delete();
-            _pv.PaintSchedule();
-        }
-        public static void Aktualizuj1()
-        {
+           
             _pv.Delete();
             _pv._planViewModel.aktualizuj();
             _pv.PaintSchedule();
         }
+       
 
         /// <summary>
         ///     TabelaGrup resize handler
