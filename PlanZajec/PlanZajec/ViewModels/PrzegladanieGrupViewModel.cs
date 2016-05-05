@@ -54,7 +54,7 @@ namespace PlanZajec.ViewModels
                 Items.Add(gz);
             NotifyPropertyChange("Items");
         }
-        public void Filtruj2(String nazwaKursu, String potok, String kodGrupy, String kodKursu, String prowadzacy, String wolneMiejsca, Boolean lab, Boolean cwiczenia, Boolean projekt, Boolean wszystko, Boolean wyklad)
+        public void Filtruj2(String nazwaKursu, String potok, String kodGrupy, String kodKursu, String prowadzacy, String wolneMiejsca, Boolean lab, Boolean cwiczenia, Boolean projekt, Boolean wszystko, Boolean wyklad, Boolean wolne)
         {
             ItemsChanged = new List<GrupyZajeciowe>();
             String labString = "Zajęcia laboratoryjne";
@@ -64,28 +64,50 @@ namespace PlanZajec.ViewModels
             //long result=-1;
             long result;
             Int64.TryParse(wolneMiejsca, out result);
-           // System.Diagnostics.Debug.WriteLine(result);
-            if (wszystko)
-            {
-                foreach (GrupyZajeciowe gz in ItemsNoChange)
+            // System.Diagnostics.Debug.WriteLine(result);
+            if(wolne)
                 {
-                    if(result == 0)
+                if (wszystko)
+                {
+                    foreach (GrupyZajeciowe gz in ItemsNoChange)
                     {
-                        if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0))
-                            ItemsChanged.Add(gz);
+                        if (result == 0)
+                        {
+                            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0) && (gz.Miejsca - gz.ZajeteMiejsca) > 0)
+                                ItemsChanged.Add(gz);
+                        }
+                        else
+                        {
+                            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0) && result <= (gz.Miejsca - gz.ZajeteMiejsca) && (gz.Miejsca - gz.ZajeteMiejsca) > 0)
+                                ItemsChanged.Add(gz);
+                        }
                     }
-                    else
+                }
+                else
+                {
+                    foreach (GrupyZajeciowe gz in ItemsNoChange)
                     {
-                        if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0) && result <= (gz.Miejsca - gz.ZajeteMiejsca))
-                            ItemsChanged.Add(gz);
-                    }   
+                        if (lab && (gz.TypZajec.Equals(labString)) || (projekt && gz.TypZajec.Equals(projektString)) || (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)))
+                        {
+                            if (result == 0)
+                            {
+                                if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0))
+                                    ItemsChanged.Add(gz);
+                            }
+                            else
+                            {
+                                if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0) && result <= (gz.Miejsca - gz.ZajeteMiejsca))
+                                    ItemsChanged.Add(gz);
+                            }
+                        }
+                    }
                 }
             }
             else
             {
-                foreach (GrupyZajeciowe gz in ItemsNoChange)
+                if (wszystko)
                 {
-                    if (lab && (gz.TypZajec.Equals(labString)) || (projekt && gz.TypZajec.Equals(projektString)) || (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)))
+                    foreach (GrupyZajeciowe gz in ItemsNoChange)
                     {
                         if (result == 0)
                         {
@@ -99,7 +121,27 @@ namespace PlanZajec.ViewModels
                         }
                     }
                 }
+                else
+                {
+                    foreach (GrupyZajeciowe gz in ItemsNoChange)
+                    {
+                        if (lab && (gz.TypZajec.Equals(labString)) || (projekt && gz.TypZajec.Equals(projektString)) || (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)))
+                        {
+                            if (result == 0)
+                            {
+                                if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0))
+                                    ItemsChanged.Add(gz);
+                            }
+                            else
+                            {
+                                if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 && gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) && gz.KodGrupy.StartsWith(kodGrupy, StringComparison.OrdinalIgnoreCase) && gz.KodKursu.StartsWith(kodKursu, StringComparison.OrdinalIgnoreCase) && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0) && result <= (gz.Miejsca - gz.ZajeteMiejsca))
+                                    ItemsChanged.Add(gz);
+                            }
+                        }
+                    }
+                }
             }
+           
             Items.Clear();
             Items = new List<GrupyZajeciowe>();
             foreach (GrupyZajeciowe gz in ItemsChanged)

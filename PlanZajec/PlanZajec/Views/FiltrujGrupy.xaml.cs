@@ -44,7 +44,7 @@ namespace PlanZajec.Views
 
         private void filtruj_Click(object sender, RoutedEventArgs e)
         {
-            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false;
+            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
             if (cb_cw.IsChecked == true)
                 cwiczenia = true;
             if (cb_lab.IsChecked == true)
@@ -55,7 +55,9 @@ namespace PlanZajec.Views
                 wyklad = true;
             if (cb_wsz.IsChecked == true)
                 wszystko = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad);
+            if (cb_wolne.IsChecked == true)
+                wolne = true;
+            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
         }
 
         private void filtrujEnter(object sender, KeyEventArgs e)
@@ -73,7 +75,7 @@ namespace PlanZajec.Views
         }
         private void wlaczFiltr()
         {
-            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false;
+            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
             if (cb_cw.IsChecked == true)
                 cwiczenia = true;
             if (cb_lab.IsChecked == true)
@@ -84,7 +86,9 @@ namespace PlanZajec.Views
                 wyklad = true;
             if (cb_wsz.IsChecked == true)
                 wszystko = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad);
+            if (cb_wolne.IsChecked == true)
+                wolne = true;
+            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
         }
         private void check(object sender, RoutedEventArgs e)
         {
@@ -93,6 +97,10 @@ namespace PlanZajec.Views
         private void uncheck(object sender, RoutedEventArgs e)
         {
             cb_wsz.IsChecked = false;
+            wlaczFiltr();
+        }
+        private void pokazTylkoWolne(object sender, RoutedEventArgs e)
+        {
             wlaczFiltr();
         }
 
