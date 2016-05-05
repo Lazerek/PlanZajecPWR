@@ -55,7 +55,7 @@ namespace PlanZajec.Views
                 wyklad = true;
             if (cb_wsz.IsChecked == true)
                 wszystko = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, lab, cwiczenia, projekt, wszystko, wyklad);
+            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad);
         }
 
         private void filtrujEnter(object sender, KeyEventArgs e)
@@ -84,10 +84,15 @@ namespace PlanZajec.Views
                 wyklad = true;
             if (cb_wsz.IsChecked == true)
                 wszystko = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, lab, cwiczenia, projekt, wszystko, wyklad);
+            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad);
         }
         private void check(object sender, RoutedEventArgs e)
         {
+            wlaczFiltr();
+        }
+        private void uncheck(object sender, RoutedEventArgs e)
+        {
+            cb_wsz.IsChecked = false;
             wlaczFiltr();
         }
 
@@ -103,6 +108,7 @@ namespace PlanZajec.Views
             nazwaKK.Text = "";
             nazwaP.Text = "";
             nazwaPot.Text = "";
+            wolneMiejsca.Text = "";
             PrzegladanieGrupViewModel.temp.czyscFiltrownie();
         }
     }
