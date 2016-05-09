@@ -10,13 +10,11 @@ namespace PlanZajec.DataAccessLayer.IRepositories
     public interface IPlanyRepository : IRepository<Plany, long>
     {
         bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa);
+        bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, long idPlanu);
 
         bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa);
+        bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa, long idPlanu);
 
-        //bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, Plany plan);
-        //bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa, Plany plan);
-
-        
         int Count();
 
         Plany GetFirstOrDefault();
