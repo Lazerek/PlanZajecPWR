@@ -63,7 +63,7 @@ namespace PlanZajec.Views
 
             //var last = _tabItems.Max(t=>t.Name.Replace())
             int count = _tabItems.Count;
-
+            
             // create new tab item
             TabItem tab = new TabItem
             {
@@ -71,11 +71,8 @@ namespace PlanZajec.Views
                 Name = $"Plan{tabsId++}",
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
-
-            PlanViewModel planVM = ObslugaWidokuWieluPlanów.Instance.getPlanViewModel(ActChosenPlanSingleton.Instance.IdPlanu);
-            PlanView pl =  new PlanView(planVM);
-            //WyborPlanu pl = new WyborPlanu() { DataContext = new WyborPlanuViewModel() };
-            tab.Content = count == 1 ? (object)new PlanView(planVM) : PrepareChosenigPlan();
+            
+            tab.Content = PrepareChosenigPlan();
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);
@@ -85,19 +82,48 @@ namespace PlanZajec.Views
         private object PrepareChosenigPlan()
         {
             WyborPlanu res = new WyborPlanu() { DataContext = WyborPlanuViewModel.Instance };
-            res.ChosenPlanToShowEventHandler += PrzygotujPlanDoWyswietlania;
+            res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
             res.ChosenPlanToDeleteEventHandler += UsunPlan;
+            res.AddToPlan += AddPlan;
+
             return res;
         }
 
+        private void AddPlan(string Title)
+        {
+            Plany plan;
+            using (UnitOfWork unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                plan = new Plany() { NazwaPlanu = Title};
+                unit.Plany.Add(plan);
+                unit.SaveChanges();
+            }
+            WyborPlanuViewModel.Instance.DodajPlan(plan);
+        }
 
-        private void PrzygotujPlanDoWyswietlania(Plany plan)
+
+        private void WybierzPlanDoWyswietlania(Plany plan)
         {
             //Podmiana aktualnego taba na wyswietlanie planu
             //TODO Greg - obsluz zmianę widoku
-            PlanViewModel planVM = ObslugaWidokuWieluPlanów.Instance.getPlanViewModel(plan.IdPlanu);
 
-            TabItem tabItem = new TabItem() { Content = new PlanView(planVM) ,
+            ActChosenPlanSingleton.Instance.SetPlan(plan.IdPlanu);
+            for (int i = 0; i < _tabItems.Count; i++)
+            {
+                PlanView view = _tabItems[i].Content as PlanView;
+                if(view != null)
+                {
+                    PlanViewModel viewModel = view.DataContext as PlanViewModel;
+                    if(viewModel != null && viewModel.IdPlanu == plan.IdPlanu)
+                    {
+                        LewyTabControl.SelectedItem = _tabItems[i];
+                        return;
+                    }
+                }
+            }
+            PlanView planView = ObslugaWidokuWieluPlanów.Instance.getPlanView(plan.IdPlanu);
+
+            TabItem tabItem = new TabItem() { Content = planView,
                 Header = $"Plan {plan.NazwaPlanu}",
                 Name = $"Plan{tabsId++}",
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
@@ -149,7 +175,17 @@ namespace PlanZajec.Views
                         selectedTab = _tabItems[0];
                     }
                     LewyTabControl.SelectedItem = selectedTab;
-                    
+                    UpdateActualChoseningPlan(selectedTab);
+
+
+                    if(selectedTab.Content is PlanView)
+                    {
+                        PlanViewModel vm = (selectedTab.Content as PlanView).DataContext as PlanViewModel;
+                        if(vm != null)
+                        {
+                            ObslugaWidokuWieluPlanów.Instance.deletePlanView(vm.IdPlanu);
+                        }                      
+                    }
                 }
             }
         }
@@ -157,6 +193,7 @@ namespace PlanZajec.Views
         private void LewyTabControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabItem tab = LewyTabControl.SelectedItem as TabItem;
+
 
             //exit if tab or header is null
             if (tab?.Header == null) return;
@@ -177,8 +214,30 @@ namespace PlanZajec.Views
             }
             else
             {
-                
+
             }
+            UpdateActualChoseningPlan(LewyTabControl.SelectedItem as TabItem);
         }
+
+        private void UpdateActualChoseningPlan(TabItem tab)
+        {
+            bool result = false;
+            if(tab.Content != null && tab.Content is PlanView)
+            {
+                PlanView view = tab.Content as PlanView;
+                if(view.DataContext is PlanViewModel)
+                {
+                    PlanViewModel vm = view.DataContext as PlanViewModel;
+                    ActChosenPlanSingleton.Instance.SetPlan(vm.IdPlanu);
+                    result = true;
+                }
+            }
+            if (!result)
+            {
+                ActChosenPlanSingleton.Instance.SetPlan(-1);
+            }
+            
+        }
+
     }
 }

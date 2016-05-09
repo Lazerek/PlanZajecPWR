@@ -7,7 +7,7 @@ using PlanZajec.DataModel;
 
 namespace PlanZajec.DataAccessLayer.IRepositories
 {
-    public interface IBlokRepository : IRepository<Blok>
+    public interface IBlokRepository : IRepository<Blok, string>
     {
     }
 }

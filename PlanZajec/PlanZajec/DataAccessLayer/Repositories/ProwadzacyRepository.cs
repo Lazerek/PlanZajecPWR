@@ -8,7 +8,7 @@ using PlanZajec.DataAccessLayer.IRepositories;
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
-    public class ProwadzacyRepository : Repository<Prowadzacy>, IProwadzacyRepository
+    public class ProwadzacyRepository : Repository<Prowadzacy, long>, IProwadzacyRepository
     {
         public ProwadzacyRepository(PlanPwrContext context) : base(context)
         {

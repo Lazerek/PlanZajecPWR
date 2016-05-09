@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity, Tkey> : IRepository<TEntity, Tkey> where TEntity : class
     {
         protected readonly DbContext Context;
 
@@ -17,7 +17,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
             Context = context;
         }
 
-        public virtual TEntity Get(long id)
+        public virtual TEntity Get(Tkey id)
         {
             return Context.Set<TEntity>().Find(id);
         }

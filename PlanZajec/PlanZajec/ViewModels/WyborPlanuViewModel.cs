@@ -36,5 +36,10 @@ namespace PlanZajec.ViewModels
             Plany.RemoveAt(indexToDelete);
         }
 
+        public void DodajPlan(Plany plan)
+        {
+            Plany.Add(plan);
+        }
+
     }
 }

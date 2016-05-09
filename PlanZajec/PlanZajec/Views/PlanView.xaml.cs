@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using PlanZajec.ViewModels;
+using PlanZajec.CommonInformations;
 
 namespace PlanZajec.Views
 {
@@ -11,7 +12,6 @@ namespace PlanZajec.Views
     public partial class PlanView : UserControl
     {
 
-        private static PlanView _pv;
         private PlanViewModel _planViewModel;
 
         public PlanView(PlanViewModel plan)
@@ -20,7 +20,6 @@ namespace PlanZajec.Views
             _planViewModel = plan;
             DataContext = _planViewModel;
             PaintSchedule();
-            _pv = this;
         }
 
         /// <summary>
@@ -102,10 +101,11 @@ namespace PlanZajec.Views
         /// </summary>
         public static void RefreshSchedule()
         {
-           
-            _pv.Delete();
-            _pv._planViewModel.aktualizuj();
-            _pv.PaintSchedule();
+            PlanView view = ObslugaWidokuWieluPlanów.Instance.getPlanView(ActChosenPlanSingleton.Instance.IdPlanu);
+
+            view.Delete();
+            view._planViewModel.aktualizuj();
+            view.PaintSchedule();
         }
        
 

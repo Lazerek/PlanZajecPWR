@@ -8,7 +8,7 @@ using PlanZajec.DataAccessLayer.IRepositories;
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
-    public class BlokRepository : Repository<Blok>, IBlokRepository
+    public class BlokRepository : Repository<Blok, string>, IBlokRepository
     {
         public BlokRepository(PlanPwrContext context) : base(context)
         {

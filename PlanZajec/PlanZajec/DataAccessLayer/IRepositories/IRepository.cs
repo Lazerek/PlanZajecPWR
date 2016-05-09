@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 
 namespace PlanZajec.DataAccessLayer.IRepositories
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity, Tkey> where TEntity : class
     {
-        TEntity Get(long id);
+        TEntity Get(Tkey id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
