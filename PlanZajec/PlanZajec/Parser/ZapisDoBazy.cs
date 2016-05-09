@@ -8,6 +8,7 @@ using PlanZajec.DataModel;
 using System.Data.SqlClient;
 using Microsoft.Win32;
 using System.IO;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Parser
 {
@@ -224,9 +225,9 @@ namespace PlanZajec.Parser
                 using (StreamReader sw = new StreamReader(sf.FileName))
                 {
                     Plany plan = new Plany() { NazwaPlanu = "Nowy" };
+                    WyborPlanuViewModel.Instance.DodajPlan(plan);
                     uw.Plany.Add(plan);
                     uw.SaveChanges();
-
                     string line;
                     string[] dane;
                     while ((line = sw.ReadLine()) != null)

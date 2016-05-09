@@ -139,7 +139,9 @@ namespace Wpf
 
         public void ReloadWindowComponents()
         {
+            PGlowny.Children.RemoveAt(0);
             PGlowny.Children.Add(new PanelGlowny());
+            PFiltrow.Children.RemoveAt(0);
             PFiltrow.Children.Add(new PanelFiltrow(this));
         }
     }
