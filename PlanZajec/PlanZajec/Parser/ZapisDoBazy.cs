@@ -211,7 +211,10 @@ namespace PlanZajec.Parser
             {
                 using (StreamReader sw = new StreamReader(sf.FileName))
                 {
-                    Plany nowy = new Plany();
+                    Plany plan = new Plany() { NazwaPlanu = "Nowy" };
+                    uw.Plany.Add(plan);
+                    uw.SaveChanges();
+
                     string line;
                     string[] dane;
                     while ((line = sw.ReadLine()) != null)
@@ -227,10 +230,14 @@ namespace PlanZajec.Parser
 
                         bool jest = false;
                         var yolo = uw.GrupyZajeciowe.GetAll();
+                        GrupyZajeciowe gr=null;
                         for (int i = 0; i < yolo.Count(); i++)
                         {
                             if (yolo.ElementAt(i).KodGrupy.Equals(dane[0]))
+                            {
                                 jest = true;
+                                gr = yolo.ElementAt(i);
+                            }
                         }
 
 
@@ -238,7 +245,7 @@ namespace PlanZajec.Parser
                         if (jest == false)
                         {
 
-                            var nowa =(new GrupyZajeciowe()
+                            gr =(new GrupyZajeciowe()
                             {
                                 KodGrupy = dane[0],
                                 TypZajec = dane[1],
@@ -256,13 +263,14 @@ namespace PlanZajec.Parser
                                 Kursy = kr,
                                 Prowadzacy = pro
                             });
-                            uw.GrupyZajeciowe.Add(nowa);
-                            uw.SaveChanges();
-                            uw.Plany.DodajGrupeZajeciowaDoPlanu(nowa);
+                            
 
-
-                            uw.SaveChanges();
+                           
                         }
+                        uw.GrupyZajeciowe.Add(gr);
+
+                        uw.Plany.DodajGrupeZajeciowaDoPlanu(gr, plan.IdPlanu);
+                        uw.SaveChanges();
 
 
                     }
