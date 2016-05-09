@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,7 +14,7 @@ namespace PlanZajec.ViewModels
 
     public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
     {
-        public List<GrupyZajeciowe> Items { get; set; }
+        public ObservableCollection<GrupyZajeciowe> Items { get; set; }
         public List<GrupyZajeciowe> ItemsNoChange { get; set; }
         public static PrzegladanieGrupViewModel przegladanieGrupViewModel;
 
@@ -26,14 +27,23 @@ namespace PlanZajec.ViewModels
             temp = this;
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-                Items = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
+                Items = new ObservableCollection<GrupyZajeciowe>(uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList());
+                ItemsNoChange = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
+            }
+        }
+
+        public void reloadData()
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                Items = new ObservableCollection<GrupyZajeciowe>(uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList());
                 ItemsNoChange = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
             }
         }
         public void czyscFiltrownie()
         {
             Items.Clear();
-            Items = new List<GrupyZajeciowe>();
+            Items = new ObservableCollection<GrupyZajeciowe>();
             foreach(GrupyZajeciowe gz in ItemsNoChange)
             {
                 Items.Add(gz);
@@ -49,7 +59,7 @@ namespace PlanZajec.ViewModels
                     ItemsChanged.Add(gz);
             }
             Items.Clear();
-            Items = new List<GrupyZajeciowe>();
+            Items = new ObservableCollection<GrupyZajeciowe>();
             foreach (GrupyZajeciowe gz in ItemsChanged)
                 Items.Add(gz);
             NotifyPropertyChange("Items");
@@ -81,7 +91,7 @@ namespace PlanZajec.ViewModels
                 }
             }
             Items.Clear();
-            Items = new List<GrupyZajeciowe>();
+            Items = new ObservableCollection<GrupyZajeciowe>();
             foreach (GrupyZajeciowe gz in ItemsChanged)
                 Items.Add(gz);
             ItemsChanged.Clear();
@@ -157,7 +167,7 @@ namespace PlanZajec.ViewModels
                 }
             }
             Items.Clear();
-            Items = new List<GrupyZajeciowe>();
+            Items = new ObservableCollection<GrupyZajeciowe>();
             foreach (GrupyZajeciowe gz in ItemsChanged)
                 Items.Add(gz);
             ItemsChanged.Clear();
@@ -173,7 +183,10 @@ namespace PlanZajec.ViewModels
                 System.Diagnostics.Debug.WriteLine(g.KodGrupy + " " + kodGrupy);
                 System.Diagnostics.Debug.WriteLine(g.KodGrupy + " " + g.KodKursu + " " + g.IdProwadzacego);
                 g.ZajeteMiejsca = lMiejsc;
-                Items.Find(s => s.KodGrupy == kodGrupy).ZajeteMiejsca = lMiejsc;
+                var firstOrDefault = Items.FirstOrDefault(s => s.KodGrupy == kodGrupy);
+                if (firstOrDefault != null)
+                    firstOrDefault.ZajeteMiejsca = lMiejsc;
+                //Items.Find(s => s.KodGrupy == kodGrupy).ZajeteMiejsca = lMiejsc;
                 uw.SaveChanges();
             }
         }

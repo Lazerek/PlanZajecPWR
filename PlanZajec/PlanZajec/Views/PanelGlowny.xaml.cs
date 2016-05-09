@@ -23,28 +23,32 @@ namespace PlanZajec.Views
     public partial class PanelGlowny : UserControl
     {
 
-        private List<TabItem> _tabItems;
+        private readonly List<TabItem> _tabItems;
         //tab that make adding possible
-        private TabItem _tabAdd;
+        private readonly TabItem _tabAdd;
+        private TabItem _przegladanieGrupTab;
+        private PrzegladanieGrup _pg;
 
         public PanelGlowny()
         {
             InitializeComponent();
             _tabItems = new List<TabItem>();
             //add tab
-            _tabAdd = new TabItem();
-            _tabAdd.Header = "+";
-            _tabAdd.Name = "AddSchedule";
+            _tabAdd = new TabItem
+            {
+                Header = "+",
+                Name = "AddSchedule"
+            };
             _tabItems.Add(_tabAdd);
             //
-            TabItem tab = new TabItem();
-            tab.Header = "Przeglądanie grup";
+            _przegladanieGrupTab = new TabItem {Header = "Przeglądanie grup"};
             //tab.HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate;
             PrzegladanieGrup pg = new PrzegladanieGrup();
-            tab.Content = pg;
+            _pg = pg;
+            _przegladanieGrupTab.Content = pg;
             //-end add item
             //add new plan
-            _tabItems.Insert(0, tab);
+            _tabItems.Insert(0, _przegladanieGrupTab);
             AddScheduleTabItem();
             LewyTabControl.DataContext = _tabItems;
             LewyTabControl.SelectedIndex = 0;
@@ -135,6 +139,11 @@ namespace PlanZajec.Views
             {
                 
             }
+        }
+
+        public void RefreshAfterParse()
+        {
+            _pg.Refresh();
         }
     }
 }
