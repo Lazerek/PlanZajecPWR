@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
-    public class PlanyRepository : Repository<Plany>, IPlanyRepository
+    public class PlanyRepository : Repository<Plany, long>, IPlanyRepository
     {
         public PlanyRepository(PlanPwrContext context) : base(context)
         {
@@ -34,6 +34,8 @@ namespace PlanZajec.DataAccessLayer.Repositories
 
         public bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa, long idPlanu)
         {
+            if (idPlanu < 0)
+                return false;
             if(!PlanPwrContext.Set<GrupyZajeciowe>().Local.Any(e => e.KodGrupy == grupa.KodGrupy))
             {
                 PlanPwrContext.GrupyZajeciowe.Attach(grupa);

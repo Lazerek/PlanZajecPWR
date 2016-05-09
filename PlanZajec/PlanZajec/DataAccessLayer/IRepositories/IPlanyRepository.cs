@@ -7,7 +7,7 @@ using PlanZajec.DataModel;
 
 namespace PlanZajec.DataAccessLayer.IRepositories
 {
-    public interface IPlanyRepository : IRepository<Plany>
+    public interface IPlanyRepository : IRepository<Plany, long>
     {
         bool DodajGrupeZajeciowaDoPlanu(GrupyZajeciowe grupa);
 

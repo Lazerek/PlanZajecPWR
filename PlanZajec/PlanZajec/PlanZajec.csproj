@@ -91,6 +91,9 @@
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\WyborPlanuViewModel.cs" />
+    <Compile Include="Views\AddPlanWindow.xaml.cs">
+      <DependentUpon>AddPlanWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Converters\OcenaConventer.cs" />
     <Compile Include="Views\Converters\ZajetoscToColorConterter.cs" />
     <Compile Include="Views\Converters\TypZajecToColorConterter.cs" />
@@ -170,6 +173,10 @@
     <Compile Include="Views\WyborPlanu.xaml.cs">
       <DependentUpon>WyborPlanu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddPlanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EdycjaLiczbyMiejsc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

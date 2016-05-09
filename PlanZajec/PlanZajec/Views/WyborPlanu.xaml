@@ -9,12 +9,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Content="Wybierz plan:" Grid.Row="0" VerticalAlignment="Center"/>
 
-        <ItemsControl ItemsSource="{Binding Plany}" Grid.Row="1">
+        <Button Content="Dodaj nowy Plan" Click="DodajPlan" Grid.Row="0" HorizontalAlignment="Right"/>
+        <Label Content="Wybierz plan:" Grid.Row="1" VerticalAlignment="Center"/>
+
+        <ItemsControl ItemsSource="{Binding Plany}" Grid.Row="2">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PlanZajec.ViewModels
 {
-    class GrupaTamplateViewModel
+    public class GrupaTamplateViewModel
     {
         public GrupyZajeciowe GrupZaj
         {
@@ -20,15 +20,9 @@ namespace PlanZajec.ViewModels
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-               var ListaGrupZajeciowych = uw.Plany.Get(1).GrupyZajeciowe.ToList();
-               foreach(GrupyZajeciowe gr in ListaGrupZajeciowych)
-                {
-                    if (gr.KodGrupy.Equals(Kod))
-                    {
-                        GrupZaj = gr;
-                        nazwa = gr.Kursy.NazwaKursu;
-                    }
-                }
+               var grupa = uw.GrupyZajeciowe.Get(Kod);
+               GrupZaj = grupa;
+               nazwa = grupa.Kursy.NazwaKursu;
                 //ListaGrupZajeciowych[0];
             }
         }

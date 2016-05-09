@@ -11,7 +11,7 @@ using System.Data.Entity; //Ważne!
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
-    public class GrupyZajecioweRepository : Repository<GrupyZajeciowe>, IGrupyZajecioweRepository
+    public class GrupyZajecioweRepository : Repository<GrupyZajeciowe, string>, IGrupyZajecioweRepository
     {
         public GrupyZajecioweRepository(PlanPwrContext context) : base(context)
         {
@@ -22,12 +22,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
             get { return Context as PlanPwrContext; }
         }
 
-        public override GrupyZajeciowe Get(long id)
-        {
-            return null;
-        }
-
-        public GrupyZajeciowe Get(string kodGrupy)
+        public override GrupyZajeciowe Get(string kodGrupy)
         {
             return PlanPwrContext.GrupyZajeciowe.FirstOrDefault(g => g.KodGrupy.Equals(kodGrupy));
         }
@@ -46,8 +41,6 @@ namespace PlanZajec.DataAccessLayer.Repositories
             return grupa.Plany.Any(pl => pl.IdPlanu == idPlanu);
 
         }
-
-
 
 
 

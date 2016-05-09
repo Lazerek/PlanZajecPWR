@@ -56,6 +56,10 @@ namespace PlanZajec.Views
         {
             System.Diagnostics.Debug.WriteLine("@@@Greg|->GetContextMenu)");
             ContextMenu theMenu = new ContextMenu();
+            if(ActChosenPlanSingleton.Instance.IdPlanu < 0)
+            {
+                return theMenu;
+            }
             MenuItem menuAddOrRemovFromPlan = new MenuItem();
 
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))

@@ -7,7 +7,7 @@ using PlanZajec.DataModel;
 
 namespace PlanZajec.DataAccessLayer.IRepositories
 {
-    public interface IKursyRepository : IRepository<Kursy>
+    public interface IKursyRepository : IRepository<Kursy, string>
     {
     }
 }

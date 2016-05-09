@@ -1,0 +1,20 @@
+﻿<Window x:Class="PlanZajec.Views.AddPlanWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlanZajec.Views"
+        mc:Ignorable="d"
+        Title="Dodaj nowy plan" Height="200" Width="200">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Wybierz tytuł planu:" FontStyle="Italic" FontWeight="Black" FontSize="16" Grid.Row="0" />
+        <TextBox Text="{Binding PlanTitle}" Grid.Row="1"/>
+        <Button Content="Dodaj" HorizontalAlignment="Right"  Grid.Row="2" Click="Dodaj"/>
+        <Button Content="Anuluj" HorizontalAlignment="Left"  Grid.Row="2" Click="Anuluj"/>
+    </Grid>
+</Window>

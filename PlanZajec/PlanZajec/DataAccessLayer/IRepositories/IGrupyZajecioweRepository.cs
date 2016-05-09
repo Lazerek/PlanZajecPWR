@@ -7,7 +7,7 @@ using PlanZajec.DataModel;
 
 namespace PlanZajec.DataAccessLayer.IRepositories
 {
-    public interface IGrupyZajecioweRepository : IRepository<GrupyZajeciowe>
+    public interface IGrupyZajecioweRepository : IRepository<GrupyZajeciowe, string>
     {
         IEnumerable<GrupyZajeciowe> GetGrupyZajecioweWithRelations();
 
