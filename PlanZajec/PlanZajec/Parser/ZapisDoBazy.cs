@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using System.Data.SqlClient;
+using Microsoft.Win32;
+using System.IO;
 
 namespace PlanZajec.Parser
 {
@@ -178,6 +180,28 @@ namespace PlanZajec.Parser
                     return pr;
                 }
                 return table.ElementAt(jest);
+            }
+        }
+        public static void export(SaveFileDialog sf,int IdP)
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                
+                var plany = uw.Plany.GetAll();
+                ICollection<GrupyZajeciowe> grupy = null;
+                
+                foreach(var p in plany)
+                {
+                    if (p.IdPlanu == IdP)
+                        grupy = p.GrupyZajeciowe;
+                }
+                using (StreamWriter sw = new StreamWriter(sf.FileName))
+                {
+                    foreach(var grupa in grupy)
+                    {
+                        sw.WriteLine(grupa);
+                    }
+                }
             }
         }
     }

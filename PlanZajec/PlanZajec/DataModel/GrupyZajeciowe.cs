@@ -83,5 +83,10 @@ namespace PlanZajec.DataModel
             System.Diagnostics.Debug.WriteLine("@@@Grag->EqualsGrup");
             return KodGrupy.Equals(other.KodGrupy);
         }
+        override
+        public string ToString()
+        {
+            return KodGrupy + "," + TypZajec + "," + Dzień + "," + Tydzien + "," + Godzina + "," + GodzinaKoniec + "," + Sala + "," + Budynek + "," + Miejsca + "," + ZajeteMiejsca + "," + Potok+","+Kursy+ "," + Prowadzacy;
+        }
     }
 }

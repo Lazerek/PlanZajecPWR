@@ -5,6 +5,7 @@ using System.Windows;
 using PlanZajec.Views;
 using System;
 using PlanZajec.CommonInformations;
+using PlanZajec.Parser;
 
 namespace Wpf
 {
@@ -74,7 +75,7 @@ namespace Wpf
         public void menuZapisz(object sender, EventArgs e)
         {
             //TODO
-            string fileText = "Wyjscie";
+          
 
             Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
             {
@@ -83,7 +84,7 @@ namespace Wpf
 
             if (dialog.ShowDialog() == true)
             {
-                System.IO.File.WriteAllText(dialog.FileName, fileText);
+                ZapisDoBazy.export(dialog,1);
             }
 
         }
