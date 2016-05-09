@@ -67,7 +67,8 @@ namespace Wpf
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                string filename = dlg.FileName;
+                ZapisDoBazy.Importuj(dlg);
+                this.ReloadWindowComponents();
             }
         }
 
