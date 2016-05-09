@@ -22,10 +22,9 @@ namespace PlanZajec.Views
     public partial class GrupaZajeciowaTemplate : UserControl
     {
         private GrupaTamplateViewModel viewModel;
-        public GrupaZajeciowaTemplate(string kod)
+        public GrupaZajeciowaTemplate(GrupaTamplateViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new GrupaTamplateViewModel(kod);
             this.DataContext = viewModel;
             Start.Text = viewModel.GrupZaj.Godzina;
             Koniec.Text = viewModel.GrupZaj.GodzinaKoniec;

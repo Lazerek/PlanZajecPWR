@@ -1,4 +1,5 @@
 ﻿using PlanZajec.ViewModels;
+using PlanZajec.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,11 @@ namespace PlanZajec.CommonInformations
     {
         private static ObslugaWidokuWieluPlanów instance = new ObslugaWidokuWieluPlanów();
 
-        private Dictionary<long, PlanViewModel> miejscePrzechowywania;
+        private Dictionary<long, PlanView> miejscePrzechowywania;
 
 
         private ObslugaWidokuWieluPlanów() {
-            miejscePrzechowywania = new Dictionary<long, PlanViewModel>();
+            miejscePrzechowywania = new Dictionary<long, PlanView>();
         }
 
         public static ObslugaWidokuWieluPlanów Instance
@@ -26,15 +27,25 @@ namespace PlanZajec.CommonInformations
             }
         }
 
-        public PlanViewModel getPlanViewModel(long idPlanu)
+        public PlanView getPlanView(long idPlanu)
         {
-            PlanViewModel result;
+            PlanView result;
             bool zaaGregowane = miejscePrzechowywania.TryGetValue(idPlanu, out result);
             if (!zaaGregowane)
             {
-                result = new PlanViewModel(idPlanu);
+                result = new PlanView(new PlanViewModel(idPlanu));
+                miejscePrzechowywania.Add(idPlanu, result); //TODO
             }
             return result;
+        }
+
+        public bool deletePlanView(long idPlanu)
+        {
+            if (miejscePrzechowywania.ContainsKey(idPlanu)){
+                miejscePrzechowywania.Remove(idPlanu);
+                return true;
+            }
+            return false;
         }
 
 

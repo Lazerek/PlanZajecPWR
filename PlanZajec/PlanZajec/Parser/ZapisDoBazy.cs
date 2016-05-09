@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using System.Data.SqlClient;
+using Microsoft.Win32;
+using System.IO;
 
 namespace PlanZajec.Parser
 {
@@ -190,6 +192,94 @@ namespace PlanZajec.Parser
                     return pr;
                 }
                 return table.ElementAt(jest);
+            }
+        }
+        public static void export(SaveFileDialog sf,int IdP)
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                
+                var plany = uw.Plany.GetAll();
+                ICollection<GrupyZajeciowe> grupy = null;
+                
+                foreach(var p in plany)
+                {
+                    if (p.IdPlanu == IdP)
+                        grupy = p.GrupyZajeciowe;
+                }
+                using (StreamWriter sw = new StreamWriter(sf.FileName))
+                {
+                    foreach(var grupa in grupy)
+                    {
+                        sw.WriteLine(grupa);
+                        
+                    }
+                }
+            }
+        }
+        public static void Importuj(OpenFileDialog sf)
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                using (StreamReader sw = new StreamReader(sf.FileName))
+                {
+                    Plany nowy = new Plany();
+                    string line;
+                    string[] dane;
+                    while ((line = sw.ReadLine()) != null)
+                    {
+                        dane = line.Split(',');
+                        var kr = NowyKurs(dane[11], dane[12], uw);
+                        if(dane[13]!="")
+                            kr.ECTS =long.Parse(dane[13]);
+                        var pro = NowyProwadzacy(dane[15], dane[16], dane[14], uw);
+                        if (dane[17] != "")
+                            pro.Ocena = long.Parse(dane[17]);
+                        pro.Opis = dane[18];
+
+                        bool jest = false;
+                        var yolo = uw.GrupyZajeciowe.GetAll();
+                        for (int i = 0; i < yolo.Count(); i++)
+                        {
+                            if (yolo.ElementAt(i).KodGrupy.Equals(dane[0]))
+                                jest = true;
+                        }
+
+
+
+                        if (jest == false)
+                        {
+
+                            var nowa =(new GrupyZajeciowe()
+                            {
+                                KodGrupy = dane[0],
+                                TypZajec = dane[1],
+                                Dzień = dane[2],
+                                Tydzien = dane[3],
+                                Godzina = dane[4],
+                                GodzinaKoniec = dane[5],
+                                Sala = dane[6],
+                                Budynek = dane[7],
+                                Potok = dane[10],
+                                Miejsca =long.Parse( dane[8]),
+                                ZajeteMiejsca = long.Parse( dane[9]),
+                                IdProwadzacego = pro.IdProwadzacego,
+                                KodKursu = kr.KodKursu,
+                                Kursy = kr,
+                                Prowadzacy = pro
+                            });
+                            uw.GrupyZajeciowe.Add(nowa);
+                            uw.SaveChanges();
+                            uw.Plany.DodajGrupeZajeciowaDoPlanu(nowa);
+
+
+                            uw.SaveChanges();
+                        }
+
+
+                    }
+                    
+                }
             }
         }
     }

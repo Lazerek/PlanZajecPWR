@@ -1,4 +1,5 @@
-﻿using PlanZajec.DataModel;
+﻿using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,11 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class WyborPlanu : UserControl
     {
-        public delegate void ChosenPlanToShow(Plany plan);
+        public delegate void ChosenPlan(Plany plan);
 
-        public event ChosenPlanToShow ChosenPlanToShowEventHandler;
+        public event ChosenPlan ChosenPlanToShowEventHandler;
+        public event ChosenPlan ChosenPlanToDeleteEventHandler;
+        public event Action<string> AddToPlan;
 
         public WyborPlanu()
         {
@@ -52,11 +55,39 @@ namespace PlanZajec.Views
 
         private void WywierzPlan(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Debug.Write("Wybor planu");
             Button button = sender as Button;
             button.Background = new SolidColorBrush(Colors.Transparent);
             if(ChosenPlanToShowEventHandler != null)
             {
                 ChosenPlanToShowEventHandler(button.DataContext as Plany);
+            }
+        }
+
+        private void Usun(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.Write("usuwanie plany");
+            Button button = sender as Button;
+            if (ChosenPlanToDeleteEventHandler != null)
+            {
+                ChosenPlanToDeleteEventHandler(button.DataContext as Plany);
+            }
+        }
+
+        private void DodajPlan(object sender, RoutedEventArgs e)
+        {
+            AddPlanWindow addPlan = new AddPlanWindow();
+            bool? result = addPlan.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+
+                if (AddToPlan != null)
+                {
+                    AddToPlan(addPlan.PlanTitle);
+                }
+
+
+
             }
         }
     }

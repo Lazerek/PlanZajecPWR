@@ -8,7 +8,7 @@ using PlanZajec.DataAccessLayer.IRepositories;
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
-    public class KursyRepository : Repository<Kursy>, IKursyRepository
+    public class KursyRepository : Repository<Kursy, string>, IKursyRepository
     {
         public KursyRepository(PlanPwrContext context) : base(context)
         {

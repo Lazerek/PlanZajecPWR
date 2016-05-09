@@ -27,12 +27,13 @@ namespace PlanZajec.CommonInformations
 
         public long IdPlanu { get; private set; }
 
-        public Plany Plan { get; private set; }
-
         public void SetPlan(Plany plan)
         {
-            Plan = plan;
             IdPlanu = plan.IdPlanu; 
+        }
+        public void SetPlan(long idPlanu)
+        {
+            IdPlanu = idPlanu;
         }
 
     }

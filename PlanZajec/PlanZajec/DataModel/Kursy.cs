@@ -51,6 +51,12 @@ namespace PlanZajec.DataModel
                 return result;
             }
         }
+        override
+            public string ToString()
+        {
+            return KodKursu + "," + NazwaKursu + "," + ECTS;
+        }
+        
 
     }
 }

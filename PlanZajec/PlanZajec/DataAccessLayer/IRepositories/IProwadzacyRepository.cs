@@ -7,7 +7,7 @@ using PlanZajec.DataModel;
 
 namespace PlanZajec.DataAccessLayer.IRepositories
 {
-    public interface IProwadzacyRepository : IRepository<Prowadzacy>
+    public interface IProwadzacyRepository : IRepository<Prowadzacy, long>
     {
     }
 }

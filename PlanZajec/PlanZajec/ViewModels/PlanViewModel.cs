@@ -13,17 +13,26 @@ namespace PlanZajec.ViewModels
 {
     public class PlanViewModel:ViewModel
     {
+        public long IdPlanu
+        {
+            get; private set;
+        }
+
+        private Plany plan;
+
         public List<GrupyZajeciowe> ListaGrupZajeciowych { get; private set; }
         public List<GrupaZajeciowaTemplate> Kafelki { get; private set; }
         public PlanViewModel(long id)
         {
+            IdPlanu = id;
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-                Kafelki=new List<GrupaZajeciowaTemplate>();
-                ListaGrupZajeciowych = uw.Plany.Get(id).GrupyZajeciowe.ToList();
+                Kafelki =new List<GrupaZajeciowaTemplate>();
+                plan = uw.Plany.Get(id);
+                ListaGrupZajeciowych = plan.GrupyZajeciowe.ToList();
                 foreach(GrupyZajeciowe gr in ListaGrupZajeciowych)
                 {
-                    var temp = new GrupaZajeciowaTemplate(gr.KodGrupy);
+                    var temp = new GrupaZajeciowaTemplate(new GrupaTamplateViewModel(gr.KodGrupy));
                     
                     var okno= Application.Current.Windows.OfType<MainWindow>().First();
                     var a = okno.DataContext as PlanView;
@@ -38,10 +47,10 @@ namespace PlanZajec.ViewModels
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Kafelki = new List<GrupaZajeciowaTemplate>();
-                ListaGrupZajeciowych = uw.Plany.Get(1).GrupyZajeciowe.ToList();
+                ListaGrupZajeciowych = uw.Plany.Get(IdPlanu).GrupyZajeciowe.ToList();
                 foreach (GrupyZajeciowe gr in ListaGrupZajeciowych)
                 {
-                    var temp = new GrupaZajeciowaTemplate(gr.KodGrupy);
+                    var temp = new GrupaZajeciowaTemplate(new GrupaTamplateViewModel(gr.KodGrupy));
 
                     var okno = Application.Current.Windows.OfType<MainWindow>().First();
                     var a = okno.DataContext as PlanView;
