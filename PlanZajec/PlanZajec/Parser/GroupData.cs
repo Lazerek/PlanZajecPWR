@@ -11,9 +11,11 @@
         public string Miejsce { get; set; }
         public string Potok { get; set; }
         public string LiczbaMiejsc { get; set; }
+        public string KodBloku { get; set; }
+        public string NazwaBloku { get; set; }
 
         public GroupData(string kodGrupy, string kodKursu, string nazwaKursu, string prowadzacy, string formaZajec,
-            string dataIMiejsce, string potok, string liczbaMiejsc)
+            string dataIMiejsce, string potok, string liczbaMiejsc, string kodBloku, string nazwaBloku)
         {
             KodGrupy = kodGrupy;
             KodKursu = kodKursu;
@@ -25,10 +27,12 @@
             Miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
             Potok = potok;
             LiczbaMiejsc = liczbaMiejsc;
+            KodBloku = kodBloku;
+            NazwaBloku = nazwaBloku;
         }
 
         public GroupData(string kodGrupy, string kodKursu, string nazwaKursu, string prowadzacy, string formaZajec,
-            string data, string miejsce, string potok, string liczbaMiejsc)
+            string data, string miejsce, string potok, string liczbaMiejsc, string kodBloku, string nazwaBloku)
         {
             KodGrupy = kodGrupy;
             KodKursu = kodKursu;
@@ -39,6 +43,8 @@
             Miejsce = miejsce;
             Potok = potok;
             LiczbaMiejsc = liczbaMiejsc;
+            KodBloku = kodBloku;
+            NazwaBloku = nazwaBloku;
         }
         public GroupData()
         {}

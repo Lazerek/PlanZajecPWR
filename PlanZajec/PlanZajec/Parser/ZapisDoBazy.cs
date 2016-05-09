@@ -31,16 +31,31 @@ namespace PlanZajec.Parser
                 {
                     count++;
                 }
-                String Nazwisko = tytulNazwiskoImie[count - 1];
-                String Imie = tytulNazwiskoImie[count - 2];
-                int j = 0;
-                for (int i = pr.Length - 1; i > Nazwisko.Length + Imie.Length; i--)
+                String nazwisko = "";
+                if (count - 1 >= 0)
                 {
-                    j++;
+                    nazwisko = tytulNazwiskoImie[count - 1];
+                }
+                String imie = "";
+                String tytul = "";
+                if (count - 2 >= 0)
+                {
+                    imie = tytulNazwiskoImie[count - 2];
+                    int j = 0;
+                    for (int i = pr.Length - 1; i > nazwisko.Length + imie.Length; i--)
+                    {
+                        j++;
+                    }
+                    tytul = pr.Substring(0, j - 1);
+
+                }
+                Prowadzacy pro = null;
+                if (nazwisko!="")
+                {
+                    pro = NowyProwadzacy(imie, nazwisko, tytul, uw);
                 }
 
-                String Tytul = pr.Substring(0, j - 1);
-                var pro = NowyProwadzacy(Imie, Nazwisko, Tytul,uw);
+
 
                 //do rozbicia Miejsce na sale i budynek oraz Data na dzień oraz godzinę!!!
                     String Budynek = "";
@@ -94,11 +109,8 @@ namespace PlanZajec.Parser
                         jest = true;
                 }
 
-
-
                 if (jest == false)
                 {
-                    
                     uw.GrupyZajeciowe.Add(new GrupyZajeciowe()
                     {
                         KodGrupy = gd.KodGrupy,
@@ -112,7 +124,7 @@ namespace PlanZajec.Parser
                         Potok = gd.Potok,
                         Miejsca = maxMiejsca,
                         ZajeteMiejsca = miejsca,
-                        IdProwadzacego = pro.IdProwadzacego,
+                        IdProwadzacego = pro?.IdProwadzacego,
                         KodKursu = kr.KodKursu,
                         Kursy = kr,
                         Prowadzacy = pro
