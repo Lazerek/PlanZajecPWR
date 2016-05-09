@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanZajec.DataModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,43 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class WyborPlanu : UserControl
     {
+        public delegate void ChosenPlanToShow(Plany plan);
+
+        public event ChosenPlanToShow ChosenPlanToShowEventHandler;
+
         public WyborPlanu()
         {
             InitializeComponent();
+        }
+
+        private void ZmienKolorMouseEnter(object sender, MouseEventArgs e)
+        {
+            KafelPlanu plan = sender as KafelPlanu;
+            plan.WypelnieniePlansza.Background = new SolidColorBrush(Colors.GreenYellow);
+            
+        }
+
+        private void ZmienKolorMouseLeave(object sender, MouseEventArgs e)
+        {
+            KafelPlanu plan = sender as KafelPlanu;
+            plan.WypelnieniePlansza.Background = new SolidColorBrush(Colors.LightBlue);
+        }
+
+        private void ButtonPlanMouseEnter(object sender, MouseEventArgs e)
+        {
+            Button button = sender as Button;
+            button.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+
+        private void WywierzPlan(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            button.Background = new SolidColorBrush(Colors.Transparent);
+            if(ChosenPlanToShowEventHandler != null)
+            {
+                ChosenPlanToShowEventHandler(button.DataContext as Plany);
+            }
         }
     }
 }

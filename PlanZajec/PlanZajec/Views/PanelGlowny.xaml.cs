@@ -1,5 +1,9 @@
-﻿using System;
+﻿using PlanZajec.CommonInformations;
+using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,32 +27,31 @@ namespace PlanZajec.Views
     public partial class PanelGlowny : UserControl
     {
 
-        private readonly List<TabItem> _tabItems;
+        private ObservableCollection<TabItem> _tabItems;
         //tab that make adding possible
-        private readonly TabItem _tabAdd;
-        private TabItem _przegladanieGrupTab;
-        private PrzegladanieGrup _pg;
+        private TabItem _tabAdd;
+
+        private static long tabsId;
 
         public PanelGlowny()
         {
             InitializeComponent();
-            _tabItems = new List<TabItem>();
+            tabsId = 0;
+            _tabItems = new ObservableCollection<TabItem>();
             //add tab
-            _tabAdd = new TabItem
-            {
-                Header = "+",
-                Name = "AddSchedule"
-            };
+            _tabAdd = new TabItem();
+            _tabAdd.Header = "+";
+            _tabAdd.Name = "AddSchedule";
             _tabItems.Add(_tabAdd);
             //
-            _przegladanieGrupTab = new TabItem {Header = "Przeglądanie grup"};
+            TabItem tab = new TabItem();
+            tab.Header = "Przeglądanie grup";
             //tab.HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate;
             PrzegladanieGrup pg = new PrzegladanieGrup();
-            _pg = pg;
-            _przegladanieGrupTab.Content = pg;
+            tab.Content = pg;
             //-end add item
             //add new plan
-            _tabItems.Insert(0, _przegladanieGrupTab);
+            _tabItems.Insert(0, tab);
             AddScheduleTabItem();
             LewyTabControl.DataContext = _tabItems;
             LewyTabControl.SelectedIndex = 0;
@@ -63,20 +66,44 @@ namespace PlanZajec.Views
             // create new tab item
             TabItem tab = new TabItem
             {
-                Header = $"Plan {count - 1}",
-                Name = $"Plan{count - 1}",
+                Header = "Wybierz plan",
+                Name = $"Plan{tabsId++}",
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
 
-            PlanView pl = new PlanView();
-            tab.Content = pl;
+            PlanViewModel planVM = ObslugaWidokuWieluPlanów.Instance.getPlanViewModel(ActChosenPlanSingleton.Instance.IdPlanu);
+            PlanView pl =  new PlanView(planVM);
+            //WyborPlanu pl = new WyborPlanu() { DataContext = new WyborPlanuViewModel() };
+            tab.Content = count == 1 ? (object)new PlanView(planVM) : PrepareChosenigPlan();
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);
             return tab;
         }
 
+        private object PrepareChosenigPlan()
+        {
+            WyborPlanu res = new WyborPlanu() { DataContext = new WyborPlanuViewModel() };
+            res.ChosenPlanToShowEventHandler += PrzygotujPlanDoWyswietlania;
+            return res;
+        }
 
+
+        private void PrzygotujPlanDoWyswietlania(Plany plan)
+        {
+            //Podmiana aktualnego taba na wyswietlanie planu
+            //TODO Greg - obsluz zmianę widoku
+            PlanViewModel planVM = ObslugaWidokuWieluPlanów.Instance.getPlanViewModel(ActChosenPlanSingleton.Instance.IdPlanu);
+
+            TabItem tabItem = new TabItem() { Content = new PlanView(planVM) ,
+                Header = $"Plan {plan.NazwaPlanu}",
+                Name = $"Plan{tabsId++}",
+                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
+            };
+            _tabItems[LewyTabControl.SelectedIndex] = tabItem;
+                          
+            LewyTabControl.SelectedItem = tabItem; 
+        }
 
         private void BtnCloseCard_OnClick(object sender, RoutedEventArgs e)
         {
@@ -139,11 +166,6 @@ namespace PlanZajec.Views
             {
                 
             }
-        }
-
-        public void RefreshAfterParse()
-        {
-            _pg.Refresh();
         }
     }
 }

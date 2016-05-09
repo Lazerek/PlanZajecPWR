@@ -14,10 +14,10 @@ namespace PlanZajec.Views
         private static PlanView _pv;
         private PlanViewModel _planViewModel;
 
-        public PlanView()
+        public PlanView(PlanViewModel plan)
         {
             InitializeComponent();
-            _planViewModel = new PlanViewModel();
+            _planViewModel = plan;
             DataContext = _planViewModel;
             PaintSchedule();
             _pv = this;

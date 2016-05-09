@@ -102,7 +102,11 @@ namespace PlanZajec.DataAccessLayer.Repositories
                 }
                 Context.Set<Plany>().Remove(planDoUsuniecia);
             }
-        }  
+        }
+        public override IEnumerable<Plany> GetAll()
+        {
+            return PlanPwrContext.Plany.Include(pl => pl.GrupyZajeciowe).ToList();
+        }
 
     }
 }
