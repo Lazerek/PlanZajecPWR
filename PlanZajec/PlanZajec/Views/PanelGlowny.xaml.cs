@@ -1,4 +1,5 @@
 ﻿using PlanZajec.CommonInformations;
+using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PlanZajec.ViewModels;
 using System;
@@ -83,8 +84,9 @@ namespace PlanZajec.Views
 
         private object PrepareChosenigPlan()
         {
-            WyborPlanu res = new WyborPlanu() { DataContext = new WyborPlanuViewModel() };
+            WyborPlanu res = new WyborPlanu() { DataContext = WyborPlanuViewModel.Instance };
             res.ChosenPlanToShowEventHandler += PrzygotujPlanDoWyswietlania;
+            res.ChosenPlanToDeleteEventHandler += UsunPlan;
             return res;
         }
 
@@ -93,7 +95,7 @@ namespace PlanZajec.Views
         {
             //Podmiana aktualnego taba na wyswietlanie planu
             //TODO Greg - obsluz zmianę widoku
-            PlanViewModel planVM = ObslugaWidokuWieluPlanów.Instance.getPlanViewModel(ActChosenPlanSingleton.Instance.IdPlanu);
+            PlanViewModel planVM = ObslugaWidokuWieluPlanów.Instance.getPlanViewModel(plan.IdPlanu);
 
             TabItem tabItem = new TabItem() { Content = new PlanView(planVM) ,
                 Header = $"Plan {plan.NazwaPlanu}",
@@ -103,6 +105,16 @@ namespace PlanZajec.Views
             _tabItems[LewyTabControl.SelectedIndex] = tabItem;
                           
             LewyTabControl.SelectedItem = tabItem; 
+        }
+
+        private void UsunPlan(Plany plan)
+        {
+            using(UnitOfWork unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                unit.Plany.Remove(plan);
+                unit.SaveChanges();
+            }
+            WyborPlanuViewModel.Instance.UsunPlan(plan);
         }
 
         private void BtnCloseCard_OnClick(object sender, RoutedEventArgs e)
@@ -137,6 +149,7 @@ namespace PlanZajec.Views
                         selectedTab = _tabItems[0];
                     }
                     LewyTabControl.SelectedItem = selectedTab;
+                    
                 }
             }
         }

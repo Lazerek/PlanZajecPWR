@@ -33,8 +33,18 @@ namespace PlanZajec.CommonInformations
             if (!zaaGregowane)
             {
                 result = new PlanViewModel(idPlanu);
+                //miejscePrzechowywania.Add(idPlanu, result); TODO
             }
             return result;
+        }
+
+        public bool deletePlanViewModel(long idPlanu)
+        {
+            if (miejscePrzechowywania.ContainsKey(idPlanu)){
+                miejscePrzechowywania.Remove(idPlanu);
+                return true;
+            }
+            return false;
         }
 
 

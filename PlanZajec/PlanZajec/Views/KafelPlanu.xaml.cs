@@ -25,9 +25,6 @@ namespace PlanZajec.Views
             InitializeComponent();
         }
 
-        private void Usun(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Polecenie usuniecia planu");
-        }
+
     }
 }

@@ -11,16 +11,30 @@ namespace PlanZajec.ViewModels
 {
     class WyborPlanuViewModel
     {
-        public List<Plany> Plany { get; private set; }
+        public ObservableCollection<Plany> Plany { get; private set; }
 
-        public WyborPlanuViewModel()
+
+        private static WyborPlanuViewModel instance = new WyborPlanuViewModel();
+
+        public static WyborPlanuViewModel Instance
+        {
+            get { return instance; }
+        }
+
+        private WyborPlanuViewModel()
         {
             using(var unitOfWork = new UnitOfWork(new PlanPwrContext()))
             {
-                Plany = unitOfWork.Plany.GetAll().ToList();
+                Plany = new ObservableCollection<Plany>(unitOfWork.Plany.GetAll().ToList());
             }
         }
 
+        public void UsunPlan(Plany plan)
+        {
+            int indexToDelete = -1;
+            indexToDelete = Plany.IndexOf(plan);
+            Plany.RemoveAt(indexToDelete);
+        }
 
     }
 }

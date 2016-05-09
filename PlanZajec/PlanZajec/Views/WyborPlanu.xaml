@@ -22,12 +22,21 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button x:Name="PlanButton" BorderThickness="0"  Background="Transparent"  
-                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" MouseEnter="ButtonPlanMouseEnter" Click="WywierzPlan" >
-                        <Button.Content>
-                            <local:KafelPlanu MinWidth="200" MinHeight="200" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave"/>
-                        </Button.Content>
-                    </Button>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="X" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="30" Click="Usun"/>
+
+                        <Button x:Name="PlanButton" BorderThickness="0"  Background="Transparent"  
+                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" MouseEnter="ButtonPlanMouseEnter" Click="WywierzPlan" Grid.Row="2" >
+                            <Button.Content>
+                                <local:KafelPlanu MinWidth="200" MinHeight="180" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave" />
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
