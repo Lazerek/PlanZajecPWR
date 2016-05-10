@@ -13,6 +13,7 @@
             <ComboBoxItem Selected="OnSelectedGrupy">Przeglądanie grup</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedFiltrujGrupy">Filtruj grupy</ComboBoxItem>
+            <ComboBoxItem Name="KontrolaKursowComboItem" Content="Kontrola kursów" Selected="KontrolaKursowComboItem_OnSelected"></ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
         <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,37,20,5">
