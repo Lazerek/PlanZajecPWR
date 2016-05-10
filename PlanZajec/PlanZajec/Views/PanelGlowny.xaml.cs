@@ -1,54 +1,49 @@
-﻿using PlanZajec.CommonInformations;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using PlanZajec.CommonInformations;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PlanZajec.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms.VisualStyles;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Wpf;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for LeweMenu.xaml
+    ///     Interaction logic for LeweMenu.xaml
     /// </summary>
     public partial class PanelGlowny : UserControl
     {
-
-        private ObservableCollection<TabItem> _tabItems;
+        private static long tabsId;
+        //
+        private readonly HashSet<long> _openedScheuldes;
         //tab that make adding possible
+
         private TabItem _tabAdd;
 
-        private static long tabsId;
+        private PlanView _aktualnyPlanView;
+
+        private readonly ObservableCollection<TabItem> _tabItems;
 
         public PanelGlowny()
         {
+            _openedScheuldes = new HashSet<long>();
             InitializeComponent();
             tabsId = 0;
             _tabItems = new ObservableCollection<TabItem>();
             //add tab
             _tabAdd = new TabItem();
+            _tabAdd = new TabItem();
             _tabAdd.Header = "+";
             _tabAdd.Name = "AddSchedule";
             _tabItems.Add(_tabAdd);
             //
-            TabItem tab = new TabItem();
+            var tab = new TabItem();
             tab.Header = "Przeglądanie grup";
             //tab.HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate;
-            PrzegladanieGrup pg = new PrzegladanieGrup();
+            var pg = new PrzegladanieGrup();
             tab.Content = pg;
             //-end add item
             //add new plan
@@ -57,21 +52,22 @@ namespace PlanZajec.Views
             LewyTabControl.DataContext = _tabItems;
             LewyTabControl.SelectedIndex = 0;
         }
+
         private TabItem AddScheduleTabItem()
         {
             //TODO foreach tab last index +1 == name
 
             //var last = _tabItems.Max(t=>t.Name.Replace())
-            int count = _tabItems.Count;
-            
+            var count = _tabItems.Count;
+
             // create new tab item
-            TabItem tab = new TabItem
+            var tab = new TabItem
             {
                 Header = "Wybierz plan",
-                Name = $"Plan{tabsId++}",
+                Name = $"WybierzPlan{ tabsId++}",
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
-            
+
             tab.Content = PrepareChosenigPlan();
 
             // insert tab item right before the last (+) tab item
@@ -79,9 +75,9 @@ namespace PlanZajec.Views
             return tab;
         }
 
-        private object PrepareChosenigPlan()
+        private WyborPlanu PrepareChosenigPlan()
         {
-            WyborPlanu res = new WyborPlanu() { DataContext = WyborPlanuViewModel.Instance };
+            var res = new WyborPlanu {DataContext = WyborPlanuViewModel.Instance};
             res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
             res.ChosenPlanToDeleteEventHandler += UsunPlan;
             res.AddToPlan += AddPlan;
@@ -92,9 +88,9 @@ namespace PlanZajec.Views
         private void AddPlan(string Title)
         {
             Plany plan;
-            using (UnitOfWork unit = new UnitOfWork(new PlanPwrContext()))
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
             {
-                plan = new Plany() { NazwaPlanu = Title};
+                plan = new Plany {NazwaPlanu = Title};
                 unit.Plany.Add(plan);
                 unit.SaveChanges();
             }
@@ -106,46 +102,54 @@ namespace PlanZajec.Views
         {
             //Podmiana aktualnego taba na wyswietlanie planu
             //TODO Greg - obsluz zmianę widoku
-
+            _openedScheuldes.Add(plan.IdPlanu);
             ActChosenPlanSingleton.Instance.SetPlan(plan.IdPlanu);
-            for (int i = 0; i < _tabItems.Count; i++)
+            for (var i = 0; i < _tabItems.Count; i++)
             {
-                PlanView view = _tabItems[i].Content as PlanView;
-                if(view != null)
+                var view = _tabItems[i].Content as PlanView;
+                var viewModel = view?.DataContext as PlanViewModel;
+                if (viewModel != null && viewModel.IdPlanu == plan.IdPlanu)
                 {
-                    PlanViewModel viewModel = view.DataContext as PlanViewModel;
-                    if(viewModel != null && viewModel.IdPlanu == plan.IdPlanu)
-                    {
-                        LewyTabControl.SelectedItem = _tabItems[i];
-                        return;
-                    }
+                    LewyTabControl.SelectedItem = _tabItems[i];
+                    return;
                 }
             }
-            PlanView planView = ObslugaWidokuWieluPlanów.Instance.getPlanView(plan.IdPlanu);
+            var planView = ObslugaWidokuWieluPlanów.Instance.getPlanView(plan.IdPlanu);
 
-            TabItem tabItem = new TabItem() { Content = planView,
+            var tabItem = new TabItem
+            {
+                Content = planView,
                 Header = $"Plan {plan.NazwaPlanu}",
-                Name = $"Plan{tabsId++}",
+                Name = $"Plan{plan.IdPlanu}",
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
             _tabItems[LewyTabControl.SelectedIndex] = tabItem;
-                          
-            LewyTabControl.SelectedItem = tabItem; 
+
+            LewyTabControl.SelectedItem = tabItem;
         }
 
-        private void UsunPlan(Plany plan)
+        private void UsunPlan(Plany plan, out bool deleted)
         {
-            using(UnitOfWork unit = new UnitOfWork(new PlanPwrContext()))
+            //if scheulde is open then u cant delete
+            if (_openedScheuldes.Contains(plan.IdPlanu))
+            {
+                MessageBox.Show("Otwarty plan, zamknij aby usunąć");
+                deleted = false;
+                return;
+            }
+            //if u can delete then...
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
             {
                 unit.Plany.Remove(plan);
                 unit.SaveChanges();
             }
             WyborPlanuViewModel.Instance.UsunPlan(plan);
+            deleted = true;
         }
 
         private void BtnCloseCard_OnClick(object sender, RoutedEventArgs e)
         {
-            string tabName = (sender as Button).CommandParameter.ToString();
+            var tabName = ((Button) sender).CommandParameter.ToString();
 
             var tab = LewyTabControl.Items.Cast<TabItem>().SingleOrDefault(i => i.Name.Equals(tabName));
 
@@ -155,11 +159,13 @@ namespace PlanZajec.Views
                 {
                     MessageBox.Show("Cannot remove last tab.");
                 }
-                else if (MessageBox.Show(string.Format("Are you sure you want to remove the tab '{0}'?", tab.Header.ToString()),
+                else if (MessageBox.Show(string.Format("Are you sure you want to remove the tab '{0}'?", tab.Header),
                     "Remove Tab", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
+                    long idPlanu = long.Parse(tab.Name.Substring(4, tab.Name.Length-4));
+                    _openedScheuldes.Remove(idPlanu);
                     // get selected tab
-                    TabItem selectedTab = LewyTabControl.SelectedItem as TabItem;
+                    var selectedTab = LewyTabControl.SelectedItem as TabItem;
 
                     // clear tab control binding
                     LewyTabControl.DataContext = null;
@@ -176,23 +182,28 @@ namespace PlanZajec.Views
                     }
                     LewyTabControl.SelectedItem = selectedTab;
                     UpdateActualChoseningPlan(selectedTab);
-
-
-                    if(selectedTab.Content is PlanView)
+                    //load planViewModel datacontext from tab content if not null
+                    if (selectedTab.Content is PlanView)
                     {
-                        PlanViewModel vm = (selectedTab.Content as PlanView).DataContext as PlanViewModel;
-                        if(vm != null)
+                        PlanViewModel pvm = (selectedTab.Content as PlanView).DataContext as PlanViewModel;
+                        if (pvm != null)
                         {
-                            ObslugaWidokuWieluPlanów.Instance.deletePlanView(vm.IdPlanu);
-                        }                      
+                            ObslugaWidokuWieluPlanów.Instance.deletePlanView(pvm.IdPlanu);
+                        }
                     }
+                    /*var vm = planView?.DataContext as PlanViewModel;
+                    if (vm != null)
+                    {
+                        
+                        ObslugaWidokuWieluPlanów.Instance.deletePlanView(vm.IdPlanu);
+                    }*/
                 }
             }
         }
 
         private void LewyTabControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabItem tab = LewyTabControl.SelectedItem as TabItem;
+            var tab = LewyTabControl.SelectedItem as TabItem;
 
 
             //exit if tab or header is null
@@ -204,7 +215,7 @@ namespace PlanZajec.Views
                 LewyTabControl.DataContext = null;
 
                 // add new tab
-                TabItem newTab = this.AddScheduleTabItem();
+                var newTab = AddScheduleTabItem();
 
                 // bind tab control
                 LewyTabControl.DataContext = _tabItems;
@@ -212,22 +223,18 @@ namespace PlanZajec.Views
                 // select newly added tab item
                 LewyTabControl.SelectedItem = newTab;
             }
-            else
-            {
-
-            }
             UpdateActualChoseningPlan(LewyTabControl.SelectedItem as TabItem);
         }
 
         private void UpdateActualChoseningPlan(TabItem tab)
         {
-            bool result = false;
-            if(tab.Content != null && tab.Content is PlanView)
+            var result = false;
+            if (tab.Content != null && tab.Content is PlanView)
             {
-                PlanView view = tab.Content as PlanView;
-                if(view.DataContext is PlanViewModel)
+                var view = tab.Content as PlanView;
+                if (view.DataContext is PlanViewModel)
                 {
-                    PlanViewModel vm = view.DataContext as PlanViewModel;
+                    var vm = view.DataContext as PlanViewModel;
                     ActChosenPlanSingleton.Instance.SetPlan(vm.IdPlanu);
                     result = true;
                 }
@@ -236,8 +243,6 @@ namespace PlanZajec.Views
             {
                 ActChosenPlanSingleton.Instance.SetPlan(-1);
             }
-            
         }
-
     }
 }
