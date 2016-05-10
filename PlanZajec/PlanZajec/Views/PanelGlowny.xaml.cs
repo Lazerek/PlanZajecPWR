@@ -64,7 +64,7 @@ namespace PlanZajec.Views
             var tab = new TabItem
             {
                 Header = "Wybierz plan",
-                Name = $"WybierzPlan{ tabsId++}",
+                Name = $"WybierzPlan{tabsId++}",
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
 
@@ -162,8 +162,11 @@ namespace PlanZajec.Views
                 else if (MessageBox.Show(string.Format("Are you sure you want to remove the tab '{0}'?", tab.Header),
                     "Remove Tab", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    long idPlanu = long.Parse(tab.Name.Substring(4, tab.Name.Length-4));
-                    _openedScheuldes.Remove(idPlanu);
+                    if (!tabName.Contains("WybierzPlan"))
+                    {
+                        long idPlanu = long.Parse(tab.Name.Substring(4, tab.Name.Length - 4));
+                        _openedScheuldes.Remove(idPlanu);
+                    }
                     // get selected tab
                     var selectedTab = LewyTabControl.SelectedItem as TabItem;
 
