@@ -18,8 +18,15 @@ namespace PlanZajec.DataModel
         [Key]
         [StringLength(2147483647)]
         public string KodBloku { get; set; }
-
+        [StringLength(2147483647)]
+        public string NazwaBloku { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kursy> Kursy { get; set; }
+
+        override
+            public string ToString()
+        {
+            return KodBloku + "," + NazwaBloku;
+        }
     }
 }

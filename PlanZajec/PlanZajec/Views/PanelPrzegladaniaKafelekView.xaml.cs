@@ -45,7 +45,7 @@ namespace PlanZajec.Views
         {
             KafelekGrup kafelek = sender as KafelekGrup;
             GrupyZajeciowe grupa = kafelek.DataContext as GrupyZajeciowe;
-            System.Diagnostics.Debug.WriteLine("@@@PanelPrzegladaniaKafelekView|Greg|->"+ grupa);
+          
 
             FrameworkElement fe = e.Source as FrameworkElement;
             fe.ContextMenu = GetContextMenu(grupa);
