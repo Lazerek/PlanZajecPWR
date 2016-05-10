@@ -24,8 +24,11 @@ namespace PlanZajec.Views
     {
         public delegate void ChosenPlan(Plany plan);
 
+        public delegate void ChosenPlan2(Plany plan, out bool deleted);
+
         public event ChosenPlan ChosenPlanToShowEventHandler;
-        public event ChosenPlan ChosenPlanToDeleteEventHandler;
+        public event ChosenPlan2 ChosenPlanToDeleteEventHandler;
+
         public event Action<string> AddToPlan;
 
         public WyborPlanu()
@@ -70,7 +73,8 @@ namespace PlanZajec.Views
             Button button = sender as Button;
             if (ChosenPlanToDeleteEventHandler != null)
             {
-                ChosenPlanToDeleteEventHandler(button.DataContext as Plany);
+                bool deleted=false;
+                ChosenPlanToDeleteEventHandler(button.DataContext as Plany, out deleted);
             }
         }
 

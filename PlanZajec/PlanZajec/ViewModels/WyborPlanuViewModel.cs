@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PlanZajec.ViewModels
 {
@@ -31,6 +32,11 @@ namespace PlanZajec.ViewModels
 
         public void UsunPlan(Plany plan)
         {
+            if (Plany.Count <= 1)
+            {
+                MessageBox.Show("Nie można usunąć jedynego planu");
+                return;
+            }
             int indexToDelete = -1;
             indexToDelete = Plany.IndexOf(plan);
             Plany.RemoveAt(indexToDelete);
