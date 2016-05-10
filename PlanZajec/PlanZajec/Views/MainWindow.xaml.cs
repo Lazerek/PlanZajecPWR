@@ -76,17 +76,11 @@ namespace Wpf
         public void menuZapisz(object sender, EventArgs e)
         {
             //TODO
-          
 
-            Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
-            {
-                Filter = "Plan zajęć (*.txt)|*.txt"
-            };
 
-            if (dialog.ShowDialog() == true)
-            {
-                ZapisDoBazy.export(dialog,1);
-            }
+            ZapisWindow zw = new ZapisWindow();
+            zw.Show();
+
 
         }
 
@@ -94,17 +88,9 @@ namespace Wpf
         public void menuZapiszJako(object sender, EventArgs e)
         {
             //TODO
-            string fileText = "Wyjscie";
+            ZapisWindow zw = new ZapisWindow();
+            zw.Show();
 
-            Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
-            {
-                Filter = "Plan zajęć (*.txt)|*.txt"
-            };
-
-            if (dialog.ShowDialog() == true)
-            {
-                System.IO.File.WriteAllText(dialog.FileName, fileText);
-            }
         }
 
         //Menu - Metoda drukująca plan

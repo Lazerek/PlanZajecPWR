@@ -176,6 +176,9 @@
     <Compile Include="Views\WyborPlanu.xaml.cs">
       <DependentUpon>WyborPlanu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ZapisWindow.xaml.cs">
+      <DependentUpon>ZapisWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\AddPlanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -253,6 +256,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\WyborPlanu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ZapisWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
