@@ -34,7 +34,7 @@ namespace PlanZajec.Views
                 foreach (var schedule in schedules)
                 {
                     Expander exp = new Expander();
-                    exp.Header = "Schedule " + schedule.IdPlanu + " control";
+                    exp.Header = "Kontrola planu nr " + schedule.IdPlanu;
                     StackPanel tpanel = new StackPanel();
 
                     var allCourses = uw.Kursy.GetAll().ToList();
