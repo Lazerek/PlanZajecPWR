@@ -297,7 +297,6 @@
     <Resource Include="TestResources\HD_W.txt" />
     <Resource Include="TestResources\lin_l.txt" />
     <Resource Include="TestResources\lin_w.txt" />
-    <Resource Include="TestResources\praktyka.txt" />
     <Resource Include="TestResources\prosemin.txt" />
     <Resource Include="TestResources\rsi_L1.txt" />
     <Resource Include="TestResources\rsi_L2.txt" />

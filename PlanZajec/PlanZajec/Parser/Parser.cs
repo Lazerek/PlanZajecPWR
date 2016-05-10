@@ -30,10 +30,12 @@ namespace PlanZajec.Parser
                 //iterate trougth groupArray and call SearchLine for each string[] lines
                 var datas = groupArray.Select(lines => SearchLine(lines, blockData)).ToList();
                 //for each group call ZapisDoBazy
+                System.Diagnostics.Debug.WriteLine(datas.Count());
                 foreach (var gd in datas)
                 {
                     ZapisDoBazy.zapisz(gd);
                 }
+               
             }
             return true;
         }

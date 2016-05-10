@@ -14,11 +14,18 @@ namespace PlanZajec.Parser
 {
     class ZapisDoBazy
     {
+        
         public static void zapisz(GroupData gd)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
-                var kr = NowyKurs(gd.KodKursu, gd.NazwaKursu,uw);
+                Blok blok=null;
+                if (gd.KodBloku!="")
+                {
+                     blok = NowyBlok(gd.KodBloku, gd.NazwaBloku, uw);
+                }
+
+                var kr = NowyKurs(gd.KodKursu, gd.NazwaKursu,uw,blok);
                 String pr = gd.Prowadzacy;
                 int count = 0;
                 for (int i = 0; i < pr.Length; i++)
@@ -103,13 +110,14 @@ namespace PlanZajec.Parser
                 }
 
                 bool jest = false;
+
                 var yolo = uw.GrupyZajeciowe.GetAll();
                 for (int i = 0; i < yolo.Count(); i++)
                 {
                     if (yolo.ElementAt(i).KodGrupy.Equals(gd.KodGrupy))
                         jest = true;
                 }
-
+              
                 if (jest == false)
                 {
                     uw.GrupyZajeciowe.Add(new GrupyZajeciowe()
@@ -132,9 +140,9 @@ namespace PlanZajec.Parser
                     });
                     uw.SaveChanges();
                 }
+                          
 
-              
-                                               
+
             }
 
         }
@@ -144,10 +152,15 @@ namespace PlanZajec.Parser
         /// <param name="KodKursu"></param>
         /// <param name="NazwaKursu"></param>
         /// <returns></returns>
-        static Kursy NowyKurs(String KodKursu, String NazwaKursu,UnitOfWork uw)
+        static Kursy NowyKurs(String KodKursu, String NazwaKursu,UnitOfWork uw,Blok blok)
         {
            
             {
+                string aaa = "";
+                if (blok!=null)
+                {
+                    aaa = blok.NazwaBloku;
+                }
                 int jest =-1;
                 var table = uw.Kursy.GetAll();
                 for(int i=0;i<table.Count();i++)
@@ -157,7 +170,7 @@ namespace PlanZajec.Parser
                 }
                 if(jest==-1)
                 {
-                    var kr = new Kursy() { KodKursu = KodKursu, NazwaKursu = NazwaKursu };
+                    var kr = new Kursy() { KodKursu = KodKursu, NazwaKursu = NazwaKursu, Blok=aaa,Blok1=blok };
                     uw.Kursy.Add(kr);
                     uw.SaveChanges();
                     return kr;
@@ -194,6 +207,29 @@ namespace PlanZajec.Parser
                 }
                 return table.ElementAt(jest);
             }
+        }
+        static Blok NowyBlok(String KodBloku, String NazwaBloku, UnitOfWork uw)
+        {
+
+            {
+                int jest = -1;
+                var table = uw.Bloki.GetAll();
+                for (int i = 0; i < table.Count(); i++)
+                {
+                    if (table.ElementAt(i).KodBloku.Equals(KodBloku))
+                        jest = i;
+                }
+                if (jest == -1)
+                {
+                    var bl = new Blok() { KodBloku = KodBloku, NazwaBloku = NazwaBloku };
+                    uw.Bloki.Add(bl);
+                    uw.SaveChanges();
+                    return bl;
+
+                }
+                return table.ElementAt(jest);
+            }
+
         }
         public static void export(SaveFileDialog sf,int IdP)
         {
@@ -233,14 +269,17 @@ namespace PlanZajec.Parser
                     while ((line = sw.ReadLine()) != null)
                     {
                         dane = line.Split(',');
-                        var kr = NowyKurs(dane[11], dane[12], uw);
+                        var blok = NowyBlok(dane[19], dane[20], uw);
+                       
+                        var kr = NowyKurs(dane[11], dane[12], uw,blok);
                         if(dane[13]!="")
                             kr.ECTS =long.Parse(dane[13]);
-                        var pro = NowyProwadzacy(dane[15], dane[16], dane[14], uw);
-                        if (dane[17] != "")
-                            pro.Ocena = long.Parse(dane[17]);
-                        pro.Opis = dane[18];
-
+                      //  var pro = NowyProwadzacy(dane[15], dane[16], dane[14], uw);
+                        //if (dane[17] != "")
+                            //pro.Ocena = long.Parse(dane[17]);
+                       // pro.Opis = dane[18];
+                       
+                       
                         bool jest = false;
                         var yolo = uw.GrupyZajeciowe.GetAll();
                         GrupyZajeciowe gr=null;
@@ -271,10 +310,10 @@ namespace PlanZajec.Parser
                                 Potok = dane[10],
                                 Miejsca =long.Parse( dane[8]),
                                 ZajeteMiejsca = long.Parse( dane[9]),
-                                IdProwadzacego = pro.IdProwadzacego,
+                               // IdProwadzacego = pro.IdProwadzacego,
                                 KodKursu = kr.KodKursu,
                                 Kursy = kr,
-                                Prowadzacy = pro
+                               // Prowadzacy = pro
                             });
                             
 
