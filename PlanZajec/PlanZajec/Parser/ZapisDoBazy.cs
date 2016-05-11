@@ -246,9 +246,14 @@ namespace PlanZajec.Parser
                 }
                 using (StreamWriter sw = new StreamWriter(sf.FileName))
                 {
+                    string zapis = "";
                     foreach(var grupa in grupy)
                     {
-                        sw.WriteLine(grupa);
+                        zapis = grupa.ToString();
+                        if (grupa.Prowadzacy == null)
+                            zapis += ",,,,,";
+
+                        sw.WriteLine(zapis);
                         
                     }
                 }
@@ -269,16 +274,21 @@ namespace PlanZajec.Parser
                     while ((line = sw.ReadLine()) != null)
                     {
                         dane = line.Split(',');
-                        var blok = NowyBlok(dane[19], dane[20], uw);
+                        var blok = NowyBlok(dane[14], dane[15], uw);
                        
                         var kr = NowyKurs(dane[11], dane[12], uw,blok);
                         if(dane[13]!="")
                             kr.ECTS =long.Parse(dane[13]);
-                      //  var pro = NowyProwadzacy(dane[15], dane[16], dane[14], uw);
-                        //if (dane[17] != "")
-                            //pro.Ocena = long.Parse(dane[17]);
-                       // pro.Opis = dane[18];
-                       
+                        Prowadzacy pro = null;
+                        long IdP = 0;
+                        if (dane[16] != "")
+                        {
+                            pro = NowyProwadzacy(dane[16], dane[17], dane[18], uw);
+                            if (dane[19] != "")
+                                pro.Ocena = long.Parse(dane[19]);
+                            pro.Opis = dane[20];
+                            IdP = pro.IdProwadzacego;
+                        }
                        
                         bool jest = false;
                         var yolo = uw.GrupyZajeciowe.GetAll();
@@ -296,7 +306,7 @@ namespace PlanZajec.Parser
 
                         if (jest == false)
                         {
-
+                            if(IdP!=0)
                             gr =(new GrupyZajeciowe()
                             {
                                 KodGrupy = dane[0],
@@ -310,14 +320,32 @@ namespace PlanZajec.Parser
                                 Potok = dane[10],
                                 Miejsca =long.Parse( dane[8]),
                                 ZajeteMiejsca = long.Parse( dane[9]),
-                               // IdProwadzacego = pro.IdProwadzacego,
+                                IdProwadzacego = IdP,
                                 KodKursu = kr.KodKursu,
                                 Kursy = kr,
-                               // Prowadzacy = pro
+                                Prowadzacy = pro
                             });
-                            
+                            else
+                                gr = (new GrupyZajeciowe()
+                                {
+                                    KodGrupy = dane[0],
+                                    TypZajec = dane[1],
+                                    Dzień = dane[2],
+                                    Tydzien = dane[3],
+                                    Godzina = dane[4],
+                                    GodzinaKoniec = dane[5],
+                                    Sala = dane[6],
+                                    Budynek = dane[7],
+                                    Potok = dane[10],
+                                    Miejsca = long.Parse(dane[8]),
+                                    ZajeteMiejsca = long.Parse(dane[9]),
+                                  //  IdProwadzacego = IdP,
+                                    KodKursu = kr.KodKursu,
+                                    Kursy = kr,
+                                    Prowadzacy = pro
+                                });
 
-                           
+
                         }
                         uw.GrupyZajeciowe.Add(gr);
 
