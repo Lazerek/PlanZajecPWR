@@ -31,7 +31,7 @@
                 <DataGridTemplateColumn Width="*" Header="ZajeteMiejsca" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox HorizontalAlignment="Stretch" Text="{Binding ZajeteMiejsca, Mode=OneWay}" Background="White" LostFocus="onTextboxLeave" PreviewTextInput="checkText" />
+                            <TextBox HorizontalAlignment="Stretch" Text="{Binding ZajeteMiejsca, Mode=OneWay}" GotFocus="gotFocus" TextChanged="textChanged" Background="White" LostFocus="onTextboxLeave" AcceptsReturn="False"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

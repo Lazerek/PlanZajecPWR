@@ -25,7 +25,7 @@ namespace Wpf
 
     public partial class PrzegladanieGrup : UserControl
     {
-
+        long lastLong;
         TextBox tbox;
         private PrzegladanieGrupViewModel viewModel;
         public PrzegladanieGrup()
@@ -49,10 +49,48 @@ namespace Wpf
                 c.IsChecked = false;
             }
         }
+
+        private void gotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            lastLong = 0;
+            long.TryParse(t.Text, out lastLong);
+        }
+
+            void textChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            string sCheck = t.Text;
+            int selection = t.SelectionStart;
+            int preLength = sCheck.Length;
+            if (sCheck.Length > 1)
+            {
+                sCheck = sCheck.TrimStart('0');
+                for (int i = preLength; i > sCheck.Length; i--)
+                {
+                    selection--;
+                }
+            }
+            if (sCheck.Length > 3)
+            {
+                sCheck = lastLong.ToString();
+                selection--;
+            }
+            for(int i = 0; i < sCheck.Length; i++)
+            {
+                if((int)sCheck[i] < 48 || (int)sCheck[i] > 57)
+                {
+                    sCheck = sCheck.Remove(i);
+                }
+            }
+            t.Text = sCheck;
+            t.SelectionStart = selection;
+            long.TryParse(t.Text, out lastLong);
+        }
         void checkText(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            long l = 0;
+            e.Handled = !long.TryParse(e.Text, out l);
         }
 
         
@@ -79,6 +117,7 @@ namespace Wpf
             }
             else
             {
+                tbox.Text = "0";
                 gz.ZajeteMiejsca = 0;
                 viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, 0);
             }

@@ -42,8 +42,8 @@ namespace PlanZajec.Views
         {
             this.Close();
         }
-
-        private void sprawdzEnter(object sender, KeyEventArgs e)
+        //Sprawdzenie Scape dla okna głównego
+        private void sprawdzPrzyciski(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -51,7 +51,6 @@ namespace PlanZajec.Views
                 Dodaj(this, new RoutedEventArgs());
                 return;
             }
-
             if (e.Key == Key.Escape)
             {
                 this.Close();
