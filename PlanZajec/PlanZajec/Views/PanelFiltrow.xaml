@@ -9,11 +9,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ComboBox  Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5,10,20,0">
-            <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
-            <ComboBoxItem Selected="OnSelectedGrupy">Przeglądanie grup</ComboBoxItem>
-            <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedFiltrujGrupy">Filtruj grupy</ComboBoxItem>
             <ComboBoxItem Name="KontrolaKursowComboItem" Content="Kontrola kursów" Selected="KontrolaKursowComboItem_OnSelected"></ComboBoxItem>
+            <ComboBoxItem Selected="OnSelectedGrupy">Przeglądanie grup</ComboBoxItem>
+            <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
+            <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
+            <ComboBoxItem Selected="OnSelectedUsun">Usuń plan z bazy</ComboBoxItem>
             <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
         <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,37,20,5">

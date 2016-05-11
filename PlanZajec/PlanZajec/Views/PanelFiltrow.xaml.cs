@@ -54,7 +54,17 @@ namespace Wpf
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
         }
 
-        
+        private void OnSelectedUsun(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null) return;
+            if (PrawePodmenu.Children.Count > 0)
+            {
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            }
+            PrawePodmenu.Children.Add(new UsunPlan());
+        }
+
+
         private void OnSelectedLecturersOpinion(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)
