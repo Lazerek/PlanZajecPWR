@@ -26,6 +26,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Grid.Row ="0" Content="Nazwa kursu" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="nazwaK" KeyDown="filtrujEnter" Grid.Row ="1" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -42,10 +43,10 @@
         <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
         <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="15" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
         <CheckBox x:Name="cb_cw" Content="Cwiczenia" HorizontalAlignment="Left"  Grid.Row="16" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="17" Width="72" Click="wyczyscFiltr" HorizontalAlignment="Right" Margin="0,32,10,-32"/>
-        <Button x:Name="filtruj" Content="Filtruj" HorizontalAlignment="Left" Grid.Row="17" Width="67" Click="filtruj_Click" Margin="0,32,0,-32"/>
+        <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="18" Width="72" Click="wyczyscFiltr" HorizontalAlignment="Right" Margin="0,32,10,-32"/>
+        <Button x:Name="filtruj" Content="Filtruj" HorizontalAlignment="Left" Grid.Row="18" Width="67" Click="filtruj_Click" Margin="0,32,0,-32"/>
         <Label x:Name="label1" Content="Liczba wolnych miejsc" HorizontalAlignment="Left" Margin="0,23,0,0" Grid.Row="9" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <TextBox x:Name="wolneMiejsca" Text=""  KeyDown="filtrujEnter" HorizontalAlignment="Left" Height="23" Margin="0,4,0,0" Grid.Row="11" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
-        <CheckBox x:Name="cb_wolne" Content="Pokaż tylko wolne" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="17" VerticalAlignment="Top" Checked="pokazTylkoWolne" Unchecked="pokazTylkoWolne"/>
+        <CheckBox x:Name="cb_wolne" Content="Pokaż tylko wolne" HorizontalAlignment="Left"  Grid.Row="17" VerticalAlignment="Top" Checked="pokazTylkoWolne"  Unchecked="pokazTylkoWolne" Margin="0,14,0,0" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>
