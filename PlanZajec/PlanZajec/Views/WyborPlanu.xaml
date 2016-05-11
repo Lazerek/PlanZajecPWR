@@ -17,31 +17,33 @@
         <Button Content="Dodaj nowy Plan" Click="DodajPlan" Width="120" Grid.Row="0" HorizontalAlignment="Left"/>
         <Label Content="Wybierz plan:" Grid.Row="1" VerticalAlignment="Center"/>
 
-        <ItemsControl ItemsSource="{Binding Plany}" Grid.Row="2">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Content="X" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="30" Click="Usun"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding Plany}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Content="X" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="30" Click="Usun"/>
 
-                        <Button x:Name="PlanButton" BorderThickness="0"  Background="Transparent"  
+                            <Button x:Name="PlanButton" BorderThickness="0"  Background="Transparent"  
                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" MouseEnter="ButtonPlanMouseEnter" Click="WywierzPlan" Grid.Row="2" >
-                            <Button.Content>
-                                <local:KafelPlanu MinWidth="200" MinHeight="180" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave" />
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                    
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                                <Button.Content>
+                                    <local:KafelPlanu MinWidth="200" MinHeight="180" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave" />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>

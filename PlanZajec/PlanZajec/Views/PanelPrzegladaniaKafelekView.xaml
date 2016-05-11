@@ -16,11 +16,7 @@
                         <local:KafelekGrup Margin="4" VerticalAlignment="Stretch" ContextMenuOpening="PrepareOpenContextMenu"  Width="200" Height="130">
                             <local:KafelekGrup.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Dodaj do planu" Click="klinkieteMenu">
-                                        <MenuItem.Icon>
-                                            <Image Source="Images/addIcon.png" />
-                                        </MenuItem.Icon>
-                                    </MenuItem>
+                                    <MenuItem Header="Tego Tu nie ma"/>
                                 </ContextMenu>
                             </local:KafelekGrup.ContextMenu>
                         </local:KafelekGrup>

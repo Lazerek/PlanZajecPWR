@@ -55,11 +55,11 @@ namespace PlanZajec.Views
         private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
         {
             System.Diagnostics.Debug.WriteLine("@@@Greg|->GetContextMenu)");
-            ContextMenu theMenu = new ContextMenu();
             if(ActChosenPlanSingleton.Instance.IdPlanu < 0)
             {
-                return theMenu;
+                return null;
             }
+            ContextMenu theMenu = new ContextMenu();
             MenuItem menuAddOrRemovFromPlan = new MenuItem();
 
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
