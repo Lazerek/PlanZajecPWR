@@ -39,7 +39,7 @@ namespace PlanZajec.Views
 
         private void Anuluj(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            this.Close();
         }
 
         public string PlanTitle { get; set; }
