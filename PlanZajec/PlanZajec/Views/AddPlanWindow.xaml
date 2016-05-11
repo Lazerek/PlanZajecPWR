@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="Dodaj nowy plan" Height="165" Width="250" ResizeMode="NoResize">
-    <Grid Margin="10">
+        Title="Dodaj nowy plan" Height="135" Width="250" ResizeMode="NoResize">
+    <Grid Margin="10, 5, 10, 5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
         <Label Content="Wybierz tytuł planu:" Grid.Row="0" />
         <TextBox Text="{Binding PlanTitle}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
