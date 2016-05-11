@@ -29,59 +29,62 @@ namespace PlanZajec.Views
         {
             for (var i = 0; i < _planViewModel.Kafelki.Count; i++)
             {
-                var lesson = _planViewModel.Kafelki[i];
-                var dayNumber = 0;
-                switch (_planViewModel.ListaGrupZajeciowych[i].Dzień)
+                if (_planViewModel.ListaGrupZajeciowych[i].Godzina.Length==5)
                 {
-                    case "pn":
-                        dayNumber = 0;
-                        break;
-                    case "wt":
-                        dayNumber = 1;
-                        break;
-                    case "śr":
-                        dayNumber = 2;
-                        break;
-                    case "cz":
-                        dayNumber = 3;
-                        break;
-                    case "pt":
-                        dayNumber = 4;
-                        break;
-                    case "sb":
-                        dayNumber = 5;
-                        break;
-                    case "nd":
-                        dayNumber = 6;
-                        break;
-                }
-                //poprawka dla 14 row
-                dayNumber *= 2;
+                    var lesson = _planViewModel.Kafelki[i];
+                    var dayNumber = 0;
+                    switch (_planViewModel.ListaGrupZajeciowych[i].Dzień)
+                    {
+                        case "pn":
+                            dayNumber = 0;
+                            break;
+                        case "wt":
+                            dayNumber = 1;
+                            break;
+                        case "śr":
+                            dayNumber = 2;
+                            break;
+                        case "cz":
+                            dayNumber = 3;
+                            break;
+                        case "pt":
+                            dayNumber = 4;
+                            break;
+                        case "sb":
+                            dayNumber = 5;
+                            break;
+                        case "nd":
+                            dayNumber = 6;
+                            break;
+                    }
+                    //poprawka dla 14 row
+                    dayNumber *= 2;
 
-                var startingHourString = _planViewModel.ListaGrupZajeciowych[i].Godzina;
-                var startingHour = int.Parse(startingHourString.Split(':')[0]) +
-                                   (int.Parse(startingHourString.Split(':')[1]) <= 30 ? 0 : 1);
-                var endHourString = _planViewModel.ListaGrupZajeciowych[i].GodzinaKoniec;
-                var endHour = int.Parse(endHourString.Split(':')[0]) +
-                              (int.Parse(endHourString.Split(':')[1]) <= 30 ? 0 : 1);
-                var czasTrwania = endHour - startingHour;
+                    var startingHourString = _planViewModel.ListaGrupZajeciowych[i].Godzina;
+                    var startingHour = int.Parse(startingHourString.Split(':')[0]) +
+                                       (int.Parse(startingHourString.Split(':')[1]) <= 30 ? 0 : 1);
+                    var endHourString = _planViewModel.ListaGrupZajeciowych[i].GodzinaKoniec;
+                    var endHour = int.Parse(endHourString.Split(':')[0]) +
+                                  (int.Parse(endHourString.Split(':')[1]) <= 30 ? 0 : 1);
+                    var czasTrwania = endHour - startingHour;
 
-                TabelaGrup.Children.Add(lesson);
-                switch (_planViewModel.ListaGrupZajeciowych[i].Tydzien)
-                {
-                    case "//":
-                        Grid.SetRow(lesson, dayNumber);
-                        Grid.SetRowSpan(lesson, 2);
-                        break;
-                    case "TN":
-                        Grid.SetRow(lesson, dayNumber);
-                        break;
-                    case "TP":
-                        Grid.SetRow(lesson, dayNumber + 1);
-                        break;
+                    TabelaGrup.Children.Add(lesson);
+                    switch (_planViewModel.ListaGrupZajeciowych[i].Tydzien)
+                    {
+                        case "//":
+                            Grid.SetRow(lesson, dayNumber);
+                            Grid.SetRowSpan(lesson, 2);
+                            break;
+                        case "TN":
+                            Grid.SetRow(lesson, dayNumber);
+                            break;
+                        case "TP":
+                            Grid.SetRow(lesson, dayNumber + 1);
+                            break;
+                    }
+                    Grid.SetColumn(lesson, startingHour - 7);
+                    Grid.SetColumnSpan(lesson, czasTrwania);
                 }
-                Grid.SetColumn(lesson, startingHour - 7);
-                Grid.SetColumnSpan(lesson, czasTrwania);
             }
         }
 

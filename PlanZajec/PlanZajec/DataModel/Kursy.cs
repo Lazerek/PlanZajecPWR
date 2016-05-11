@@ -55,9 +55,9 @@ namespace PlanZajec.DataModel
             public string ToString()
         {
             if (Blok1 != null)
-                return KodKursu + "," + NazwaKursu + "," + ECTS + Blok1;
+                return KodKursu + "," + NazwaKursu + "," + ECTS+ "," + Blok1;
             else
-                return KodKursu + "," + NazwaKursu;
+                return KodKursu + "," + NazwaKursu + "," + ECTS + ",,";
         }
         
 
