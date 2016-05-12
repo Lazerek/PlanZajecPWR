@@ -114,7 +114,13 @@ namespace Wpf
             {
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             }
-            PrawePodmenu.Children.Add(new PanelPrzegladaniaKafelekView() { DataContext = PrzegladanieGrupViewModel.przegladanieGrupViewModel});
+            PrawePodmenu.Children.Add(preparePrzegladanieKafelkow());
+        }
+
+        private UIElement preparePrzegladanieKafelkow()
+        {
+            return new PanelPrzegladaniaKafelekView()
+                { DataContext = PrzegladanieGrupViewModel.przegladanieGrupViewModel};
         }
 
         private void gButtonClicked(object sender, RoutedEventArgs e)

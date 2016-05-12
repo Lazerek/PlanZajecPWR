@@ -34,9 +34,10 @@ namespace PlanZajec.Views
             fe.ContextMenu = GetContextMenu(grupa);
         }
 
+
         private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
         {
-            System.Diagnostics.Debug.WriteLine("@@@Run|->GetContextMenu)");
+            System.Diagnostics.Debug.WriteLine("@@@Invoke|->GetContextMenu)");
             if(grupa == null || ActChosenPlanSingleton.Instance.IdPlanu < 0)
             {
                 return null;
@@ -53,13 +54,13 @@ namespace PlanZajec.Views
                 {
                     menuAddOrRemovFromPlan.Header = "Usuń z planu";
                     menuAddOrRemovFromPlan.Icon = minusIcon;
-                    menuAddOrRemovFromPlan.Click += OnRemoveFromPlanHandler;             
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);             
                 }
                 else
                 {
                     menuAddOrRemovFromPlan.Header = "Dodaj do planu";
                     menuAddOrRemovFromPlan.Icon = addIcon;
-                    menuAddOrRemovFromPlan.Click += OnAddToPlanHandler;
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
                     CommandManager.InvalidateRequerySuggested();
                 }
             }

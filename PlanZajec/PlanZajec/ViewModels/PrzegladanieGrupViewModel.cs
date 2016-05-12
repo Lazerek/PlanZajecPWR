@@ -15,6 +15,8 @@ namespace PlanZajec.ViewModels
     public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
     {
         public ObservableCollection<GrupyZajeciowe> Items { get; set; }
+        public GrupyZajeciowe SelectedItem { get; set; }
+
         public List<GrupyZajeciowe> ItemsNoChange { get; set; }
         public static PrzegladanieGrupViewModel przegladanieGrupViewModel;
 
