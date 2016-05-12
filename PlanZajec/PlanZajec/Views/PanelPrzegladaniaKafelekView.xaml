@@ -9,21 +9,19 @@
              x:Name="PanelKafliUserControl"
              >
     <Grid>
-        <ListBox ItemsSource="{Binding Items}" >
+        <ListBox ItemsSource="{Binding Items}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <local:KafelekGrup Margin="4" VerticalAlignment="Stretch" ContextMenuOpening="PrepareOpenContextMenu"  Width="200" Height="130">
+                        <local:KafelekGrup ContextMenuOpening="PrepareOpenContextMenu"
+                                           Margin="4" VerticalAlignment="Stretch" Width="200" Height="130">
                             <local:KafelekGrup.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Tego Tu nie ma"/>
-                                </ContextMenu>
+                                <ContextMenu /> <!-- It's importmant step. Without it, It will not show in first click-->
                             </local:KafelekGrup.ContextMenu>
                         </local:KafelekGrup>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-
         </ListBox>
     </Grid>
 </UserControl>
