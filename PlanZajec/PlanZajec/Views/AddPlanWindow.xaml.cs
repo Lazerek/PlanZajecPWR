@@ -19,6 +19,7 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class AddPlanWindow : Window
     {
+        public string PlanTitle { get; set; }
         public AddPlanWindow()
         {
             InitializeComponent();
@@ -41,7 +42,20 @@ namespace PlanZajec.Views
         {
             this.Close();
         }
-
-        public string PlanTitle { get; set; }
+        //Sprawdzenie Scape dla okna głównego
+        private void sprawdzPrzyciski(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                dodajButton.Focus(); //Przeniesienie zaznaczenie z textboxa na button
+                Dodaj(this, new RoutedEventArgs());
+                return;
+            }
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+                return;
+            }
+        }
     }
 }
