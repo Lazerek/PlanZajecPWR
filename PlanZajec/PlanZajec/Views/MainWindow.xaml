@@ -35,7 +35,7 @@
 
         <Grid>
         <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="kolumna1" MinWidth="150" Width="*"/>
+                <ColumnDefinition x:Name="kolumna1" MinWidth="250" Width="*"/>
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition MinWidth="500" Width="3*"/>
             </Grid.ColumnDefinitions>

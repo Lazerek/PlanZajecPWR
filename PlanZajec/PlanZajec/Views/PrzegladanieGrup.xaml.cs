@@ -107,11 +107,15 @@ namespace Wpf
                     {
                         gz.ZajeteMiejsca = l;
                         viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, l);
+                        CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
+                        c.IsChecked = true;
                     }
                     else
                     {
                         gz.ZajeteMiejsca = gz.Miejsca;
                         viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, (long)gz.Miejsca);
+                        CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
+                        c.IsChecked = false;
                     }
                 }
             }
@@ -120,6 +124,8 @@ namespace Wpf
                 tbox.Text = "0";
                 gz.ZajeteMiejsca = 0;
                 viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, 0);
+                CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
+                c.IsChecked = true;
             }
         }
     }

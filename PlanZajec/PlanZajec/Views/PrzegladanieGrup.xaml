@@ -24,7 +24,7 @@
                 <DataGridTemplateColumn Width="*" Header="Wolna" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding Wolna, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  Click="onCheckBoxClick" />
+                            <CheckBox x:Uid="cbox" HorizontalAlignment="Center" IsChecked="{Binding Wolna, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  Click="onCheckBoxClick" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
