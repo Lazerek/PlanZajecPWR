@@ -42,7 +42,8 @@ namespace Wpf
             {
                 gz.ZajeteMiejsca = gz.Miejsca.Value;
                 viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, gz.Miejsca.Value);
-                DgUsers.Items.Refresh();
+                TextBox t = (TextBox)VisualTreeHelper.GetChild(DgUsers.Columns[10].GetCellContent(gz), 0);
+                t.Text = gz.Miejsca.Value.ToString();
             }
             else
             {
