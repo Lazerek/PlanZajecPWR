@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Wpf;
 
 namespace PlanZajec.ViewModels
@@ -52,6 +54,7 @@ namespace PlanZajec.ViewModels
                 {
                     var temp = new GrupaZajeciowaTemplate(new GrupaTamplateViewModel(gr.KodGrupy));
 
+
                     var okno = Application.Current.Windows.OfType<MainWindow>().First();
                     var a = okno.DataContext as PlanView;
                     System.Diagnostics.Debug.WriteLine(a);
@@ -62,5 +65,39 @@ namespace PlanZajec.ViewModels
                 //ListaGrupZajeciowych[0];
             }
         }
+
+        //TODO: Fail in projecting GrupaTamplateViewModel, it's hard to quck refactor - Tip: Refector klas to binding!
+        /*
+        private void TempOnContextMenuOpening(object sender, ContextMenuEventArgs contextMenuEventArgs)
+        {
+            GrupaZajeciowaTemplate grupaTemplate = sender as GrupaZajeciowaTemplate;
+            GrupyZajeciowe grupa = grupaTemplate. .DataContext as GrupyZajeciowe;
+            FrameworkElement fe = e.Source as FrameworkElement;
+
+            fe.ContextMenu = GetContextMenu(grupa);
+        }
+
+        private ContextMenu GetContextMenu(UnitOfWork uw, GrupyZajeciowe grupa)
+        {
+            ContextMenu menu = new ContextMenu();
+            MenuItem menuRemove = new MenuItem
+            {
+                Header = "Usuń z planu",
+                Icon = new Image() {Source = new BitmapImage(new Uri("Images/minusIcon.png", UriKind.Relative))}
+            };
+            menuRemove.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);
+            menu.Items.Add((menuRemove));
+            return menu;
+        }
+
+        private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)
+        {
+            using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            {
+                unitOfWork.Plany.UsunGrupeZajeciowaZPlanu(grupaToAddOrDeleteFromPlan);
+            }
+            PlanView.RefreshSchedule();
+        }
+        */
     }
 }

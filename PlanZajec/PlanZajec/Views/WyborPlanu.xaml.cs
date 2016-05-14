@@ -22,12 +22,8 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class WyborPlanu : UserControl
     {
-        public delegate void ChosenPlan(Plany plan);
-
-        public delegate void ChosenPlan2(Plany plan, out bool deleted);
-
-        public event ChosenPlan ChosenPlanToShowEventHandler;
-        public event ChosenPlan2 ChosenPlanToDeleteEventHandler;
+        public event Action<Plany> ChosenPlanToShowEventHandler;
+        public event Func<Plany,bool> ChosenPlanToDeleteEventHandler;
 
         public event Action<string> AddToPlan;
 
@@ -61,10 +57,7 @@ namespace PlanZajec.Views
             System.Diagnostics.Debug.Write("Wybor planu");
             Button button = sender as Button;
             button.Background = new SolidColorBrush(Colors.Transparent);
-            if(ChosenPlanToShowEventHandler != null)
-            {
-                ChosenPlanToShowEventHandler(button.DataContext as Plany);
-            }
+            ChosenPlanToShowEventHandler?.Invoke(button.DataContext as Plany);
         }
 
         private void Usun(object sender, RoutedEventArgs e)
@@ -73,8 +66,7 @@ namespace PlanZajec.Views
             Button button = sender as Button;
             if (ChosenPlanToDeleteEventHandler != null)
             {
-                bool deleted=false;
-                ChosenPlanToDeleteEventHandler(button.DataContext as Plany, out deleted);
+                bool deleted = ChosenPlanToDeleteEventHandler(button.DataContext as Plany);
             }
         }
 
@@ -84,14 +76,7 @@ namespace PlanZajec.Views
             bool? result = addPlan.ShowDialog();
             if (result.HasValue && result.Value)
             {
-
-                if (AddToPlan != null)
-                {
-                    AddToPlan(addPlan.PlanTitle);
-                }
-
-
-
+                AddToPlan?.Invoke(addPlan.PlanTitle);
             }
         }
     }

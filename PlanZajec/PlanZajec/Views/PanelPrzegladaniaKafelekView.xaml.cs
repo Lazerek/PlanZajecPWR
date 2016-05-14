@@ -38,11 +38,13 @@ namespace PlanZajec.Views
         private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
         {
             System.Diagnostics.Debug.WriteLine("@@@Invoke|->GetContextMenu)");
-            if(grupa == null || ActChosenPlanSingleton.Instance.IdPlanu < 0)
-            {
-                return null;
-            }
             ContextMenu theMenu = new ContextMenu();
+            if (grupa == null || ActChosenPlanSingleton.Instance.IdPlanu < 0)
+            {
+                theMenu.Visibility = Visibility.Hidden;
+                return theMenu;
+            }
+            
             MenuItem menuAddOrRemovFromPlan = new MenuItem();
 
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))

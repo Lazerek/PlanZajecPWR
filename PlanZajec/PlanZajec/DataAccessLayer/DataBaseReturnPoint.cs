@@ -19,8 +19,6 @@ namespace PlanZajec.DataAccessLayer
                 System.Diagnostics.Debug.WriteLine("Kopiuje DB do bin/debug");
                 File.Copy(dbPathOutsideBinDebug, dbName);
             }
-            //string fullP = Path.GetFullPath("Super-egatron-5000X-DB.sqlite");
-            //System.Diagnostics.Debug.WriteLine(fullP);
         }
     }
 }

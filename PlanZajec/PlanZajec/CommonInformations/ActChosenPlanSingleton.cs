@@ -9,18 +9,16 @@ namespace PlanZajec.CommonInformations
 {
     class ActChosenPlanSingleton
     {
-        private static ActChosenPlanSingleton instance;
+        private static ActChosenPlanSingleton instance = new ActChosenPlanSingleton();
 
         private ActChosenPlanSingleton() { }
+
+
 
         public static ActChosenPlanSingleton Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new ActChosenPlanSingleton();
-                }
                 return instance;
             }
         }
