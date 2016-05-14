@@ -69,6 +69,12 @@ namespace PlanZajec.Views
 
         private void Usun(object sender, RoutedEventArgs e)
         {
+            var numberOfSch = PlanyKafleControl.Items.Count;
+            if (numberOfSch == 1)
+            {
+                MessageBox.Show("Nie można usunąć jedynego planu");
+                return;
+            }
             System.Diagnostics.Debug.Write("usuwanie plany");
             Button button = sender as Button;
             if (ChosenPlanToDeleteEventHandler != null)

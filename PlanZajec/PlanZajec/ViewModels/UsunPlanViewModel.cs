@@ -26,11 +26,6 @@ namespace PlanZajec.ViewModels
 
         public void usunPlan(Plany p)
         {
-            if (Items.Count <= 1)
-            {
-                MessageBox.Show("Nie można usunąć jedynego planu");
-                return;
-            }
             int indexToDelete = -1;
             indexToDelete = Items.IndexOf(p);
             Items.RemoveAt(indexToDelete);
