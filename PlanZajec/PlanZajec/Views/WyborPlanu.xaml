@@ -36,7 +36,7 @@
                             <Button x:Name="PlanButton" BorderThickness="0"  Background="Transparent"  
                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" MouseEnter="ButtonPlanMouseEnter" Click="WywierzPlan" Grid.Row="2" >
                                 <Button.Content>
-                                    <local:KafelPlanu MinWidth="200" MinHeight="180" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave" />
+                                    <local:KafelPlanu Width="200" Height="180" Margin="5"  MouseEnter="ZmienKolorMouseEnter" MouseLeave="ZmienKolorMouseLeave" />
                                 </Button.Content>
                             </Button>
                         </Grid>

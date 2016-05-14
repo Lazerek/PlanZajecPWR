@@ -34,10 +34,7 @@ namespace PlanZajec.Views
             tabsId = 0;
             _tabItems = new ObservableCollection<TabItem>();
             //add tab
-            _tabAdd = new TabItem();
-            _tabAdd = new TabItem();
-            _tabAdd.Header = "+";
-            _tabAdd.Name = "AddSchedule";
+            _tabAdd = GetPlusCard();
             _tabItems.Add(_tabAdd);
             //
             var tab = new TabItem();
@@ -52,6 +49,16 @@ namespace PlanZajec.Views
             LewyTabControl.DataContext = _tabItems;
             LewyTabControl.SelectedIndex = 0;
         }
+
+
+        private TabItem GetPlusCard()
+        {
+            TabItem tab = new TabItem();
+            tab.Header = "+";
+            tab.Name = "AddSchedule";
+            return tab;
+        }
+
 
         private TabItem AddScheduleTabItem()
         {
@@ -128,14 +135,13 @@ namespace PlanZajec.Views
             LewyTabControl.SelectedItem = tabItem;
         }
 
-        private void UsunPlan(Plany plan, out bool deleted)
+        private bool UsunPlan(Plany plan)
         {
             //if scheulde is open then u cant delete
             if (_openedScheuldes.Contains(plan.IdPlanu))
             {
                 MessageBox.Show("Otwarty plan, zamknij aby usunąć");
-                deleted = false;
-                return;
+                return false;
             }
             //if u can delete then...
             using (var unit = new UnitOfWork(new PlanPwrContext()))
@@ -144,7 +150,7 @@ namespace PlanZajec.Views
                 unit.SaveChanges();
             }
             WyborPlanuViewModel.Instance.UsunPlan(plan);
-            deleted = true;
+            return true;
         }
 
         private void BtnCloseCard_OnClick(object sender, RoutedEventArgs e)
