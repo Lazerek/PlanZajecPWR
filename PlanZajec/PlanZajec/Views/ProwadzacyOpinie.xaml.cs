@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PlanZajec.ViewModels;
 using PlanZajec.DataModel;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace PlanZajec
 {
@@ -65,6 +67,15 @@ namespace PlanZajec
             string[] wynik= ViewModel.dajOpinie(comboBox.SelectedValue+"");
            textBox.Text = wynik[0];
            Ocena.Text = wynik[1];
+        }
+        private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
+        {
+            char c = Convert.ToChar(e.Text);
+            if (Char.IsNumber(c) || c.Equals(',') || c.Equals('.'))
+                e.Handled = false;
+            else
+                e.Handled = true;
+
         }
     }
 }
