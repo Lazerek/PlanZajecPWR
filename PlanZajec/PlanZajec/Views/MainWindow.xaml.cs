@@ -79,7 +79,7 @@ namespace Wpf
 
 
             ZapisWindow zw = new ZapisWindow();
-            zw.Show();
+            zw.ShowDialog();
 
 
         }
@@ -89,7 +89,7 @@ namespace Wpf
         {
             //TODO
             ZapisWindow zw = new ZapisWindow();
-            zw.Show();
+            zw.ShowDialog();
 
         }
 

@@ -26,6 +26,7 @@ namespace PlanZajec.Views
     public partial class ZapisWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
+        private long[] tab;
         public ZapisWindow()
         {
             InitializeComponent();
@@ -33,10 +34,14 @@ namespace PlanZajec.Views
             {
                 plany = new ObservableCollection<Plany>(uw.Plany.GetAll().ToList());
             }
+            tab = new long[plany.Count()];
+            int i = 0;
             foreach (Plany plan in plany)
             {
                 PlanyComboBox.Items.Add("Plan " + plan.IdPlanu);
+                tab[i] = plan.IdPlanu;
             }
+            PlanyComboBox.SelectedIndex = 0;
         }
 
         private void Zapisz_Click(object sender, RoutedEventArgs e)
@@ -48,7 +53,8 @@ namespace PlanZajec.Views
             };
             if (dialog.ShowDialog() == true)
             {
-                ZapisDoBazy.export(dialog, index + 1);
+                //ZapisDoBazy.export(dialog, tab[index]);
+                System.Diagnostics.Debug.WriteLine(tab[index]);
             }
         }
     }
