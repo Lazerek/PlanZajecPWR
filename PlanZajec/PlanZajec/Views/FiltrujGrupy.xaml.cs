@@ -41,7 +41,14 @@ namespace PlanZajec.Views
             cb_pro.IsChecked = false;
             cb_cw.IsChecked = false;
         }
-
+        private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
+        {
+            char c = Convert.ToChar(e.Text);
+            if (Char.IsNumber(c))
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
         private void filtruj_Click(object sender, RoutedEventArgs e)
         {
             Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
