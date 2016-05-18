@@ -40,6 +40,7 @@ namespace PlanZajec.Views
             {
                 PlanyComboBox.Items.Add("Plan " + plan.IdPlanu);
                 tab[i] = plan.IdPlanu;
+                i++;
             }
             PlanyComboBox.SelectedIndex = 0;
         }
@@ -53,8 +54,7 @@ namespace PlanZajec.Views
             };
             if (dialog.ShowDialog() == true)
             {
-                //ZapisDoBazy.export(dialog, tab[index]);
-                System.Diagnostics.Debug.WriteLine(tab[index]);
+                ZapisDoBazy.export(dialog, tab[index]);
             }
         }
     }
