@@ -109,7 +109,8 @@ namespace PlanZajec.ViewModels
                         gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
                         gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
                         gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 
-                        && result < (gz.Miejsca.Value - gz.ZajeteMiejsca.Value))
+                        && result < (gz.Miejsca.Value - gz.ZajeteMiejsca.Value)
+                        && prowadzacy.Equals(""))
                         ItemsChanged.Add(gz);
                 }
             }
@@ -141,7 +142,8 @@ namespace PlanZajec.ViewModels
                             gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
                             gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
                             gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            && result < (gz.Miejsca.Value - gz.ZajeteMiejsca.Value))
+                            && result < (gz.Miejsca.Value - gz.ZajeteMiejsca.Value)
+                            && prowadzacy.Equals(""))
                             ItemsChanged.Add(gz);
                     }
                 }
@@ -171,7 +173,7 @@ namespace PlanZajec.ViewModels
                         gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
                         gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
                         gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0
-                        )
+                        && prowadzacy.Equals(""))
                         ItemsChanged.Add(gz);
                 }
             }
@@ -203,7 +205,7 @@ namespace PlanZajec.ViewModels
                             gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
                             gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
                             gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            )
+                            && prowadzacy.Equals(""))
                             ItemsChanged.Add(gz);
                     }
                 }
