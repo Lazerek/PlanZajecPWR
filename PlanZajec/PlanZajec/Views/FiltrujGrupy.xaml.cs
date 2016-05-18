@@ -28,19 +28,7 @@ namespace PlanZajec.Views
             cb_wsz.IsChecked = true;
         }
 
-        public void wyczyscFiltr(object sender, EventArgs e)
-        {
-            nazwaK.Text = "";
-            nazwaP.Text = "";
-            nazwaKG.Text = "";
-            nazwaKK.Text = "";
-            nazwaPot.Text = "";
-            cb_wsz.IsChecked = true;
-            cb_wyk.IsChecked = false;
-            cb_lab.IsChecked = false;
-            cb_pro.IsChecked = false;
-            cb_cw.IsChecked = false;
-        }
+        
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
         {
             char c = Convert.ToChar(e.Text);
@@ -118,6 +106,7 @@ namespace PlanZajec.Views
             cb_lab.IsChecked = true;
             cb_pro.IsChecked = true;
             cb_cw.IsChecked = true;
+            cb_wolne.IsChecked = false;
             nazwaK.Text = "";
             nazwaKG.Text = "";
             nazwaKK.Text = "";
