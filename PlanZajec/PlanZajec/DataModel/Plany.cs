@@ -85,7 +85,7 @@ namespace PlanZajec.DataModel
                 }
                 uw.SaveChanges();
             }
-            
+            WolneDni = nowy;
         }
 
         private string AppendWolneDni(string str1, string str2)
@@ -99,7 +99,7 @@ namespace PlanZajec.DataModel
             {
                 wynik = wynik + str2.Substring(0, 2) + ":";
             }
-            if (Int16.Parse(str1.Substring(3, 2)) <= Int16.Parse(str2.Substring(3, 2)))
+            if (Int16.Parse(str1.Substring(3, 2)) >= Int16.Parse(str2.Substring(3, 2)))
             {
                 wynik = wynik + str1.Substring(3, 2) + ":";
             }
