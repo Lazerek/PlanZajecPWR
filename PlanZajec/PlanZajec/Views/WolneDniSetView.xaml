@@ -25,8 +25,8 @@
             <ColumnDefinition Width="4*"></ColumnDefinition>
             <ColumnDefinition Width="21*"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
-            <Label Name="InfoLabel" Content="" HorizontalAlignment="Center"></Label>
+        <Viewbox Name="InfoLabelViewbox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+            <Label Name="InfoLabel" Content="" HorizontalAlignment="Stretch"></Label>
         </Viewbox>
 
         <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
