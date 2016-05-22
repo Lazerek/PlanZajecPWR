@@ -13,7 +13,6 @@ namespace PlanZajec.DataModel
         public Plany()
         {
             GrupyZajeciowe = new HashSet<GrupyZajeciowe>();
-            WolneDni = "";
         }
 
         [Key]
@@ -49,26 +48,29 @@ namespace PlanZajec.DataModel
 
         public void AddWolneDni(string str)
         {
-            string[] current= this.WolneDni.Split(',');
             string nowy = "";
-            foreach (string one in current)
+            if (WolneDni == null)
             {
-                if (one.Substring(6, 2).Equals(str.Substring(6, 2))&&(
-                    (Int16.Parse(one.Substring(3,2))>=Int16.Parse(str.Substring(0, 2))&&
-                    (Int16.Parse(one.Substring(3, 2)) <= Int16.Parse(str.Substring(3, 2))))||
-                    (Int16.Parse(one.Substring(0, 2)) >= Int16.Parse(str.Substring(0, 2)) &&
-                    (Int16.Parse(one.Substring(0, 2)) <= Int16.Parse(str.Substring(3, 2))))||
-                    (Int16.Parse(str.Substring(3, 2)) >= Int16.Parse(one.Substring(0, 2)) &&
-                    (Int16.Parse(str.Substring(3, 2)) <= Int16.Parse(one.Substring(3, 2)))) ||
-                    (Int16.Parse(str.Substring(0, 2)) >= Int16.Parse(one.Substring(0, 2)) &&
-                    (Int16.Parse(str.Substring(0, 2)) <= Int16.Parse(one.Substring(3, 2))))
-                    ))
+                string[] current = this.WolneDni.Split(',');
+                foreach (string one in current)
                 {
-                   str= AppendWolneDni(one, str);
-                }
-                else
-                {
-                    nowy = nowy+one+",";
+                    if (one.Substring(6, 2).Equals(str.Substring(6, 2)) && (
+                        (Int16.Parse(one.Substring(3, 2)) >= Int16.Parse(str.Substring(0, 2)) &&
+                         (Int16.Parse(one.Substring(3, 2)) <= Int16.Parse(str.Substring(3, 2)))) ||
+                        (Int16.Parse(one.Substring(0, 2)) >= Int16.Parse(str.Substring(0, 2)) &&
+                         (Int16.Parse(one.Substring(0, 2)) <= Int16.Parse(str.Substring(3, 2)))) ||
+                        (Int16.Parse(str.Substring(3, 2)) >= Int16.Parse(one.Substring(0, 2)) &&
+                         (Int16.Parse(str.Substring(3, 2)) <= Int16.Parse(one.Substring(3, 2)))) ||
+                        (Int16.Parse(str.Substring(0, 2)) >= Int16.Parse(one.Substring(0, 2)) &&
+                         (Int16.Parse(str.Substring(0, 2)) <= Int16.Parse(one.Substring(3, 2))))
+                        ))
+                    {
+                        str = AppendWolneDni(one, str);
+                    }
+                    else
+                    {
+                        nowy = nowy + one + ",";
+                    }
                 }
             }
             nowy = nowy + str;
