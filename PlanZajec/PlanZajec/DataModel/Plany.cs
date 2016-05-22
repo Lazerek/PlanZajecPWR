@@ -1,5 +1,6 @@
 namespace PlanZajec.DataModel
 {
+    using DataAccessLayer;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -49,7 +50,7 @@ namespace PlanZajec.DataModel
         public void AddWolneDni(string str)
         {
             string nowy = "";
-            if (WolneDni == null)
+            if (WolneDni != null)
             {
                 string[] current = this.WolneDni.Split(',');
                 foreach (string one in current)
@@ -74,7 +75,17 @@ namespace PlanZajec.DataModel
                 }
             }
             nowy = nowy + str;
-            WolneDni = nowy;
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+               var plany= uw.Plany.GetAll();
+                foreach (var plan in plany)
+                {
+                    if (plan.IdPlanu == this.IdPlanu)
+                        plan.WolneDni = nowy;
+                }
+                uw.SaveChanges();
+            }
+            
         }
 
         private string AppendWolneDni(string str1, string str2)
