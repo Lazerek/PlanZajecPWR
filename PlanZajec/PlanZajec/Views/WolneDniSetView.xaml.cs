@@ -1,31 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for WolneDniSetView.xaml
+    ///     Interaction logic for WolneDniSetView.xaml
     /// </summary>
     public partial class WolneDniSetView : UserControl
     {
-
-        public ObservableCollection<Plany> plany { get; private set; }
-
         public WolneDniSetView()
         {
             InitializeComponent();
@@ -35,18 +22,20 @@ namespace PlanZajec.Views
                 plany = new ObservableCollection<Plany>(uw.Plany.GetAll().ToList());
             }
 
-            foreach (Plany plan in plany)
+            foreach (var plan in plany)
             {
                 SelectPlanComboBox.Items.Add(plan.NazwaPlanu);
             }
-
         }
+
+        public ObservableCollection<Plany> plany { get; }
 
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
-            getSelectedPlan(SelectPlanComboBox.SelectedValue as string).AddWolneDni(getBeaginingHour()+":"+getEndHour()+":"+getShortDay());
+            getSelectedPlan(SelectPlanComboBox.SelectedValue as string)
+                .AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
             InfoLabel.Content = "Dodano";
-            Color col = Colors.ForestGreen;
+            var col = Colors.ForestGreen;
             Brush colorBrush = new SolidColorBrush(col);
             InfoLabel.Background = colorBrush;
         }
@@ -58,7 +47,7 @@ namespace PlanZajec.Views
 
         private string getBeaginingHour()
         {
-            string beginingHour = "";
+            var beginingHour = "";
             switch (GodzinaRozpoczeciaComboBox.Text)
             {
                 case "7.30":
@@ -88,10 +77,9 @@ namespace PlanZajec.Views
 
         private string getEndHour()
         {
-            string endHour = "";
+            var endHour = "";
             switch (GodzinaZakonczeniaComboBox.Text)
             {
-
                 case "9.00":
                     endHour = "09";
                     break;
@@ -119,7 +107,7 @@ namespace PlanZajec.Views
 
         private string getShortDay()
         {
-            string dayShort = "";
+            var dayShort = "";
             switch (DaySelectComboBox.SelectedIndex)
             {
                 case 0:
@@ -146,6 +134,5 @@ namespace PlanZajec.Views
             }
             return dayShort;
         }
-
     }
 }
