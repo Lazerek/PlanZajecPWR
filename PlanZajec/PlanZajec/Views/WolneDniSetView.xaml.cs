@@ -46,7 +46,9 @@ namespace PlanZajec.Views
         {
             getSelectedPlan(SelectPlanComboBox.SelectedValue as string).AddWolneDni(getBeaginingHour()+":"+getEndHour()+":"+getShortDay());
             InfoLabel.Content = "Dodano";
-            InfoLabel.Background = new SolidColorBrush(Color.FromArgb(0, 11, 111, 16));
+            Color col = Colors.ForestGreen;
+            Brush colorBrush = new SolidColorBrush(col);
+            InfoLabel.Background = colorBrush;
         }
 
         private Plany getSelectedPlan(string name)
@@ -60,10 +62,10 @@ namespace PlanZajec.Views
             switch (GodzinaRozpoczeciaComboBox.Text)
             {
                 case "7.30":
-                    beginingHour = "7";
+                    beginingHour = "07";
                     break;
                 case "9.15":
-                    beginingHour = "9";
+                    beginingHour = "09";
                     break;
                 case "11.15":
                     beginingHour = "11";
@@ -91,7 +93,7 @@ namespace PlanZajec.Views
             {
 
                 case "9.00":
-                    endHour = "9";
+                    endHour = "09";
                     break;
                 case "11.00":
                     endHour = "11";
