@@ -103,7 +103,7 @@ namespace PlanZajec.Views
         {
             cb_wsz.IsChecked = true;
             cb_wyk.IsChecked = true;
-            cb_lab.IsChecked = true;
+            cb_lab.IsChecked = true;        
             cb_pro.IsChecked = true;
             cb_cw.IsChecked = true;
             cb_wolne.IsChecked = false;
