@@ -149,5 +149,14 @@ namespace Wpf
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             PrawePodmenu.Children.Add(new KontrolaZapisowView());
         }
+
+        private void OnSelectedDodajWolny(object sender, RoutedEventArgs e)
+        {
+            if (PrawePodmenu == null)
+                return;
+            if (PrawePodmenu.Children.Count > 0)
+                PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
+            PrawePodmenu.Children.Add(new WolneDniSetView());
+        }
     }
 }

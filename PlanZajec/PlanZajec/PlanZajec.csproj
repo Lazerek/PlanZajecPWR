@@ -195,6 +195,9 @@
     <Compile Include="DataAccessLayer\PlanPwrContext.cs" />
     <Compile Include="DataModel\Plany.cs" />
     <Compile Include="DataModel\Prowadzacy.cs" />
+    <Compile Include="Views\WolneDniSetView.xaml.cs">
+      <DependentUpon>WolneDniSetView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WyborPlanu.xaml.cs">
       <DependentUpon>WyborPlanu.xaml</DependentUpon>
     </Compile>
@@ -280,6 +283,10 @@
     <Page Include="Views\UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WolneDniSetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WyborPlanu.xaml">
       <SubType>Designer</SubType>
