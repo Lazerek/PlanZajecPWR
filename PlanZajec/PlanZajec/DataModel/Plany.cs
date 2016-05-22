@@ -40,13 +40,13 @@ namespace PlanZajec.DataModel
                 return false;
             return Equals(obj as Plany);
         }
-        //TODO Fix warning Object.Equals(object o) but does not override Object.GetHashCode
+        
         public string[] GetWolneDni()
         {
             return this.WolneDni.Split(',');
         }
 
-        public void SetWolneDni(string str)
+        public void AddWolneDni(string str)
         {
             string[] current= this.WolneDni.Split(',');
             string nowy = "";
@@ -71,6 +71,7 @@ namespace PlanZajec.DataModel
                 }
             }
             nowy = nowy + str;
+            WolneDni = nowy;
         }
 
         private string AppendWolneDni(string str1, string str2)
