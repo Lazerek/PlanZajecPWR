@@ -55,7 +55,7 @@ namespace PlanZajec.Views
         private string getBeaginingHour()
         {
             string beginingHour = "";
-            switch (GodzinaRozpoczeciaComboBox.SelectedValue as string)
+            switch (GodzinaRozpoczeciaComboBox.Text)
             {
                 case "7.30":
                     beginingHour = "7";
@@ -85,7 +85,7 @@ namespace PlanZajec.Views
         private string getEndHour()
         {
             string endHour = "";
-            switch (GodzinaZakonczeniaComboBox.SelectedValue as string)
+            switch (GodzinaZakonczeniaComboBox.Text)
             {
 
                 case "9.00":
