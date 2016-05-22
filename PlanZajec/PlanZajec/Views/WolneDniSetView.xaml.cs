@@ -45,6 +45,8 @@ namespace PlanZajec.Views
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
             getSelectedPlan(SelectPlanComboBox.SelectedValue as string).AddWolneDni(getBeaginingHour()+":"+getEndHour()+":"+getShortDay());
+            InfoLabel.Content = "Dodano";
+            InfoLabel.Background = new SolidColorBrush(Color.FromArgb(0, 11, 111, 16));
         }
 
         private Plany getSelectedPlan(string name)
