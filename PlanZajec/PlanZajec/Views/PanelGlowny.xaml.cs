@@ -165,8 +165,14 @@ namespace PlanZajec.Views
                 {
                     MessageBox.Show("Cannot remove last tab.");
                 }
-                else if (MessageBox.Show(string.Format("Are you sure you want to remove the tab '{0}'?", tab.Header),
-                    "Remove Tab", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+
+                /*Old format for repair causes
+                 * else if (MessageBox.Show(string.Format("" +
+                 *                                      "Are you sure" +
+                 *                                      " you want to remove the tab '{0}'?", tab.Header),
+                 *   "Remove Tab", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                */
+                else 
                 {
                     if (!tabName.Contains("WybierzPlan"))
                     {
@@ -206,8 +212,8 @@ namespace PlanZajec.Views
                         
                         ObslugaWidokuWieluPlanów.Instance.deletePlanView(vm.IdPlanu);
                     }*/
-                }
             }
+        }
         }
 
         private void LewyTabControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

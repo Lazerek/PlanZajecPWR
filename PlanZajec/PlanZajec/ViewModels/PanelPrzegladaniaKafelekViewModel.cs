@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace PlanZajec.ViewModels
 {
-
-
+    //TODO GREG DELETE THIS SHIT CAUSE U DONT USE THIS
+    //TODO GREG DELETE THIS SHIT CAUSE U DONT USE THIS
+    //TODO GREG DELETE THIS SHIT CAUSE U DONT USE THIS
+    //TODO GREG DELETE THIS SHIT CAUSE U DONT USE THIS
     class PanelPrzegladaniaKafelekViewModel
     {
         public List<GrupyZajeciowe> ListaGrupZajeciowych { get; private set; }
