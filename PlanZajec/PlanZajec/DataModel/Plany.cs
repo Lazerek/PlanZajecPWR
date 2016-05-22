@@ -13,6 +13,7 @@ namespace PlanZajec.DataModel
         public Plany()
         {
             GrupyZajeciowe = new HashSet<GrupyZajeciowe>();
+            WolneDni = "";
         }
 
         [Key]

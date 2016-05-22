@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
 
 namespace PlanZajec.Views
 {
@@ -20,14 +23,33 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class WolneDniSetView : UserControl
     {
+
+        public ObservableCollection<Plany> plany { get; private set; }
+
         public WolneDniSetView()
         {
             InitializeComponent();
+
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                plany = new ObservableCollection<Plany>(uw.Plany.GetAll().ToList());
+            }
+
+            foreach (Plany plan in plany)
+            {
+                SelectPlanComboBox.Items.Add(plan.NazwaPlanu);
+            }
+
         }
 
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
+            getSelectedPlan(SelectPlanComboBox.SelectedValue as string).AddWolneDni(getBeaginingHour()+":"+getEndHour()+":"+getShortDay());
+        }
 
+        private Plany getSelectedPlan(string name)
+        {
+            return plany.FirstOrDefault(plan => plan.NazwaPlanu == name);
         }
 
         private string getBeaginingHour()

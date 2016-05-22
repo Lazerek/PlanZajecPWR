@@ -16,19 +16,28 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="12*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="21*"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
             <Label Name="InfoLabel" Content="" HorizontalAlignment="Center"></Label>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+
+        <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+            <Label Content="Wybierz plan" HorizontalAlignment="Center"></Label>
+        </Viewbox>
+        <ComboBox Name="SelectPlanComboBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" SelectedIndex="0"></ComboBox>
+
+        <Viewbox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" >
             <Label Content="Wybierz dzień" HorizontalAlignment="Center"></Label>
         </Viewbox>
-        <ComboBox Name="DaySelectComboBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectedIndex="0">
+        <ComboBox Name="DaySelectComboBox" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" SelectedIndex="0">
             <ComboBoxItem Content="Poniedziałek"></ComboBoxItem>
             <ComboBoxItem Content="Wtorek"></ComboBoxItem>
             <ComboBoxItem Content="Środa"></ComboBoxItem>
@@ -37,10 +46,10 @@
             <ComboBoxItem Content="Sobota"></ComboBoxItem>
             <ComboBoxItem Content="Niedziela"></ComboBoxItem>
         </ComboBox>
-        <Viewbox Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right">
+        <Viewbox Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right">
             <Label Content="Od:" ></Label>
         </Viewbox>
-        <ComboBox Name="GodzinaRozpoczeciaComboBox" Grid.Row="4" Grid.Column="1" SelectedIndex="0">
+        <ComboBox Name="GodzinaRozpoczeciaComboBox" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Grid.ColumnSpan="2">
             <ComboBoxItem Content="7.30"></ComboBoxItem>
             <ComboBoxItem Content="9.15"></ComboBoxItem>
             <ComboBoxItem Content="11.15"></ComboBoxItem>
@@ -49,10 +58,10 @@
             <ComboBoxItem Content="17.05"></ComboBoxItem>
             <ComboBoxItem Content="18.55"></ComboBoxItem>
         </ComboBox>
-        <Viewbox Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right">
+        <Viewbox Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right">
             <Label Content="Do:" ></Label>
         </Viewbox>
-        <ComboBox Name="GodzinaZakonczeniaComboBox" Grid.Row="5" Grid.Column="1" SelectedIndex="0">
+        <ComboBox Name="GodzinaZakonczeniaComboBox" Grid.Row="6" Grid.Column="1" SelectedIndex="0" Grid.ColumnSpan="2">
             <ComboBoxItem Content="9.00"></ComboBoxItem>
             <ComboBoxItem Content="11.00"></ComboBoxItem>
             <ComboBoxItem Content="13.00"></ComboBoxItem>
@@ -61,7 +70,7 @@
             <ComboBoxItem Content="18.45"></ComboBoxItem>
             <ComboBoxItem Content="20.35"></ComboBoxItem>
         </ComboBox>
-        <Viewbox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
+        <Viewbox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" >
             <Button Name="DodajWolneButton" Content="Dodaj" VerticalAlignment="Center" Click="DodajWolneButton_OnClick"></Button>
         </Viewbox>
 
