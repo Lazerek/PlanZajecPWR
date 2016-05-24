@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PrintDialog = System.Windows.Controls.PrintDialog;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
@@ -46,21 +47,13 @@ namespace PlanZajec.Views
 
         private void DrukujButton_Click(object sender, RoutedEventArgs e)
         {
-            PrintDocument pd = new PrintDocument();
-            PageSetupDialog psd = new PageSetupDialog();
-            psd.PageSettings = new PageSettings();
-            psd.PrinterSettings = new PrinterSettings();
-            psd.ShowNetwork = false;
-            DialogResult result = new DialogResult();
-            result = psd.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK )
+            PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
+            PlanView pv = new PlanView(pvm);
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
             {
-                pd.PrinterSettings.PrinterName = psd.PrinterSettings.PrinterName;
-                pd.PrinterSettings.Copies = psd.PrinterSettings.Copies;
-                pd.DefaultPageSettings = psd.PageSettings;
+                printDialog.PrintVisual(pv, "Plan");
             }
-            
-            //pd.Print();
         }
     }
 }
