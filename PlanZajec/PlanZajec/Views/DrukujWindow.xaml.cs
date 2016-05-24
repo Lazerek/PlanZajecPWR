@@ -21,12 +21,15 @@ using PlanZajec.ViewModels;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for DrukujWindow.xaml
+    /// Klasa typu Window pozwalająca wydrukować plan
     /// </summary>
     public partial class DrukujWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
         private long[] tab;
+        /// <summary>
+        /// Konstruktor tworzący okienko wyświetlające możliwe plany
+        /// </summary>
         public DrukujWindow()
         {
             InitializeComponent();
@@ -44,15 +47,26 @@ namespace PlanZajec.Views
             }
             PlanyComboBox.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Przycisk drukowania
+        /// </summary>
+        /// <param name="sender">Obiekt wysyłany</param>
+        /// <param name="e"></param>
         private void DrukujButton_Click(object sender, RoutedEventArgs e)
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
             PlanView pv = new PlanView(pvm);
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
+            // PrintDialog printDialog = new PrintDialog();
+            PrintDialog Objprint = new PrintDialog();
+            if (Objprint.ShowDialog() == true)
             {
-                printDialog.PrintVisual(pv, "Plan");
+                System.Printing.PrintCapabilities capabilities = Objprint.PrintQueue.GetPrintCapabilities(Objprint.PrintTicket);
+                double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / pv.ActualWidth, capabilities.PageImageableArea.ExtentHeight / pv.ActualHeight);
+                pv.LayoutTransform = new ScaleTransform(scale, scale);
+                Size size = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+                pv.Measure(size);
+                pv.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), size));
+                Objprint.PrintVisual(pv, "Plan");
             }
         }
     }
