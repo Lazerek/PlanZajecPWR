@@ -84,6 +84,9 @@
     <Compile Include="CommonInformations\ObslugaWidokuWieluPlanów.cs" />
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\UsunPlanViewModel.cs" />
+    <Compile Include="Views\DrukujWindow.xaml.cs">
+      <DependentUpon>DrukujWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UsunPlan.xaml.cs">
       <DependentUpon>UsunPlan.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
     <Compile Include="Views\ZapisWindow.xaml.cs">
       <DependentUpon>ZapisWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\DrukujWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UsunPlan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

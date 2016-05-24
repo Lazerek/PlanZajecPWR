@@ -96,7 +96,8 @@ namespace Wpf
         //Menu - Metoda drukująca plan
         public void menuDrukuj(object sender, EventArgs e)
         {
-            //TODO
+            DrukujWindow dw = new DrukujWindow();
+            dw.ShowDialog();
         }
 
         //Menu - Metoda eksportująca plan do pliku PDF

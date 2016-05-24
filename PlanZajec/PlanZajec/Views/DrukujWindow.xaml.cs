@@ -1,33 +1,32 @@
-﻿using PlanZajec.DataAccessLayer;
-using PlanZajec.DataModel;
-using PlanZajec.Parser;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
+using PrintDialog = System.Windows.Controls.PrintDialog;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for ZapisWindow.xaml
+    /// Interaction logic for DrukujWindow.xaml
     /// </summary>
-
-    
-    public partial class ZapisWindow : Window
+    public partial class DrukujWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
         private long[] tab;
-        public ZapisWindow()
+        public DrukujWindow()
         {
             InitializeComponent();
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -45,18 +44,23 @@ namespace PlanZajec.Views
             PlanyComboBox.SelectedIndex = 0;
         }
 
-        private void Zapisz_Click(object sender, RoutedEventArgs e)
+        private void DrukujButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = PlanyComboBox.SelectedIndex;
-            Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog()
+            PrintDocument pd = new PrintDocument();
+            PageSetupDialog psd = new PageSetupDialog();
+            psd.PageSettings = new PageSettings();
+            psd.PrinterSettings = new PrinterSettings();
+            psd.ShowNetwork = false;
+            DialogResult result = new DialogResult();
+            result = psd.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK )
             {
-                Filter = "Plan zajęć (*.txt)|*.txt"
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                ZapisDoBazy.export(dialog, tab[index]);
+                pd.PrinterSettings.PrinterName = psd.PrinterSettings.PrinterName;
+                pd.PrinterSettings.Copies = psd.PrinterSettings.Copies;
+                pd.DefaultPageSettings = psd.PageSettings;
             }
+            
+            //pd.Print();
         }
     }
-
 }
