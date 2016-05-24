@@ -82,20 +82,26 @@ namespace PlanZajec.DataAccessLayer.Repositories
             bool znaleziono = false;
             foreach (var gr in grupy)
             {
-                if ( (gr.Godzina != "terminu" && nowaGrupa.Godzina != "terminu") && (gr.Tydzien == nowaGrupa.Tydzien && gr.Dzień == nowaGrupa.Dzień
-                    ||gr.Tydzien=="//"||nowaGrupa.Tydzien=="//"))
+                if ( this.czyMogaNachodzic(gr,nowaGrupa))
                 {
                     int godzPocz1 = int.Parse(gr.Godzina.Substring(0, 2));
                     int godzPocz2 = int.Parse(nowaGrupa.Godzina.Substring(0, 2));
                     int godzKocz1 = int.Parse(gr.GodzinaKoniec.Substring(0, 2));
                     int godzKocz2 = int.Parse(nowaGrupa.GodzinaKoniec.Substring(0, 2));
-                    if (godzPocz2 >= godzPocz1 && godzPocz2 <= godzKocz1 ||
-                        godzKocz2 >= godzPocz1 && godzKocz2 <= godzKocz1)
+
+                    if ((godzPocz2 >= godzPocz1 && godzKocz2 <= godzKocz1) ||
+                        (godzPocz2 <= godzPocz1 && godzKocz2 >= godzKocz1))
                         znaleziono = true;
                 }
             }
 
             return znaleziono;
+        }
+
+        private bool czyMogaNachodzic(GrupyZajeciowe gr1, GrupyZajeciowe gr2)
+        {
+            return ((gr1.Godzina != "terminu" && gr2.Godzina != "terminu") && gr1.Dzień == gr2.Dzień
+                && (gr1.Tydzien == gr2.Tydzien || gr1.Tydzien == "//" || gr2.Tydzien == "//")) ;
         }
 
         public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa)
