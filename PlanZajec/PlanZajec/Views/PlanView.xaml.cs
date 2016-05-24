@@ -22,6 +22,10 @@ namespace PlanZajec.Views
             PaintSchedule();
         }
 
+        public long GetPlanId()
+        {
+            return _planViewModel.IdPlanu;
+        }
         /// <summary>
         ///     Add each lesson to schedule and set cell/cells to it
         /// </summary>

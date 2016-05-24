@@ -27,6 +27,9 @@ namespace PlanZajec.Views
 
         private readonly ObservableCollection<TabItem> _tabItems;
 
+        //kod aktualnie otwartego planu
+        public long? OtwartyPlanId;
+
         public PanelGlowny()
         {
             _openedScheuldes = new HashSet<long>();
@@ -209,7 +212,6 @@ namespace PlanZajec.Views
                     /*var vm = planView?.DataContext as PlanViewModel;
                     if (vm != null)
                     {
-                        
                         ObslugaWidokuWieluPlanów.Instance.deletePlanView(vm.IdPlanu);
                     }*/
             }
@@ -237,8 +239,18 @@ namespace PlanZajec.Views
 
                 // select newly added tab item
                 LewyTabControl.SelectedItem = newTab;
+
+                //
             }
+
             UpdateActualChoseningPlan(LewyTabControl.SelectedItem as TabItem);
+
+            PlanView otwartyPlan = LewyTabControl.SelectedContent as PlanView;
+            if (otwartyPlan!=null)
+            {
+                OtwartyPlanId = otwartyPlan.GetPlanId();
+            }
+
         }
 
         private void UpdateActualChoseningPlan(TabItem tab)
