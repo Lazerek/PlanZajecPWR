@@ -8,6 +8,7 @@ using PlanZajec.DataAccessLayer.IRepositories;
 using PlanZajec.CommonInformations;
 
 using System.Data.Entity;
+using System.Windows;
 
 namespace PlanZajec.DataAccessLayer.Repositories
 {
@@ -45,11 +46,62 @@ namespace PlanZajec.DataAccessLayer.Repositories
             bool result = false;
             if(!grupa.Plany.Any(pl => pl.IdPlanu == idPlanu))
             {
-                planWybrany.GrupyZajeciowe.Add(grupa);
-                Context.SaveChanges();
-                result = true;
+                if(czyKury(planWybrany.GrupyZajeciowe,grupa))
+                    MessageBox.Show("Jesteś już zapisany na ten kurs!");
+                else
+                {
+                    if (czyGodziny(planWybrany.GrupyZajeciowe, grupa))
+                        MessageBox.Show("Jesteś już zapisany na tę godzinę!");
+                    else
+                    {
+                        planWybrany.GrupyZajeciowe.Add(grupa);
+                        Context.SaveChanges();
+                        result = true;
+                    }
+                }
+               
+               
             }
             return result;
+        }
+
+        private bool czyKury(ICollection<GrupyZajeciowe>grupy,GrupyZajeciowe nowaGrupa )
+        {
+            bool znaleziono = false;
+            foreach (var gr in grupy)
+            {
+                if (gr.KodKursu == nowaGrupa.KodKursu)
+                    znaleziono = true;
+            }
+
+            return znaleziono;
+        }
+
+        private bool czyGodziny(ICollection<GrupyZajeciowe> grupy, GrupyZajeciowe nowaGrupa)
+        {
+            bool znaleziono = false;
+            foreach (var gr in grupy)
+            {
+                if ( this.czyMogaNachodzic(gr,nowaGrupa))
+                {
+                    int godzPocz1 = int.Parse(gr.Godzina.Substring(0, 2));
+                    int godzPocz2 = int.Parse(nowaGrupa.Godzina.Substring(0, 2));
+                    int godzKocz1 = int.Parse(gr.GodzinaKoniec.Substring(0, 2));
+                    int godzKocz2 = int.Parse(nowaGrupa.GodzinaKoniec.Substring(0, 2));
+
+                    if ((godzPocz2 >= godzPocz1 && godzKocz2 <= godzKocz1) ||
+                        (godzPocz2 <= godzPocz1 && godzKocz2 >= godzKocz1))
+                        znaleziono = true;
+                }
+            }
+
+            return znaleziono;
+        }
+
+        private bool czyMogaNachodzic(GrupyZajeciowe gr1, GrupyZajeciowe gr2)
+        {
+            return ((gr1.Godzina != "terminu" && gr2.Godzina != "terminu") && gr1.Dzień == gr2.Dzień
+                && (gr1.Tydzien == gr2.Tydzien || gr1.Tydzien == "//" || gr2.Tydzien == "//")) ;
         }
 
         public bool UsunGrupeZajeciowaZPlanu(GrupyZajeciowe grupa)
@@ -75,7 +127,7 @@ namespace PlanZajec.DataAccessLayer.Repositories
             }
             return result;
         }
-
+       
 
 
         public Plany GetFirstOrDefault()

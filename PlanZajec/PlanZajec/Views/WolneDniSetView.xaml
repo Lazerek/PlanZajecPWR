@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="PlanZajec.Views.WolneDniSetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlanZajec.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="200">
+    <Grid Background="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="12*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="21*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Name="InfoLabelViewbox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+            <Label Name="InfoLabel" Content="" HorizontalAlignment="Stretch"></Label>
+        </Viewbox>
+
+        <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+            <Label Content="Wybierz plan" HorizontalAlignment="Center"></Label>
+        </Viewbox>
+        <ComboBox Name="SelectPlanComboBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" SelectedIndex="0"></ComboBox>
+
+        <Viewbox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" >
+            <Label Content="Wybierz dzień" HorizontalAlignment="Center"></Label>
+        </Viewbox>
+        <ComboBox Name="DaySelectComboBox" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" SelectedIndex="0">
+            <ComboBoxItem Content="Poniedziałek"></ComboBoxItem>
+            <ComboBoxItem Content="Wtorek"></ComboBoxItem>
+            <ComboBoxItem Content="Środa"></ComboBoxItem>
+            <ComboBoxItem Content="Czwartek"></ComboBoxItem>
+            <ComboBoxItem Content="Piatek"></ComboBoxItem>
+            <ComboBoxItem Content="Sobota"></ComboBoxItem>
+            <ComboBoxItem Content="Niedziela"></ComboBoxItem>
+        </ComboBox>
+        <Viewbox Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right">
+            <Label Content="Od:" ></Label>
+        </Viewbox>
+        <ComboBox Name="GodzinaRozpoczeciaComboBox" Grid.Row="5" Grid.Column="1" SelectedIndex="0" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="7.30"></ComboBoxItem>
+            <ComboBoxItem Content="9.15"></ComboBoxItem>
+            <ComboBoxItem Content="11.15"></ComboBoxItem>
+            <ComboBoxItem Content="13.15"></ComboBoxItem>
+            <ComboBoxItem Content="15.15"></ComboBoxItem>
+            <ComboBoxItem Content="17.05"></ComboBoxItem>
+            <ComboBoxItem Content="18.55"></ComboBoxItem>
+        </ComboBox>
+        <Viewbox Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right">
+            <Label Content="Do:" ></Label>
+        </Viewbox>
+        <ComboBox Name="GodzinaZakonczeniaComboBox" Grid.Row="6" Grid.Column="1" SelectedIndex="0" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="9.00"></ComboBoxItem>
+            <ComboBoxItem Content="11.00"></ComboBoxItem>
+            <ComboBoxItem Content="13.00"></ComboBoxItem>
+            <ComboBoxItem Content="15.00"></ComboBoxItem>
+            <ComboBoxItem Content="16.55"></ComboBoxItem>
+            <ComboBoxItem Content="18.45"></ComboBoxItem>
+            <ComboBoxItem Content="20.35"></ComboBoxItem>
+        </ComboBox>
+        <Viewbox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" >
+            <Button Name="DodajWolneButton" Content="Dodaj" VerticalAlignment="Center" Click="DodajWolneButton_OnClick"></Button>
+        </Viewbox>
+
+    </Grid>
+</UserControl>

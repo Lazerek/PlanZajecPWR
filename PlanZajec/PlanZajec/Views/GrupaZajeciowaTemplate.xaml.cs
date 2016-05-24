@@ -38,15 +38,15 @@ namespace PlanZajec.Views
             switch (typZajec)
             {
                 case "Wykład": colResult = Colors.Green; break;
-                case "Zajęcia laboratoryjne": colResult = Colors.Blue; break;
-                case "Projekt": colResult = Colors.Indigo; break;
+                case "Zajęcia laboratoryjne": colResult = Colors.Orange; break;
+                case "Projekt": colResult = Colors.Orchid; break;
                 case "Seminarium": colResult = Colors.LightBlue; break;
                 case "Praktyka": colResult = Colors.Yellow; break;
                 default: colResult = Colors.Black; break;
             }
             SolidColorBrush solidResult = new SolidColorBrush(colResult);
-            Otoczka.BorderBrush = solidResult;
-            
+            Kafel.Background = solidResult;
+
         }
     }
 }
