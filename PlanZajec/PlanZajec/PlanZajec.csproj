@@ -109,7 +109,6 @@
       <DependentUpon>UsunPlan.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\GrupaTamplateViewModel.cs" />
-    <Compile Include="ViewModels\PanelPrzegladaniaKafelekViewModel.cs" />
     <Compile Include="ViewModels\PlanViewModel.cs" />
     <Compile Include="ViewModels\ProwadzacyViewModel.cs" />
     <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
