@@ -16,6 +16,13 @@ namespace PlanZajec.ViewModels
         public ObservableCollection<Plany> Items { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public static UsunPlanViewModel instance = new UsunPlanViewModel();
+
+        public static UsunPlanViewModel Instance
+        {
+            get { return instance; }
+        }
+
         public UsunPlanViewModel()
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -24,7 +31,7 @@ namespace PlanZajec.ViewModels
             }
         }
 
-        public void usunPlan(Plany p)
+        public void UsunPlan(Plany p)
         {
             int indexToDelete = -1;
             indexToDelete = Items.IndexOf(p);
@@ -34,6 +41,10 @@ namespace PlanZajec.ViewModels
                 unit.Plany.Remove(p);
                 unit.SaveChanges();
             }
+        }
+        public void DodajPlan(Plany plan)
+        {
+            Items.Add(plan);
         }
 
         public void NotifyPropertyChanged(string propertyName)

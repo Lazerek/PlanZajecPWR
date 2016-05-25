@@ -21,14 +21,14 @@
                 <DataGridTextColumn Width="*" Header="Godzina Zakończenia" Binding="{Binding GodzinaKoniec}" />
                 <DataGridTextColumn Width="*" Header="Sala" Binding="{Binding Sala}" />
                 <DataGridTextColumn Width="*" Header="Budynek" Binding="{Binding Budynek}" />
-                <DataGridTemplateColumn Width="*" Header="Wolna" IsReadOnly="True">
+                <DataGridTemplateColumn Width="*" Header="Wolna" IsReadOnly="True" SortMemberPath="Wolna">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox x:Uid="cbox" HorizontalAlignment="Center" IsChecked="{Binding Wolna, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  Click="onCheckBoxClick" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="*" Header="ZajeteMiejsca" IsReadOnly="True">
+                <DataGridTemplateColumn Width="*" Header="ZajeteMiejsca" IsReadOnly="True" SortMemberPath="ZajeteMiejsca">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox HorizontalAlignment="Stretch" Text="{Binding ZajeteMiejsca, Mode=OneWay}" GotFocus="gotFocus" TextChanged="textChanged" Background="White" LostFocus="onTextboxLeave" AcceptsReturn="False"/>

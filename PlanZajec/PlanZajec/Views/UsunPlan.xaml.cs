@@ -23,19 +23,24 @@ namespace PlanZajec
     /// </summary>
     public partial class UsunPlan : UserControl
     {
-        private UsunPlanViewModel ViewModel;
-        private WyborPlanuViewModel ViewModelG;
     public UsunPlan()
         {
             InitializeComponent();
-            ViewModel = new UsunPlanViewModel();
-            this.DataContext = ViewModel;
+            this.DataContext = UsunPlanViewModel.Instance;
         }
 
         private void Usun(object sender, RoutedEventArgs e)
         {
-            var c = (Plany)listaPlanow.SelectedItem;
-            ViewModel.usunPlan(c);
+            if(listaPlanow.Items.Count > 1)
+            {
+                var plan = (Plany)listaPlanow.SelectedItem;
+                UsunPlanViewModel.Instance.UsunPlan(plan);
+                WyborPlanuViewModel.Instance.UsunPlan(plan);
+            }
+            else
+            {
+                MessageBox.Show("Nie można usunąć ostatniego istniejącego planu.", "Błąd");
+            }
         }
     }
 }

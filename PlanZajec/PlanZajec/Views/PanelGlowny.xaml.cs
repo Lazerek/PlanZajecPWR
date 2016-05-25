@@ -78,14 +78,14 @@ namespace PlanZajec.Views
                 HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
             };
 
-            tab.Content = PrepareChosenigPlan();
+            tab.Content = PrepareChosingPlan();
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);
             return tab;
         }
 
-        private WyborPlanu PrepareChosenigPlan()
+        private WyborPlanu PrepareChosingPlan()
         {
             var res = new WyborPlanu {DataContext = WyborPlanuViewModel.Instance};
             res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
@@ -105,6 +105,7 @@ namespace PlanZajec.Views
                 unit.SaveChanges();
             }
             WyborPlanuViewModel.Instance.DodajPlan(plan);
+            UsunPlanViewModel.Instance.DodajPlan(plan);
         }
 
 
@@ -153,6 +154,7 @@ namespace PlanZajec.Views
                 unit.SaveChanges();
             }
             WyborPlanuViewModel.Instance.UsunPlan(plan);
+            UsunPlanViewModel.Instance.UsunPlan(plan);
             return true;
         }
 

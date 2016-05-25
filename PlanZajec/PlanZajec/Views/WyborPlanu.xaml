@@ -15,6 +15,7 @@
 
 
         <Button Content="Dodaj nowy Plan" Click="DodajPlan" Width="120" Grid.Row="0" HorizontalAlignment="Left"/>
+        <Button Content="Dodaj alternatywny plan" Click="DodajAlternatywnyPlan" Width="150" Grid.Row="0" HorizontalAlignment="Left" Margin="130,0,0,0"/>
         <Label Content="Wybierz plan:" Grid.Row="1" VerticalAlignment="Center"/>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">

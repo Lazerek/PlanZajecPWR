@@ -6,6 +6,7 @@ using PlanZajec.Views;
 using System;
 using PlanZajec.CommonInformations;
 using PlanZajec.Parser;
+using PlanZajec.ViewModels;
 
 namespace Wpf
 {
@@ -55,6 +56,48 @@ namespace Wpf
         public void menuNowyPlan(object sender, EventArgs e)
         {
             //TODO
+        }
+
+        //Menu - Utworzenie nowego planu na podstawie istniejacego planu
+        public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
+        {
+            ListaPlanow lp = preparePlanList();
+            lp.Show();
+        }
+
+        private ListaPlanow preparePlanList()
+        {
+            var res = new ListaPlanow();
+            res.DodajPlan += AddPlan;
+            return res;
+        }
+
+        private void AddPlan(string Title, int id)
+        {
+            Plany plan;
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                plan = new Plany { NazwaPlanu = Title };
+                var plist = unit.Plany.GetAll().GetEnumerator();
+                int i = 0;
+                while (plist.MoveNext())
+                {
+                    if(id == i)
+                    {
+                        foreach(GrupyZajeciowe g in plist.Current.GrupyZajeciowe){
+                            plan.GrupyZajeciowe.Add(g);
+                        }
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                unit.Plany.Add(plan);
+                unit.SaveChanges();
+                WyborPlanuViewModel.Instance.DodajPlan(plan);
+                UsunPlanViewModel.Instance.DodajPlan(plan);
+            }
         }
 
         //Menu - Otwarcie planu z pliku

@@ -1,5 +1,6 @@
 ﻿using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,6 @@ namespace PlanZajec.Views
     {
         public event Action<Plany> ChosenPlanToShowEventHandler;
         public event Func<Plany,bool> ChosenPlanToDeleteEventHandler;
-
         public event Action<string> AddToPlan;
 
         public WyborPlanu()
@@ -83,6 +83,48 @@ namespace PlanZajec.Views
             if (result.HasValue && result.Value)
             {
                 AddToPlan?.Invoke(addPlan.PlanTitle);
+            }
+        }
+
+        private void DodajAlternatywnyPlan(object sender, RoutedEventArgs e)
+        {
+            ListaPlanow lp = preparePlanList();
+            lp.Show();
+        }
+
+        private ListaPlanow preparePlanList()
+        {
+            var res = new ListaPlanow();
+            res.DodajPlan += AddPlan;
+            return res;
+        }
+
+        private void AddPlan(string Title, int id)
+        {
+            Plany plan;
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                plan = new Plany { NazwaPlanu = Title };
+                var plist = unit.Plany.GetAll().GetEnumerator();
+                int i = 0;
+                while (plist.MoveNext())
+                {
+                    if (id == i)
+                    {
+                        foreach (GrupyZajeciowe g in plist.Current.GrupyZajeciowe)
+                        {
+                            plan.GrupyZajeciowe.Add(g);
+                        }
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                unit.Plany.Add(plan);
+                unit.SaveChanges();
+                WyborPlanuViewModel.Instance.DodajPlan(plan);
+                UsunPlanViewModel.Instance.DodajPlan(plan);
             }
         }
     }
