@@ -21,31 +21,12 @@ namespace PlanZajec.Parser
                 }
 
                 var kr = NowyKurs(gd.KodKursu, gd.NazwaKursu, uw, blok);
-                var pr = gd.Prowadzacy;
-                var count = pr.Count(t => t.Equals(' '));
-                var tytulNazwiskoImie = pr.Split(' ');
-                count = tytulNazwiskoImie.Count();
-                var nazwisko = "";
-                if (count - 1 >= 0)
-                {
-                    nazwisko = tytulNazwiskoImie[count - 1];
-                }
-                var imie = "";
-                var tytul = "";
-                if (count - 2 >= 0)
-                {
-                    imie = tytulNazwiskoImie[count - 2];
-                    var j = 0;
-                    for (var i = pr.Length - 1; i > nazwisko.Length + imie.Length; i--)
-                    {
-                        j++;
-                    }
-                    tytul = pr.Substring(0, j - 1);
-                }
+                var pr = parseProwadzacy( gd.Prowadzacy);
+                
                 Prowadzacy pro = null;
-                if (nazwisko != "")
+                if (pr[0] != "")
                 {
-                    pro = NowyProwadzacy(imie, nazwisko, tytul, uw);
+                    pro = NowyProwadzacy(pr[0], pr[1], pr[2], uw);
                 }
 
 
@@ -124,6 +105,30 @@ namespace PlanZajec.Parser
             }
         }
 
+        private static string[] parseProwadzacy(string pr)
+        {
+            string[] wynik=new string[3];
+            var count = pr.Count(t => t.Equals(' '));
+            var tytulNazwiskoImie = pr.Split(' ');
+            count = tytulNazwiskoImie.Count();
+            
+            if (count - 1 >= 0)
+            {
+                wynik[0] = tytulNazwiskoImie[count - 1];
+            }
+            
+            if (count - 2 >= 0)
+            {
+                wynik[1] = tytulNazwiskoImie[count - 2];
+                var j = 0;
+                for (var i = pr.Length - 1; i > wynik[0].Length + wynik[1].Length; i--)
+                {
+                    j++;
+                }
+                wynik[2] = pr.Substring(0, j - 1);
+            }
+            return wynik;
+        }
         /// <summary>
         ///     To dodaje nowego kursu jeżeli nie ma go w bazie
         /// </summary>
@@ -215,14 +220,22 @@ namespace PlanZajec.Parser
             {
                 var plany = uw.Plany.GetAll();
                 ICollection<GrupyZajeciowe> grupy = null;
-
+                string nazwa = "";
+                string wolnedni = "";
                 foreach (var p in plany)
                 {
                     if (p.IdPlanu == IdP)
+                    {
                         grupy = p.GrupyZajeciowe;
+                        nazwa = p.NazwaPlanu;
+                        wolnedni = p.WolneDni;
+
+                    }
                 }
                 using (var sw = new StreamWriter(sf.FileName))
                 {
+                    sw.WriteLine(nazwa);
+                    sw.WriteLine(wolnedni);
                     var zapis = "";
                     foreach (var grupa in grupy)
                     {
@@ -242,7 +255,8 @@ namespace PlanZajec.Parser
             {
                 using (var sw = new StreamReader(sf.FileName))
                 {
-                    var plan = new Plany {NazwaPlanu = "Nowy"};
+                    var plan = new Plany {NazwaPlanu = sw.ReadLine()};
+                    plan.WolneDni = sw.ReadLine();
                     WyborPlanuViewModel.Instance.DodajPlan(plan);
                     uw.Plany.Add(plan);
                     uw.SaveChanges();
@@ -320,9 +334,10 @@ namespace PlanZajec.Parser
                                     Kursy = kr,
                                     Prowadzacy = pro
                                 };
+                            uw.GrupyZajeciowe.Add(gr);
+                            uw.SaveChanges();
                         }
-                        uw.GrupyZajeciowe.Add(gr);
-
+                        
                         uw.Plany.DodajGrupeZajeciowaDoPlanu(gr, plan.IdPlanu);
                         uw.SaveChanges();
                     }
