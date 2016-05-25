@@ -11,10 +11,13 @@ using PlanZajec.ViewModels;
 namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Klasa wyświetlająca okno główne planu
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Domyślny konstruktor inicjalizujący okno główne
+        /// </summary>
         public MainWindow()
         {
             //DATABASE LOAD
@@ -38,45 +41,72 @@ namespace Wpf
             PGlowny.Children.Add(new PanelGlowny());
             PFiltrow.Children.Add(new PanelFiltrow(this));
         }
-
+        /// <summary>
+        /// Metoda zamykająca aplikację przy wyjściu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        //MENU
-        //Menu - Wyświetlenie parsera
+        /// <summary>
+        /// Metoda pokazująca okno z parserem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void ShowParserWindow(object sender, EventArgs e)
         {
             ParserWindow pw = new ParserWindow();
             pw.Show();
         }
+        /// <summary>
+        /// Metoda pokazująca okno HTML
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void ShowHTMLWindow(object sender, EventArgs e)
         {
             OknoDanychEdukacji ode = new OknoDanychEdukacji();
             ode.Show();
         }
 
-        //Menu - Utworzenie nowego planu
+        /// <summary>
+        /// Metoda pozwalająca dodać nowy plan z poziomu menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuNowyPlan(object sender, EventArgs e)
         {
             //TODO
         }
 
-        //Menu - Utworzenie nowego planu na podstawie istniejacego planu
+        /// <summary>
+        /// Metoda pozwalająca utworzyć alternatywny plan na podstawie istniejącego
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
         {
             ListaPlanow lp = preparePlanList();
             lp.Show();
         }
-
+        /// <summary>
+        /// Metoda przygotowująca listę planów
+        /// </summary>
+        /// <returns>Lista Planów</returns>
         private ListaPlanow preparePlanList()
         {
             var res = new ListaPlanow();
             res.DodajPlan += AddPlan;
             return res;
         }
-
+        /// <summary>
+        /// Metoda dodająca plan
+        /// </summary>
+        /// <param name="Title">Nazwa planu</param>
+        /// <param name="id">Id planu</param>
         private void AddPlan(string Title, int id)
         {
             Plany plan;
@@ -105,7 +135,11 @@ namespace Wpf
             }
         }
 
-        //Menu - Otwarcie planu z pliku
+        /// <summary>
+        /// Metoda pozwalająca otworzyć zapisany plik z planem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuOtworz(object sender, EventArgs e)
         {
             //TODO
@@ -120,7 +154,11 @@ namespace Wpf
             }
         }
 
-        //Menu - Zapis planów do plików
+        /// <summary>
+        /// Metoda otwierająca okno z zapisem planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuZapisz(object sender, EventArgs e)
         {
             //TODO
@@ -132,7 +170,11 @@ namespace Wpf
 
         }
 
-        //Menu - Funkcja Zapisz jako
+        /// <summary>
+        /// Metoda otwierająca okno z zapisem planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuZapiszJako(object sender, EventArgs e)
         {
             //TODO
@@ -141,37 +183,59 @@ namespace Wpf
 
         }
 
-        //Menu - Metoda drukująca plan
+        /// <summary>
+        /// Metoda otwierająca okno do drukowania planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuDrukuj(object sender, EventArgs e)
         {
             DrukujWindow dw = new DrukujWindow();
             dw.ShowDialog();
         }
 
-        //Menu - Metoda eksportująca plan do pliku PDF
+        /// <summary>
+        /// Metoda ekposrtująca plik jako pdf
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuEksportujPDF(object sender, EventArgs e)
         {
             //TODO
         }
 
-        //Menu - Metoda eksportująca plan do pliku graficznego
+        /// <summary>
+        /// Metoda eksportująca plan jako plik graficzny
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
             //TODO
         }
 
-        //Menu - Metoda kończąca działanie programu
+        /// <summary>
+        /// Metoda zakończająca działanie programu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuZakoncz(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        //Menu - Metoda wyświetlająca okienko z informacjami o programie
+        /// <summary>
+        /// Metoda otwierająca okno z informacjami
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuInformacje(object sender, EventArgs e)
         {
             //TODO
         }
-
+        /// <summary>
+        /// Metoda przełądowująca komponenty okna
+        /// </summary>
         public void ReloadWindowComponents()
         {
             PGlowny.Children.RemoveAt(0);

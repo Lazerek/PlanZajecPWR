@@ -1,34 +1,28 @@
 ﻿using PlanZajec.DataModel;
 using PlanZajec.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PlanZajec
 {
     /// <summary>
-    /// Interaction logic for UsunPlan.xaml
+    /// Klasa typu window do usuwania planów
     /// </summary>
     public partial class UsunPlan : UserControl
     {
+        /// <summary>
+        /// Domyslny konstruktor zawierający instancje planów
+        /// </summary>
     public UsunPlan()
         {
             InitializeComponent();
             this.DataContext = UsunPlanViewModel.Instance;
         }
-
+        /// <summary>
+        /// Metoda usuwająca plan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Usun(object sender, RoutedEventArgs e)
         {
             if(listaPlanow.Items.Count > 1)

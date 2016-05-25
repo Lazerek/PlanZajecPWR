@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PlanZajec.ViewModels;
 using PlanZajec.DataModel;
-using System.Text.RegularExpressions;
 
 namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for PrzegladanieGrup.xaml
+    /// Klasa pozwalająca przeglądać wszystkie grupy
     /// </summary>
     /// 
 
@@ -28,6 +17,9 @@ namespace Wpf
         long lastLong;
         TextBox tbox;
         private PrzegladanieGrupViewModel viewModel;
+        /// <summary>
+        /// Domyślny konstuktor przeglądania grup
+        /// </summary>
         public PrzegladanieGrup()
         {
             InitializeComponent();

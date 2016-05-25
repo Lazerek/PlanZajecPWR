@@ -8,8 +8,15 @@ using PlanZajec.ViewModels;
 
 namespace PlanZajec.Parser
 {
+    /// <summary>
+    /// Klasa zapisująca dane grup zajęciowych do bazy
+    /// </summary>
     internal class ZapisDoBazy
     {
+        /// <summary>
+        /// Metoda zapisująca dane do bazy
+        /// </summary>
+        /// <param name="gd">Objekt klasy groupdata zawierający dane o grupie zajęciowej</param>
         public static void zapisz(GroupData gd)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -104,7 +111,11 @@ namespace PlanZajec.Parser
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda dzieląca String prowadzącego na dane atomowe
+        /// </summary>
+        /// <param name="pr">Dane prowadzącego</param>
+        /// <returns>Tablica z tytułem, nazwiskiem i imieniem prowadzącego</returns>
         private static string[] parseProwadzacy(string pr)
         {
             string[] wynik=new string[3];
@@ -132,9 +143,9 @@ namespace PlanZajec.Parser
         /// <summary>
         ///     To dodaje nowego kursu jeżeli nie ma go w bazie
         /// </summary>
-        /// <param name="KodKursu"></param>
-        /// <param name="NazwaKursu"></param>
-        /// <returns></returns>
+        /// <param name="KodKursu">Kod Kursu</param>
+        /// <param name="NazwaKursu">Nazwa kursu</param>
+        /// <returns>Kurs</returns>
         private static Kursy NowyKurs(string KodKursu, string NazwaKursu, UnitOfWork uw, Blok blok)
         {
 
@@ -165,10 +176,10 @@ namespace PlanZajec.Parser
         /// <summary>
         ///     To dodaje nowego prowadzącego jeżeli nie ma go w bazie
         /// </summary>
-        /// <param name="imie"></param>
-        /// <param name="nazwisko"></param>
-        /// <param name="tytul"></param>
-        /// <returns></returns>
+        /// <param name="imie">Imie prowadzącego</param>
+        /// <param name="nazwisko">Nazwsiko prowadzącego</param>
+        /// <param name="tytul">Tytuł prowadzącego</param>
+        /// <returns>Prowadzącego</returns>
         private static Prowadzacy NowyProwadzacy(string imie, string nazwisko, string tytul, UnitOfWork uw)
         {
 
@@ -191,7 +202,13 @@ namespace PlanZajec.Parser
                 return table.ElementAt(jest);
             }
         }
-
+        /// <summary>
+        /// Dodanie nowego bloku do bazy jeśli go nie ma
+        /// </summary>
+        /// <param name="KodBloku">Kod bloku</param>
+        /// <param name="NazwaBloku">Nazwa bloku</param>
+        /// <param name="uw">Baza danych</param>
+        /// <returns>Blok</returns>
         private static Blok NowyBlok(string KodBloku, string NazwaBloku, UnitOfWork uw)
         {
 
@@ -213,7 +230,11 @@ namespace PlanZajec.Parser
                 return table.ElementAt(jest);
             }
         }
-
+        /// <summary>
+        /// Metoda zapisująca plan do pliku
+        /// </summary>
+        /// <param name="sf">Dialog zapisu do pliku</param>
+        /// <param name="IdP">Id Planu</param>
         public static void export(SaveFileDialog sf, long IdP)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -248,7 +269,10 @@ namespace PlanZajec.Parser
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda wczytująca plik z planem
+        /// </summary>
+        /// <param name="sf">Dialog otwierania pliku</param>
         public static void Importuj(OpenFileDialog sf)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))

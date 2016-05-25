@@ -1,34 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for OknoDanychEdukacji.xaml
+    /// Klasa do obsługi okna edycji danych
     /// </summary>
     public partial class OknoDanychEdukacji : Window
     {
+        /// <summary>
+        /// Domyślny konstruktor
+        /// </summary>
         public OknoDanychEdukacji()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Klasa pobierająca dane
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Sciagnij(object sender, RoutedEventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Klasa do anulowania działania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();

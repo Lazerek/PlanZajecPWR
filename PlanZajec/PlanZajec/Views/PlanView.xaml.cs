@@ -7,13 +7,17 @@ using PlanZajec.CommonInformations;
 namespace PlanZajec.Views
 {
     /// <summary>
-    ///     Interaction logic for PlanView.xaml
+    ///     Klasa odpowiedzialna za wyświetlanie planu
     /// </summary>
     public partial class PlanView : UserControl
     {
 
         private PlanViewModel _planViewModel;
 
+        /// <summary>
+        /// Konstruktor wyświetlania planu
+        /// </summary>
+        /// <param name="plan">ViewModel planu</param>
         public PlanView(PlanViewModel plan)
         {
             InitializeComponent();
