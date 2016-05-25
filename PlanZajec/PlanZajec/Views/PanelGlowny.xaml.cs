@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,19 +22,30 @@ namespace PlanZajec.Views
         private readonly HashSet<long> _openedScheuldes;
         //tab that make adding possible
 
-        private TabItem _tabAdd;
+        private readonly TabItem _tabAdd;
 
         private PlanView _aktualnyPlanView;
 
         private readonly ObservableCollection<TabItem> _tabItems;
 
-        //kod aktualnie otwartego planu
-        public long? OtwartyPlanId;
+        private readonly MainWindow _mainWindow;
 
-        public PanelGlowny()
+        //kod aktualnie otwartego planu
+        private long? OtwartyPlanId
+        {
+            get { return _otwartyPlanId; }
+            set
+            {
+                _mainWindow?.UpdateOnSelectedPlanChange(value);
+            }
+        }
+        private long? _otwartyPlanId;
+
+        public PanelGlowny(MainWindow mainWindow)
         {
             _openedScheuldes = new HashSet<long>();
             InitializeComponent();
+            _mainWindow = mainWindow;
             tabsId = 0;
             _tabItems = new ObservableCollection<TabItem>();
             //add tab
@@ -75,10 +87,10 @@ namespace PlanZajec.Views
             {
                 Header = "Wybierz plan",
                 Name = $"WybierzPlan{tabsId++}",
-                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
+                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate,
+                Content = PrepareChosingPlan()
             };
 
-            tab.Content = PrepareChosingPlan();
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);

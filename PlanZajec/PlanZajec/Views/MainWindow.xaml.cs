@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using PlanZajec.Views;
 using System;
+using System.Linq;
 using PlanZajec.CommonInformations;
 using PlanZajec.Parser;
 using PlanZajec.ViewModels;
@@ -15,6 +16,8 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PanelFiltrow _panelFiltrow;
+        private PanelGlowny _panelGlowny;
         public MainWindow()
         {
             //DATABASE LOAD
@@ -35,8 +38,11 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            PGlowny.Children.Add(new PanelGlowny());
-            PFiltrow.Children.Add(new PanelFiltrow(this));
+            _panelGlowny = new PanelGlowny(this);
+            PGlowny.Children.Add(_panelGlowny);
+            //add panel filtrow
+            _panelFiltrow = new PanelFiltrow(this);
+            PFiltrow.Children.Add(_panelFiltrow);
         }
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
@@ -174,10 +180,19 @@ namespace Wpf
 
         public void ReloadWindowComponents()
         {
+            //reload palen glowny
             PGlowny.Children.RemoveAt(0);
-            PGlowny.Children.Add(new PanelGlowny());
+            _panelGlowny = new PanelGlowny(this);
+            PGlowny.Children.Add(_panelGlowny);
+            //relaod panel filtrow
             PFiltrow.Children.RemoveAt(0);
-            PFiltrow.Children.Add(new PanelFiltrow(this));
+            _panelFiltrow = new PanelFiltrow(this);
+            PFiltrow.Children.Add(_panelFiltrow);
+        }
+
+        public void UpdateOnSelectedPlanChange(long? number)
+        {
+            _panelFiltrow.UpdateOnSelectedPlanChange(number);
         }
     }
 }

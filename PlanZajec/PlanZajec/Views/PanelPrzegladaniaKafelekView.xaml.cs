@@ -87,5 +87,11 @@ namespace PlanZajec.Views
             }
             PlanView.RefreshSchedule();
         }
+
+        public void UpdateOnSelectedPlanChange(long? planNumber)
+        {
+            //TODO ASK GREG WHERE HE HOLDS DATA
+            throw new NotImplementedException();
+        }
     }
 }
