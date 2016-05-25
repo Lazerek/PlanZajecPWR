@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="" Height="175" Width="300" ResizeMode="NoResize">
+        Title="" Height="182" Width="300" ResizeMode="NoResize">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="19"/>
@@ -21,8 +21,8 @@
         <TextBlock Text="Login:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock Text="Hasło:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBox x:Name="Login" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" Height="24"/>
-        <TextBox x:Name="Password" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" Height="24"/>
-        <Button Content="Anuluj" Grid.Row="3" Grid.Column="0" Width="70" HorizontalAlignment="Left" Click="Anuluj" Margin="0, 5, 0, 0" Grid.ColumnSpan="2"/>
-        <Button Content="Ściągnij Dane" Grid.Row="3" Grid.Column="1" Width="110" HorizontalAlignment="Right" Click="Sciagnij" Margin="0, 5, 0, 0"/>
+        <PasswordBox x:Name="Password" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" Height="24"/>
+        <Button Content="Anuluj" Grid.Row="3" Grid.Column="0" Width="70" Height="30" HorizontalAlignment="Left" Click="Anuluj" Margin="0, 5, 0, 0" Grid.ColumnSpan="2"/>
+        <Button Content="Ściągnij Dane" Grid.Row="3" Grid.Column="1" Width="110" Height="30" HorizontalAlignment="Right" Click="Sciagnij" Margin="0, 5, 0, 0"/>
     </Grid>
 </Window>
