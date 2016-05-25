@@ -164,10 +164,7 @@ namespace PlanZajec.ViewModels
         }
         public Boolean SprawdzGrupeZProwadzacym(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
-                            gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz) &&
                             (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 ||
                              gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
                              && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca))
@@ -181,10 +178,7 @@ namespace PlanZajec.ViewModels
         }
         public Boolean SprawdzGrupeZProwadzacymWolne(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
-                            gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz) &&
                             (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 ||
                              gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
                              && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca)
@@ -199,10 +193,7 @@ namespace PlanZajec.ViewModels
         }
         public Boolean SprawdzGrupeBezProwadzacego(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
-                            gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0
+            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz)
                             && prowadzacy.Equals("")
                             && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca))
             {
@@ -215,10 +206,7 @@ namespace PlanZajec.ViewModels
         }
         public Boolean SprawdzGrupeBezProwadzacegoWolne(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
-                            gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0
+            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz)
                             && prowadzacy.Equals("")
                             && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca)
                             && gz.Wolna)
@@ -234,6 +222,16 @@ namespace PlanZajec.ViewModels
         {
             if (lab && gz.TypZajec.Equals(labString) || (projekt && gz.TypZajec.Equals(projektString)) ||
                    (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)))
+                return true;
+            else
+                return false;
+        }
+        public Boolean SprawdzGrupe(string nazwaKursu, string potok, string kodGrupy, string kodKursu, GrupyZajeciowe gz)
+        {
+            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+                            gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
+                            gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+                            gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0)
                 return true;
             else
                 return false;
