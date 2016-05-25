@@ -146,7 +146,6 @@ namespace PlanZajec.ViewModels
         /// <param name="projekt">Zmienna informująca o szukaniu projektu</param>
         /// <param name="wszystko">Zmienna informująca o szukaniu wszystkich typów zajęć</param>
         /// <param name="wyklad">Zmienna informująca o szukaniu jedynie wykładów</param>
-        /// <param name="wolne">Zmienna mówiąca o szukaniu tylko wolnych grup</param>
         /// <param name="result">Liczba szukanych wolnych miejsc w grupie</param>
         public void FiltrujWolneNieWszystko(string nazwaKursu, string potok, string kodGrupy, string kodKursu,
             string prowadzacy, bool lab, bool cwiczenia, bool projekt, bool wszystko, bool wyklad,
@@ -208,7 +207,6 @@ namespace PlanZajec.ViewModels
         /// <param name="projekt">Zmienna informująca o szukaniu projektu</param>
         /// <param name="wszystko">Zmienna informująca o szukaniu wszystkich typów zajęć</param>
         /// <param name="wyklad">Zmienna informująca o szukaniu jedynie wykładów</param>
-        /// <param name="wolne">Zmienna mówiąca o szukaniu tylko wolnych grup</param>
         /// <param name="result">Liczba szukanych wolnych miejsc w grupie</param>
         public void FiltrujZajeteNieWszystko(string nazwaKursu, string potok, string kodGrupy, string kodKursu,
             string prowadzacy, bool lab, bool cwiczenia, bool projekt, bool wszystko, bool wyklad,
