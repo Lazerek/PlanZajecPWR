@@ -13,9 +13,8 @@ namespace PlanZajec.ViewModels
     /// Klasa ViewModel odpowiedzialna za przeglądanie dostępnych grup zajęciowych
     /// </summary>
     public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
-    {
+    { 
         public static PrzegladanieGrupViewModel przegladanieGrupViewModel;
-        public static PrzegladanieGrupViewModel temp;
         private readonly string cwiczeniaString = "Ćwiczenia";
         private readonly string labString = "Zajęcia laboratoryjne";
         private readonly string projektString = "Projekt";
@@ -27,7 +26,6 @@ namespace PlanZajec.ViewModels
         public PrzegladanieGrupViewModel()
         {
             przegladanieGrupViewModel = this;
-            temp = this;
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Items =

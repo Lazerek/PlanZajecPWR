@@ -41,12 +41,10 @@ namespace PlanZajec.Views
         }
         private long? _otwartyPlanId;
 
-        public PanelGlowny(MainWindow mainWindow)
-        public long? OtwartyPlanId;
         /// <summary>
         /// Domyslny konstruktor
         /// </summary>
-        public PanelGlowny()
+        public PanelGlowny(MainWindow mainWindow)
         {
             _openedScheuldes = new HashSet<long>();
             InitializeComponent();
