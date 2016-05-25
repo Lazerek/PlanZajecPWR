@@ -16,16 +16,20 @@ using System.Windows.Shapes;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PrintDialog = System.Windows.Controls.PrintDialog;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for DrukujWindow.xaml
+    /// Klasa typu Window pozwalająca wydrukować plan
     /// </summary>
     public partial class DrukujWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
         private long[] tab;
+        /// <summary>
+        /// Konstruktor tworzący okienko wyświetlające możliwe plany
+        /// </summary>
         public DrukujWindow()
         {
             InitializeComponent();
@@ -43,24 +47,27 @@ namespace PlanZajec.Views
             }
             PlanyComboBox.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Przycisk drukowania
+        /// </summary>
+        /// <param name="sender">Obiekt wysyłany</param>
+        /// <param name="e"></param>
         private void DrukujButton_Click(object sender, RoutedEventArgs e)
         {
-            PrintDocument pd = new PrintDocument();
-            PageSetupDialog psd = new PageSetupDialog();
-            psd.PageSettings = new PageSettings();
-            psd.PrinterSettings = new PrinterSettings();
-            psd.ShowNetwork = false;
-            DialogResult result = new DialogResult();
-            result = psd.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK )
+            PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
+            PlanView pv = new PlanView(pvm);
+            // PrintDialog printDialog = new PrintDialog();
+            PrintDialog Objprint = new PrintDialog();
+            if (Objprint.ShowDialog() == true)
             {
-                pd.PrinterSettings.PrinterName = psd.PrinterSettings.PrinterName;
-                pd.PrinterSettings.Copies = psd.PrinterSettings.Copies;
-                pd.DefaultPageSettings = psd.PageSettings;
+                System.Printing.PrintCapabilities capabilities = Objprint.PrintQueue.GetPrintCapabilities(Objprint.PrintTicket);
+                double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / pv.ActualWidth, capabilities.PageImageableArea.ExtentHeight / pv.ActualHeight);
+                pv.LayoutTransform = new ScaleTransform(scale, scale);
+                Size size = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+                pv.Measure(size);
+                pv.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), size));
+                Objprint.PrintVisual(pv, "Plan");
             }
-            
-            //pd.Print();
         }
     }
 }
