@@ -171,12 +171,5 @@ namespace Wpf
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             PrawePodmenu.Children.Add(new WolneDniSetView());
         }
-
-        public void UpdateOnSelectedPlanChange(long? planNumber)
-        {
-            //PrawePodmenu.Children.Add(new ProwadzacyMenu());
-            var prawePodmenu = PrawePodmenu.Children.OfType<PanelPrzegladaniaKafelekView>().FirstOrDefault();
-            prawePodmenu?.UpdateOnSelectedPlanChange(planNumber);
-        }
     }
 }
