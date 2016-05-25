@@ -1,23 +1,11 @@
 ﻿using PlanZajec.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using PlanZajec.DataModel;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for ListaPlanow.xaml
+    /// Klasa typu window wyświetlająca listę planów
     /// </summary>
     public partial class ListaPlanow : Window
     {
@@ -26,18 +14,29 @@ namespace PlanZajec.Views
         public int id;
         private ListaPlanowViewModel viewModel;
 
+        /// <summary>
+        /// Domyślny konstruktor pobierająca dane z viewmodelu listy planów
+        /// </summary>
         public ListaPlanow()
         {
             InitializeComponent();
             viewModel = new ListaPlanowViewModel();
             this.DataContext = viewModel;
         }
-   
+        /// <summary>
+        /// Metoda anulowania okna
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Anuluj(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Metoda tworzenia nowego planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Utworz(object sender, EventArgs e)
         {
             if(plList.SelectedItems.Count > 0)

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing.Printing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PrintDialog = System.Windows.Controls.PrintDialog;
@@ -50,9 +40,9 @@ namespace PlanZajec.Views
         /// <summary>
         /// Przycisk drukowania
         /// </summary>
-        /// <param name="sender">Obiekt wysyłany</param>
+        /// <param name="sender">/param>
         /// <param name="e"></param>
-        private void DrukujButton_Click(object sender, RoutedEventArgs e)
+        private void Drukuj(object sender, RoutedEventArgs e)
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
             PlanView pv = new PlanView(pvm);
@@ -68,6 +58,10 @@ namespace PlanZajec.Views
                 pv.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), size));
                 Objprint.PrintVisual(pv, "Plan");
             }
+        }
+        private void Anuluj(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

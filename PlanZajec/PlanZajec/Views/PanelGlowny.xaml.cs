@@ -13,7 +13,7 @@ using Wpf;
 namespace PlanZajec.Views
 {
     /// <summary>
-    ///     Interaction logic for LeweMenu.xaml
+    ///     Klasa panelu głównego
     /// </summary>
     public partial class PanelGlowny : UserControl
     {
@@ -42,6 +42,11 @@ namespace PlanZajec.Views
         private long? _otwartyPlanId;
 
         public PanelGlowny(MainWindow mainWindow)
+        public long? OtwartyPlanId;
+        /// <summary>
+        /// Domyslny konstruktor
+        /// </summary>
+        public PanelGlowny()
         {
             _openedScheuldes = new HashSet<long>();
             InitializeComponent();

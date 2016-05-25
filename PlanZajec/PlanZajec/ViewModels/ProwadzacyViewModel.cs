@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 
 namespace PlanZajec.ViewModels
 {
+    /// <summary>
+    /// Klasa typu ViewModel do wyświetlania listy prowadzących
+    /// </summary>
     public class ProwadzacyViewModel : INotifyPropertyChanged
     {
         public List<Prowadzacy> Items { get; set; }
-
+        /// <summary>
+        /// Domyślny konstruktor pobierający prowadzących z bazy danych
+        /// </summary>
         public ProwadzacyViewModel()
         {
             
@@ -24,6 +27,10 @@ namespace PlanZajec.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Metoda filtrująca prowadzących
+        /// </summary>
+        /// <param name="str"></param>
         public void FiltrujProwadzacych(string str)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -60,6 +67,11 @@ namespace PlanZajec.ViewModels
                 NotifyPropertyChanged("Items");
             }
         }
+
+        /// <summary>
+        /// Metoda informująca o zmianie własności
+        /// </summary>
+        /// <param name="propertyName">Nazwa zmienianej własności</param>
         public void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

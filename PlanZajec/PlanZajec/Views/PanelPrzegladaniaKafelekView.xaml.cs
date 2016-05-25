@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for PanelPrzegladaniaKafelekView.xaml
+    /// Klasa typu window wyświetlająca kafelki z panelu
     /// </summary>
     public partial class PanelPrzegladaniaKafelekView : UserControl
     {
@@ -18,13 +18,20 @@ namespace PlanZajec.Views
         private readonly Image minusIcon;
         private GrupyZajeciowe grupaToAddOrDeleteFromPlan;
 
+        /// <summary>
+        /// Domyślny konstruktor
+        /// </summary>
         public PanelPrzegladaniaKafelekView()
         {
             InitializeComponent();
             addIcon = new Image() { Source = new BitmapImage(new Uri("Images/addIcon.png", UriKind.Relative)) };
             minusIcon = new Image() { Source = new BitmapImage(new Uri("Images/minusIcon.png", UriKind.Relative)) };           
         }
-
+        /// <summary>
+        /// Metoda przygotowująca do otwarcia menu kontekstowego
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PrepareOpenContextMenu(object sender, ContextMenuEventArgs e)
         {
             KafelekGrup kafelek = sender as KafelekGrup;
@@ -34,7 +41,11 @@ namespace PlanZajec.Views
             fe.ContextMenu = GetContextMenu(grupa);
         }
 
-
+        /// <summary>
+        /// Metoda zwracająca menu
+        /// </summary>
+        /// <param name="grupa">Grupa zajęciowa</param>
+        /// <returns>Kontekstowe menu</returns>
         private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
         {
             System.Diagnostics.Debug.WriteLine("@@@Invoke|->GetContextMenu)");
@@ -69,7 +80,11 @@ namespace PlanZajec.Views
             theMenu.Items.Add(menuAddOrRemovFromPlan);
             return theMenu;
         }
-
+        /// <summary>
+        /// Obsługa na dodanie kafelka do planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnAddToPlanHandler(object sender, RoutedEventArgs e)
         {
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
@@ -78,7 +93,11 @@ namespace PlanZajec.Views
             }
             PlanView.RefreshSchedule();
         }
-
+        /// <summary>
+        /// Obsługa na usunięciu z planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)
         {
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))

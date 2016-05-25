@@ -2,17 +2,19 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    ///     Interaction logic for WolneDniSetView.xaml
+    /// Klasa do ustawiania wolnych dni i godzin
     /// </summary>
     public partial class WolneDniSetView : UserControl
     {
+        /// <summary>
+        /// Domyślny konstruktor pobierający plany
+        /// </summary>
         public WolneDniSetView()
         {
             InitializeComponent();
@@ -30,18 +32,30 @@ namespace PlanZajec.Views
 
         public ObservableCollection<Plany> plany { get; }
 
+        /// <summary>
+        /// Metoda dodająca wolne przydziały do planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
             getSelectedPlan(SelectPlanComboBox.SelectedValue as string)
                 .AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
             Info.Text = "Dodano wolny przydział.";
         }
-
+        /// <summary>
+        /// Pobranie zaznaczonego planu
+        /// </summary>
+        /// <param name="name">Nazwa planu</param>
+        /// <returns>Plan</returns>
         private Plany getSelectedPlan(string name)
         {
             return plany.FirstOrDefault(plan => plan.NazwaPlanu == name);
         }
-
+        /// <summary>
+        /// Pobranie godzin początkowych
+        /// </summary>
+        /// <returns>Godzinępoczątkową</returns>
         private string getBeaginingHour()
         {
             var beginingHour = "";
@@ -71,7 +85,10 @@ namespace PlanZajec.Views
             }
             return beginingHour;
         }
-
+        /// <summary>
+        /// Pobranie godziny końcowej
+        /// </summary>
+        /// <returns>Godzina końcowa</returns>
         private string getEndHour()
         {
             var endHour = "";
@@ -101,7 +118,10 @@ namespace PlanZajec.Views
             }
             return endHour;
         }
-
+        /// <summary>
+        /// Pobranie dnia
+        /// </summary>
+        /// <returns>Skrócona nazwa dnia</returns>
         private string getShortDay()
         {
             var dayShort = "";

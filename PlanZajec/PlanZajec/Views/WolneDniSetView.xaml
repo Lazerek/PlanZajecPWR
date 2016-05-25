@@ -32,7 +32,7 @@
             <ComboBoxItem Content="Niedziela"></ComboBoxItem>
         </ComboBox>
         <TextBlock Text="Od:" Grid.Row="4" VerticalAlignment="Center" Margin="0,9,0,0"/>
-        <ComboBox Name="GodzinaRozpoczeciaComboBox" Grid.Row="4" SelectedIndex="0" HorizontalAlignment="Left" Margin="30,4,0,30" Grid.RowSpan="2">
+        <ComboBox Name="GodzinaRozpoczeciaComboBox" Width="57" Grid.Row="4" SelectedIndex="0" HorizontalAlignment="Left" Margin="30,4,0,30" Grid.RowSpan="2">
             <ComboBoxItem Content="7.30"></ComboBoxItem>
             <ComboBoxItem Content="9.15"></ComboBoxItem>
             <ComboBoxItem Content="11.15"></ComboBoxItem>
@@ -42,7 +42,7 @@
             <ComboBoxItem Content="18.55"></ComboBoxItem>
         </ComboBox>
         <TextBlock Text="Do:" VerticalAlignment="Center" Grid.Row="5" Margin="0,20,0,34" Grid.RowSpan="2"/>
-        <ComboBox Name="GodzinaZakonczeniaComboBox" Grid.Row="5" SelectedIndex="0" HorizontalAlignment="Left" Margin="30,15,0,29" Grid.RowSpan="2">
+        <ComboBox Name="GodzinaZakonczeniaComboBox" Width="57" Grid.Row="5" SelectedIndex="0" HorizontalAlignment="Left" Margin="30,15,0,29" Grid.RowSpan="2">
             <ComboBoxItem Content="9.00"></ComboBoxItem>
             <ComboBoxItem Content="11.00"></ComboBoxItem>
             <ComboBoxItem Content="13.00"></ComboBoxItem>

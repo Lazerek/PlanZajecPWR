@@ -1,34 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 using PlanZajec.ViewModels;
 
 namespace PlanZajec
 {
     /// <summary>
-    /// Interaction logic for ProwadzacyMenu.xaml
+    /// Klasa typu window wyświetlająca prowadzących
     /// </summary>
     public partial class ProwadzacyMenu : UserControl
     {
         public ProwadzacyViewModel ViewModel;
+        /// <summary>
+        /// Domyślny konstruktor zawierający prowadzących
+        /// </summary>
         public ProwadzacyMenu()
         {
             InitializeComponent();
             ViewModel = new ProwadzacyViewModel();
             DataContext = ViewModel;
         }
-
+        /// <summary>
+        /// Filtorwanie prowadzących po wpisanym tekście
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SzukajTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             ViewModel.FiltrujProwadzacych(szukajTextBox.Text);

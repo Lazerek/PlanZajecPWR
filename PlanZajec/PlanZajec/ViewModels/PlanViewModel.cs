@@ -1,20 +1,19 @@
 ﻿using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PlanZajec.Views;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using Wpf;
 
 namespace PlanZajec.ViewModels
 {
+    /// <summary>
+    /// Klasa typu ViewModel planu zajęć
+    /// </summary>
     public class PlanViewModel:ViewModel
     {
+
         public long IdPlanu
         {
             get; private set;
@@ -24,6 +23,10 @@ namespace PlanZajec.ViewModels
 
         public List<GrupyZajeciowe> ListaGrupZajeciowych { get; private set; }
         public List<GrupaZajeciowaTemplate> Kafelki { get; private set; }
+        /// <summary>
+        /// Konstruktor tworzący plan z podanym id planu
+        /// </summary>
+        /// <param name="id">Indeks planu</param>
         public PlanViewModel(long id)
         {
             IdPlanu = id;
@@ -44,6 +47,9 @@ namespace PlanZajec.ViewModels
                 //ListaGrupZajeciowych[0];
             }
         }
+        /// <summary>
+        /// Metoda aktualizaująca plan
+        /// </summary>
         public void aktualizuj()
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))

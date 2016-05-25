@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 
 namespace PlanZajec.ViewModels
 {
+    /// <summary>
+    /// Klasa typu ViewModel pomagająca wyświetlać prowadzących, opinie oraz oceny o nich
+    /// </summary>
     public class ProwadzacyOpinieViewModel : INotifyPropertyChanged
     {
         public List<Prowadzacy> Items { get; set; }
         public List<Prowadzacy> ComboBoxItems { get; set; }
-
+        /// <summary>
+        /// Domyślny konstrkutor pobierający prowadzących do listy przedmiotów
+        /// </summary>
         public ProwadzacyOpinieViewModel()
         {
             ComboBoxItems = new List<Prowadzacy>();
@@ -22,6 +25,11 @@ namespace PlanZajec.ViewModels
                 ComboBoxItems = uw.Prowadzacy.GetAll().ToList();
             }
         }
+        /// <summary>
+        /// Metoda pozwalająca pobrać opinię oraz ocenę o prowadzącym
+        /// </summary>
+        /// <param name="pr">Prowadzący</param>
+        /// <returns>Opinia oraz ocena prowadzącego</returns>
         public string[] dajOpinie(string pr)
         {
             String[] wynik = new string[2];
@@ -61,7 +69,14 @@ namespace PlanZajec.ViewModels
             }
             return wynik;
         }
-
+        /// <summary>
+        /// Metoda pozwalająca zapisać ocenę i opinię prowadzącego
+        /// </summary>
+        /// <param name="pr">Dane prowadzącego</param>
+        /// <param name="index">Indeks prowadzącego</param>
+        /// <param name="opinia">Opinia o prowadzącym</param>
+        /// <param name="ocena">Ocena o prowadzącym</param>
+        /// <returns>Poprawność zapisu opinii i oceny</returns>
         public Boolean ZapiszOpinie(string pr, int index, string opinia, string ocena)
         {
             Boolean returnValue = false;
@@ -91,7 +106,10 @@ namespace PlanZajec.ViewModels
             return returnValue;
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// Metoda zapisująca własność
+        /// </summary>
+        /// <param name="propertyName">Nazwa własności</param>
         public void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
