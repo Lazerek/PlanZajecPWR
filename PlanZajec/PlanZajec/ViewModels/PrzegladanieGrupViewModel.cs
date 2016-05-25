@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 
@@ -20,6 +21,14 @@ namespace PlanZajec.ViewModels
         private readonly string projektString = "Projekt";
         private readonly string wykladString = "Wykład";
 
+
+        public ObservableCollection<GrupyZajeciowe> Items { get; set; }
+        public GrupyZajeciowe SelectedItem { get; set; }
+
+        private readonly List<GrupyZajeciowe> _itemsNoChange;
+
+        private List<GrupyZajeciowe> ItemsChanged { get; set; }
+
         /// <summary>
         /// Konstruktor domyślny, który wczytuje grupy zajęciowe z bazy danych
         /// </summary>
@@ -30,29 +39,11 @@ namespace PlanZajec.ViewModels
             {
                 Items =
                     new ObservableCollection<GrupyZajeciowe>(uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList());
-                ItemsNoChange = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
+                _itemsNoChange = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
             }
             ItemsChanged = new List<GrupyZajeciowe>();
         }
 
-        public ObservableCollection<GrupyZajeciowe> Items { get; set; }
-        public GrupyZajeciowe SelectedItem { get; set; }
-
-        public List<GrupyZajeciowe> ItemsNoChange { get; set; }
-
-        public List<GrupyZajeciowe> ItemsChanged { get; set; }
-        /// <summary>
-        /// Metoda do przeładowania danych
-        /// </summary>
-        public void reloadData()
-        {
-            using (var uw = new UnitOfWork(new PlanPwrContext()))
-            {
-                Items =
-                    new ObservableCollection<GrupyZajeciowe>(uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList());
-                ItemsNoChange = uw.GrupyZajeciowe.GetGrupyZajecioweWithRelations().ToList();
-            }
-        }
         /// <summary>
         /// Metoda czyszcząca filtrowanie
         /// </summary>
@@ -60,7 +51,7 @@ namespace PlanZajec.ViewModels
         {
             Items.Clear();
             Items = new ObservableCollection<GrupyZajeciowe>();
-            foreach (var gz in ItemsNoChange)
+            foreach (var gz in _itemsNoChange)
             {
                 Items.Add(gz);
             }
@@ -100,11 +91,34 @@ namespace PlanZajec.ViewModels
 
             Items.Clear();
             Items = new ObservableCollection<GrupyZajeciowe>();
+            //
+            // filtrujemy liste ItemsChanged
+            // FiltrujPoGodzinachWolnych();
+            //
             foreach (var gz in ItemsChanged)
-                Items.Add(gz);
+            {
+                if (NiePodczasWolnegoCzasu(gz))
+                {
+                    Items.Add(gz);
+                }
+            }
             ItemsChanged.Clear();
             NotifyPropertyChange("Items");
         }
+
+        public void PrzefiltrujPoCzasieWolnym(long? numerPlanu)
+        {
+            //wydobadz dzien & sprawdz
+            //tydzien & sprawdz
+            //wydobadz czas & sprawdz
+            //wczytaj do lsity
+        }
+        private bool NiePodczasWolnegoCzasu(GrupyZajeciowe gz)
+        {
+
+            return true;
+        }
+
         /// <summary>
         /// Funkcja pomocnicza filtrująca wszystkie typy zajeć i tylko wolne grupy
         /// </summary>
@@ -117,7 +131,7 @@ namespace PlanZajec.ViewModels
         public void FiltrujWolneWszystko(string nazwaKursu, string potok, string kodGrupy, string kodKursu,
             string prowadzacy, long result)
         {
-            foreach (var gz in ItemsNoChange)
+            foreach (var gz in _itemsNoChange)
             {
                 if (gz.Prowadzacy != null)
                 {
@@ -149,7 +163,7 @@ namespace PlanZajec.ViewModels
             string prowadzacy, bool lab, bool cwiczenia, bool projekt, bool wszystko, bool wyklad,
             long result)
         {
-            foreach (var gz in ItemsNoChange)
+            foreach (var gz in _itemsNoChange)
             {
                 if (SprawdzTypZajec(lab, cwiczenia, projekt, wyklad, gz))
                 {
@@ -178,7 +192,7 @@ namespace PlanZajec.ViewModels
         public void FiltrujZajeteWszystko(string nazwaKursu, string potok, string kodGrupy, string kodKursu,
             string prowadzacy, long result)
         {
-            foreach (var gz in ItemsNoChange)
+            foreach (var gz in _itemsNoChange)
             {
                 if (gz.Prowadzacy != null)
                 {
@@ -210,7 +224,7 @@ namespace PlanZajec.ViewModels
             string prowadzacy, bool lab, bool cwiczenia, bool projekt, bool wszystko, bool wyklad,
             long result)
         {
-            foreach (var gz in ItemsNoChange)
+            foreach (var gz in _itemsNoChange)
             {
                 if (SprawdzTypZajec(lab, cwiczenia, projekt, wyklad, gz))
                 {
