@@ -48,7 +48,6 @@ namespace PlanZajec.Views
         /// <returns>Kontekstowe menu</returns>
         private ContextMenu GetContextMenu(GrupyZajeciowe grupa)
         {
-            System.Diagnostics.Debug.WriteLine("@@@Invoke|->GetContextMenu)");
             ContextMenu theMenu = new ContextMenu();
             if (grupa == null || ActChosenPlanSingleton.Instance.IdPlanu < 0)
             {

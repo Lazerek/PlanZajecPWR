@@ -22,7 +22,6 @@ namespace PlanZajec.ViewModels
         /// </param>
         protected void NotifyPropertyChange([CallerMemberName] String propertyName = "")
         {
-            //System.Diagnostics.Debug.WriteLine("@MY@@@@    NotifyPropertyChange @My@");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

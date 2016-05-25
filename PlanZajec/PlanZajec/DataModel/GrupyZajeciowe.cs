@@ -79,8 +79,7 @@ namespace PlanZajec.DataModel
 
         public bool Equals(GrupyZajeciowe other)
         {
-            System.Diagnostics.Debug.WriteLine("@@@Grag->EqualsGrup");
-            return KodGrupy.Equals(other.KodGrupy);
+            return other != null && KodGrupy.Equals(other.KodGrupy);
         }
         override
         public string ToString()

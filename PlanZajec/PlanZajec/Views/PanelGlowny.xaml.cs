@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,21 +22,33 @@ namespace PlanZajec.Views
         private readonly HashSet<long> _openedScheuldes;
         //tab that make adding possible
 
-        private TabItem _tabAdd;
+        private readonly TabItem _tabAdd;
 
         private PlanView _aktualnyPlanView;
 
         private readonly ObservableCollection<TabItem> _tabItems;
 
+        private readonly MainWindow _mainWindow;
+
         //kod aktualnie otwartego planu
-        public long? OtwartyPlanId;
+        private long? OtwartyPlanId
+        {
+            get { return _otwartyPlanId; }
+            set
+            {
+                _mainWindow?.UpdateOnSelectedPlanChange(value);
+            }
+        }
+        private long? _otwartyPlanId;
+
         /// <summary>
         /// Domyslny konstruktor
         /// </summary>
-        public PanelGlowny()
+        public PanelGlowny(MainWindow mainWindow)
         {
             _openedScheuldes = new HashSet<long>();
             InitializeComponent();
+            _mainWindow = mainWindow;
             tabsId = 0;
             _tabItems = new ObservableCollection<TabItem>();
             //add tab
@@ -77,10 +90,10 @@ namespace PlanZajec.Views
             {
                 Header = "Wybierz plan",
                 Name = $"WybierzPlan{tabsId++}",
-                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
+                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate,
+                Content = PrepareChosingPlan()
             };
 
-            tab.Content = PrepareChosingPlan();
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);
@@ -89,7 +102,7 @@ namespace PlanZajec.Views
 
         private WyborPlanu PrepareChosingPlan()
         {
-            var res = new WyborPlanu {DataContext = WyborPlanuViewModel.Instance};
+            var res = new WyborPlanu {DataContext = PlanyViewModel.Instance};
             res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
             res.ChosenPlanToDeleteEventHandler += UsunPlan;
             res.AddToPlan += AddPlan;
@@ -106,8 +119,7 @@ namespace PlanZajec.Views
                 unit.Plany.Add(plan);
                 unit.SaveChanges();
             }
-            WyborPlanuViewModel.Instance.DodajPlan(plan);
-            UsunPlanViewModel.Instance.DodajPlan(plan);
+            PlanyViewModel.Instance.DodajPlan(plan);
         }
 
 
@@ -155,8 +167,7 @@ namespace PlanZajec.Views
                 unit.Plany.Remove(plan);
                 unit.SaveChanges();
             }
-            WyborPlanuViewModel.Instance.UsunPlan(plan);
-            UsunPlanViewModel.Instance.UsunPlan(plan);
+            PlanyViewModel.Instance.UsunPlan(plan);
             return true;
         }
 

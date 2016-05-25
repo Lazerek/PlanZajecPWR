@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PlanZajec;
@@ -12,36 +13,19 @@ namespace Wpf
     /// </summary>
     public partial class PanelFiltrow : UserControl
     {
-        bool lpm;
-        OknoOpcji oo;
-        private MainWindow parent;
-        /// <summary>
-        /// Domyślny konstruktor pokazujący okno opcji
-        /// </summary>
-        public PanelFiltrow()
+        private bool lpm;
+        private OknoOpcji _oknoOpcji;
+        private readonly MainWindow _mainWindow;
+
+        public PanelFiltrow(MainWindow mainWindow)
         {
             InitializeComponent();
             lpm = false;
-            oo = new OknoOpcji();
+            _oknoOpcji = new OknoOpcji();
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
+            _mainWindow = mainWindow;
         }
-        /// <summary>
-        /// Konstruktor z głownym oknem
-        /// </summary>
-        /// <param name="parent">Główne okno</param>
-        public PanelFiltrow(MainWindow parent)
-        {
-            InitializeComponent();
-            lpm = false;
-            oo = new OknoOpcji();
-            PrawePodmenu.Children.Add(new ProwadzacyMenu());
-            this.parent = parent;
-        }
-        /// <summary>
-        /// Metoda zmieniająca okno na okno z prowadzącymi
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnSelectedLecturers(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -89,10 +73,10 @@ namespace Wpf
         {
             if (lpm)
             {
-                if (!oo.IsVisible)
+                if (!_oknoOpcji.IsVisible)
                 {
-                    oo = new OknoOpcji();
-                    oo.Show();
+                    _oknoOpcji = new OknoOpcji();
+                    _oknoOpcji.Show();
                 }
             }
         }
@@ -146,18 +130,18 @@ namespace Wpf
         /// <param name="e"></param>
         private void gButtonClicked(object sender, RoutedEventArgs e)
         {
-            if (parent.kolumna1.MinWidth == 15)
+            if (_mainWindow.kolumna1.MinWidth == 15)
             {
-                parent.kolumna1.MinWidth = 150;
-                parent.kolumna1.MaxWidth = int.MaxValue;
-                parent.kolumna1.Width = new GridLength(1, GridUnitType.Star);
+                _mainWindow.kolumna1.MinWidth = 150;
+                _mainWindow.kolumna1.MaxWidth = int.MaxValue;
+                _mainWindow.kolumna1.Width = new GridLength(1, GridUnitType.Star);
                 fButton.Content = "◀";
             }
             else
             {
-                parent.kolumna1.MinWidth = 15;
-                parent.kolumna1.MaxWidth = 15;
-                parent.kolumna1.Width = new GridLength(15, GridUnitType.Pixel);
+                _mainWindow.kolumna1.MinWidth = 15;
+                _mainWindow.kolumna1.MaxWidth = 15;
+                _mainWindow.kolumna1.Width = new GridLength(15, GridUnitType.Pixel);
                 fButton.Content = "▶";
             }
         }
@@ -186,6 +170,13 @@ namespace Wpf
             if (PrawePodmenu.Children.Count > 0)
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             PrawePodmenu.Children.Add(new WolneDniSetView());
+        }
+
+        public void UpdateOnSelectedPlanChange(long? planNumber)
+        {
+            //PrawePodmenu.Children.Add(new ProwadzacyMenu());
+            var prawePodmenu = PrawePodmenu.Children.OfType<PanelPrzegladaniaKafelekView>().FirstOrDefault();
+            prawePodmenu?.UpdateOnSelectedPlanChange(planNumber);
         }
     }
 }

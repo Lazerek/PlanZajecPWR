@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using PlanZajec.Views;
 using System;
+using System.Linq;
 using PlanZajec.CommonInformations;
 using PlanZajec.Parser;
 using PlanZajec.ViewModels;
@@ -15,6 +16,8 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PanelFiltrow _panelFiltrow;
+        private PanelGlowny _panelGlowny;
         /// <summary>
         /// Domyślny konstruktor inicjalizujący okno główne
         /// </summary>
@@ -38,8 +41,11 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            PGlowny.Children.Add(new PanelGlowny());
-            PFiltrow.Children.Add(new PanelFiltrow(this));
+            _panelGlowny = new PanelGlowny(this);
+            PGlowny.Children.Add(_panelGlowny);
+            //add panel filtrow
+            _panelFiltrow = new PanelFiltrow(this);
+            PFiltrow.Children.Add(_panelFiltrow);
         }
         /// <summary>
         /// Metoda zamykająca aplikację przy wyjściu
@@ -130,8 +136,7 @@ namespace Wpf
                 }
                 unit.Plany.Add(plan);
                 unit.SaveChanges();
-                WyborPlanuViewModel.Instance.DodajPlan(plan);
-                UsunPlanViewModel.Instance.DodajPlan(plan);
+                PlanyViewModel.Instance.DodajPlan(plan);
             }
         }
 
@@ -238,10 +243,19 @@ namespace Wpf
         /// </summary>
         public void ReloadWindowComponents()
         {
+            //reload palen glowny
             PGlowny.Children.RemoveAt(0);
-            PGlowny.Children.Add(new PanelGlowny());
+            _panelGlowny = new PanelGlowny(this);
+            PGlowny.Children.Add(_panelGlowny);
+            //relaod panel filtrow
             PFiltrow.Children.RemoveAt(0);
-            PFiltrow.Children.Add(new PanelFiltrow(this));
+            _panelFiltrow = new PanelFiltrow(this);
+            PFiltrow.Children.Add(_panelFiltrow);
+        }
+
+        public void UpdateOnSelectedPlanChange(long? number)
+        {
+            _panelFiltrow.UpdateOnSelectedPlanChange(number);
         }
     }
 }

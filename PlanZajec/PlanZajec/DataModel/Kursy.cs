@@ -37,7 +37,6 @@ namespace PlanZajec.DataModel
         {
             get
             {
-                //System.Diagnostics.Debug.WriteLine("@@Greg:SkrotKursu z klasy");
                 string[] sp = NazwaKursu.Split();
                 string result = "";
                 for(int i=0; i<sp.Length; i++)

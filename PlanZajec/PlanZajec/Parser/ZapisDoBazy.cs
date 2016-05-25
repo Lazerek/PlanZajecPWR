@@ -281,7 +281,7 @@ namespace PlanZajec.Parser
                 {
                     var plan = new Plany {NazwaPlanu = sw.ReadLine()};
                     plan.WolneDni = sw.ReadLine();
-                    WyborPlanuViewModel.Instance.DodajPlan(plan);
+                    PlanyViewModel.Instance.DodajPlan(plan);
                     uw.Plany.Add(plan);
                     uw.SaveChanges();
                     string line;
