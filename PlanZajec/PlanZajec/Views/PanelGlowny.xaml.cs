@@ -36,7 +36,8 @@ namespace PlanZajec.Views
             get { return _otwartyPlanId; }
             set
             {
-                _mainWindow?.UpdateOnSelectedPlanChange(value);
+                //_mainWindow?.UpdateOnSelectedPlanChange(value);
+                _otwartyPlanId = value;
             }
         }
         private long? _otwartyPlanId;

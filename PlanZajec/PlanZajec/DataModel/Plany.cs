@@ -29,7 +29,6 @@ namespace PlanZajec.DataModel
 
         public bool Equals(Plany other)
         {
-            System.Diagnostics.Debug.WriteLine("@@@Grag->EqualsPlany");
             if (other == null)
                 return false;
             return IdPlanu == other.IdPlanu;

@@ -144,7 +144,6 @@ namespace PlanZajec.ViewModels
         /// <param name="projekt">Zmienna informująca o szukaniu projektu</param>
         /// <param name="wszystko">Zmienna informująca o szukaniu wszystkich typów zajęć</param>
         /// <param name="wyklad">Zmienna informująca o szukaniu jedynie wykładów</param>
-        /// <param name="wolne">Zmienna mówiąca o szukaniu tylko wolnych grup</param>
         /// <param name="result">Liczba szukanych wolnych miejsc w grupie</param>
         public void FiltrujWolneNieWszystko(string nazwaKursu, string potok, string kodGrupy, string kodKursu,
             string prowadzacy, bool lab, bool cwiczenia, bool projekt, bool wszystko, bool wyklad,
@@ -206,7 +205,6 @@ namespace PlanZajec.ViewModels
         /// <param name="projekt">Zmienna informująca o szukaniu projektu</param>
         /// <param name="wszystko">Zmienna informująca o szukaniu wszystkich typów zajęć</param>
         /// <param name="wyklad">Zmienna informująca o szukaniu jedynie wykładów</param>
-        /// <param name="wolne">Zmienna mówiąca o szukaniu tylko wolnych grup</param>
         /// <param name="result">Liczba szukanych wolnych miejsc w grupie</param>
         public void FiltrujZajeteNieWszystko(string nazwaKursu, string potok, string kodGrupy, string kodKursu,
             string prowadzacy, bool lab, bool cwiczenia, bool projekt, bool wszystko, bool wyklad,
@@ -242,17 +240,10 @@ namespace PlanZajec.ViewModels
         /// <returns>Pomyślność filtrowania grupy</returns>
         public Boolean SprawdzGrupeZProwadzacym(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz) &&
-                            (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 ||
-                             gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
-                             && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                return (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz) 
+                && (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 
+                || gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca));
         }
         /// <summary>
         /// Metoda pomocznicza do sprawdzania czy grupa zajęciowa jest odpowiednia, z posiadanym prowadzącym, szukanie tylko wolnych grup
@@ -267,18 +258,12 @@ namespace PlanZajec.ViewModels
         /// <returns>Pomyślność filtrowania grupy</returns>
         public Boolean SprawdzGrupeZProwadzacymWolne(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz) &&
-                            (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 ||
-                             gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
-                             && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca)
-                             && gz.Wolna)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz) &&
+                    (gz.Prowadzacy.Nazwisko.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0 ||
+                     gz.Prowadzacy.Imie.IndexOf(prowadzacy, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca)
+                    && gz.Wolna);
+
         }
         /// <summary>
         /// Metoda pomocznicza do sprawdzania czy grupa zajęciowa jest odpowiednia, bez wpisanego prowadzącego
@@ -293,16 +278,9 @@ namespace PlanZajec.ViewModels
         /// <returns>Pomyślność filtrowania grupy</returns>
         public Boolean SprawdzGrupeBezProwadzacego(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz)
-                            && prowadzacy.Equals("")
-                            && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz)
+                    && prowadzacy.Equals("")
+                    && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca));
         }
         /// <summary>
         /// Metoda pomocznicza do sprawdzania czy grupa zajęciowa jest odpowiednia, bez posiadania prowadzącego, szukanie tylko grup wolnych
@@ -317,17 +295,10 @@ namespace PlanZajec.ViewModels
         /// <returns>Pomyślność filtrowania grupy</returns>
         public Boolean SprawdzGrupeBezProwadzacegoWolne(string nazwaKursu, string potok, string kodGrupy, string kodKursu, string prowadzacy, long wolneMiejsca, GrupyZajeciowe gz)
         {
-            if (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz)
-                            && prowadzacy.Equals("")
-                            && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca)
-                            && gz.Wolna)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (SprawdzGrupe(nazwaKursu, potok, kodGrupy, kodGrupy, gz)
+                    && prowadzacy.Equals("")
+                    && wolneMiejsca <= (gz.Miejsca - gz.ZajeteMiejsca)
+                    && gz.Wolna);
         }
         /// <summary>
         /// Metoda sprawdzająca czy grupa mieści się w określonych typach zajęć
@@ -340,11 +311,9 @@ namespace PlanZajec.ViewModels
         /// <returns>Zgodność grupy z typem zajęć</returns>
         public Boolean SprawdzTypZajec(bool lab, bool cwiczenia, bool projekt, bool wyklad, GrupyZajeciowe gz)
         {
-            if (lab && gz.TypZajec.Equals(labString) || (projekt && gz.TypZajec.Equals(projektString)) ||
-                   (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)))
-                return true;
-            else
-                return false;
+            return (lab && gz.TypZajec.Equals(labString) || (projekt && gz.TypZajec.Equals(projektString)) ||
+                    (wyklad && gz.TypZajec.Equals(wykladString)) || (cwiczenia && gz.TypZajec.Equals(cwiczeniaString)));
+
         }
         /// <summary>
         /// Sprawdzanie czy grupa spełnia wymagania filtrowania
@@ -357,13 +326,10 @@ namespace PlanZajec.ViewModels
         /// <returns>Zgodność grupy z danymi do filtrowania</returns>
         public Boolean SprawdzGrupe(string nazwaKursu, string potok, string kodGrupy, string kodKursu, GrupyZajeciowe gz)
         {
-            if (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
-                            gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                            gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0)
-                return true;
-            else
-                return false;
+            return (gz.Kursy.NazwaKursu.IndexOf(nazwaKursu, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+                gz.Potok.StartsWith(potok, StringComparison.OrdinalIgnoreCase) &&
+                gz.KodGrupy.IndexOf(kodGrupy, StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+                gz.KodKursu.IndexOf(kodKursu, StringComparison.CurrentCultureIgnoreCase) >= 0);
         }
         /// <summary>
         /// Metoda pozwalająca zmienić liczbę miejsc w grupie

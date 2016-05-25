@@ -81,6 +81,8 @@ namespace PlanZajec
             var c = Convert.ToChar(e.Text);
             if ((char.IsNumber(c) || c.Equals(',') || c.Equals('.')) && !stringToCheck.Contains(',') && !stringToCheck.Contains("."))
                 e.Handled = false;
+            else if (char.IsNumber(c))
+                e.Handled = false;
             else
                 e.Handled = true;
         }

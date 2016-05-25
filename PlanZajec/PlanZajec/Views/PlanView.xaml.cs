@@ -11,6 +11,8 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class PlanView : UserControl
     {
+        public double PlanWidth {private set; get; }
+        public double PlanHeight { private set; get; }
 
         private PlanViewModel _planViewModel;
 
@@ -127,6 +129,8 @@ namespace PlanZajec.Views
         /// <param name="e">New sizes</param>
         private void TabelaGrup_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
+            PlanWidth = e.NewSize.Width;
+            PlanHeight = e.NewSize.Height;
             var sizeOfTile = new Size(e.NewSize.Width/7, e.NewSize.Height/7);
             TabelaGrup.Background = CreateGridBrush(new Rect(0, 0, e.NewSize.Width, e.NewSize.Height), sizeOfTile);
         }

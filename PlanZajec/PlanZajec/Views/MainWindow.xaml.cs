@@ -241,10 +241,5 @@ namespace Wpf
             _panelFiltrow = new PanelFiltrow(this);
             PFiltrow.Children.Add(_panelFiltrow);
         }
-
-        public void UpdateOnSelectedPlanChange(long? number)
-        {
-            _panelFiltrow.UpdateOnSelectedPlanChange(number);
-        }
     }
 }
