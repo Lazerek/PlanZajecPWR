@@ -112,31 +112,20 @@ namespace Wpf
         /// Metoda dodająca plan
         /// </summary>
         /// <param name="Title">Nazwa planu</param>
-        /// <param name="id">Id planu</param>
-        private void AddPlan(string Title, int id)
+        /// <param name="plan">Pierwotny plan</param>
+        private void AddPlan(string Title, Plany plan)
         {
-            Plany plan;
             using (var unit = new UnitOfWork(new PlanPwrContext()))
             {
-                plan = new Plany { NazwaPlanu = Title };
-                var plist = unit.Plany.GetAll().GetEnumerator();
-                int i = 0;
-                while (plist.MoveNext())
+                Plany nowyPlan = new Plany { NazwaPlanu = Title };
+                var staryPlan = unit.Plany.Get(plan.IdPlanu);
+                foreach (GrupyZajeciowe g in staryPlan.GrupyZajeciowe)
                 {
-                    if(id == i)
-                    {
-                        foreach(GrupyZajeciowe g in plist.Current.GrupyZajeciowe){
-                            plan.GrupyZajeciowe.Add(g);
-                        }
-                    }
-                    else
-                    {
-                        i++;
-                    }
+                    nowyPlan.GrupyZajeciowe.Add(g);
                 }
-                unit.Plany.Add(plan);
+                unit.Plany.Add(nowyPlan);
                 unit.SaveChanges();
-                PlanyViewModel.Instance.DodajPlan(plan);
+                PlanyViewModel.Instance.DodajPlan(nowyPlan);
             }
         }
 

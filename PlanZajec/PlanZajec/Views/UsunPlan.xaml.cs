@@ -1,4 +1,5 @@
-﻿using PlanZajec.DataModel;
+﻿using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
 using PlanZajec.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,15 +26,13 @@ namespace PlanZajec
         /// <param name="e"></param>
         private void Usun(object sender, RoutedEventArgs e)
         {
-            if(listaPlanow.Items.Count > 1)
+            var plan = (Plany)listaPlanow.SelectedItem;
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
             {
-                var plan = (Plany)listaPlanow.SelectedItem;
-                PlanyViewModel.Instance.UsunPlan(plan);
+                unit.Plany.Remove(plan);
+                unit.SaveChanges();
             }
-            else
-            {
-                MessageBox.Show("Nie można usunąć ostatniego istniejącego planu.", "Błąd");
-            }
+            PlanyViewModel.Instance.UsunPlan(plan);
         }
     }
 }

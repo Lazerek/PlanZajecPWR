@@ -20,7 +20,7 @@
             <RowDefinition Height="108*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Wybierz plan" Margin="0,0,0,24" Grid.RowSpan="2"/>
-        <ComboBox Name="SelectPlanComboBox" Grid.Row="1" Grid.Column="0" SelectedIndex="0" Margin="0,1,0,33" Grid.RowSpan="2"/>
+        <ComboBox Name="SelectPlanComboBox" Grid.Row="1" Grid.Column="0" SelectedIndex="0" Margin="0,1,0,33" Grid.RowSpan="2" ItemsSource="{Binding Path=Plany, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NazwaPlanu" SelectedValuePath="IdPlanu" SelectedValue="{Binding Path=IdPlanu}"/>
         <TextBlock Grid.Row="2" Text="Wybierz dzień" Margin="0,12,0,32" Grid.RowSpan="2"/>
         <ComboBox Name="DaySelectComboBox" Grid.Row="3" SelectedIndex="0" Height="25" VerticalAlignment="Top" Margin="0,3,0,0">
             <ComboBoxItem Content="Poniedziałek"></ComboBoxItem>
