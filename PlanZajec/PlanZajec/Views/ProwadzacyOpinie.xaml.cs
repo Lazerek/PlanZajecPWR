@@ -77,8 +77,9 @@ namespace PlanZajec
         /// <param name="e"></param>
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
         {
+            var stringToCheck = Ocena.Text;
             var c = Convert.ToChar(e.Text);
-            if (char.IsNumber(c) || c.Equals(',') || c.Equals('.'))
+            if ((char.IsNumber(c) || c.Equals(',') || c.Equals('.')) && !stringToCheck.Contains(',') && !stringToCheck.Contains("."))
                 e.Handled = false;
             else
                 e.Handled = true;
