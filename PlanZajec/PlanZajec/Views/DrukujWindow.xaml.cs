@@ -42,7 +42,7 @@ namespace PlanZajec.Views
         /// </summary>
         /// <param name="sender">/param>
         /// <param name="e"></param>
-        private void DrukujButton_Click(object sender, RoutedEventArgs e)
+        private void Drukuj(object sender, RoutedEventArgs e)
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
             PlanView pv = new PlanView(pvm);
@@ -58,6 +58,10 @@ namespace PlanZajec.Views
                 pv.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), size));
                 Objprint.PrintVisual(pv, "Plan");
             }
+        }
+        private void Anuluj(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

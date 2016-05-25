@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="Drukowanie" Height="300" Width="300">
-    <Grid>
-        <Label x:Name="WybierzPlanLabel" Content="Wybierz plan do drukowania" HorizontalAlignment="Left" Margin="51,60,0,0" VerticalAlignment="Top" Width="180"/>
-        <ComboBox x:Name="PlanyComboBox" HorizontalAlignment="Left" Margin="51,91,0,0" VerticalAlignment="Top" Width="180"/>
-        <Button x:Name="DrukujButton" Content="Drukuj" HorizontalAlignment="Left" Margin="51,134,0,0" VerticalAlignment="Top" Width="180" Height="36" Click="DrukujButton_Click"/>
+        Title="Drukuj plan" Height="160" Width="300" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Label Content="Wybierz plan do drukowania" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Width="180"/>
+        <ComboBox x:Name="PlanyComboBox" Grid.Row="1" HorizontalAlignment="Stretch"/>
+        <Button Content="Anuluj" HorizontalAlignment="Left" Grid.Row="2" Margin="0, 10, 0, 0" VerticalAlignment="Top" Width="80" Height="30" Click="Anuluj"/>
+        <Button Content="Drukuj" HorizontalAlignment="Right" Grid.Row="2" Margin="0, 10, 0, 0" VerticalAlignment="Top" Width="80" Height="30" Click="Drukuj"/>
 
     </Grid>
 </Window>
