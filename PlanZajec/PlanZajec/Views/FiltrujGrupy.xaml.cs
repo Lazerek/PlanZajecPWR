@@ -54,7 +54,7 @@ namespace PlanZajec.Views
                 wszystko = true;
             if (cb_wolne.IsChecked == true)
                 wolne = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
         }
         /// <summary>
         /// Metoda uruchamiająca filtrowanie po wyciśnięciu przycisku enter na polu
@@ -97,7 +97,7 @@ namespace PlanZajec.Views
                 wszystko = true;
             if (cb_wolne.IsChecked == true)
                 wolne = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
         }
         /// <summary>
         /// Metoda obsługi zaznaczenia checkboxa
@@ -146,7 +146,7 @@ namespace PlanZajec.Views
             nazwaP.Text = "";
             nazwaPot.Text = "";
             wolneMiejsca.Text = "";
-            PrzegladanieGrupViewModel.temp.czyscFiltrownie();
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.czyscFiltrownie();
         }
     }
 }
