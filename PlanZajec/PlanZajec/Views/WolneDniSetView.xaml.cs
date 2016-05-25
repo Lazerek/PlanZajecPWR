@@ -34,10 +34,7 @@ namespace PlanZajec.Views
         {
             getSelectedPlan(SelectPlanComboBox.SelectedValue as string)
                 .AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
-            InfoLabel.Content = "Dodano";
-            var col = Colors.ForestGreen;
-            Brush colorBrush = new SolidColorBrush(col);
-            InfoLabel.Background = colorBrush;
+            Info.Text = "Dodano wolny przydział.";
         }
 
         private Plany getSelectedPlan(string name)

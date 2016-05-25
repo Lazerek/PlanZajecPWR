@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="ListaPlanow" Height="580" Width="300" ResizeMode="NoResize">
+        Title="Dodaj alternatywny plan" Height="580" Width="300" ResizeMode="NoResize">
     <Grid Width="250" Height="560" Margin="10,10,10,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="24"/>
@@ -26,7 +26,7 @@
         </ListView>
         <TextBlock Grid.Row="2" Text="Nazwa nowego planu:"/>
         <TextBox x:Name="Nazwa" Grid.Row="3" FontSize="16"/>
-        <Button Content="Anuluj" Width="60" Height="25" Grid.Row="4" HorizontalAlignment="Left" Margin="0, 10, 0, 0" Click="Anuluj"/>
-        <Button Content="Utwórz alternatywny plan" Width="150" Height="25" Grid.Row="4" HorizontalAlignment="Right" Margin="0, 10, 0, 0" Click="Utworz"/>
+        <Button Content="Anuluj" Width="60" Height="30" Grid.Row="4" HorizontalAlignment="Left" Margin="0, 10, 0, 0" Click="Anuluj"/>
+        <Button Content="Utwórz alternatywny plan" Width="150" Height="30" Grid.Row="4" HorizontalAlignment="Right" Margin="0, 10, 0, 0" Click="Utworz"/>
     </Grid>
 </Window>

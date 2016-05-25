@@ -51,6 +51,11 @@ namespace Wpf
             ParserWindow pw = new ParserWindow();
             pw.Show();
         }
+        public void ShowHTMLWindow(object sender, EventArgs e)
+        {
+            OknoDanychEdukacji ode = new OknoDanychEdukacji();
+            ode.Show();
+        }
 
         //Menu - Utworzenie nowego planu
         public void menuNowyPlan(object sender, EventArgs e)

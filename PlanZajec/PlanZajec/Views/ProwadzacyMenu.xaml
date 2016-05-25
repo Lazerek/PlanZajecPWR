@@ -23,7 +23,7 @@
                 <DataGridTextColumn Width="*" Header="Ocena" Binding="{Binding Ocena, Converter={StaticResource OcenaConventer}}" />
             </DataGrid.Columns>
         </DataGrid>
-            <TextBox x:Name="szukajTextBox" HorizontalAlignment="Stretch" Height="23" Margin="59,8,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="SzukajTextBox_OnTextChanged"/>
+            <TextBox x:Name="szukajTextBox" HorizontalAlignment="Stretch" FontSize="16" Height="23" Margin="59,8,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="SzukajTextBox_OnTextChanged"/>
             <Label x:Name="szukajLabel" Content="Szukaj" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>

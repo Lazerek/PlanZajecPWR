@@ -28,6 +28,7 @@
             </MenuItem>
             <MenuItem Header="_Narzędzia">
                 <MenuItem Header="Uruchom parser" Click="ShowParserWindow"/>
+                <MenuItem Header="Ściągnij dane ze strony html" Click="ShowHTMLWindow"/>
             </MenuItem>
             <MenuItem Header="_O programie">
                 <MenuItem Header="Informacje o wersji" Click="menuInformacje"/>
