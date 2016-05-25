@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
@@ -18,7 +19,8 @@ namespace PlanZajec.Views
         public WolneDniSetView()
         {
             InitializeComponent();
-
+            this.DataContext = PlanyViewModel.Instance;
+            /*
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 plany = new ObservableCollection<Plany>(uw.Plany.GetAll().ToList());
@@ -28,6 +30,7 @@ namespace PlanZajec.Views
             {
                 SelectPlanComboBox.Items.Add(plan.NazwaPlanu);
             }
+            */
         }
 
         public ObservableCollection<Plany> plany { get; }
@@ -39,9 +42,13 @@ namespace PlanZajec.Views
         /// <param name="e"></param>
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
-            getSelectedPlan(SelectPlanComboBox.SelectedValue as string)
-                .AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
-            Info.Text = "Dodano wolny przydział.";
+            var plan = (Plany)SelectPlanComboBox.SelectedItem;
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                Plany zmienianyPlan = unit.Plany.Get(plan.IdPlanu);
+                zmienianyPlan.AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
+            }
+            Info.Text = "Dodano wolne godziny do planu";
         }
         /// <summary>
         /// Pobranie zaznaczonego planu

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
@@ -18,9 +19,11 @@ namespace PlanZajec.Views
         public KontrolaZapisowView()
         {
             InitializeComponent();
+            this.DataContext = PlanyViewModel.Instance;
+            /*
             List<Expander> schedulesExpanders = new List<Expander>();
             using (var uw = new UnitOfWork(new PlanPwrContext()))
-            {
+            { 
                 var schedules = uw.Plany.GetAll().ToList();
                 foreach (var schedule in schedules)
                 {
@@ -50,7 +53,7 @@ namespace PlanZajec.Views
                     exp.Content = tpanel;
                     KontroleZapisowPanel.Children.Add(exp);
                 }
-            }
+                */
         }
     }
 }

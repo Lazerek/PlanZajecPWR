@@ -1,4 +1,5 @@
-﻿using PlanZajec.ViewModels;
+﻿using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 using System;
 using System.Windows;
 
@@ -9,9 +10,9 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class ListaPlanow : Window
     {
-        public event Action<string, int> DodajPlan;
+        public event Action<string, Plany> DodajPlan;
 
-        public int id;
+        public Plany plan;
         private ListaPlanowViewModel viewModel;
 
         /// <summary>
@@ -43,8 +44,8 @@ namespace PlanZajec.Views
             {
                 if (!Nazwa.Text.Equals(""))
                 {
-                    id = plList.SelectedIndex;
-                    DodajPlan?.Invoke(Nazwa.Text, id);
+                    plan = (Plany)plList.SelectedItem;
+                    DodajPlan?.Invoke(Nazwa.Text, plan);
                     MessageBox.Show("Utworzono nowy alternatywny plan.", "Dodano plan");
                     this.Close();
                 }

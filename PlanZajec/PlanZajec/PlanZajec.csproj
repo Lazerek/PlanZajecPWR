@@ -103,10 +103,8 @@
     <Compile Include="CommonInformations\ActChosenPlanSingleton.cs" />
     <Compile Include="CommonInformations\ObslugaWidokuWieluPlanów.cs" />
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
-    <Compile Include="ViewModels\KontrolaZapisowViewViewModel.cs" />
     <Compile Include="ViewModels\ListaPlanowViewModel.cs" />
     <Compile Include="ViewModels\PlanyViewModel.cs" />
-    <Compile Include="ViewModels\WolneDniSetViewViewModel.cs" />
     <Compile Include="Views\DrukujWindow.xaml.cs">
       <DependentUpon>DrukujWindow.xaml</DependentUpon>
     </Compile>

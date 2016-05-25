@@ -7,6 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="200"
              >
-    <StackPanel Name="KontroleZapisowPanel" Background="White">
-    </StackPanel>
+    <ListBox x:Name="lista" ItemsSource="{Binding Plany}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Horizontal">
+                    
+                </StackPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
 </UserControl>
