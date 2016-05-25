@@ -89,6 +89,8 @@ namespace PlanZajec.ViewModels
         {
             long result;
             long.TryParse(wolneMiejsca, out result);
+            if (result == 0)
+                result = -1000;
             if (wolne && wszystko)
                 FiltrujWolneWszystko(nazwaKursu, potok, kodGrupy, kodKursu, prowadzacy, result);
             else if (wolne && !wszystko)
