@@ -105,7 +105,7 @@
     <Compile Include="DataAccessLayer\DataBaseReturnPoint.cs" />
     <Compile Include="ViewModels\KontrolaZapisowViewViewModel.cs" />
     <Compile Include="ViewModels\ListaPlanowViewModel.cs" />
-    <Compile Include="ViewModels\UsunPlanViewModel.cs" />
+    <Compile Include="ViewModels\PlanyViewModel.cs" />
     <Compile Include="ViewModels\WolneDniSetViewViewModel.cs" />
     <Compile Include="Views\DrukujWindow.xaml.cs">
       <DependentUpon>DrukujWindow.xaml</DependentUpon>
@@ -125,7 +125,6 @@
     <Compile Include="ViewModels\ProwadzcyOpinieViewModel.cs" />
     <Compile Include="ViewModels\PrzegladanieGrupViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
-    <Compile Include="ViewModels\WyborPlanuViewModel.cs" />
     <Compile Include="Views\AddPlanWindow.xaml.cs">
       <DependentUpon>AddPlanWindow.xaml</DependentUpon>
     </Compile>

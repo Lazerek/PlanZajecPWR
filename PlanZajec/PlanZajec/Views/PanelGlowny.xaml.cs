@@ -102,7 +102,7 @@ namespace PlanZajec.Views
 
         private WyborPlanu PrepareChosingPlan()
         {
-            var res = new WyborPlanu {DataContext = WyborPlanuViewModel.Instance};
+            var res = new WyborPlanu {DataContext = PlanyViewModel.Instance};
             res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
             res.ChosenPlanToDeleteEventHandler += UsunPlan;
             res.AddToPlan += AddPlan;
@@ -119,8 +119,7 @@ namespace PlanZajec.Views
                 unit.Plany.Add(plan);
                 unit.SaveChanges();
             }
-            WyborPlanuViewModel.Instance.DodajPlan(plan);
-            UsunPlanViewModel.Instance.DodajPlan(plan);
+            PlanyViewModel.Instance.DodajPlan(plan);
         }
 
 
@@ -168,8 +167,7 @@ namespace PlanZajec.Views
                 unit.Plany.Remove(plan);
                 unit.SaveChanges();
             }
-            WyborPlanuViewModel.Instance.UsunPlan(plan);
-            UsunPlanViewModel.Instance.UsunPlan(plan);
+            PlanyViewModel.Instance.UsunPlan(plan);
             return true;
         }
 
