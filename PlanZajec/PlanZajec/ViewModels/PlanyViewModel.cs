@@ -1,33 +1,34 @@
 ﻿using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PlanZajec.ViewModels
 {
-    /// <summary>
-    /// Klasa pomagająca wybrać plan
-    /// </summary>
-    class WyborPlanuViewModel
+    class PlanyViewModel
     {
         public ObservableCollection<Plany> Plany { get; private set; }
 
 
-        private static WyborPlanuViewModel instance = new WyborPlanuViewModel();
+        private static PlanyViewModel instance = new PlanyViewModel();
         /// <summary>
         /// Instancja wyboru planu
         /// </summary>
-        public static WyborPlanuViewModel Instance
+        public static PlanyViewModel Instance
         {
             get { return instance; }
         }
         /// <summary>
         /// Domyślny konstruktor pobierający plany do bazy
         /// </summary>
-        private WyborPlanuViewModel()
+        private PlanyViewModel()
         {
-            using(var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
             {
                 Plany = new ObservableCollection<Plany>(unitOfWork.Plany.GetAll().ToList());
             }
@@ -58,3 +59,4 @@ namespace PlanZajec.ViewModels
 
     }
 }
+
