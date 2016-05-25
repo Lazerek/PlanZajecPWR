@@ -16,7 +16,7 @@ namespace PlanZajec
     public UsunPlan()
         {
             InitializeComponent();
-            this.DataContext = UsunPlanViewModel.Instance;
+            this.DataContext = PlanyViewModel.Instance;
         }
         /// <summary>
         /// Metoda usuwająca plan
@@ -28,8 +28,7 @@ namespace PlanZajec
             if(listaPlanow.Items.Count > 1)
             {
                 var plan = (Plany)listaPlanow.SelectedItem;
-                UsunPlanViewModel.Instance.UsunPlan(plan);
-                WyborPlanuViewModel.Instance.UsunPlan(plan);
+                PlanyViewModel.Instance.UsunPlan(plan);
             }
             else
             {

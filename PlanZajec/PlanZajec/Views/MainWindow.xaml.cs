@@ -130,8 +130,7 @@ namespace Wpf
                 }
                 unit.Plany.Add(plan);
                 unit.SaveChanges();
-                WyborPlanuViewModel.Instance.DodajPlan(plan);
-                UsunPlanViewModel.Instance.DodajPlan(plan);
+                PlanyViewModel.Instance.DodajPlan(plan);
             }
         }
 
