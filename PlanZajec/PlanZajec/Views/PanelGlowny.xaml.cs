@@ -106,21 +106,8 @@ namespace PlanZajec.Views
             var res = new WyborPlanu {DataContext = PlanyViewModel.Instance};
             res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
             res.ChosenPlanToDeleteEventHandler += UsunPlan;
-            res.AddToPlan += AddPlan;
 
             return res;
-        }
-
-        private void AddPlan(string Title)
-        {
-            Plany plan;
-            using (var unit = new UnitOfWork(new PlanPwrContext()))
-            {
-                plan = new Plany {NazwaPlanu = Title};
-                unit.Plany.Add(plan);
-                unit.SaveChanges();
-            }
-            PlanyViewModel.Instance.DodajPlan(plan);
         }
 
 

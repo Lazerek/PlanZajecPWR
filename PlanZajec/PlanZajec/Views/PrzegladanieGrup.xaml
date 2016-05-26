@@ -31,7 +31,7 @@
                 <DataGridTemplateColumn Width="*" Header="ZajeteMiejsca" IsReadOnly="True" SortMemberPath="ZajeteMiejsca">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox HorizontalAlignment="Stretch" Text="{Binding ZajeteMiejsca, Mode=OneWay}" GotFocus="gotFocus" TextChanged="textChanged" Background="White" LostFocus="onTextboxLeave" AcceptsReturn="False"/>
+                            <TextBox HorizontalAlignment="Stretch" Text="{Binding ZajeteMiejsca, Mode=OneWay}" GotFocus="gotFocus" TextChanged="textChanged" Background="White" LostFocus="onTextboxLeave" AcceptsReturn="False" KeyDown="sprawdzEnter"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
