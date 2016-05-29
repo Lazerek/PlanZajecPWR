@@ -16,6 +16,7 @@ namespace PlanZajec.Views
     {
         public event Action<Plany> ChosenPlanToShowEventHandler;
         public event Func<Plany,bool> ChosenPlanToDeleteEventHandler;
+        public event Action<string> AddToPlan;
         /// <summary>
         /// Domyślny konstruktor
         /// </summary>
@@ -83,7 +84,11 @@ namespace PlanZajec.Views
         private void DodajPlan(object sender, RoutedEventArgs e)
         {
             AddPlanWindow addPlan = new AddPlanWindow();
-            addPlan.ShowDialog();
+            bool? result = addPlan.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                AddToPlan?.Invoke(addPlan.PlanTitle);
+            }
         }
         /// <summary>
         /// Metoda dodania planu alternatywnego
@@ -93,7 +98,7 @@ namespace PlanZajec.Views
         private void DodajAlternatywnyPlan(object sender, RoutedEventArgs e)
         {
             ListaPlanow lp = preparePlanList();
-            lp.ShowDialog();
+            lp.Show();
         }
         /// <summary>
         /// Metoda przygotowująca listę planów

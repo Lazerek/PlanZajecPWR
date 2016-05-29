@@ -121,17 +121,11 @@
     <Compile Include="Views\DrukujWindow.xaml.cs">
       <DependentUpon>DrukujWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Eksportuj.xaml.cs">
-      <DependentUpon>Eksportuj.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ListaPlanow.xaml.cs">
       <DependentUpon>ListaPlanow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OknoDanychEdukacji.xaml.cs">
       <DependentUpon>OknoDanychEdukacji.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\OknoInformacji.xaml.cs">
-      <DependentUpon>OknoInformacji.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsunPlan.xaml.cs">
       <DependentUpon>UsunPlan.xaml</DependentUpon>
@@ -237,19 +231,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Eksportuj.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ListaPlanow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OknoDanychEdukacji.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\OknoInformacji.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

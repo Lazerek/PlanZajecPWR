@@ -1,7 +1,4 @@
-﻿using PlanZajec.DataAccessLayer;
-using PlanZajec.DataModel;
-using PlanZajec.ViewModels;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace PlanZajec.Views
@@ -33,16 +30,7 @@ namespace PlanZajec.Views
             }
             else
             {
-                Plany plan;
-                using (var unit = new UnitOfWork(new PlanPwrContext()))
-                {
-                    plan = new Plany { NazwaPlanu = PlanTitle };
-                    unit.Plany.Add(plan);
-                    unit.SaveChanges();
-                }
-                PlanyViewModel.Instance.DodajPlan(plan);
-                MessageBox.Show("Utworzono nowy plan");
-                this.Close();
+                DialogResult = true;
             }
         }
         /// <summary>

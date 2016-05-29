@@ -75,7 +75,7 @@ namespace Wpf
         public void ShowHTMLWindow(object sender, EventArgs e)
         {
             OknoDanychEdukacji ode = new OknoDanychEdukacji();
-            ode.ShowDialog();
+            ode.Show();
         }
 
         /// <summary>
@@ -85,8 +85,7 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuNowyPlan(object sender, EventArgs e)
         {
-            AddPlanWindow addPlan = new AddPlanWindow();
-            addPlan.ShowDialog();
+            //TODO
         }
 
         /// <summary>
@@ -97,7 +96,7 @@ namespace Wpf
         public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
         {
             ListaPlanow lp = preparePlanList();
-            lp.ShowDialog();
+            lp.Show();
         }
         /// <summary>
         /// Metoda przygotowująca listę planów
@@ -156,8 +155,13 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuZapisz(object sender, EventArgs e)
         {
+            //TODO
+
+
             ZapisWindow zw = new ZapisWindow();
             zw.ShowDialog();
+
+
         }
 
         /// <summary>
@@ -167,8 +171,10 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuZapiszJako(object sender, EventArgs e)
         {
+            //TODO
             ZapisWindow zw = new ZapisWindow();
             zw.ShowDialog();
+
         }
 
         /// <summary>
@@ -189,8 +195,7 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuEksportujPDF(object sender, EventArgs e)
         {
-            Eksportuj eks = new Eksportuj(true);
-            eks.ShowDialog();
+            //TODO
         }
 
         /// <summary>
@@ -200,8 +205,7 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
-            Eksportuj eks = new Eksportuj(false);
-            eks.ShowDialog();
+            //TODO
         }
 
         /// <summary>
@@ -221,8 +225,7 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuInformacje(object sender, EventArgs e)
         {
-            OknoInformacji oi = new OknoInformacji();
-            oi.ShowDialog();
+            //TODO
         }
         /// <summary>
         /// Metoda przełądowująca komponenty okna

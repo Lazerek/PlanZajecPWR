@@ -53,15 +53,6 @@ namespace PlanZajec.Views
                 ZapisDoBazy.export(dialog, tab[index]);
             }
         }
-
-        /// <summary>
-        /// Metoda zamykająca okno bez zapisu planu
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Anuluj_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
+
 }

@@ -121,45 +121,5 @@ namespace Wpf
                 c.IsChecked = true;
             }
         }
-        private void sprawdzEnter(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                TextBox t = (TextBox)sender;
-                Keyboard.ClearFocus();
-                GrupyZajeciowe gz = (GrupyZajeciowe)DgUsers.CurrentCell.Item;
-                long l = 0;
-                tbox = (TextBox)sender;
-                if (tbox.Text.Length != 0)
-                {
-                    if (long.TryParse(tbox.Text, out l))
-                    {
-                        if (l > -1 && l < gz.Miejsca)
-                        {
-                            gz.ZajeteMiejsca = l;
-                            viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, l);
-                            CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
-                            c.IsChecked = true;
-                        }
-                        else
-                        {
-                            gz.ZajeteMiejsca = gz.Miejsca;
-                            viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, (long)gz.Miejsca);
-                            CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
-                            c.IsChecked = false;
-                        }
-                    }
-                }
-                else
-                {
-                    tbox.Text = "0";
-                    gz.ZajeteMiejsca = 0;
-                    viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, 0);
-                    CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
-                    c.IsChecked = true;
-                }
-                e.Handled = true;
-            }
-        }
     }
 }
