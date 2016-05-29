@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -11,20 +12,20 @@ using OpenQA.Selenium.Support.UI;
 
 namespace PlanZajec.EdukacjaIntegration
 {
-    class EdukacjaConnector
+    public class EdukacjaConnector
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
         private string baseURL;
         private bool acceptNextAlert = true;
 
-        //TODO
         private string password;
         private string login;
 
-        public EdukacjaConnector()
+        public EdukacjaConnector(string login, string password)
         {
-            //TODO pobieranie lokalne informacji o loginie i haśle.
+            this.password = password;
+            this.login = login;
         }
 
         [SetUp]
