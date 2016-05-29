@@ -10,19 +10,21 @@ namespace TestyEdukacjiCL
 {
     class Program
     {
+        private static string relativePath = "../../daneKonta.txt";
+
         static void Main(string[] args)
         {
             string[] lines;
-            try
-            {
-                lines = File.ReadAllLines("../../daneKonta.txt");
-            }
-            catch (FileNotFoundException ex)
+            if (!File.Exists(relativePath))
             {
                 Console.WriteLine("Nie znaleziono pliku w projekcie!\n" +
-                                  "Utwórz swój własny plik w głównym folderze tego projektu. W pierwszej lini umieść swój login w drugiej hasło\n" +
-                                  "Pamiętaj, żeby nie wysyłać na gita swoich danych (upewnij sie, że przy zmianach plik z danymi nie jest w plikach śledzonych)");
+                   "Utwórz swój własny plik w głównym folderze tego projektu. W pierwszej lini umieść swój login w drugiej hasło\n" +
+                   "Pamiętaj, żeby nie wysyłać na gita swoich danych (upewnij sie, że przy zmianach plik z danymi nie jest w plikach śledzonych)");
                 return;
+            }
+            try
+            {
+                lines = File.ReadAllLines(relativePath);
             }
             catch (Exception ex)
             {
