@@ -22,7 +22,7 @@ namespace PlanZajec.EdukacjaIntegration
         private string password;
         private string login;
 
-        public EdukacjaConnector(string login, string password)
+        public EdukacjaConnector()
         {
             //TODO pobieranie lokalne informacji o loginie i haśle.
         }
