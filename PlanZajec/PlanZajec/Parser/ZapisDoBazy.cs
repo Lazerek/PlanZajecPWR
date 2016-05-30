@@ -269,6 +269,18 @@ namespace PlanZajec.Parser
                 }
             }
         }
+
+        private readonly static int indexKoduKursu = 11;
+        private readonly static int indexNazwyKursu = 12;
+        private readonly static int indexPunktowEcts = 13;
+        private readonly static int indexKoduBloku = 14;
+        private readonly static int indexNazwyBloku = 15;
+        private readonly static int indexImieniaProwadzacego = 16;
+        private readonly static int indexNazwiskaProwadzacego = 17;
+        private readonly static int indexTytuluProwadzacego = 18;
+        private readonly static int indexOcenyProwadzacego = 19;
+        private readonly static int indexOpisuProwadzacego = 20;
+
         /// <summary>
         /// Metoda wczytująca plik z planem
         /// </summary>
@@ -289,19 +301,21 @@ namespace PlanZajec.Parser
                     while ((line = sw.ReadLine()) != null)
                     {
                         dane = line.Split(',');
-                        var blok = NowyBlok(dane[14], dane[15], uw);
+                        Blok blok = NowyBlok(dane[indexKoduBloku], dane[indexNazwyBloku], uw);
 
-                        var kr = NowyKurs(dane[11], dane[12], uw, blok);
-                        if (dane[13] != "")
-                            kr.ECTS = long.Parse(dane[13]);
+                        Kursy kr = NowyKurs(dane[indexKoduKursu], dane[indexNazwyKursu], uw, blok);
+                        if (dane[indexPunktowEcts] != "")
+                            kr.ECTS = long.Parse(dane[indexPunktowEcts]);
                         Prowadzacy pro = null;
                         long IdP = 0;
-                        if (dane[16] != "")
+                        if (dane[indexImieniaProwadzacego] != "")
                         {
-                            pro = NowyProwadzacy(dane[16], dane[17], dane[18], uw);
-                            if (dane[19] != "")
-                                pro.Ocena = long.Parse(dane[19]);
-                            pro.Opis = dane[20];
+                            pro = NowyProwadzacy(dane[indexImieniaProwadzacego],
+                                    dane[indexNazwiskaProwadzacego],
+                                    dane[indexTytuluProwadzacego], uw);
+                            if (dane[indexOcenyProwadzacego] != "")
+                                pro.Ocena = long.Parse(dane[indexOcenyProwadzacego]);
+                            pro.Opis = dane[indexOpisuProwadzacego];
                             IdP = pro.IdProwadzacego;
                         }
 
@@ -317,47 +331,29 @@ namespace PlanZajec.Parser
                             }
                         }
 
-
-                        if (jest == false)
+                        if (!jest)
                         {
+                            gr = new GrupyZajeciowe
+                            {
+                                KodGrupy = dane[0],
+                                TypZajec = dane[1],
+                                Dzień = dane[2],
+                                Tydzien = dane[3],
+                                Godzina = dane[4],
+                                GodzinaKoniec = dane[5],
+                                Sala = dane[6],
+                                Budynek = dane[7],
+                                Potok = dane[10],
+                                Miejsca = long.Parse(dane[8]),
+                                ZajeteMiejsca = long.Parse(dane[9]),
+                                KodKursu = kr.KodKursu,
+                                Kursy = kr,
+                                Prowadzacy = pro
+                            };
                             if (IdP != 0)
-                                gr = new GrupyZajeciowe
-                                {
-                                    KodGrupy = dane[0],
-                                    TypZajec = dane[1],
-                                    Dzień = dane[2],
-                                    Tydzien = dane[3],
-                                    Godzina = dane[4],
-                                    GodzinaKoniec = dane[5],
-                                    Sala = dane[6],
-                                    Budynek = dane[7],
-                                    Potok = dane[10],
-                                    Miejsca = long.Parse(dane[8]),
-                                    ZajeteMiejsca = long.Parse(dane[9]),
-                                    IdProwadzacego = IdP,
-                                    KodKursu = kr.KodKursu,
-                                    Kursy = kr,
-                                    Prowadzacy = pro
-                                };
-                            else
-                                gr = new GrupyZajeciowe
-                                {
-                                    KodGrupy = dane[0],
-                                    TypZajec = dane[1],
-                                    Dzień = dane[2],
-                                    Tydzien = dane[3],
-                                    Godzina = dane[4],
-                                    GodzinaKoniec = dane[5],
-                                    Sala = dane[6],
-                                    Budynek = dane[7],
-                                    Potok = dane[10],
-                                    Miejsca = long.Parse(dane[8]),
-                                    ZajeteMiejsca = long.Parse(dane[9]),
-                                    //  IdProwadzacego = IdP,
-                                    KodKursu = kr.KodKursu,
-                                    Kursy = kr,
-                                    Prowadzacy = pro
-                                };
+                            {
+                                gr.IdProwadzacego = IdP;
+                            }
                             uw.GrupyZajeciowe.Add(gr);
                             uw.SaveChanges();
                         }

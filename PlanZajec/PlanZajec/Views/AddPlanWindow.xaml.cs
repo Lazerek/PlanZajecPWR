@@ -24,7 +24,7 @@ namespace PlanZajec.Views
         /// <param name="e"></param>
         private void Dodaj(object sender, RoutedEventArgs e)
         {
-            if(PlanTitle == null || PlanTitle.Length == 0)
+            if(string.IsNullOrEmpty(PlanTitle))
             {
                 MessageBox.Show("Plan musi mieć nazwę!");
             }

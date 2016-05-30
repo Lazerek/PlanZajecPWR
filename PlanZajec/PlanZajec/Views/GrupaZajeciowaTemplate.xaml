@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" d:DesignHeight="150" d:DesignWidth="150" >
-    <Border Name="Otoczka" BorderBrush="Black" BorderThickness="2">
+    <Border Name="Otoczka" BorderBrush="Black" BorderThickness="2" SizeChanged="GrupaZajeciowaTemplate_SizeChanged">
         <Grid Name="Kafel" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -20,25 +20,25 @@
 
 
             <Grid Column="0" Row="0">
-                <TextBlock x:Name="Start"  HorizontalAlignment="Center"  VerticalAlignment="Center"  Width="auto"/>
+                <TextBlock x:Name="Start"  HorizontalAlignment="Center"  VerticalAlignment="Center" />
             </Grid>
             <Grid Column="1" Row="0">
-                <TextBlock x:Name="ConstMysl" Text="-" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto"/>
+                <TextBlock x:Name="ConstMysl" Text="-" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
             <Grid Column="2" Row="0">
-                <TextBlock x:Name="Koniec"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto"/>
+                <TextBlock x:Name="Koniec"  HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
             <Grid  Row="1" Grid.Column="0" ColumnSpan="3">
-                <TextBlock x:Name="Nazwa"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto" TextTrimming="CharacterEllipsis"/>
+                <TextBlock x:Name="Nazwa"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" TextWrapping="Wrap" MaxWidth="200" TextTrimming="WordEllipsis"/>
             </Grid>
             <Grid Column="0" Row="2">
-                <TextBlock x:Name="Budynek"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"/>
+                <TextBlock x:Name="Budynek"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Column="1" Row="2">
-                <TextBlock x:Name="Sala"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"/>
+                <TextBlock x:Name="Sala"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Column="2" Row="2">
-                <TextBlock x:Name="Tydzen"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"/>
+                <TextBlock x:Name="Tydzen"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
 
 
