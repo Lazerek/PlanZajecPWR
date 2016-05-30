@@ -21,17 +21,6 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
             this.DataContext = PlanyViewModel.Instance;
-            /*
-            using (var uw = new UnitOfWork(new PlanPwrContext()))
-            {
-                plany = new ObservableCollection<Plany>(uw.Plany.GetAll().ToList());
-            }
-
-            foreach (var plan in plany)
-            {
-                SelectPlanComboBox.Items.Add(plan.NazwaPlanu);
-            }
-            */
         }
 
         public ObservableCollection<Plany> plany { get; }
@@ -59,15 +48,6 @@ namespace PlanZajec.Views
                 Info.Text = "Nie wybrano planu";
                 Info.Foreground = new SolidColorBrush(Colors.Red);
             }
-        }
-        /// <summary>
-        /// Pobranie zaznaczonego planu
-        /// </summary>
-        /// <param name="name">Nazwa planu</param>
-        /// <returns>Plan</returns>
-        private Plany getSelectedPlan(string name)
-        {
-            return plany.FirstOrDefault(plan => plan.NazwaPlanu == name);
         }
         /// <summary>
         /// Pobranie godzin początkowych
