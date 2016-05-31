@@ -3,6 +3,9 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
+using System.Windows.Input;
 
 namespace PlanZajec.Views
 {
@@ -46,9 +49,17 @@ namespace PlanZajec.Views
             Nazwa.MaxWidth = e.NewSize.Width;
         }
 
-        private void Usun_DoubleClik()
+        private void Usun_DoubleClik(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Yolo");
+            if (e.ClickCount == 2)
+            {
+                using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+                {
+                    unitOfWork.Plany.UsunGrupeZajeciowaZPlanu(
+                        ((GrupaTamplateViewModel) ((Grid) sender).DataContext).GrupZaj);
+                    PlanView.RefreshSchedule();
+                }
+            }
         }
     }
 }
