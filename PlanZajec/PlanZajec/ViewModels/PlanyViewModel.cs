@@ -15,14 +15,11 @@ namespace PlanZajec.ViewModels
         public ObservableCollection<Plany> Plany { get; private set; }
 
 
-        private static PlanyViewModel instance = new PlanyViewModel();
         /// <summary>
         /// Instancja wyboru planu
         /// </summary>
-        public static PlanyViewModel Instance
-        {
-            get { return instance; }
-        }
+        public static PlanyViewModel Instance { get; } = new PlanyViewModel();
+
         /// <summary>
         /// Domyślny konstruktor pobierający plany do bazy
         /// </summary>
