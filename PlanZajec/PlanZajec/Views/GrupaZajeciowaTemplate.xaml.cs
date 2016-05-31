@@ -37,5 +37,10 @@ namespace PlanZajec.Views
             Kafel.Background = solidResult;
 
         }
+
+        private void Usun_DoubleClik()
+        {
+            System.Diagnostics.Debug.WriteLine("Yolo");
+        }
     }
 }
