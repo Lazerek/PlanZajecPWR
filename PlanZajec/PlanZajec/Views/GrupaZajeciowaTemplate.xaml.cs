@@ -29,6 +29,7 @@ namespace PlanZajec.Views
             Start.Text = viewModel.GrupZaj.Godzina;
             Koniec.Text = viewModel.GrupZaj.GodzinaKoniec;
             Nazwa.Text = viewModel.nazwa;
+            Nazwa.ToolTip = viewModel.nazwa;
             if(!viewModel.GrupZaj.Tydzien.Equals("//"))
             Tydzen.Text = viewModel.GrupZaj.Tydzien;
             Budynek.Text = viewModel.GrupZaj.Budynek;
