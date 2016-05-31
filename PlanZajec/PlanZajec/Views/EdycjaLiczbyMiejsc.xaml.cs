@@ -46,33 +46,30 @@ namespace PlanZajec.Views
         public void Ok(object sender, EventArgs e)
         {
             long liczbaMiejsc = 0;
-            if(Int64.TryParse(tb.Text, out liczbaMiejsc))
-            {
-                using (var uw = new UnitOfWork(new PlanPwrContext()))
-                {
-                    int exist = -1;
-                    List<GrupyZajeciowe> k = uw.GrupyZajeciowe.GetAll().ToList();
-                    for (int i = 0; i < k.Count; i++)
-                    {
-                        if (k[i].KodGrupy == kodGrupy)
-                        {
-                            exist = i;
-                        }
-                    }
-                    if (exist != -1)
-                    {
-                        k[exist].ZajeteMiejsca = liczbaMiejsc;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nie znaleziono grupy.", "Błąd");
-                    }
-                }
-            }
-            else
+            if (!Int64.TryParse(tb.Text, out liczbaMiejsc))
             {
                 MessageBox.Show("Liczba miejsc musi być liczbą.", "Błąd");
+                return;
             }
+            if (!SaveNumberOfFreePlaces(liczbaMiejsc))
+            {
+                MessageBox.Show("Nie znaleziono grupy.", "Błąd");
+            }
+        }
+
+        private bool SaveNumberOfFreePlaces(long liczbaMiejsc)
+        {
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                GrupyZajeciowe grupa = uw.GrupyZajeciowe.Get(kodGrupy);
+                if (grupa != null)
+                {
+                    grupa.ZajeteMiejsca = liczbaMiejsc;
+                    uw.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

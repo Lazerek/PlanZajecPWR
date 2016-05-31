@@ -1,5 +1,6 @@
 ﻿using PlanZajec.ViewModels;
 using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -17,9 +18,12 @@ namespace PlanZajec.Views
             this.DataContext = viewModel;
             Start.Text = viewModel.GrupZaj.Godzina;
             Koniec.Text = viewModel.GrupZaj.GodzinaKoniec;
+
             Nazwa.Text = viewModel.nazwa;
+            Nazwa.ToolTip = viewModel.nazwa;
+
             if(!viewModel.GrupZaj.Tydzien.Equals("//"))
-            Tydzen.Text = viewModel.GrupZaj.Tydzien;
+                Tydzen.Text = viewModel.GrupZaj.Tydzien;
             Budynek.Text = viewModel.GrupZaj.Budynek;
             Sala.Text = viewModel.GrupZaj.Sala;
             String typZajec = viewModel.GrupZaj.TypZajec;
@@ -35,7 +39,11 @@ namespace PlanZajec.Views
             }
             SolidColorBrush solidResult = new SolidColorBrush(colResult);
             Kafel.Background = solidResult;
+        }
 
+        private void GrupaZajeciowaTemplate_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Nazwa.MaxWidth = e.NewSize.Width;
         }
 
         private void Usun_DoubleClik()

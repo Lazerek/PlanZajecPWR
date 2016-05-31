@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PlanZajec.ViewModels;
+using System.Windows.Media;
 
 namespace PlanZajec.Views
 {
@@ -20,17 +21,6 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
             this.DataContext = PlanyViewModel.Instance;
-            /*
-            using (var uw = new UnitOfWork(new PlanPwrContext()))
-            {
-                plany = new ObservableCollection<Plany>(uw.Plany.GetAll().ToList());
-            }
-
-            foreach (var plan in plany)
-            {
-                SelectPlanComboBox.Items.Add(plan.NazwaPlanu);
-            }
-            */
         }
 
         public ObservableCollection<Plany> plany { get; }
@@ -42,22 +32,22 @@ namespace PlanZajec.Views
         /// <param name="e"></param>
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var plan = (Plany)SelectPlanComboBox.SelectedItem;
-            using (var unit = new UnitOfWork(new PlanPwrContext()))
+            if(SelectPlanComboBox.SelectedItem != null)
             {
-                Plany zmienianyPlan = unit.Plany.Get(plan.IdPlanu);
-                zmienianyPlan.AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
+                var plan = (Plany)SelectPlanComboBox.SelectedItem;
+                using (var unit = new UnitOfWork(new PlanPwrContext()))
+                {
+                    Plany zmienianyPlan = unit.Plany.Get(plan.IdPlanu);
+                    zmienianyPlan.AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
+                }
+                Info.Text = "Dodano wolne godziny do planu";
+                Info.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             }
-            Info.Text = "Dodano wolne godziny do planu";
-        }
-        /// <summary>
-        /// Pobranie zaznaczonego planu
-        /// </summary>
-        /// <param name="name">Nazwa planu</param>
-        /// <returns>Plan</returns>
-        private Plany getSelectedPlan(string name)
-        {
-            return plany.FirstOrDefault(plan => plan.NazwaPlanu == name);
+            else
+            {
+                Info.Text = "Nie wybrano planu";
+                Info.Foreground = new SolidColorBrush(Colors.Red);
+            }
         }
         /// <summary>
         /// Pobranie godzin początkowych

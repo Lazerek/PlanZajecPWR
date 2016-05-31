@@ -85,7 +85,7 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuNowyPlan(object sender, EventArgs e)
         {
-            //TODO
+            
         }
 
         /// <summary>
@@ -136,7 +136,6 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuOtworz(object sender, EventArgs e)
         {
-            //TODO
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Plan zajęć (*.txt)|*.txt";
@@ -155,13 +154,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuZapisz(object sender, EventArgs e)
         {
-            //TODO
-
-
             ZapisWindow zw = new ZapisWindow();
             zw.ShowDialog();
-
-
         }
 
         /// <summary>
@@ -171,10 +165,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuZapiszJako(object sender, EventArgs e)
         {
-            //TODO
             ZapisWindow zw = new ZapisWindow();
             zw.ShowDialog();
-
         }
 
         /// <summary>

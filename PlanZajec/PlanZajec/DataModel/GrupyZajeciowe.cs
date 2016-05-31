@@ -74,9 +74,6 @@ namespace PlanZajec.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plany> Plany { get; set; }
 
-
-
-
         public bool Equals(GrupyZajeciowe other)
         {
             return other != null && KodGrupy.Equals(other.KodGrupy);
@@ -86,5 +83,7 @@ namespace PlanZajec.DataModel
         {
             return KodGrupy + "," + TypZajec + "," + Dzień + "," + Tydzien + "," + Godzina + "," + GodzinaKoniec + "," + Sala + "," + Budynek + "," + Miejsca + "," + ZajeteMiejsca + "," + Potok+","+Kursy+ "," + Prowadzacy;
         }
+
+        
     }
 }
