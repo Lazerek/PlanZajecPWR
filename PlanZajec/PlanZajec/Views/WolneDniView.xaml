@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="PlanZajec.Views.WolneDniView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlanZajec.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="200">
+    <Grid Background="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <!--Row 0-->
+            <RowDefinition Height="20"/>
+            <!--Row 1-->
+            <RowDefinition Height="20"/>
+            <!--Row 2-->
+            <RowDefinition Height="20"/>
+            <!--Row 3-->
+            <RowDefinition Height="25"/>
+            <!--Row 4-->
+            <RowDefinition Height="25"/>
+            <!--Row 5-->
+            <RowDefinition Height="25"/>
+            <!--Row 6-->
+            <RowDefinition Height="25"/>
+            <!--Row 7-->
+            <RowDefinition Height="300*"/>
+            <!--Row 8-->
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Wybierz plan" Margin="0,10,0,0"/>
+        <ComboBox Grid.Row="1" Name="SelectPlanComboBox"  Grid.Column="0" SelectedIndex="0" ItemsSource="{Binding Path=Plany, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NazwaPlanu" SelectedValuePath="IdPlanu" SelectedValue="{Binding Path=IdPlanu}"/>
+        <TextBlock Grid.Row="2" Text="Wybierz dzień"/>
+        <ComboBox Grid.Row="3" Name="DaySelectComboBox"  SelectedIndex="0" VerticalAlignment="Top">
+            <ComboBoxItem Content="Poniedziałek"></ComboBoxItem>
+            <ComboBoxItem Content="Wtorek"></ComboBoxItem>
+            <ComboBoxItem Content="Środa"></ComboBoxItem>
+            <ComboBoxItem Content="Czwartek"></ComboBoxItem>
+            <ComboBoxItem Content="Piatek"></ComboBoxItem>
+            <ComboBoxItem Content="Sobota"></ComboBoxItem>
+            <ComboBoxItem Content="Niedziela"></ComboBoxItem>
+        </ComboBox>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" ></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Od:" VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="1" Name="GodzinaRozpoczeciaComboBox"  SelectedIndex="0" HorizontalAlignment="Left">
+                <ComboBoxItem Content="7.30"></ComboBoxItem>
+                <ComboBoxItem Content="9.15"></ComboBoxItem>
+                <ComboBoxItem Content="11.15"></ComboBoxItem>
+                <ComboBoxItem Content="13.15"></ComboBoxItem>
+                <ComboBoxItem Content="15.15"></ComboBoxItem>
+                <ComboBoxItem Content="17.05"></ComboBoxItem>
+                <ComboBoxItem Content="18.55"></ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Do:"/>
+            <ComboBox Grid.Column="1" Name="GodzinaZakonczeniaComboBox" SelectedIndex="0" HorizontalAlignment="Left">
+                <ComboBoxItem Content="9.00"></ComboBoxItem>
+                <ComboBoxItem Content="11.00"></ComboBoxItem>
+                <ComboBoxItem Content="13.00"></ComboBoxItem>
+                <ComboBoxItem Content="15.00"></ComboBoxItem>
+                <ComboBoxItem Content="16.55"></ComboBoxItem>
+                <ComboBoxItem Content="18.45"></ComboBoxItem>
+                <ComboBoxItem Content="20.35"></ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <TextBlock Grid.Row="6" Name="Info" Text="" VerticalAlignment="Center"/>
+        <Button Grid.Row="7" Name="DodajWolneButton" Content="Dodaj" HorizontalAlignment="Right" Click="DodajWolneButton_OnClick" Margin="0,0,73,0"/>
+    </Grid>
+</UserControl>

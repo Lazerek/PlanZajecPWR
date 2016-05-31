@@ -36,10 +36,15 @@ namespace PlanZajec.Views
             get { return _otwartyPlanId; }
             set
             {
-                //_mainWindow?.UpdateOnSelectedPlanChange(value);
                 _otwartyPlanId = value;
+                if (value != null)
+                {
+                    PrzegladanieGrupViewModel.przegladanieGrupViewModel.FiltrujWedlugCzasuWolnego(value.Value);
+                }
             }
         }
+
+        //!use OtwartyPlanId instead _otwartyPlanId
         private long? _otwartyPlanId;
 
         /// <summary>
@@ -56,8 +61,7 @@ namespace PlanZajec.Views
             _tabAdd = GetPlusCard();
             _tabItems.Add(_tabAdd);
             //
-            var tab = new TabItem();
-            tab.Header = "Przeglądanie grup";
+            var tab = new TabItem {Header = "Przeglądanie grup"};
             //tab.HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate;
             var pg = new PrzegladanieGrup();
             tab.Content = pg;
@@ -95,7 +99,6 @@ namespace PlanZajec.Views
                 Content = PrepareChosingPlan()
             };
 
-
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);
             return tab;
@@ -113,6 +116,7 @@ namespace PlanZajec.Views
 
         private void AddPlan(string Title)
         {
+            System.Diagnostics.Debug.WriteLine("Added **************************\n******************************************\n******************************");
             Plany plan;
             using (var unit = new UnitOfWork(new PlanPwrContext()))
             {
@@ -152,6 +156,12 @@ namespace PlanZajec.Views
             _tabItems[LewyTabControl.SelectedIndex] = tabItem;
 
             LewyTabControl.SelectedItem = tabItem;
+
+            PlanView otwartyPlan = LewyTabControl.SelectedContent as PlanView;
+            if (otwartyPlan != null)
+            {
+                OtwartyPlanId = otwartyPlan.GetPlanId();
+            }
         }
 
         private bool UsunPlan(Plany plan)

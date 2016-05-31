@@ -12,12 +12,12 @@ namespace PlanZajec.Views
     /// <summary>
     /// Klasa do ustawiania wolnych dni i godzin
     /// </summary>
-    public partial class WolneDniSetView : UserControl
+    public partial class WolneDniView : UserControl
     {
         /// <summary>
         /// Domyślny konstruktor pobierający plany
         /// </summary>
-        public WolneDniSetView()
+        public WolneDniView()
         {
             InitializeComponent();
             this.DataContext = PlanyViewModel.Instance;

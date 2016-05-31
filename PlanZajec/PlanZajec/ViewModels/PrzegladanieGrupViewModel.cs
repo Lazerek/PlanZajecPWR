@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
+using System.Reflection.Emit;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 
@@ -22,7 +23,10 @@ namespace PlanZajec.ViewModels
         private readonly string wykladString = "Wykład";
 
 
+        //items used to show in view
         public ObservableCollection<GrupyZajeciowe> Items { get; set; }
+
+        //TODO GREG 0 REF CHECK IF U NEED THIS
         public GrupyZajeciowe SelectedItem { get; set; }
 
         private readonly List<GrupyZajeciowe> _itemsNoChange;
@@ -365,6 +369,101 @@ namespace PlanZajec.ViewModels
                 //Items.Find(s => s.KodGrupy == kodGrupy).ZajeteMiejsca = lMiejsc;
                 uw.SaveChanges();
             }
+        }
+
+        public void FiltrujWedlugCzasuWolnego(long planId)
+        {
+            string[] wolneGodziny;
+
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                wolneGodziny = uw.Plany.Get(planId).GetWolneDni();
+            }
+
+            if (wolneGodziny != null)
+            {
+                var sparsowaneWolneGodziny = parsujCzasWolny(wolneGodziny);
+
+                List<GrupyZajeciowe> WyrbaneGrupyZajeciowey = new List<GrupyZajeciowe>();
+
+                foreach (var item in Items)
+                {
+                    if (!KolidujeZWlonymi(item, sparsowaneWolneGodziny))
+                    {
+                        WyrbaneGrupyZajeciowey.Add(item);
+                    }
+
+                }
+
+                Items = new ObservableCollection<GrupyZajeciowe>(WyrbaneGrupyZajeciowey);
+            }
+        }
+
+        private bool KolidujeZWlonymi(GrupyZajeciowe item, List<Tuple<double, double, string>> sparsowaneWolneGodziny)
+        {
+            double godzinaRozpoczeciaZajec;
+            double godzinaZakonczeniaZajec;
+
+            string godzinaRozpoczeciaString = item.Godzina.Replace(':', ',');
+            if (godzinaRozpoczeciaString[0]=='0')
+            {
+                godzinaRozpoczeciaString = godzinaRozpoczeciaString.Remove(0, 1);
+            }
+
+            string godzinaZakonczeniaString = item.GodzinaKoniec.Replace(':', ',');
+            if (godzinaZakonczeniaString[0] == '0')
+            {
+                godzinaZakonczeniaString = godzinaZakonczeniaString.Remove(0, 1);
+            }
+
+            if (!double.TryParse(godzinaRozpoczeciaString, out godzinaRozpoczeciaZajec)) return false;
+            if (!double.TryParse(godzinaZakonczeniaString, out godzinaZakonczeniaZajec)) return false;
+
+            godzinaRozpoczeciaZajec = ZaokraglijMinuty(godzinaRozpoczeciaZajec);
+            godzinaZakonczeniaZajec = ZaokraglijMinuty(godzinaZakonczeniaZajec);
+
+            foreach (var przedzial in sparsowaneWolneGodziny)
+            {
+                var godzinaRozpoczeciaWolnego = przedzial.Item1;
+                var godzinaZakonczeniaWolnego = przedzial.Item2;
+                var dzienWolny = przedzial.Item3;
+
+                //item3 = kod dnia
+                if (dzienWolny == item.Dzień)
+                {
+                    if ((godzinaRozpoczeciaWolnego >= godzinaRozpoczeciaZajec && godzinaZakonczeniaWolnego <= godzinaZakonczeniaZajec) ||
+                        (godzinaRozpoczeciaWolnego <= godzinaRozpoczeciaZajec && godzinaZakonczeniaWolnego >= godzinaZakonczeniaZajec))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public double ZaokraglijMinuty(double godzinaZMinutaki)
+        {
+            if (godzinaZMinutaki % 1 > 0.3f)
+            {
+                godzinaZMinutaki = Convert.ToInt32(godzinaZMinutaki) + 1;
+            }
+            else
+            {
+                godzinaZMinutaki = Convert.ToInt32(godzinaZMinutaki);
+            }
+            return godzinaZMinutaki;
+        }
+
+        private List<Tuple<double, double, string>> parsujCzasWolny(IEnumerable<string> czasWolnyStringArray)
+        {
+            var wolneGodzinySformatowane = new List<Tuple<double, double, string>>();
+            foreach (var czas in czasWolnyStringArray)
+            {
+                string[] splitedCzas = czas.Split(':');
+                Tuple<double, double, string> rekord = new Tuple<double, double, string>(double.Parse(splitedCzas[0]), double.Parse(splitedCzas[1]), splitedCzas[2]);
+                wolneGodzinySformatowane.Add(rekord);
+            }
+            return wolneGodzinySformatowane;
         }
     }
 }

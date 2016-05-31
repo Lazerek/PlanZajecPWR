@@ -42,7 +42,7 @@ namespace PlanZajec.DataModel
         
         public string[] GetWolneDni()
         {
-            return this.WolneDni.Split(',');
+            return WolneDni?.Split(',');
         }
 
         public void AddWolneDni(string str)

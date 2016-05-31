@@ -169,7 +169,7 @@ namespace Wpf
                 return;
             if (PrawePodmenu.Children.Count > 0)
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
-            PrawePodmenu.Children.Add(new WolneDniSetView());
+            PrawePodmenu.Children.Add(new WolneDniView());
         }
     }
 }
