@@ -18,14 +18,12 @@ namespace PlanZajec.Views
             this.DataContext = viewModel;
             Start.Text = viewModel.GrupZaj.Godzina;
             Koniec.Text = viewModel.GrupZaj.GodzinaKoniec;
-            //Nazwa.Text = ;
-            Nazwa.Inlines.Add(viewModel.nazwa);
-            Nazwa.Inlines.Add("My Text \n Your Text");
-            if (!viewModel.GrupZaj.Tydzien.Equals("//"))
+
             Nazwa.Text = viewModel.nazwa;
             Nazwa.ToolTip = viewModel.nazwa;
+
             if(!viewModel.GrupZaj.Tydzien.Equals("//"))
-            Tydzen.Text = viewModel.GrupZaj.Tydzien;
+                Tydzen.Text = viewModel.GrupZaj.Tydzien;
             Budynek.Text = viewModel.GrupZaj.Budynek;
             Sala.Text = viewModel.GrupZaj.Sala;
             String typZajec = viewModel.GrupZaj.TypZajec;
