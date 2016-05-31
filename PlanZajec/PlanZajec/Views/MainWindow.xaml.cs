@@ -197,7 +197,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
-            //TODO
+            EksportGraficznyWindow egw = new EksportGraficznyWindow();
+            egw.ShowDialog();
         }
 
         /// <summary>

@@ -121,6 +121,12 @@
     <Compile Include="Views\DrukujWindow.xaml.cs">
       <DependentUpon>DrukujWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EksportGraficznyWindow.xaml.cs">
+      <DependentUpon>EksportGraficznyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EksportPDFWindow.xaml.cs">
+      <DependentUpon>EksportPDFWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListaPlanow.xaml.cs">
       <DependentUpon>ListaPlanow.xaml</DependentUpon>
     </Compile>
@@ -231,6 +237,14 @@
       <DependentUpon>ZapisWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\DrukujWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EksportGraficznyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EksportPDFWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

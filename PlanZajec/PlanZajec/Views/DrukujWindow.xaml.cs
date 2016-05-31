@@ -50,8 +50,10 @@ namespace PlanZajec.Views
             PrintDialog Objprint = new PrintDialog();
             if (Objprint.ShowDialog() == true)
             {
+                double a = pv.PlanWidth;
+                double b = pv.PlanHeight;
                 System.Printing.PrintCapabilities capabilities = Objprint.PrintQueue.GetPrintCapabilities(Objprint.PrintTicket);
-                double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / pv.ActualWidth, capabilities.PageImageableArea.ExtentHeight / pv.ActualHeight);
+                double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / pv.PlanWidth, capabilities.PageImageableArea.ExtentHeight / pv.PlanHeight);
                 pv.LayoutTransform = new ScaleTransform(scale, scale);
                 Size size = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
                 pv.Measure(size);
