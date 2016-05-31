@@ -1,0 +1,32 @@
+﻿<Window x:Class="PlanZajec.Views.ListaPlanow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlanZajec.Views"
+        mc:Ignorable="d"
+        Title="Dodaj alternatywny plan" Height="580" Width="300" ResizeMode="NoResize">
+    <Grid Width="250" Height="560" Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Wybierz plan:"/>
+        <ListView x:Name="plList" Height="395" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1" ItemsSource="{Binding Items}" SelectionMode="Single" Margin="0,0,0,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding NazwaPlanu}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock Grid.Row="2" Text="Nazwa nowego planu:"/>
+        <TextBox x:Name="Nazwa" Grid.Row="3" FontSize="16"/>
+        <Button Content="Anuluj" Width="60" Height="30" Grid.Row="4" HorizontalAlignment="Left" Margin="0, 10, 0, 0" Click="Anuluj"/>
+        <Button Content="Utwórz alternatywny plan" Width="150" Height="30" Grid.Row="4" HorizontalAlignment="Right" Margin="0, 10, 0, 0" Click="Utworz"/>
+    </Grid>
+</Window>

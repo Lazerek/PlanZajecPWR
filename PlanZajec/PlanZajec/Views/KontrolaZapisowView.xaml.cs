@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for KontrolaZapisowView.xaml
+    /// Klasa odpowiedzialna za kontrolę zapisów
     /// </summary>
     public partial class KontrolaZapisowView : UserControl
     {
+        /// <summary>
+        /// Domyślny konstruktor, sprawdza poprawność zapisu
+        /// </summary>
         public KontrolaZapisowView()
         {
             InitializeComponent();
+            this.DataContext = PlanyViewModel.Instance;
+            /*
             List<Expander> schedulesExpanders = new List<Expander>();
             using (var uw = new UnitOfWork(new PlanPwrContext()))
-            {
+            { 
                 var schedules = uw.Plany.GetAll().ToList();
                 foreach (var schedule in schedules)
                 {
@@ -59,7 +53,7 @@ namespace PlanZajec.Views
                     exp.Content = tpanel;
                     KontroleZapisowPanel.Children.Add(exp);
                 }
-            }
+                */
         }
     }
 }

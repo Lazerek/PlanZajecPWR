@@ -5,7 +5,6 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Plany")]
     public partial class Plany : IEquatable<Plany>
@@ -30,7 +29,6 @@ namespace PlanZajec.DataModel
 
         public bool Equals(Plany other)
         {
-            System.Diagnostics.Debug.WriteLine("@@@Grag->EqualsPlany");
             if (other == null)
                 return false;
             return IdPlanu == other.IdPlanu;

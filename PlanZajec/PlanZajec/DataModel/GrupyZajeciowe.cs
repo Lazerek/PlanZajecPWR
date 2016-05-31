@@ -4,7 +4,6 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("GrupyZajeciowe")]
     public partial class GrupyZajeciowe : IEquatable<GrupyZajeciowe>
@@ -75,18 +74,16 @@ namespace PlanZajec.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plany> Plany { get; set; }
 
-
-
-
         public bool Equals(GrupyZajeciowe other)
         {
-            System.Diagnostics.Debug.WriteLine("@@@Grag->EqualsGrup");
-            return KodGrupy.Equals(other.KodGrupy);
+            return other != null && KodGrupy.Equals(other.KodGrupy);
         }
         override
         public string ToString()
         {
             return KodGrupy + "," + TypZajec + "," + Dzień + "," + Tydzien + "," + Godzina + "," + GodzinaKoniec + "," + Sala + "," + Budynek + "," + Miejsca + "," + ZajeteMiejsca + "," + Potok+","+Kursy+ "," + Prowadzacy;
         }
+
+        
     }
 }

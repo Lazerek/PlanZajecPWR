@@ -6,30 +6,37 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace PlanZajec.ViewModels
 {
-    class WyborPlanuViewModel
+    class PlanyViewModel
     {
         public ObservableCollection<Plany> Plany { get; private set; }
 
 
-        private static WyborPlanuViewModel instance = new WyborPlanuViewModel();
-
-        public static WyborPlanuViewModel Instance
+        private static PlanyViewModel instance = new PlanyViewModel();
+        /// <summary>
+        /// Instancja wyboru planu
+        /// </summary>
+        public static PlanyViewModel Instance
         {
             get { return instance; }
         }
-
-        private WyborPlanuViewModel()
+        /// <summary>
+        /// Domyślny konstruktor pobierający plany do bazy
+        /// </summary>
+        private PlanyViewModel()
         {
-            using(var unitOfWork = new UnitOfWork(new PlanPwrContext()))
+            using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
             {
                 Plany = new ObservableCollection<Plany>(unitOfWork.Plany.GetAll().ToList());
             }
         }
-
+        /// <summary>
+        /// Metoda usuwania planów
+        /// </summary>
+        /// <param name="plan">Plan zajęć</param>
         public void UsunPlan(Plany plan)
         {
             if (Plany.Count <= 1)
@@ -41,7 +48,10 @@ namespace PlanZajec.ViewModels
             indexToDelete = Plany.IndexOf(plan);
             Plany.RemoveAt(indexToDelete);
         }
-
+        /// <summary>
+        /// Metoda dodawania planów
+        /// </summary>
+        /// <param name="plan">Plan zajęć</param>
         public void DodajPlan(Plany plan)
         {
             Plany.Add(plan);
@@ -49,3 +59,4 @@ namespace PlanZajec.ViewModels
 
     }
 }
+

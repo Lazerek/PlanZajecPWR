@@ -1,34 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for AddPlanWindow.xaml
+    /// Klasa typu windows pozwalająca dodać nowy plan
     /// </summary>
     public partial class AddPlanWindow : Window
     {
         public string PlanTitle { get; set; }
+        /// <summary>
+        /// Domyślny konstruktor
+        /// </summary>
         public AddPlanWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
-
+        /// <summary>
+        /// Metoda dodająca plan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Dodaj(object sender, RoutedEventArgs e)
         {
-            if(PlanTitle == null || PlanTitle.Length == 0)
+            if(string.IsNullOrEmpty(PlanTitle))
             {
                 MessageBox.Show("Plan musi mieć nazwę!");
             }
@@ -37,12 +33,20 @@ namespace PlanZajec.Views
                 DialogResult = true;
             }
         }
-
+        /// <summary>
+        /// Metoda pozwalająca anulować dodawanie planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-        //Sprawdzenie Scape dla okna głównego
+        /// <summary>
+        /// Metoda tworząca scape dla okna głównego
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sprawdzPrzyciski(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

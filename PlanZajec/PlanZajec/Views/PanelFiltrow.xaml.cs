@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PlanZajec;
 using PlanZajec.Views;
 using PlanZajec.ViewModels;
@@ -19,29 +9,21 @@ using PlanZajec.ViewModels;
 namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for PraweMenu.xaml
+    /// Klasa wyświetlająca wybrany window w lewym panelu
     /// </summary>
     public partial class PanelFiltrow : UserControl
     {
-        bool lpm;
-        OknoOpcji oo;
-        private MainWindow parent;
+        private bool lpm;
+        private OknoOpcji _oknoOpcji;
+        private readonly MainWindow _mainWindow;
 
-        public PanelFiltrow()
+        public PanelFiltrow(MainWindow mainWindow)
         {
             InitializeComponent();
             lpm = false;
-            oo = new OknoOpcji();
+            _oknoOpcji = new OknoOpcji();
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
-        }
-
-        public PanelFiltrow(MainWindow parent)
-        {
-            InitializeComponent();
-            lpm = false;
-            oo = new OknoOpcji();
-            PrawePodmenu.Children.Add(new ProwadzacyMenu());
-            this.parent = parent;
+            _mainWindow = mainWindow;
         }
 
         private void OnSelectedLecturers(object sender, RoutedEventArgs e)
@@ -53,7 +35,11 @@ namespace Wpf
             }
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
         }
-
+        /// <summary>
+        /// Metoda zmieniajaca okno na okno z usuwaniem planów
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSelectedUsun(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -64,7 +50,11 @@ namespace Wpf
             PrawePodmenu.Children.Add(new UsunPlan());
         }
 
-
+        /// <summary>
+        /// Metoda zmieniająca okno na okno ze zmianą opinii prowadzących
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSelectedLecturersOpinion(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)
@@ -83,10 +73,10 @@ namespace Wpf
         {
             if (lpm)
             {
-                if (!oo.IsVisible)
+                if (!_oknoOpcji.IsVisible)
                 {
-                    oo = new OknoOpcji();
-                    oo.Show();
+                    _oknoOpcji = new OknoOpcji();
+                    _oknoOpcji.Show();
                 }
             }
         }
@@ -95,7 +85,11 @@ namespace Wpf
         {
             lpm = false;
         }
-
+        /// <summary>
+        /// Metoda zmieniająca okno na okno z filtrowanie grup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnSelectedFiltrujGrupy(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -106,7 +100,11 @@ namespace Wpf
             PrawePodmenu.Children.Add(new FiltrujGrupy());
 
         }
-
+        /// <summary>
+        /// Metoda zmieniająca okno na okno z wybranymi grupami
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSelectedGrupy(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -116,31 +114,42 @@ namespace Wpf
             }
             PrawePodmenu.Children.Add(preparePrzegladanieKafelkow());
         }
-
+        /// <summary>
+        /// Metoda przygotowująca do przeglądania kafelków
+        /// </summary>
+        /// <returns></returns>
         private UIElement preparePrzegladanieKafelkow()
         {
             return new PanelPrzegladaniaKafelekView()
                 { DataContext = PrzegladanieGrupViewModel.przegladanieGrupViewModel};
         }
-
+        /// <summary>
+        /// Metoda chowająca i wyświetlająca okno
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gButtonClicked(object sender, RoutedEventArgs e)
         {
-            if (parent.kolumna1.MinWidth == 15)
+            if (_mainWindow.kolumna1.MinWidth == 15)
             {
-                parent.kolumna1.MinWidth = 150;
-                parent.kolumna1.MaxWidth = int.MaxValue;
-                parent.kolumna1.Width = new GridLength(1, GridUnitType.Star);
+                _mainWindow.kolumna1.MinWidth = 150;
+                _mainWindow.kolumna1.MaxWidth = int.MaxValue;
+                _mainWindow.kolumna1.Width = new GridLength(1, GridUnitType.Star);
                 fButton.Content = "◀";
             }
             else
             {
-                parent.kolumna1.MinWidth = 15;
-                parent.kolumna1.MaxWidth = 15;
-                parent.kolumna1.Width = new GridLength(15, GridUnitType.Pixel);
+                _mainWindow.kolumna1.MinWidth = 15;
+                _mainWindow.kolumna1.MaxWidth = 15;
+                _mainWindow.kolumna1.Width = new GridLength(15, GridUnitType.Pixel);
                 fButton.Content = "▶";
             }
         }
-
+        /// <summary>
+        /// Metoda wyświetlająca okno z kontrolą kursów
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KontrolaKursowComboItem_OnSelected(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)
@@ -149,7 +158,11 @@ namespace Wpf
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             PrawePodmenu.Children.Add(new KontrolaZapisowView());
         }
-
+        /// <summary>
+        /// Metoda wyświetlajaca okno z dodaniem wolnych dni
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSelectedDodajWolny(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)

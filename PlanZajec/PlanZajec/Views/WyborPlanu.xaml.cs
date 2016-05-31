@@ -1,32 +1,25 @@
 ﻿using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for WyborPlanu.xaml
+    /// Klasa pozwalajaca wybrać plan
     /// </summary>
     public partial class WyborPlanu : UserControl
     {
         public event Action<Plany> ChosenPlanToShowEventHandler;
         public event Func<Plany,bool> ChosenPlanToDeleteEventHandler;
-
         public event Action<string> AddToPlan;
-
+        /// <summary>
+        /// Domyślny konstruktor
+        /// </summary>
         public WyborPlanu()
         {
             InitializeComponent();
@@ -51,7 +44,11 @@ namespace PlanZajec.Views
             button.Background = new SolidColorBrush(Colors.Transparent);
         }
 
-
+        /// <summary>
+        /// Metoda pomagająca wybrać plan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WywierzPlan(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.Write("Wybor planu");
@@ -59,7 +56,11 @@ namespace PlanZajec.Views
             button.Background = new SolidColorBrush(Colors.Transparent);
             ChosenPlanToShowEventHandler?.Invoke(button.DataContext as Plany);
         }
-
+        /// <summary>
+        /// Metoda usuwania planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Usun(object sender, RoutedEventArgs e)
         {
             var numberOfSch = PlanyKafleControl.Items.Count;
@@ -75,7 +76,11 @@ namespace PlanZajec.Views
                 bool deleted = ChosenPlanToDeleteEventHandler(button.DataContext as Plany);
             }
         }
-
+        /// <summary>
+        /// Metoda dodania planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DodajPlan(object sender, RoutedEventArgs e)
         {
             AddPlanWindow addPlan = new AddPlanWindow();
@@ -83,6 +88,46 @@ namespace PlanZajec.Views
             if (result.HasValue && result.Value)
             {
                 AddToPlan?.Invoke(addPlan.PlanTitle);
+            }
+        }
+        /// <summary>
+        /// Metoda dodania planu alternatywnego
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DodajAlternatywnyPlan(object sender, RoutedEventArgs e)
+        {
+            ListaPlanow lp = preparePlanList();
+            lp.Show();
+        }
+        /// <summary>
+        /// Metoda przygotowująca listę planów
+        /// </summary>
+        /// <returns>Lista planów</returns>
+        private ListaPlanow preparePlanList()
+        {
+            var res = new ListaPlanow();
+            res.DodajPlan += AddPlan;
+            return res;
+        }
+        /// <summary>
+        /// Metoda dodająca plan
+        /// </summary>
+        /// <param name="Title">Nazwa planu</param>
+        /// <param name="plan">Pierwotny plan</param>
+        private void AddPlan(string Title, Plany plan)
+        {
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                Plany nowyPlan = new Plany { NazwaPlanu = Title };
+                var staryPlan = unit.Plany.Get(plan.IdPlanu);
+                foreach (GrupyZajeciowe g in staryPlan.GrupyZajeciowe)
+                {
+                    nowyPlan.GrupyZajeciowe.Add(g);
+                }
+                unit.Plany.Add(nowyPlan);
+                unit.SaveChanges();
+                PlanyViewModel.Instance.DodajPlan(nowyPlan);
             }
         }
     }

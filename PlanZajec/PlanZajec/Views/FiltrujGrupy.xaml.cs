@@ -1,34 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PlanZajec.ViewModels;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for FiltrujGrupy.xaml
+    /// Klasa pozwalająca na wybieranie opcji filtorwania grup
     /// </summary>
     public partial class FiltrujGrupy : UserControl
     {
         private PrzegladanieGrupViewModel viewModel;
+        /// <summary>
+        /// Domyślny konstruktor
+        /// </summary>
         public FiltrujGrupy()
         {
             InitializeComponent();
             cb_wsz.IsChecked = true;
         }
 
-        
+        /// <summary>
+        /// Metoda sprawdzająca czy wpisywany znak jest liczbą
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
         {
             char c = Convert.ToChar(e.Text);
@@ -37,6 +34,11 @@ namespace PlanZajec.Views
             else
                 e.Handled = true;
         }
+        /// <summary>
+        /// Obsługa przycisku filtruj
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void filtruj_Click(object sender, RoutedEventArgs e)
         {
             Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
@@ -52,14 +54,23 @@ namespace PlanZajec.Views
                 wszystko = true;
             if (cb_wolne.IsChecked == true)
                 wolne = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
         }
-
+        /// <summary>
+        /// Metoda uruchamiająca filtrowanie po wyciśnięciu przycisku enter na polu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void filtrujEnter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 wlaczFiltr();
         }
+        /// <summary>
+        /// Metoda reagująca na zaznaczenie pola "wszystko" i ustawienie pozostałych checkboxów na true
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBoxWszystko_Checked(object sender, RoutedEventArgs e)
         {
             wlaczFiltr();
@@ -68,6 +79,9 @@ namespace PlanZajec.Views
             cb_pro.IsChecked = true;
             cb_cw.IsChecked = true;
         }
+        /// <summary>
+        /// Metoda uruchamiająca filtrowanie
+        /// </summary>
         private void wlaczFiltr()
         {
             Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
@@ -83,22 +97,41 @@ namespace PlanZajec.Views
                 wszystko = true;
             if (cb_wolne.IsChecked == true)
                 wolne = true;
-            PrzegladanieGrupViewModel.temp.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
         }
+        /// <summary>
+        /// Metoda obsługi zaznaczenia checkboxa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void check(object sender, RoutedEventArgs e)
         {
             wlaczFiltr();
         }
+        /// <summary>
+        /// Metoda obsługi odznaczenia checkboxa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uncheck(object sender, RoutedEventArgs e)
         {
             cb_wsz.IsChecked = false;
             wlaczFiltr();
         }
+        /// <summary>
+        /// Metoda obsługi tylko wolnych zajęć
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pokazTylkoWolne(object sender, RoutedEventArgs e)
         {
             wlaczFiltr();
         }
-
+        /// <summary>
+        /// Metoda czyszcząca filtry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void wyczyscFiltr(object sender, RoutedEventArgs e)
         {
             cb_wsz.IsChecked = true;
@@ -113,7 +146,7 @@ namespace PlanZajec.Views
             nazwaP.Text = "";
             nazwaPot.Text = "";
             wolneMiejsca.Text = "";
-            PrzegladanieGrupViewModel.temp.czyscFiltrownie();
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.czyscFiltrownie();
         }
     }
 }

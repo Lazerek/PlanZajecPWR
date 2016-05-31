@@ -4,16 +4,23 @@ using System.ComponentModel;
 using System.Windows;
 using PlanZajec.Views;
 using System;
+using System.Linq;
 using PlanZajec.CommonInformations;
 using PlanZajec.Parser;
+using PlanZajec.ViewModels;
 
 namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Klasa wyświetlająca okno główne planu
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PanelFiltrow _panelFiltrow;
+        private PanelGlowny _panelGlowny;
+        /// <summary>
+        /// Domyślny konstruktor inicjalizujący okno główne
+        /// </summary>
         public MainWindow()
         {
             //DATABASE LOAD
@@ -34,33 +41,101 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            PGlowny.Children.Add(new PanelGlowny());
-            PFiltrow.Children.Add(new PanelFiltrow(this));
+            _panelGlowny = new PanelGlowny(this);
+            PGlowny.Children.Add(_panelGlowny);
+            //add panel filtrow
+            _panelFiltrow = new PanelFiltrow(this);
+            PFiltrow.Children.Add(_panelFiltrow);
         }
-
+        /// <summary>
+        /// Metoda zamykająca aplikację przy wyjściu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        //MENU
-        //Menu - Wyświetlenie parsera
+        /// <summary>
+        /// Metoda pokazująca okno z parserem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void ShowParserWindow(object sender, EventArgs e)
         {
             ParserWindow pw = new ParserWindow();
             pw.Show();
         }
-
-        //Menu - Utworzenie nowego planu
-        public void menuNowyPlan(object sender, EventArgs e)
+        /// <summary>
+        /// Metoda pokazująca okno HTML
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ShowHTMLWindow(object sender, EventArgs e)
         {
-            //TODO
+            OknoDanychEdukacji ode = new OknoDanychEdukacji();
+            ode.Show();
         }
 
-        //Menu - Otwarcie planu z pliku
+        /// <summary>
+        /// Metoda pozwalająca dodać nowy plan z poziomu menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void menuNowyPlan(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Metoda pozwalająca utworzyć alternatywny plan na podstawie istniejącego
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
+        {
+            ListaPlanow lp = preparePlanList();
+            lp.Show();
+        }
+        /// <summary>
+        /// Metoda przygotowująca listę planów
+        /// </summary>
+        /// <returns>Lista Planów</returns>
+        private ListaPlanow preparePlanList()
+        {
+            var res = new ListaPlanow();
+            res.DodajPlan += AddPlan;
+            return res;
+        }
+        /// <summary>
+        /// Metoda dodająca plan
+        /// </summary>
+        /// <param name="Title">Nazwa planu</param>
+        /// <param name="plan">Pierwotny plan</param>
+        private void AddPlan(string Title, Plany plan)
+        {
+            using (var unit = new UnitOfWork(new PlanPwrContext()))
+            {
+                Plany nowyPlan = new Plany { NazwaPlanu = Title };
+                var staryPlan = unit.Plany.Get(plan.IdPlanu);
+                foreach (GrupyZajeciowe g in staryPlan.GrupyZajeciowe)
+                {
+                    nowyPlan.GrupyZajeciowe.Add(g);
+                }
+                unit.Plany.Add(nowyPlan);
+                unit.SaveChanges();
+                PlanyViewModel.Instance.DodajPlan(nowyPlan);
+            }
+        }
+
+        /// <summary>
+        /// Metoda pozwalająca otworzyć zapisany plik z planem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuOtworz(object sender, EventArgs e)
         {
-            //TODO
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Plan zajęć (*.txt)|*.txt";
@@ -72,64 +147,91 @@ namespace Wpf
             }
         }
 
-        //Menu - Zapis planów do plików
+        /// <summary>
+        /// Metoda otwierająca okno z zapisem planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuZapisz(object sender, EventArgs e)
         {
-            //TODO
-
-
             ZapisWindow zw = new ZapisWindow();
             zw.ShowDialog();
-
-
         }
 
-        //Menu - Funkcja Zapisz jako
+        /// <summary>
+        /// Metoda otwierająca okno z zapisem planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuZapiszJako(object sender, EventArgs e)
         {
-            //TODO
             ZapisWindow zw = new ZapisWindow();
             zw.ShowDialog();
-
         }
 
-        //Menu - Metoda drukująca plan
+        /// <summary>
+        /// Metoda otwierająca okno do drukowania planu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuDrukuj(object sender, EventArgs e)
         {
             DrukujWindow dw = new DrukujWindow();
             dw.ShowDialog();
         }
 
-        //Menu - Metoda eksportująca plan do pliku PDF
+        /// <summary>
+        /// Metoda ekposrtująca plik jako pdf
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuEksportujPDF(object sender, EventArgs e)
         {
             //TODO
         }
 
-        //Menu - Metoda eksportująca plan do pliku graficznego
+        /// <summary>
+        /// Metoda eksportująca plan jako plik graficzny
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
             //TODO
         }
 
-        //Menu - Metoda kończąca działanie programu
+        /// <summary>
+        /// Metoda zakończająca działanie programu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuZakoncz(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        //Menu - Metoda wyświetlająca okienko z informacjami o programie
+        /// <summary>
+        /// Metoda otwierająca okno z informacjami
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void menuInformacje(object sender, EventArgs e)
         {
             //TODO
         }
-
+        /// <summary>
+        /// Metoda przełądowująca komponenty okna
+        /// </summary>
         public void ReloadWindowComponents()
         {
+            //reload palen glowny
             PGlowny.Children.RemoveAt(0);
-            PGlowny.Children.Add(new PanelGlowny());
+            _panelGlowny = new PanelGlowny(this);
+            PGlowny.Children.Add(_panelGlowny);
+            //relaod panel filtrow
             PFiltrow.Children.RemoveAt(0);
-            PFiltrow.Children.Add(new PanelFiltrow(this));
+            _panelFiltrow = new PanelFiltrow(this);
+            PFiltrow.Children.Add(_panelFiltrow);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,7 @@ using Wpf;
 namespace PlanZajec.Views
 {
     /// <summary>
-    ///     Interaction logic for LeweMenu.xaml
+    ///     Klasa panelu głównego
     /// </summary>
     public partial class PanelGlowny : UserControl
     {
@@ -21,19 +22,34 @@ namespace PlanZajec.Views
         private readonly HashSet<long> _openedScheuldes;
         //tab that make adding possible
 
-        private TabItem _tabAdd;
+        private readonly TabItem _tabAdd;
 
         private PlanView _aktualnyPlanView;
 
         private readonly ObservableCollection<TabItem> _tabItems;
 
-        //kod aktualnie otwartego planu
-        public long? OtwartyPlanId;
+        private readonly MainWindow _mainWindow;
 
-        public PanelGlowny()
+        //kod aktualnie otwartego planu
+        private long? OtwartyPlanId
+        {
+            get { return _otwartyPlanId; }
+            set
+            {
+                //_mainWindow?.UpdateOnSelectedPlanChange(value);
+                _otwartyPlanId = value;
+            }
+        }
+        private long? _otwartyPlanId;
+
+        /// <summary>
+        /// Domyslny konstruktor
+        /// </summary>
+        public PanelGlowny(MainWindow mainWindow)
         {
             _openedScheuldes = new HashSet<long>();
             InitializeComponent();
+            _mainWindow = mainWindow;
             tabsId = 0;
             _tabItems = new ObservableCollection<TabItem>();
             //add tab
@@ -75,19 +91,19 @@ namespace PlanZajec.Views
             {
                 Header = "Wybierz plan",
                 Name = $"WybierzPlan{tabsId++}",
-                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate
+                HeaderTemplate = LewyTabControl.FindResource("TabHeader") as DataTemplate,
+                Content = PrepareChosingPlan()
             };
 
-            tab.Content = PrepareChosenigPlan();
 
             // insert tab item right before the last (+) tab item
             _tabItems.Insert(count - 1, tab);
             return tab;
         }
 
-        private WyborPlanu PrepareChosenigPlan()
+        private WyborPlanu PrepareChosingPlan()
         {
-            var res = new WyborPlanu {DataContext = WyborPlanuViewModel.Instance};
+            var res = new WyborPlanu {DataContext = PlanyViewModel.Instance};
             res.ChosenPlanToShowEventHandler += WybierzPlanDoWyswietlania;
             res.ChosenPlanToDeleteEventHandler += UsunPlan;
             res.AddToPlan += AddPlan;
@@ -104,7 +120,7 @@ namespace PlanZajec.Views
                 unit.Plany.Add(plan);
                 unit.SaveChanges();
             }
-            WyborPlanuViewModel.Instance.DodajPlan(plan);
+            PlanyViewModel.Instance.DodajPlan(plan);
         }
 
 
@@ -152,7 +168,7 @@ namespace PlanZajec.Views
                 unit.Plany.Remove(plan);
                 unit.SaveChanges();
             }
-            WyborPlanuViewModel.Instance.UsunPlan(plan);
+            PlanyViewModel.Instance.UsunPlan(plan);
             return true;
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,8 +6,15 @@ using System.Text.RegularExpressions;
 
 namespace PlanZajec.Parser
 {
+    /// <summary>
+    /// /Klasa służąca do parsowania danych z plików  html
+    /// </summary>
     internal class Parser
     {
+        /// <summary>
+        /// Metoda wczytująca plik i wywołująca zapis danych do bazy
+        /// </summary>
+        /// <returns>Powodzenia metody</returns>
         public static bool Run()
         {
             //folder with files path
@@ -39,7 +45,12 @@ namespace PlanZajec.Parser
             }
             return true;
         }
-
+        /// <summary>
+        /// Metoda Parsująca pojedynczy plik html
+        /// </summary>
+        /// <param name="lines">Linie pliku</param>
+        /// <param name="blockStrings">Nazwa i kod bloku</param>
+        /// <returns>Objekt klasy groupdata zawierające dane o grupie</returns>
         private static GroupData SearchLine(string[] lines, string[] blockStrings)
         {
             //flag that forces second part of if run first

@@ -1,32 +1,24 @@
 ﻿using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PlanZajec.Parser;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for ZapisWindow.xaml
+    ///  Klasa pozwalająca zapisać plan
     /// </summary>
 
-    
+
     public partial class ZapisWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
         private long[] tab;
+        /// <summary>
+        /// Domyślny konstruktor wyświetlający okno i pobierający listę planów do comboboxa
+        /// </summary>
         public ZapisWindow()
         {
             InitializeComponent();
@@ -44,7 +36,11 @@ namespace PlanZajec.Views
             }
             PlanyComboBox.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Metoda zapisująca plan po wyciśnięciu przycisku
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Zapisz_Click(object sender, RoutedEventArgs e)
         {
             int index = PlanyComboBox.SelectedIndex;

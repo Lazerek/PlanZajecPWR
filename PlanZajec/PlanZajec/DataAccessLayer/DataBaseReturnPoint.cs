@@ -9,9 +9,10 @@ namespace PlanZajec.DataAccessLayer
 {
     class DataBaseReturnPoint
     {
+        private static string dbName = "Super-egatron-5000X-DB.sqlite";
+
         public static void PrePrareDB()
         {
-            string dbName = "Super-egatron-5000X-DB.sqlite";
             string dbPathOutsideBinDebug = "../../" + dbName;
             bool fileExist = File.Exists(dbName);
             if (!fileExist && File.Exists(dbPathOutsideBinDebug))

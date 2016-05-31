@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlanZajec.ViewModels
 {
@@ -26,7 +22,6 @@ namespace PlanZajec.ViewModels
         /// </param>
         protected void NotifyPropertyChange([CallerMemberName] String propertyName = "")
         {
-            //System.Diagnostics.Debug.WriteLine("@MY@@@@    NotifyPropertyChange @My@");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

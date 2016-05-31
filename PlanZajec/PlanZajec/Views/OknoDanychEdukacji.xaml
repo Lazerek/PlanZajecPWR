@@ -1,0 +1,28 @@
+﻿<Window x:Class="PlanZajec.Views.OknoDanychEdukacji"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlanZajec.Views"
+        mc:Ignorable="d"
+        Title="" Height="182" Width="300" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19"/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Podaj dane do konta Edukacji:" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Login:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBlock Text="Hasło:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox x:Name="Login" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" Height="24"/>
+        <PasswordBox x:Name="Password" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" Height="24"/>
+        <Button Content="Anuluj" Grid.Row="3" Grid.Column="0" Width="70" Height="30" HorizontalAlignment="Left" Click="Anuluj" Margin="0, 5, 0, 0" Grid.ColumnSpan="2"/>
+        <Button Content="Ściągnij Dane" Grid.Row="3" Grid.Column="1" Width="110" Height="30" HorizontalAlignment="Right" Click="Sciagnij" Margin="0, 5, 0, 0"/>
+    </Grid>
+</Window>

@@ -9,13 +9,15 @@ using PlanZajec.ViewModels;
 namespace PlanZajec
 {
     /// <summary>
-    ///     Interaction logic for ProwadzacyMenu.xaml
+    ///     Klasa wyświetlająca opinie oraz oceny o prowadzących
     /// </summary>
     public partial class ProwadzacyOpinie : UserControl
     {
         private readonly int[] tab;
         public ProwadzacyOpinieViewModel ViewModel;
-
+        /// <summary>
+        /// Domyślny konstuktor, wypełnia dane combobox'a prowadzącymi
+        /// </summary>
         public ProwadzacyOpinie()
         {
             InitializeComponent();
@@ -32,7 +34,11 @@ namespace PlanZajec
             var rowIndex = comboBox.SelectedIndex;
             comboBox.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Metoda pozwalająca zapisać opinie oraz ocenę o prowadzącym
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Zapisz(object sender, RoutedEventArgs e)
         {
             var changeText = false;
@@ -51,7 +57,11 @@ namespace PlanZajec
                 OcenaLabel.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             }
         }
-
+        /// <summary>
+        /// Metoda aktualizująca tekst po zmianie prowadzącego.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onChange(object sender, RoutedEventArgs e)
         {
             OcenaLabel.Content = "Wpisz ocenę od 2,0 do 5,5";
@@ -60,11 +70,18 @@ namespace PlanZajec
             textBox.Text = wynik[0];
             Ocena.Text = wynik[1];
         }
-
+        /// <summary>
+        /// Metoda sprawdzająca poprawność wpisanych znaków w ocenie
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
         {
+            var stringToCheck = Ocena.Text;
             var c = Convert.ToChar(e.Text);
-            if (char.IsNumber(c) || c.Equals(',') || c.Equals('.'))
+            if ((char.IsNumber(c) || c.Equals(',') || c.Equals('.')) && !stringToCheck.Contains(',') && !stringToCheck.Contains("."))
+                e.Handled = false;
+            else if (char.IsNumber(c))
                 e.Handled = false;
             else
                 e.Handled = true;

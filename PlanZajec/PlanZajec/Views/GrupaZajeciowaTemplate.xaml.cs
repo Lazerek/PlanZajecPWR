@@ -1,18 +1,8 @@
 ﻿using PlanZajec.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PlanZajec.Views
 {
@@ -28,6 +18,10 @@ namespace PlanZajec.Views
             this.DataContext = viewModel;
             Start.Text = viewModel.GrupZaj.Godzina;
             Koniec.Text = viewModel.GrupZaj.GodzinaKoniec;
+            //Nazwa.Text = ;
+            Nazwa.Inlines.Add(viewModel.nazwa);
+            Nazwa.Inlines.Add("My Text \n Your Text");
+            if (!viewModel.GrupZaj.Tydzien.Equals("//"))
             Nazwa.Text = viewModel.nazwa;
             Nazwa.ToolTip = viewModel.nazwa;
             if(!viewModel.GrupZaj.Tydzien.Equals("//"))
@@ -47,7 +41,11 @@ namespace PlanZajec.Views
             }
             SolidColorBrush solidResult = new SolidColorBrush(colResult);
             Kafel.Background = solidResult;
+        }
 
+        private void GrupaZajeciowaTemplate_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Nazwa.MaxWidth = e.NewSize.Width;
         }
     }
 }
