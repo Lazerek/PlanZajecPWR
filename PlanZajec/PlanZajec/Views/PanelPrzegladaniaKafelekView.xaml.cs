@@ -1,6 +1,7 @@
 ﻿using PlanZajec.CommonInformations;
 using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,8 @@ namespace PlanZajec.Views
         private readonly Image addIcon;
         private readonly Image minusIcon;
         private GrupyZajeciowe grupaToAddOrDeleteFromPlan;
+        private bool panelIsOpen;
+        private PrzegladanieGrupViewModel viewModel;
 
         /// <summary>
         /// Domyślny konstruktor
@@ -25,7 +28,12 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
             addIcon = new Image() { Source = new BitmapImage(new Uri("Images/addIcon.png", UriKind.Relative)) };
-            minusIcon = new Image() { Source = new BitmapImage(new Uri("Images/minusIcon.png", UriKind.Relative)) };           
+            minusIcon = new Image() { Source = new BitmapImage(new Uri("Images/minusIcon.png", UriKind.Relative)) };
+            panelIsOpen = false;
+            cb_wsz.IsChecked = true;
+            label2.Visibility = Visibility.Hidden;
+            nazwaP.Visibility = Visibility.Hidden;
+            Grid.SetRow(filtruj, 2);
         }
         /// <summary>
         /// Metoda przygotowująca do otwarcia menu kontekstowego
@@ -104,6 +112,167 @@ namespace PlanZajec.Views
                 unitOfWork.Plany.UsunGrupeZajeciowaZPlanu(grupaToAddOrDeleteFromPlan);
             }
             PlanView.RefreshSchedule();
+        }
+
+        private void panelClick(object sender, RoutedEventArgs e)
+        {
+            if (panelIsOpen)
+            {
+                panelButton.Content = "▼";
+                zamknijPanel();
+            }
+            else
+            {
+                panelButton.Content = "▲";
+                otworzPanel();
+            }
+        }
+
+        private void otworzPanel()
+        {
+            panelIsOpen = true;
+            filtry.Height = new GridLength(1, GridUnitType.Star);
+            kafelki.Height = new GridLength(0, GridUnitType.Pixel);
+            dynamicRow.Height = new GridLength(25, GridUnitType.Pixel);
+            label2.Visibility = Visibility.Visible;
+            nazwaP.Visibility = Visibility.Visible;
+            Grid.SetRow(filtruj, 15);
+            filtruj.Margin = new Thickness(0, 22, 0, -32);
+        }
+
+        private void zamknijPanel()
+        {
+            panelIsOpen = false;
+            filtry.Height = new GridLength(110, GridUnitType.Pixel);
+            kafelki.Height = new GridLength(1, GridUnitType.Star);
+            dynamicRow.Height = new GridLength(45, GridUnitType.Pixel);
+            label2.Visibility = Visibility.Hidden;
+            nazwaP.Visibility = Visibility.Hidden;
+            Grid.SetRow(filtruj, 2);
+            filtruj.Margin = new Thickness(0, 10, 0, 0);
+        }
+
+        private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
+        {
+            char c = Convert.ToChar(e.Text);
+            if (Char.IsNumber(c))
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+        /// <summary>
+        /// Obsługa przycisku filtruj
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void filtruj_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
+            if (cb_cw.IsChecked == true)
+                cwiczenia = true;
+            if (cb_lab.IsChecked == true)
+                lab = true;
+            if (cb_pro.IsChecked == true)
+                projekt = true;
+            if (cb_wyk.IsChecked == true)
+                wyklad = true;
+            if (cb_wsz.IsChecked == true)
+                wszystko = true;
+            if (cb_wolne.IsChecked == true)
+                wolne = true;
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
+        }
+        /// <summary>
+        /// Metoda uruchamiająca filtrowanie po wyciśnięciu przycisku enter na polu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void filtrujEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                wlaczFiltr();
+        }
+        /// <summary>
+        /// Metoda reagująca na zaznaczenie pola "wszystko" i ustawienie pozostałych checkboxów na true
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void checkBoxWszystko_Checked(object sender, RoutedEventArgs e)
+        {
+            wlaczFiltr();
+            cb_wyk.IsChecked = true;
+            cb_lab.IsChecked = true;
+            cb_pro.IsChecked = true;
+            cb_cw.IsChecked = true;
+        }
+        /// <summary>
+        /// Metoda uruchamiająca filtrowanie
+        /// </summary>
+        private void wlaczFiltr()
+        {
+            Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;
+            if (cb_cw.IsChecked == true)
+                cwiczenia = true;
+            if (cb_lab.IsChecked == true)
+                lab = true;
+            if (cb_pro.IsChecked == true)
+                projekt = true;
+            if (cb_wyk.IsChecked == true)
+                wyklad = true;
+            if (cb_wsz.IsChecked == true)
+                wszystko = true;
+            if (cb_wolne.IsChecked == true)
+                wolne = true;
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.Filtruj2(nazwaK.Text, nazwaPot.Text, nazwaKG.Text, nazwaKK.Text, nazwaP.Text, wolneMiejsca.Text, lab, cwiczenia, projekt, wszystko, wyklad, wolne);
+        }
+        /// <summary>
+        /// Metoda obsługi zaznaczenia checkboxa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void check(object sender, RoutedEventArgs e)
+        {
+            wlaczFiltr();
+        }
+        /// <summary>
+        /// Metoda obsługi odznaczenia checkboxa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uncheck(object sender, RoutedEventArgs e)
+        {
+            cb_wsz.IsChecked = false;
+            wlaczFiltr();
+        }
+        /// <summary>
+        /// Metoda obsługi tylko wolnych zajęć
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pokazTylkoWolne(object sender, RoutedEventArgs e)
+        {
+            wlaczFiltr();
+        }
+        /// <summary>
+        /// Metoda czyszcząca filtry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wyczyscFiltr(object sender, RoutedEventArgs e)
+        {
+            cb_wsz.IsChecked = true;
+            cb_wyk.IsChecked = true;
+            cb_lab.IsChecked = true;
+            cb_pro.IsChecked = true;
+            cb_cw.IsChecked = true;
+            cb_wolne.IsChecked = false;
+            nazwaK.Text = "";
+            nazwaKG.Text = "";
+            nazwaKK.Text = "";
+            nazwaP.Text = "";
+            nazwaPot.Text = "";
+            wolneMiejsca.Text = "";
+            PrzegladanieGrupViewModel.przegladanieGrupViewModel.czyscFiltrownie();
         }
     }
 }

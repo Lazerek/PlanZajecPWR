@@ -14,16 +14,21 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class WolneDniView : UserControl
     {
+        private WolneDniPreview _wolneDniPreview;
+
         /// <summary>
         /// Domyślny konstruktor pobierający plany
+        /// 
         /// </summary>
         public WolneDniView()
         {
             InitializeComponent();
             this.DataContext = PlanyViewModel.Instance;
+            _wolneDniPreview = new WolneDniPreview();
+            WolneDniPreviewGrid.Children.Add(_wolneDniPreview);
         }
 
-        public ObservableCollection<Plany> plany { get; }
+
 
         /// <summary>
         /// Metoda dodająca wolne przydziały do planu
@@ -38,7 +43,7 @@ namespace PlanZajec.Views
                 using (var unit = new UnitOfWork(new PlanPwrContext()))
                 {
                     Plany zmienianyPlan = unit.Plany.Get(plan.IdPlanu);
-                    zmienianyPlan.AddWolneDni(getBeaginingHour() + ":" + getEndHour() + ":" + getShortDay());
+                    zmienianyPlan.AddWolneDni(GetBeaginingHour() + ":" + GetEndHour() + ":" + GetShortDay());
                 }
                 Info.Text = "Dodano wolne godziny do planu";
                 Info.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
@@ -53,7 +58,7 @@ namespace PlanZajec.Views
         /// Pobranie godzin początkowych
         /// </summary>
         /// <returns>Godzinępoczątkową</returns>
-        private string getBeaginingHour()
+        private string GetBeaginingHour()
         {
             var beginingHour = "";
             switch (GodzinaRozpoczeciaComboBox.Text)
@@ -86,7 +91,7 @@ namespace PlanZajec.Views
         /// Pobranie godziny końcowej
         /// </summary>
         /// <returns>Godzina końcowa</returns>
-        private string getEndHour()
+        private string GetEndHour()
         {
             var endHour = "";
             switch (GodzinaZakonczeniaComboBox.Text)
@@ -119,7 +124,7 @@ namespace PlanZajec.Views
         /// Pobranie dnia
         /// </summary>
         /// <returns>Skrócona nazwa dnia</returns>
-        private string getShortDay()
+        private string GetShortDay()
         {
             var dayShort = "";
             switch (DaySelectComboBox.SelectedIndex)
@@ -147,6 +152,15 @@ namespace PlanZajec.Views
                     break;
             }
             return dayShort;
+        }
+
+        private void SelectPlanComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var plan = (Plany)SelectPlanComboBox.SelectedItem;
+            if (plan != null)
+            {
+                _wolneDniPreview.WyswietlWyklucznieaZPlanu(plan.IdPlanu);
+            }
         }
     }
 }

@@ -75,7 +75,7 @@ namespace Wpf
         public void ShowHTMLWindow(object sender, EventArgs e)
         {
             OknoDanychEdukacji ode = new OknoDanychEdukacji();
-            ode.Show();
+            ode.ShowDialog();
         }
 
         /// <summary>
@@ -85,7 +85,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuNowyPlan(object sender, EventArgs e)
         {
-            
+            AddPlanWindow addPlan = new AddPlanWindow();
+            addPlan.ShowDialog();
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace Wpf
         public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
         {
             ListaPlanow lp = preparePlanList();
-            lp.Show();
+            lp.ShowDialog();
         }
         /// <summary>
         /// Metoda przygotowująca listę planów
@@ -187,7 +188,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuEksportujPDF(object sender, EventArgs e)
         {
-            //TODO
+            Eksportuj eks = new Eksportuj(true);
+            eks.ShowDialog();
         }
 
         /// <summary>
@@ -197,7 +199,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
-            //TODO
+            Eksportuj eks = new Eksportuj(false);
+            eks.ShowDialog();
         }
 
         /// <summary>
@@ -217,7 +220,8 @@ namespace Wpf
         /// <param name="e"></param>
         public void menuInformacje(object sender, EventArgs e)
         {
-            //TODO
+            OknoInformacji o = new OknoInformacji();
+            o.ShowDialog();
         }
         /// <summary>
         /// Metoda przełądowująca komponenty okna

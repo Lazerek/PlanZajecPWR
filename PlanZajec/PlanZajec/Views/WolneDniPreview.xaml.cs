@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
 
 namespace PlanZajec.Views
 {
@@ -23,6 +25,22 @@ namespace PlanZajec.Views
         public WolneDniPreview()
         {
             InitializeComponent();
+        }
+
+        public void WyswietlWyklucznieaZPlanu(long idPlanu)
+        {
+            WolnyCzasListBox.Items.Clear();
+            string[] wolneDni;
+            using (var dataBaseUnitOfWork = new UnitOfWork(new PlanPwrContext()))
+            {
+                wolneDni = dataBaseUnitOfWork.Plany.Get(idPlanu).GetWolneDni();
+            }
+            if (wolneDni == null) return;
+            foreach (var czas in wolneDni)
+            {
+                var tempCzas = czas.Split(':');
+                WolnyCzasListBox.Items.Add(tempCzas[2] + " od " + tempCzas[0] + "do " + tempCzas[1]);
+            }
         }
     }
 }
