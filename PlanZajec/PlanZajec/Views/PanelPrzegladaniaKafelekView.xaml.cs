@@ -33,7 +33,7 @@ namespace PlanZajec.Views
             cb_wsz.IsChecked = true;
             label2.Visibility = Visibility.Hidden;
             nazwaP.Visibility = Visibility.Hidden;
-            Grid.SetRow(filtruj, 2);
+            Grid.SetRow(nazwaK, 0);
         }
         /// <summary>
         /// Metoda przygotowująca do otwarcia menu kontekstowego
@@ -133,23 +133,21 @@ namespace PlanZajec.Views
             panelIsOpen = true;
             filtry.Height = new GridLength(1, GridUnitType.Star);
             kafelki.Height = new GridLength(0, GridUnitType.Pixel);
-            dynamicRow.Height = new GridLength(25, GridUnitType.Pixel);
             label2.Visibility = Visibility.Visible;
             nazwaP.Visibility = Visibility.Visible;
-            Grid.SetRow(filtruj, 15);
-            filtruj.Margin = new Thickness(0, 22, 0, -32);
+            Grid.SetRow(nazwaK, 1);
+            nazwaK.Margin = new Thickness(0, 0, 0, 0);
         }
 
         private void zamknijPanel()
         {
             panelIsOpen = false;
-            filtry.Height = new GridLength(110, GridUnitType.Pixel);
+            filtry.Height = new GridLength(45, GridUnitType.Pixel);
             kafelki.Height = new GridLength(1, GridUnitType.Star);
-            dynamicRow.Height = new GridLength(45, GridUnitType.Pixel);
             label2.Visibility = Visibility.Hidden;
             nazwaP.Visibility = Visibility.Hidden;
-            Grid.SetRow(filtruj, 2);
-            filtruj.Margin = new Thickness(0, 10, 0, 0);
+            Grid.SetRow(nazwaK, 0);
+            nazwaK.Margin = new Thickness(80, 0, 0, 0);
         }
 
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
