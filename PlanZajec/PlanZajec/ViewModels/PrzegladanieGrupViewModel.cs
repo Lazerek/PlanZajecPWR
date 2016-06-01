@@ -59,7 +59,7 @@ namespace PlanZajec.ViewModels
             {
                 Items.Add(gz);
             }
-            NotifyPropertyChange("Items");
+            NotifyPropertyChanged("Items");
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace PlanZajec.ViewModels
                 }
             }
             ItemsChanged.Clear();
-            NotifyPropertyChange("Items");
+            NotifyPropertyChanged("Items");
         }
 
         public void PrzefiltrujPoCzasieWolnym(long? numerPlanu)

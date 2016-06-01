@@ -10,7 +10,7 @@ namespace PlanZajec.ViewModels
     /// <summary>
     /// Klasa typu ViewModel pomagająca wyświetlać prowadzących, opinie oraz oceny o nich
     /// </summary>
-    public class ProwadzacyOpinieViewModel : INotifyPropertyChanged
+    public class ProwadzacyOpinieViewModel : ViewModel
     {
         public List<Prowadzacy> Items { get; set; }
         public List<Prowadzacy> ComboBoxItems { get; set; }
@@ -104,15 +104,6 @@ namespace PlanZajec.ViewModels
                 uw.SaveChanges();
             }
             return returnValue;
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// Metoda zapisująca własność
-        /// </summary>
-        /// <param name="propertyName">Nazwa własności</param>
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

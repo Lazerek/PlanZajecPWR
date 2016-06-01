@@ -65,8 +65,8 @@ namespace PlanZajec.ViewModels
                     var a = okno.DataContext as PlanView;
                     System.Diagnostics.Debug.WriteLine(a);
                     Kafelki.Add(temp);
-                    NotifyPropertyChange("ListaGrupZajeciowych");
-                    NotifyPropertyChange("Kafelki");
+                    NotifyPropertyChanged("ListaGrupZajeciowych");
+                    NotifyPropertyChanged("Kafelki");
                 }
                 //ListaGrupZajeciowych[0];
             }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using PlanZajec.EdukacjaIntegration;
 
 namespace PlanZajec.Views
 {
@@ -11,7 +12,7 @@ namespace PlanZajec.Views
         /// Domyślny konstruktor
         /// </summary>
         public OknoDanychEdukacji()
-        {
+        { 
             InitializeComponent();
         }
         /// <summary>
@@ -21,7 +22,8 @@ namespace PlanZajec.Views
         /// <param name="e"></param>
         private void Sciagnij(object sender, RoutedEventArgs e)
         {
-
+            EdukacjaConnector eduConnector = new EdukacjaConnector(Login.Text,PasswordToEdukacja.Password);
+            eduConnector.Run();
         }
         /// <summary>
         /// Klasa do anulowania działania

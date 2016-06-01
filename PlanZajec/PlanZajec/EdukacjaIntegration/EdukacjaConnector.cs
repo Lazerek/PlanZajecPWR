@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,13 @@ namespace PlanZajec.EdukacjaIntegration
 {
     public class EdukacjaConnector
     {
+        private string classOfNumericSubpagesContainer = "paging-numeric-span";
+
         private IWebDriver driver;
         private IJavaScriptExecutor diverScriptExecutor{
             get { return (IJavaScriptExecutor)driver; }
         }
-    private StringBuilder verificationErrors;
+        private StringBuilder verificationErrors;
         private string baseURL;
         private bool acceptNextAlert = true;
 
@@ -36,8 +39,22 @@ namespace PlanZajec.EdukacjaIntegration
         public void SetupTest()
         {
             driver = new FirefoxDriver();
+            HideWindow();
             baseURL = "https://edukacja.pwr.wroc.pl";
             verificationErrors = new StringBuilder();
+        }
+
+        private void HideWindow()
+        {
+            //Process[] processRunning = Process.GetProcesses();
+            //foreach (Process pr in processRunning)
+            //{
+            //    if (pr.ProcessName == "notepad")
+            //    {
+            //        hWnd = pr.MainWindowHandle.ToInt32();
+            //        ShowWindow(hWnd, SW_HIDE);
+            //    }
+            //}
         }
 
         public void Run()
@@ -62,7 +79,6 @@ namespace PlanZajec.EdukacjaIntegration
         }
 
 
-        private string classOfNumericSubpagesContainer = "paging-numeric-span";
 
         [Test]
         public void TheTextowyTest()
@@ -81,7 +97,7 @@ namespace PlanZajec.EdukacjaIntegration
 
             //GoForAllSubPages(); //Testing place
             BrowseZapisy();
-            //GoForAllSubPages();
+            GoForAllSubPages();
             //ReadPage();
 
             driver.FindElement(By.Name("wyloguj")).Click();
