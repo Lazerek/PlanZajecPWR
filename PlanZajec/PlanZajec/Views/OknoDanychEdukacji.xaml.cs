@@ -22,7 +22,7 @@ namespace PlanZajec.Views
         /// <param name="e"></param>
         private void Sciagnij(object sender, RoutedEventArgs e)
         {
-            EdukacjaConnector eduConnector = new EdukacjaConnector(Login.Text,PasswordToEdukacja.Password);
+            EdukacjaConnector eduConnector = new EdukacjaConnector(Login.Text, PasswordToEdukacja.Password);
             eduConnector.Run();
         }
         /// <summary>
