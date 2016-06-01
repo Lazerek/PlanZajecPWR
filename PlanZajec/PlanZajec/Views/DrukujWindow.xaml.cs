@@ -8,6 +8,7 @@ using PlanZajec.DataAccessLayer;
 using PlanZajec.DataModel;
 using PrintDialog = System.Windows.Controls.PrintDialog;
 using PlanZajec.ViewModels;
+using Wpf;
 
 namespace PlanZajec.Views
 {
@@ -47,21 +48,24 @@ namespace PlanZajec.Views
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
             PlanView pv = new PlanView(pvm);
+            Plany planDoWydruku = plany[PlanyComboBox.SelectedIndex+1];
             // PrintDialog printDialog = new PrintDialog();
             Boolean test = false;
             if(test)
                 DrukujPlanTest(pv);
             else
-                DrukujPlan(pv, sender);
+                DrukujPlan(pv, planDoWydruku);
 
         }
-        private void DrukujPlan(PlanView pv, object sender)
+        private void DrukujPlan(PlanView pv, Plany planDoWydruku)
         {
+            //MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
+            //window.PanelGlownyOkna.PrzygorujPlanDoWydruku(planDoWydruku);
             PrintDialog Objprint = new PrintDialog();
             if (Objprint.ShowDialog() == true)
             {
-                double a = 2000;
-                double b = 666;
+                double a = 2520;
+                double b = 500;
                 Objprint.PrintTicket.PageOrientation = PageOrientation.Landscape;
                 System.Printing.PrintCapabilities capabilities = Objprint.PrintQueue.GetPrintCapabilities(Objprint.PrintTicket);
                 double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / a, capabilities.PageImageableArea.ExtentHeight / b);
