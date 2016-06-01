@@ -11,7 +11,7 @@ namespace PlanZajec.ViewModels
     /// <summary>
     /// Klasa typu ViewModel do wyświetlania listy prowadzących
     /// </summary>
-    public class ProwadzacyViewModel : INotifyPropertyChanged
+    public class ProwadzacyViewModel : ViewModel
     {
         public List<Prowadzacy> Items { get; set; }
         /// <summary>
@@ -26,7 +26,6 @@ namespace PlanZajec.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Metoda filtrująca prowadzących
         /// </summary>
@@ -66,15 +65,6 @@ namespace PlanZajec.ViewModels
                 Items = temp;
                 NotifyPropertyChanged("Items");
             }
-        }
-
-        /// <summary>
-        /// Metoda informująca o zmianie własności
-        /// </summary>
-        /// <param name="propertyName">Nazwa zmienianej własności</param>
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

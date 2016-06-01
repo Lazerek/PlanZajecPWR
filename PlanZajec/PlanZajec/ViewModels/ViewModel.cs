@@ -20,7 +20,7 @@ namespace PlanZajec.ViewModels
         /// <param name="propertyName">
         /// Własność, która ulagła zmianie
         /// </param>
-        protected void NotifyPropertyChange([CallerMemberName] String propertyName = "")
+        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
