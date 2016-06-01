@@ -17,7 +17,8 @@ namespace Wpf
     public partial class MainWindow : Window
     {
         private PanelFiltrow _panelFiltrow;
-        private PanelGlowny _panelGlowny;
+        public PanelGlowny PanelGlownyOkna { get; private set; }
+
         /// <summary>
         /// Domyślny konstruktor inicjalizujący okno główne
         /// </summary>
@@ -41,8 +42,8 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            _panelGlowny = new PanelGlowny(this);
-            PGlowny.Children.Add(_panelGlowny);
+            PanelGlownyOkna = new PanelGlowny(this);
+            PGlowny.Children.Add(PanelGlownyOkna);
             //add panel filtrow
             _panelFiltrow = new PanelFiltrow(this);
             PFiltrow.Children.Add(_panelFiltrow);
@@ -230,8 +231,8 @@ namespace Wpf
         {
             //reload palen glowny
             PGlowny.Children.RemoveAt(0);
-            _panelGlowny = new PanelGlowny(this);
-            PGlowny.Children.Add(_panelGlowny);
+            PanelGlownyOkna = new PanelGlowny(this);
+            PGlowny.Children.Add(PanelGlownyOkna);
             //relaod panel filtrow
             PFiltrow.Children.RemoveAt(0);
             _panelFiltrow = new PanelFiltrow(this);
