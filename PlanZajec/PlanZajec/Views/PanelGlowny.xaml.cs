@@ -111,13 +111,6 @@ namespace PlanZajec.Views
             return res;
         }
 
-        public void PrzygorujPlanDoWydruku(Plany plan)
-        {
-            WybierzPlanDoWyswietlania(plan);
-            UsunPlan(plan);
-        }
-
-
         private void WybierzPlanDoWyswietlania(Plany plan)
         {
             //Podmiana aktualnego taba na wyswietlanie planu
