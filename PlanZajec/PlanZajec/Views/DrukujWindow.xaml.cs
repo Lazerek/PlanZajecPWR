@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Printing;
 using System.Windows;
 using System.Windows.Media;
 using PlanZajec.DataAccessLayer;
@@ -47,17 +48,38 @@ namespace PlanZajec.Views
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
             PlanView pv = new PlanView(pvm);
             // PrintDialog printDialog = new PrintDialog();
+            Boolean test = false;
+            if(test)
+                DrukujPlanTest(pv);
+            else
+                DrukujPlan(pv, sender);
+
+        }
+        private void DrukujPlan(PlanView pv, object sender)
+        {
             PrintDialog Objprint = new PrintDialog();
             if (Objprint.ShowDialog() == true)
             {
-                double a = pv.PlanWidth;
-                double b = pv.PlanHeight;
+                double a = 2000;
+                double b = 666;
+                Objprint.PrintTicket.PageOrientation = PageOrientation.Landscape;
                 System.Printing.PrintCapabilities capabilities = Objprint.PrintQueue.GetPrintCapabilities(Objprint.PrintTicket);
-                double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / pv.PlanWidth, capabilities.PageImageableArea.ExtentHeight / pv.PlanHeight);
+                double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / a, capabilities.PageImageableArea.ExtentHeight / b);
                 pv.LayoutTransform = new ScaleTransform(scale, scale);
                 Size size = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
                 pv.Measure(size);
                 pv.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), size));
+                Objprint.PrintVisual(pv, "Plan");
+                this.Close();
+            }
+            else
+                this.Close();
+        }
+        private void DrukujPlanTest(PlanView pv)
+        {
+            PrintDialog Objprint = new PrintDialog();
+            if (Objprint.ShowDialog() == true)
+            {
                 Objprint.PrintVisual(pv, "Plan");
             }
         }
