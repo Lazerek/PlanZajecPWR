@@ -14,14 +14,12 @@ namespace Wpf
     public partial class PanelFiltrow : UserControl
     {
         private bool lpm;
-        private OknoOpcji _oknoOpcji;
         private readonly MainWindow _mainWindow;
 
         public PanelFiltrow(MainWindow mainWindow)
         {
             InitializeComponent();
             lpm = false;
-            _oknoOpcji = new OknoOpcji();
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
             _mainWindow = mainWindow;
         }
@@ -68,17 +66,6 @@ namespace Wpf
         public void imgClick1(object sender, MouseEventArgs e)
         {
             lpm = true;
-        }
-        public void imgClick2(object sender, MouseEventArgs e)
-        {
-            if (lpm)
-            {
-                if (!_oknoOpcji.IsVisible)
-                {
-                    _oknoOpcji = new OknoOpcji();
-                    _oknoOpcji.Show();
-                }
-            }
         }
 
         public void imgClickC(object sender, MouseEventArgs e)
