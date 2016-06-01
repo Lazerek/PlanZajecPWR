@@ -11,37 +11,30 @@ namespace PlanZajec.Parser
     /// </summary>
     internal class Parser
     {
+        private static string folderPath = @"../../TestResources";
+
         /// <summary>
         /// Metoda wczytująca plik i wywołująca zapis danych do bazy
         /// </summary>
         /// <returns>Powodzenia metody</returns>
         public static bool Run()
         {
-            //folder with files path
-            var folderPath = @"../../TestResources";
-            //list of all files in folder
             var fileEntries = Directory.GetFiles(folderPath);
             //foreach file content, main functions in for loop to reduce List type variables
             foreach (var singleFileEntrie in fileEntries)
             {
-                //read file
-                var fullFileText = File.ReadAllLines(singleFileEntrie);
+                var fullTextInFile = File.ReadAllLines(singleFileEntrie);
                 //ready clear groupArray
-                //get new blockData
-                var blockData = TryGetBlockData(fullFileText);
-                //get raw groups data
-                var groupArray = GetGroupRawData(fullFileText).ToList();
-                //if no groups then go out
+                Block blockOfCourse = TryGetBlockOfCourse(fullTextInFile);
+                var groupArray = GetGroupRawData(fullTextInFile).ToList();
                 if (groupArray.Count == 0) return false;
                 //iterate trougth groupArray and call SearchLine for each string[] lines
-                var datas = groupArray.Select(lines => SearchLine(lines, blockData)).ToList();
-                //for each group call ZapisDoBazy
+                var datas = groupArray.Select(lines => SearchLine(lines, blockOfCourse)).ToList();
                 System.Diagnostics.Debug.WriteLine(datas.Count());
                 foreach (var gd in datas)
                 {
                     ZapisDoBazy.zapisz(gd);
                 }
-               
             }
             return true;
         }
@@ -49,83 +42,78 @@ namespace PlanZajec.Parser
         /// Metoda Parsująca pojedynczy plik html
         /// </summary>
         /// <param name="lines">Linie pliku</param>
-        /// <param name="blockStrings">Nazwa i kod bloku</param>
+        /// <param name="block">Nazwa i kod bloku</param>
         /// <returns>Objekt klasy groupdata zawierające dane o grupie</returns>
-        private static GroupData SearchLine(string[] lines, string[] blockStrings)
+        private static GroupData SearchLine(string[] lines, Block block)
         {
-            //flag that forces second part of if run first
-            var startLooking = false;
-            //begining search index
-            var index = 0;
-            //
+            var index = GetIndexOfFirstSignificantLine(lines);
+            if (index < 0)
+                return null; //TODO null or nothing
             var result = new GroupData();
-            for (var i = 0; i < lines.Length; i++)
+            for (var i = index; i < lines.Length; i++)
             {
-                if (!startLooking)
+                switch (i - index)
                 {
-                    
-                }
-                if (startLooking)
-                {
-                    switch (i - index)
-                    {
-                        //kod grupy
-                        case 2:
-                            result.KodGrupy = lines[i].Trim();
-                            break;
-                        //kod kursu
-                        case 5:
-                            result.KodKursu = lines[i].Trim();
-                            break;
-                        //nazwa kursu
-                        case 8:
-                            result.NazwaKursu = lines[i].Trim();
-                            break;
-                        //liczba miejsc
-                        case 13:
-                            result.LiczbaMiejsc = lines[i].Trim();
-                            break;
-                        //prowadzacy
-                        case 46:
-                            result.Prowadzacy = Regex.Replace(lines[i].Trim(), @"\s+", " ");
-                            break;
-                        //forma zajęc
-                        case 49:
-                            result.FormaZajec = lines[i].Trim();
-                            break;
-                        //potok
-                        case 61:
-                            result.Potok = lines[i].Trim();
-                            break;
-                        //data i miejsce
-                        case 66:
-                            var indextd = lines[i].IndexOf("<td>", StringComparison.Ordinal);
-                            var indextd2 = lines[i].IndexOf("</td>", StringComparison.Ordinal);
-                            var arrDataIMiejsce = lines[i].Substring(indextd + 5, indextd2 - indextd - 5).Split(',');
-                            var data = arrDataIMiejsce[0];
-                            if (arrDataIMiejsce.Length > 2)
-                            {
-                                var miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
-                                result.Miejsce = miejsce;
-                            }
-                            result.Data = data;
-                            break;
-                    }
-                }
-                else
-                {
-                    if (lines[i].Contains("hrefGrupyZajecioweKursuTabela"))
-                    {
-                        index = i;
-                        startLooking = true;
-                    }
+                    //kod grupy
+                    case 2:
+                        result.KodGrupy = lines[i].Trim();
+                        break;
+                    //kod kursu
+                    case 5:
+                        result.KodKursu = lines[i].Trim();
+                        break;
+                    //nazwa kursu
+                    case 8:
+                        result.NazwaKursu = lines[i].Trim();
+                        break;
+                    //liczba miejsc
+                    case 13:
+                        result.LiczbaMiejsc = lines[i].Trim();
+                        break;
+                    //prowadzacy
+                    case 46:
+                        result.Prowadzacy = Regex.Replace(lines[i].Trim(), @"\s+", " ");
+                        break;
+                    //forma zajęc
+                    case 49:
+                        result.FormaZajec = lines[i].Trim();
+                        break;
+                    //potok
+                    case 61:
+                        result.Potok = lines[i].Trim();
+                        break;
+                    //data i miejsce
+                    case 66:
+                        var indextd = lines[i].IndexOf("<td>", StringComparison.Ordinal);
+                        var indextd2 = lines[i].IndexOf("</td>", StringComparison.Ordinal);
+                        var arrDataIMiejsce = lines[i].Substring(indextd + 5, indextd2 - indextd - 5).Split(',');
+                        var data = arrDataIMiejsce[0];
+                        if (arrDataIMiejsce.Length > 2)
+                        {
+                            var miejsce = arrDataIMiejsce[1] + arrDataIMiejsce[2];
+                            result.Miejsce = miejsce;
+                        }
+                        result.Data = data;
+                        break;
                 }
             }
             //przypisanie stringa zawierającego kod bloku do obiektu, jeśli null to podaj string pusty
-            result.KodBloku = blockStrings==null ? "" : blockStrings[0];
+            result.KodBloku = block==null ? "" : block.Code;
             //przypisanie stringa zawierającego nazwe bloku do obiektu, jeśli null to podaj string pusty
-            result.NazwaBloku = blockStrings == null ? "" : blockStrings[1];
+            result.NazwaBloku = block == null ? "" : block.Name;
             return result;
+        }
+
+        private static int GetIndexOfFirstSignificantLine(string[] lines)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Contains("hrefGrupyZajecioweKursuTabela"))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         private static List<string[]> GetGroupRawData(string[] textArray)
@@ -157,7 +145,7 @@ namespace PlanZajec.Parser
             return result;
         }
 
-        private static string[] TryGetBlockData(string[] textArrayStrings)
+        private static Block TryGetBlockOfCourse(string[] textArrayStrings)
         {
             var regex = new Regex(@"<a name=.hrefKursyGrupyBlokiTabelaBlok\d{6,}.> </a>");
             var beginingOfSubarray = -1;
@@ -188,7 +176,22 @@ namespace PlanZajec.Parser
                 blockName = partialResultTab[24].Trim();
                 //cell 23 - name
             }
-            return new[]{blockCode, blockName};
+            return new Block(blockCode, blockName);
         }
+
+        class Block
+        {
+            public string Code { get; set; }
+
+            public string Name { get; set; }
+
+            public Block(string code, string name)
+            {
+                Code = code;
+                Name = name;
+            }
+        }
+
+
     }
 }
