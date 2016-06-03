@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace PlanZajec.Views
             }
         }
 
-        //!use OtwartyPlanId instead _otwartyPlanId
+        //!use this, use OtwartyPlanId instead _otwartyPlanId
         private long? _otwartyPlanId;
 
         /// <summary>
@@ -85,8 +86,6 @@ namespace PlanZajec.Views
 
         private TabItem AddScheduleTabItem()
         {
-            //TODO foreach tab last index +1 == name
-
             //var last = _tabItems.Max(t=>t.Name.Replace())
             var count = _tabItems.Count;
 
@@ -112,11 +111,9 @@ namespace PlanZajec.Views
             return res;
         }
 
-
         private void WybierzPlanDoWyswietlania(Plany plan)
         {
             //Podmiana aktualnego taba na wyswietlanie planu
-            //TODO Greg - obsluz zmianę widoku
             _openedScheuldes.Add(plan.IdPlanu);
             ActChosenPlanSingleton.Instance.SetPlan(plan.IdPlanu);
             for (var i = 0; i < _tabItems.Count; i++)

@@ -96,8 +96,6 @@ namespace PlanZajec.Views
             }
 
         }
-
-
         /*
         public static void createPdfFromImage(string imageFile, string pdfFile)
 
@@ -114,8 +112,6 @@ namespace PlanZajec.Views
                 iTextSharp.text.pdf.PdfWriter.GetInstance(document, ms).SetFullCompression();
 
                 document.Open();
-
-
 
                 FileStream fs = new FileStream(imageFile, FileMode.Open);
 

@@ -183,9 +183,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parser\ZapisDoBazy.cs" />
-    <Compile Include="Views\OknoOpcji.xaml.cs">
-      <DependentUpon>OknoOpcji.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PanelPrzegladaniaKafelekView.xaml.cs">
       <DependentUpon>PanelPrzegladaniaKafelekView.xaml</DependentUpon>
     </Compile>
@@ -194,9 +191,6 @@
     </Compile>
     <Compile Include="Views\PlanView.xaml.cs">
       <DependentUpon>PlanView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Plany2View.xaml.cs">
-      <DependentUpon>Plany2View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProwadzacyMenu.xaml.cs">
       <DependentUpon>ProwadzacyMenu.xaml</DependentUpon>
@@ -314,10 +308,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\OknoOpcji.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\PanelPrzegladaniaKafelekView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -333,10 +323,6 @@
     <Page Include="Views\PanelFiltrow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Plany2View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProwadzacyMenu.xaml">
       <SubType>Designer</SubType>
