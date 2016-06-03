@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace PlanZajec.EdukacjaIntegration
 
         private string password;
         private string login;
+
+        public Func<string[],bool> LinesConnector { get; set; }
 
         public EdukacjaConnector(string login, string password)
         {
@@ -96,6 +99,7 @@ namespace PlanZajec.EdukacjaIntegration
             //TODO: Obsługa błędów, gdy edukacja dodaje kartę "0"
 
             //GoForAllSubPages(); //Testing place
+
             BrowseZapisy();
             GoForAllSubPages();
             //ReadPage();
@@ -133,6 +137,7 @@ namespace PlanZajec.EdukacjaIntegration
             int lastValue;
             while (actualNumericSpan != null)
             {
+                ReadPage(); //TODO -> zmiana miejsca.
                 lastValue = int.Parse(actualNumericSpan.GetAttribute("value"));
                 actualNumericSpan.Click();
                 actualNumericSpan = GetNextPageInPaging(i, lastValue);
@@ -175,10 +180,14 @@ namespace PlanZajec.EdukacjaIntegration
         {
             //TODO: Load to database
             string strona = driver.PageSource;
-            foreach (var linia in strona.Split('\n'))
-            {
-                Console.WriteLine(linia);
-            }
+            string[] linieWStronie = strona.Split(new string[] {Environment.NewLine}, StringSplitOptions.None);
+            //foreach (var linia in linieWStronie)
+            //{
+            //    Console.WriteLine(linia);
+            //}
+            File.WriteAllLines("test.html",linieWStronie);
+
+            LinesConnector?.Invoke(linieWStronie);
         }
 
         private bool IsElementPresent(By by)

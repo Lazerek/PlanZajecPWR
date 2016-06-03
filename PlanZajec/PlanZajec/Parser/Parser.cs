@@ -1,8 +1,11 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace PlanZajec.Parser
 {
@@ -24,20 +27,28 @@ namespace PlanZajec.Parser
             foreach (var singleFileEntrie in fileEntries)
             {
                 var fullTextInFile = File.ReadAllLines(singleFileEntrie);
-                //ready clear groupArray
-                Block blockOfCourse = TryGetBlockOfCourse(fullTextInFile);
-                var groupArray = GetGroupRawData(fullTextInFile).ToList();
-                if (groupArray.Count == 0) return false;
-                //iterate trougth groupArray and call SearchLine for each string[] lines
-                var datas = groupArray.Select(lines => SearchLine(lines, blockOfCourse)).ToList();
-                System.Diagnostics.Debug.WriteLine(datas.Count());
-                foreach (var gd in datas)
-                {
-                    ZapisDoBazy.zapisz(gd);
-                }
+                if (!RunParserForAllLine(fullTextInFile)) return false;
             }
             return true;
         }
+
+        public static bool RunParserForAllLine(string[] fullThmlTextInFile)
+        {
+            //ready clear groupArray
+            //TryIt(fullThmlTextInFile);
+            Block blockOfCourse = TryGetBlockOfCourse(fullThmlTextInFile);
+            var groupArray = GetGroupRawData(fullThmlTextInFile).ToList();
+            if (groupArray.Count == 0) return false;
+            //iterate trougth groupArray and call SearchLine for each string[] lines
+            var datas = groupArray.Select(lines => SearchLine(lines, blockOfCourse)).ToList();
+            System.Diagnostics.Debug.WriteLine(datas.Count());
+            foreach (var gd in datas)
+            {
+                ZapisDoBazy.zapisz(gd);
+            }
+            return true;
+        }
+
         /// <summary>
         /// Metoda Parsująca pojedynczy plik html
         /// </summary>
@@ -159,7 +170,8 @@ namespace PlanZajec.Parser
             if (beginingOfSubarray < 0)
                 return null;
             var numberToTake =  26;
-            var partialResultTab = textArrayStrings.Skip(beginingOfSubarray).Take(numberToTake).ToArray();
+            var beginTrimLines = textArrayStrings.Skip(beginingOfSubarray);
+            var partialResultTab = beginTrimLines.Take(numberToTake).ToArray();
             var blockCode = "";
             var blockName = "";
             if (partialResultTab[14].Contains("INZ"))
@@ -192,6 +204,37 @@ namespace PlanZajec.Parser
             }
         }
 
+        public static void TryIt(string[] array)
+        {
+            HtmlDocument document2 = new HtmlDocument();
+            StringBuilder builder = new StringBuilder();
+            foreach (string line in array)
+            {
+                builder.Append(line+"\n");
+            }
+            document2.LoadHtml(builder.ToString());
+            var cos = document2.DocumentNode.SelectNodes("//a");
 
+            foreach (var node in cos)
+            {
+                if (node.Attributes["name"] != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(node.Attributes["name"].Value);
+                }
+            }
+            var cos2 = cos.SkipWhile(aNode => 
+                aNode.Attributes["name"] == null
+                || aNode.Attributes["name"].Value.StartsWith("hrefKursyGrupyBlokiTabelaBlok"));
+            
+            var cos3 = cos2.ElementAt(1);
+            var cos4 = cos3.ChildNodes;
+            foreach (var node in cos4)
+            {
+                if (node.InnerText != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(node.InnerText);
+                }
+            }
+        }
     }
 }
