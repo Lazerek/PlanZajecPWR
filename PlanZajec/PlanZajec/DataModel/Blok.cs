@@ -3,7 +3,9 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    /// <summary>
+    /// Klasa przechowuj¹ca dane o bloku, w którym znajduj¹ siê kursy
+    /// </summary>
     [Table("Blok")]
     public partial class Blok
     {

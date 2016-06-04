@@ -11,13 +11,15 @@ using System.Windows.Media.Imaging;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for EksportGraficznyWindow.xaml
+    /// Klasa pozwalająca zapisać plan jako plik graficzny
     /// </summary>
     public partial class EksportGraficznyWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
         private long[] tab;
-
+        /// <summary>
+        /// Konstruktor, który pobiera plany i wyświetla ich nazwy w combobox
+        /// </summary>
         public EksportGraficznyWindow()
         {
             InitializeComponent();
@@ -35,6 +37,9 @@ namespace PlanZajec.Views
             }
             PlanyComboBox.SelectedIndex = 0;
         }
+        /// <summary>
+        /// Metoda zapisująca obraz
+        /// </summary>
 
         private void Zapisz_Click(object sender, RoutedEventArgs e)
         {
@@ -45,6 +50,12 @@ namespace PlanZajec.Views
             SaveAsPng(src, outputStream);
 
         }
+
+        /// <summary>
+        /// Metoda tworząca bitmapę na podstawie planu
+        /// </summary>
+        /// <param name="view"></param>
+        /// <returns></returns>
         public static RenderTargetBitmap GetImage(PlanView view)
         {
             Size size = new Size(view.PlanWidth, view.PlanHeight);
@@ -63,6 +74,11 @@ namespace PlanZajec.Views
             result.Render(drawingvisual);
             return result;
         }
+        /// <summary>
+        /// Metoda zapisująca konwertująca bitmapę ma obraz w rozszerzeniu png
+        /// </summary>
+        /// <param name="src">Obraz źródłowy</param>
+        /// <param name="outputStream">Strumień do zapisu pliku</param>
         public static void SaveAsPng(RenderTargetBitmap src, Stream outputStream)
         {
             PngBitmapEncoder encoder = new PngBitmapEncoder();

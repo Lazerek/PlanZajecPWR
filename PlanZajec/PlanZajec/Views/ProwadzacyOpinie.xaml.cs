@@ -37,8 +37,7 @@ namespace PlanZajec
         /// <summary>
         /// Metoda pozwalająca zapisać opinie oraz ocenę o prowadzącym
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Zapisz(object sender, RoutedEventArgs e)
         {
             var changeText = false;
@@ -60,8 +59,7 @@ namespace PlanZajec
         /// <summary>
         /// Metoda aktualizująca tekst po zmianie prowadzącego.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void onChange(object sender, RoutedEventArgs e)
         {
             OcenaLabel.Content = "Wpisz ocenę od 2,0 do 5,5";
@@ -73,8 +71,7 @@ namespace PlanZajec
         /// <summary>
         /// Metoda sprawdzająca poprawność wpisanych znaków w ocenie
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
         {
             var stringToCheck = Ocena.Text;

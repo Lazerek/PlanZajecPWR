@@ -5,7 +5,9 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    /// <summary>
+    /// Klasa przechowuj¹ca informacje o planie
+    /// </summary>
     [Table("Plany")]
     public partial class Plany : IEquatable<Plany>
     {
@@ -26,25 +28,40 @@ namespace PlanZajec.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupyZajeciowe> GrupyZajeciowe { get; set; }
-
+        /// <summary>
+        /// Metoda sprawdzaj¹ca istnienie planu o tym samym ID
+        /// </summary>
+        /// <param name="other">Plan do porównania</param>
+        /// <returns>Informacja czy plany maj¹ taki sam id</returns>
         public bool Equals(Plany other)
         {
             if (other == null)
                 return false;
             return IdPlanu == other.IdPlanu;
         }
+        /// <summary>
+        /// Metoda porównuj¹ca 2 plany jako obiekty
+        /// </summary>
+        /// <param name="obj">Porównywany obiekt</param>
+        /// <returns>Informacja czy plany s¹ identyczne</returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
                 return false;
             return Equals(obj as Plany);
         }
-        
+        /// <summary>
+        /// Metoda zwracaj¹ca dni wyjête z planu
+        /// </summary>
+        /// <returns>Tablica z wykluczonymi dniami do uk³adania planu</returns>
         public string[] GetWolneDni()
         {
             return WolneDni?.Split(',');
         }
-
+        /// <summary>
+        /// Metoda dodaj¹ca dni i godziny, w których nie chcemy dodawaæ zajêæ do planu
+        /// </summary>
+        /// <param name="str"></param>
         public void AddWolneDni(string str)
         {
             string nowy = "";
@@ -85,7 +102,12 @@ namespace PlanZajec.DataModel
             }
             WolneDni = nowy;
         }
-
+        /// <summary>
+        /// Funkcja dodaj¹ca wolne dni do stringa
+        /// </summary>
+        /// <param name="str1">Godziny pocz¹tkowe wolnego dnia</param>
+        /// <param name="str2">Godziny koñcowe wolnego dnia</param>
+        /// <returns>Wolne dni</returns>
         private string AppendWolneDni(string str1, string str2)
         {
             string wynik = "";

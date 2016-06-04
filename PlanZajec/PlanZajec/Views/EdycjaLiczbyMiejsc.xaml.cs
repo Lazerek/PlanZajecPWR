@@ -13,9 +13,6 @@ namespace PlanZajec.Views
     public partial class EdycjaLiczbyMiejsc : Window
     {
         string kodGrupy;
-        /// <summary>
-        /// Domyślny konstruktor
-        /// </summary>
         public EdycjaLiczbyMiejsc()
         {
             InitializeComponent();
@@ -32,8 +29,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda pozwalająca anulować zmianę
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void Anuluj(object sender, EventArgs e)
         {
             Close();
@@ -41,8 +37,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda zmieniająca liczbę wolnych miejsc
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void Ok(object sender, EventArgs e)
         {
             long liczbaMiejsc = 0;
@@ -56,7 +51,11 @@ namespace PlanZajec.Views
                 MessageBox.Show("Nie znaleziono grupy.", "Błąd");
             }
         }
-
+        /// <summary>
+        /// Metoda zapisująca liczbę wolnych miejsc
+        /// </summary>
+        /// <param name="liczbaMiejsc">Liczba wolnych miejsc</param>
+        /// <returns>Informacja o powodzeniu zapisu</returns>
         private bool SaveNumberOfFreePlaces(long liczbaMiejsc)
         {
             using (var uw = new UnitOfWork(new PlanPwrContext()))

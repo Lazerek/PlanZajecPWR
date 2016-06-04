@@ -4,7 +4,9 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    /// <summary>
+    /// Klasa Grup Zajęciowych, która zawiera informacje o konkretnej grupie
+    /// </summary>
     [Table("GrupyZajeciowe")]
     public partial class GrupyZajeciowe : IEquatable<GrupyZajeciowe>
     {
@@ -61,7 +63,9 @@ namespace PlanZajec.DataModel
         public virtual Kursy Kursy { get; set; }
 
         public virtual Prowadzacy Prowadzacy { get; set; }
-
+        /// <summary>
+        /// Funkcja informująca czy są jeszcze wolne miejsca w grupie
+        /// </summary>
         [NotMapped]
         public bool Wolna
         {
@@ -73,7 +77,11 @@ namespace PlanZajec.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plany> Plany { get; set; }
-
+        /// <summary>
+        /// Funkcja służąca do sprawdzania identyczności grup pod względem kodu grupy
+        /// </summary>
+        /// <param name="other">Grupa zajęciowa, którą porównujemy</param>
+        /// <returns>Czy grupa jest z tym samym kodem grupy</returns>
         public bool Equals(GrupyZajeciowe other)
         {
             return other != null && KodGrupy.Equals(other.KodGrupy);

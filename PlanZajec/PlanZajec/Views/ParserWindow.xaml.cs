@@ -9,9 +9,7 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class ParserWindow : Window
     {
-        /// <summary>
-        /// Domyślny konstruktor
-        /// </summary>
+
         public ParserWindow()
         {
             InitializeComponent();
@@ -19,8 +17,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda uruchamiająca parser przy wciśnieciu przycisku
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void RunParserButton_OnClick(object sender, RoutedEventArgs e)
         {
             bool loaded = Parser.Parser.Run();

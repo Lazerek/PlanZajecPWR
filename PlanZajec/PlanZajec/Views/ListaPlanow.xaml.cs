@@ -27,8 +27,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda anulowania okna
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void Anuluj(object sender, EventArgs e)
         {
             this.Close();
@@ -36,8 +35,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda tworzenia nowego planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void Utworz(object sender, EventArgs e)
         {
             if(plList.SelectedItems.Count > 0)

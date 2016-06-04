@@ -17,7 +17,8 @@ namespace Wpf
     public partial class MainWindow : Window
     {
         private PanelFiltrow _panelFiltrow;
-        private PanelGlowny _panelGlowny;
+        public PanelGlowny PanelGlownyOkna { get; private set; }
+
         /// <summary>
         /// Domyślny konstruktor inicjalizujący okno główne
         /// </summary>
@@ -41,8 +42,8 @@ namespace Wpf
             }
             //Initialize window
             InitializeComponent();
-            _panelGlowny = new PanelGlowny(this);
-            PGlowny.Children.Add(_panelGlowny);
+            PanelGlownyOkna = new PanelGlowny(this);
+            PGlowny.Children.Add(PanelGlownyOkna);
             //add panel filtrow
             _panelFiltrow = new PanelFiltrow(this);
             PFiltrow.Children.Add(_panelFiltrow);
@@ -50,8 +51,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zamykająca aplikację przy wyjściu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
@@ -60,8 +60,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pokazująca okno z parserem
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void ShowParserWindow(object sender, EventArgs e)
         {
             ParserWindow pw = new ParserWindow();
@@ -70,33 +69,31 @@ namespace Wpf
         /// <summary>
         /// Metoda pokazująca okno HTML
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void ShowHTMLWindow(object sender, EventArgs e)
         {
             OknoDanychEdukacji ode = new OknoDanychEdukacji();
-            ode.Show();
+            ode.ShowDialog();
         }
 
         /// <summary>
         /// Metoda pozwalająca dodać nowy plan z poziomu menu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuNowyPlan(object sender, EventArgs e)
         {
-            
+            AddPlanWindow addPlan = new AddPlanWindow();
+            addPlan.ShowDialog();
         }
 
         /// <summary>
         /// Metoda pozwalająca utworzyć alternatywny plan na podstawie istniejącego
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
         {
             ListaPlanow lp = preparePlanList();
-            lp.Show();
+            lp.ShowDialog();
         }
         /// <summary>
         /// Metoda przygotowująca listę planów
@@ -132,8 +129,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pozwalająca otworzyć zapisany plik z planem
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuOtworz(object sender, EventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -150,8 +146,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno z zapisem planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuZapisz(object sender, EventArgs e)
         {
             ZapisWindow zw = new ZapisWindow();
@@ -161,8 +156,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno z zapisem planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuZapiszJako(object sender, EventArgs e)
         {
             ZapisWindow zw = new ZapisWindow();
@@ -172,8 +166,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno do drukowania planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuDrukuj(object sender, EventArgs e)
         {
             DrukujWindow dw = new DrukujWindow();
@@ -183,29 +176,27 @@ namespace Wpf
         /// <summary>
         /// Metoda ekposrtująca plik jako pdf
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuEksportujPDF(object sender, EventArgs e)
         {
-            //TODO
+            Eksportuj eks = new Eksportuj(true);
+            eks.ShowDialog();
         }
 
         /// <summary>
         /// Metoda eksportująca plan jako plik graficzny
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
-            EksportGraficznyWindow egw = new EksportGraficznyWindow();
-            egw.ShowDialog();
+            Eksportuj eks = new Eksportuj(false);
+            eks.ShowDialog();
         }
 
         /// <summary>
         /// Metoda zakończająca działanie programu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuZakoncz(object sender, EventArgs e)
         {
             this.Close();
@@ -214,11 +205,11 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno z informacjami
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuInformacje(object sender, EventArgs e)
         {
-            //TODO
+            OknoInformacji o = new OknoInformacji();
+            o.ShowDialog();
         }
         /// <summary>
         /// Metoda przełądowująca komponenty okna
@@ -227,8 +218,8 @@ namespace Wpf
         {
             //reload palen glowny
             PGlowny.Children.RemoveAt(0);
-            _panelGlowny = new PanelGlowny(this);
-            PGlowny.Children.Add(_panelGlowny);
+            PanelGlownyOkna = new PanelGlowny(this);
+            PGlowny.Children.Add(PanelGlownyOkna);
             //relaod panel filtrow
             PFiltrow.Children.RemoveAt(0);
             _panelFiltrow = new PanelFiltrow(this);

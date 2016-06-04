@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Data.Entity.Core.Common.EntitySql;
+using System.Windows;
+using PlanZajec.EdukacjaIntegration;
 
 namespace PlanZajec.Views
 {
@@ -11,23 +13,23 @@ namespace PlanZajec.Views
         /// Domyślny konstruktor
         /// </summary>
         public OknoDanychEdukacji()
-        {
+        { 
             InitializeComponent();
         }
         /// <summary>
         /// Klasa pobierająca dane
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Sciagnij(object sender, RoutedEventArgs e)
         {
-
+            EdukacjaConnector eduConnector = new EdukacjaConnector(Login.Text, PasswordToEdukacja.Password);
+            eduConnector.LinesConnector = Parser.Parser.RunParserForAllLine;
+            eduConnector.Run();
         }
         /// <summary>
         /// Klasa do anulowania działania
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();

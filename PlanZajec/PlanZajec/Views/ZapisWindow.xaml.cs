@@ -39,8 +39,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda zapisująca plan po wyciśnięciu przycisku
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Zapisz_Click(object sender, RoutedEventArgs e)
         {
             int index = PlanyComboBox.SelectedIndex;
@@ -53,6 +52,14 @@ namespace PlanZajec.Views
                 ZapisDoBazy.export(dialog, tab[index]);
             }
         }
-    }
 
+         /// <summary>
+        /// Metoda zamykająca okno bez zapisu planu
+        /// </summary>
+
+        private void Anuluj_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

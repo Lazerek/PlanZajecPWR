@@ -16,7 +16,6 @@
             <ComboBoxItem IsSelected="True" Selected="OnSelectedLecturers">Przeglądanie prowadzących</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedLecturersOpinion">Prowadzacy - opinie</ComboBoxItem>
             <ComboBoxItem Selected="OnSelectedUsun">Usuń plan z bazy</ComboBoxItem>
-            <ComboBoxItem>...</ComboBoxItem>
         </ComboBox>
         <Border BorderBrush="#acacac" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,37,20,5">
             <Grid x:Name="PrawePodmenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>

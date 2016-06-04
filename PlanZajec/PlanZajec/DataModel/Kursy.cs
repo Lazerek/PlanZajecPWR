@@ -4,7 +4,9 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    /// <summary>
+    /// Klasa z danymi dotycz¹ca kursów, zawieraj¹ca dane takie jak kod kursu, nazwa kursu, blok i liczba punktów ECTS
+    /// </summary>
     [Table("Kursy")]
     public partial class Kursy
     {
@@ -31,7 +33,9 @@ namespace PlanZajec.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupyZajeciowe> GrupyZajeciowe { get; set; }
-
+        /// <summary>
+        /// Funkcja zwracaj¹ca skrócon¹ nazwê kursu
+        /// </summary>
         [NotMapped]
         public string SkrotKursu
         {

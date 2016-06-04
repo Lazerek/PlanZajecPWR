@@ -21,9 +21,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="55"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
@@ -41,12 +39,22 @@
         <Label x:Name="label1" Content="Liczba wolnych miejsc"  HorizontalAlignment="Left" Margin="0,23,0,0" Grid.Row="9" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <TextBox x:Name="wolneMiejsca" Text=""  KeyDown="filtrujEnter" FontSize="16" PreviewTextInput="PreviewTextInput2" HorizontalAlignment="Stretch" Margin="0,4,0,0" Grid.Row="11" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_wsz" Content="Wszystko" HorizontalAlignment="Left"  Grid.Row="12" VerticalAlignment="Top" Checked="checkBoxWszystko_Checked"  Unchecked="check" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <CheckBox x:Name="cb_wyk" Content="Wykład" HorizontalAlignment="Left"  Grid.Row="13" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="15" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <CheckBox x:Name="cb_cw" Content="Cwiczenia" HorizontalAlignment="Left"  Grid.Row="16" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <CheckBox x:Name="cb_wolne" Content="Pokaż tylko wolne" HorizontalAlignment="Left"  Grid.Row="17" VerticalAlignment="Top" Checked="pokazTylkoWolne"  Unchecked="pokazTylkoWolne" Margin="0,14,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="18" Width="97" Height="30" Click="wyczyscFiltr" HorizontalAlignment="Left" Margin="0,22,0,-32"/>
-        <Button x:Name="filtruj" Content="Filtruj" HorizontalAlignment="Right" Grid.Row="18" Width="62" Height="30" Click="filtruj_Click" Margin="0,22,0,-32"/>
+        <Grid Grid.Row="13">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox x:Name="cb_wyk" Content="Wykład" HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+            <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+            <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+            <CheckBox x:Name="cb_cw" Content="Cwiczenia" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+        </Grid>
+        <CheckBox x:Name="cb_wolne" Content="Pokaż tylko wolne grupy" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top" Checked="pokazTylkoWolne"  Unchecked="pokazTylkoWolne" Margin="0,14,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="15" Width="97" Height="30" Click="wyczyscFiltr" HorizontalAlignment="Left" Margin="0,22,0,-32"/>
+        <Button x:Name="filtruj" Content="Filtruj" HorizontalAlignment="Right" Grid.Row="15" Width="62" Height="30" Click="filtruj_Click" Margin="0,22,0,-32"/>
     </Grid>
 </UserControl>

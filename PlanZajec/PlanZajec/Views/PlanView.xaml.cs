@@ -99,7 +99,7 @@ namespace PlanZajec.Views
         }
 
         /// <summary>
-        ///     Delete
+        /// Funkcja usuwająca widok planu
         /// </summary>
         private void Delete()
         {
@@ -110,7 +110,7 @@ namespace PlanZajec.Views
         }
 
         /// <summary>
-        ///     Refresh PlanView
+        /// Metoda odświeżająca plan
         /// </summary>
         public static void RefreshSchedule()
         {
@@ -123,10 +123,10 @@ namespace PlanZajec.Views
        
 
         /// <summary>
-        ///     TabelaGrup resize handler
+        ///  Obsługa tabeli grup na zmianę rozmiaru
         /// </summary>
-        /// <param name="sender">In this function sender == TabelaGrup</param>
-        /// <param name="e">New sizes</param>
+        /// <param name="sender">Tabela grup</param>
+        /// <param name="e">Nowy rozmiar</param>
         private void TabelaGrup_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             PlanWidth = e.NewSize.Width;

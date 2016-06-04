@@ -14,14 +14,12 @@ namespace Wpf
     public partial class PanelFiltrow : UserControl
     {
         private bool lpm;
-        private OknoOpcji _oknoOpcji;
         private readonly MainWindow _mainWindow;
 
         public PanelFiltrow(MainWindow mainWindow)
         {
             InitializeComponent();
             lpm = false;
-            _oknoOpcji = new OknoOpcji();
             PrawePodmenu.Children.Add(new ProwadzacyMenu());
             _mainWindow = mainWindow;
         }
@@ -38,8 +36,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zmieniajaca okno na okno z usuwaniem planów
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnSelectedUsun(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -53,8 +50,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zmieniająca okno na okno ze zmianą opinii prowadzących
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnSelectedLecturersOpinion(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)
@@ -69,17 +65,6 @@ namespace Wpf
         {
             lpm = true;
         }
-        public void imgClick2(object sender, MouseEventArgs e)
-        {
-            if (lpm)
-            {
-                if (!_oknoOpcji.IsVisible)
-                {
-                    _oknoOpcji = new OknoOpcji();
-                    _oknoOpcji.Show();
-                }
-            }
-        }
 
         public void imgClickC(object sender, MouseEventArgs e)
         {
@@ -88,8 +73,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zmieniająca okno na okno z filtrowanie grup
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void OnSelectedFiltrujGrupy(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -103,8 +87,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zmieniająca okno na okno z wybranymi grupami
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnSelectedGrupy(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -126,8 +109,7 @@ namespace Wpf
         /// <summary>
         /// Metoda chowająca i wyświetlająca okno
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void gButtonClicked(object sender, RoutedEventArgs e)
         {
             if (_mainWindow.kolumna1.MinWidth == 15)
@@ -148,8 +130,7 @@ namespace Wpf
         /// <summary>
         /// Metoda wyświetlająca okno z kontrolą kursów
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void KontrolaKursowComboItem_OnSelected(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)
@@ -161,8 +142,7 @@ namespace Wpf
         /// <summary>
         /// Metoda wyświetlajaca okno z dodaniem wolnych dni
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnSelectedDodajWolny(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null)

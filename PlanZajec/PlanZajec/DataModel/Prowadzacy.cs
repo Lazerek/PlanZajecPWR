@@ -3,7 +3,9 @@ namespace PlanZajec.DataModel
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    /// <summary>
+    /// Klasa zawieraj¹ce informacje o prowadz¹cym
+    /// </summary>
     [Table("Prowadzacy")]
     public partial class Prowadzacy
     {

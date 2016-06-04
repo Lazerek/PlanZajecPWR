@@ -5,11 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanZajec.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="200"
+             d:DesignHeight="550" d:DesignWidth="200"
              x:Name="PanelKafliUserControl"
              >
     <Grid>
-        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="filtry" Height="45"/>
+            <RowDefinition Height="17"/>
+            <RowDefinition x:Name="kafelki" Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="row1" Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="label" Grid.Row ="0" Content="Nazwa kursu" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+            <TextBox x:Name="nazwaK" KeyDown="filtrujEnter" Grid.Row ="1" FontSize="16" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="80, 0, 0, 0"/>
+            <Label x:Name="label2" Grid.Row ="2" Content="Prowadzący" HorizontalAlignment="Left" Height="29"  VerticalAlignment="Top" Width="166"/>
+            <TextBox x:Name="nazwaP" KeyDown="filtrujEnter" Grid.Row ="3" FontSize="16" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label x:Name="label3" Grid.Row ="4" Content="Kod Grupy" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+            <TextBox x:Name="nazwaKG" KeyDown="filtrujEnter" Grid.Row ="5" FontSize="16" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label x:Name="label4" Grid.Row ="6" Content="Kod Kursu" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+            <TextBox x:Name="nazwaKK" KeyDown="filtrujEnter" Grid.Row ="7" FontSize="16" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label x:Name="label5" Grid.Row ="8" Content="Potok" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="166"/>
+            <TextBox x:Name="nazwaPot" KeyDown="filtrujEnter" Grid.Row ="9" FontSize="16" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label x:Name="label1" Content="Liczba wolnych miejsc"  HorizontalAlignment="Left" Margin="0,23,0,0" Grid.Row="9" VerticalAlignment="Top" Grid.RowSpan="2"/>
+            <TextBox x:Name="wolneMiejsca" Text=""  KeyDown="filtrujEnter" FontSize="16" PreviewTextInput="PreviewTextInput2" HorizontalAlignment="Stretch" Margin="0,4,0,0" Grid.Row="11" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <CheckBox x:Name="cb_wsz" Content="Wszystko" HorizontalAlignment="Left"  Grid.Row="12" VerticalAlignment="Top" Checked="checkBoxWszystko_Checked"  Unchecked="check" Margin="0,14,0,0" Grid.RowSpan="2"/>
+            <Grid Grid.Row="13">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="cb_wyk" Content="Wykład" HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+                <CheckBox x:Name="cb_lab" Content="Laboratorium" HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+                <CheckBox x:Name="cb_pro" Content="Projekt" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+                <CheckBox x:Name="cb_cw" Content="Cwiczenia" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Checked="check"  Unchecked="uncheck" Margin="0,14,0,0" Grid.RowSpan="2"/>
+            </Grid>
+            <CheckBox x:Name="cb_wolne" Content="Pokaż tylko wolne grupy" HorizontalAlignment="Left"  Grid.Row="14" VerticalAlignment="Top" Checked="pokazTylkoWolne"  Unchecked="pokazTylkoWolne" Margin="0,14,0,0" Grid.RowSpan="2"/>
+            <Button x:Name="clear" Content="Wyczyść filtr" Grid.Row="15" Width="97" Height="30" Click="wyczyscFiltr" HorizontalAlignment="Left" Margin="0, 22, 0, -32" VerticalAlignment="Top"/>
+            <Button x:Name="filtruj" Content="Filtruj" HorizontalAlignment="Right" Grid.Row="15" Width="62" Height="30" Click="filtruj_Click" Margin="0, 22, 0, -32" VerticalAlignment="Top"/>
+        </Grid> 
+        <Button x:Name="panelButton" Content="▼" Click="panelClick" Grid.Row="1" FontSize="10"/>
+        <ListBox Grid.Row="2"  ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

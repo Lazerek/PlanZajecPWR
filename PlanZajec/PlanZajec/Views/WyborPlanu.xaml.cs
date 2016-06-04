@@ -16,7 +16,6 @@ namespace PlanZajec.Views
     {
         public event Action<Plany> ChosenPlanToShowEventHandler;
         public event Func<Plany,bool> ChosenPlanToDeleteEventHandler;
-        public event Action<string> AddToPlan;
         /// <summary>
         /// Domyślny konstruktor
         /// </summary>
@@ -47,8 +46,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda pomagająca wybrać plan
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void WywierzPlan(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.Write("Wybor planu");
@@ -59,8 +57,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda usuwania planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Usun(object sender, RoutedEventArgs e)
         {
             var numberOfSch = PlanyKafleControl.Items.Count;
@@ -79,26 +76,20 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda dodania planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void DodajPlan(object sender, RoutedEventArgs e)
         {
             AddPlanWindow addPlan = new AddPlanWindow();
-            bool? result = addPlan.ShowDialog();
-            if (result.HasValue && result.Value)
-            {
-                AddToPlan?.Invoke(addPlan.PlanTitle);
-            }
+            addPlan.ShowDialog();
         }
         /// <summary>
         /// Metoda dodania planu alternatywnego
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void DodajAlternatywnyPlan(object sender, RoutedEventArgs e)
         {
             ListaPlanow lp = preparePlanList();
-            lp.Show();
+            lp.ShowDialog();
         }
         /// <summary>
         /// Metoda przygotowująca listę planów

@@ -7,9 +7,6 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class KafelekGrup : UserControl
     {
-        /// <summary>
-        /// Domyślny konstruktor
-        /// </summary>
         public KafelekGrup()
         {
             InitializeComponent();

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +17,20 @@ namespace PlanZajec.EdukacjaIntegration
 {
     public class EdukacjaConnector
     {
+        private string classOfNumericSubpagesContainer = "paging-numeric-span";
+
         private IWebDriver driver;
         private IJavaScriptExecutor diverScriptExecutor{
             get { return (IJavaScriptExecutor)driver; }
         }
-    private StringBuilder verificationErrors;
+        private StringBuilder verificationErrors;
         private string baseURL;
         private bool acceptNextAlert = true;
 
         private string password;
         private string login;
+
+        public Func<string[],bool> LinesConnector { get; set; }
 
         public EdukacjaConnector(string login, string password)
         {
@@ -36,8 +42,22 @@ namespace PlanZajec.EdukacjaIntegration
         public void SetupTest()
         {
             driver = new FirefoxDriver();
+            HideWindow();
             baseURL = "https://edukacja.pwr.wroc.pl";
             verificationErrors = new StringBuilder();
+        }
+
+        private void HideWindow()
+        {
+            //Process[] processRunning = Process.GetProcesses();
+            //foreach (Process pr in processRunning)
+            //{
+            //    if (pr.ProcessName == "notepad")
+            //    {
+            //        hWnd = pr.MainWindowHandle.ToInt32();
+            //        ShowWindow(hWnd, SW_HIDE);
+            //    }
+            //}
         }
 
         public void Run()
@@ -62,7 +82,6 @@ namespace PlanZajec.EdukacjaIntegration
         }
 
 
-        private string classOfNumericSubpagesContainer = "paging-numeric-span";
 
         [Test]
         public void TheTextowyTest()
@@ -80,8 +99,9 @@ namespace PlanZajec.EdukacjaIntegration
             //TODO: Obsługa błędów, gdy edukacja dodaje kartę "0"
 
             //GoForAllSubPages(); //Testing place
+
             BrowseZapisy();
-            //GoForAllSubPages();
+            GoForAllSubPages();
             //ReadPage();
 
             driver.FindElement(By.Name("wyloguj")).Click();
@@ -117,6 +137,7 @@ namespace PlanZajec.EdukacjaIntegration
             int lastValue;
             while (actualNumericSpan != null)
             {
+                ReadPage(); //TODO -> zmiana miejsca.
                 lastValue = int.Parse(actualNumericSpan.GetAttribute("value"));
                 actualNumericSpan.Click();
                 actualNumericSpan = GetNextPageInPaging(i, lastValue);
@@ -159,10 +180,14 @@ namespace PlanZajec.EdukacjaIntegration
         {
             //TODO: Load to database
             string strona = driver.PageSource;
-            foreach (var linia in strona.Split('\n'))
-            {
-                Console.WriteLine(linia);
-            }
+            string[] linieWStronie = strona.Split(new string[] {Environment.NewLine}, StringSplitOptions.None);
+            //foreach (var linia in linieWStronie)
+            //{
+            //    Console.WriteLine(linia);
+            //}
+            File.WriteAllLines("test.html",linieWStronie);
+
+            LinesConnector?.Invoke(linieWStronie);
         }
 
         private bool IsElementPresent(By by)

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using PlanZajec.DataAccessLayer;
+using PlanZajec.DataModel;
+using PlanZajec.ViewModels;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PlanZajec.Views
@@ -20,8 +23,6 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda dodająca plan
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Dodaj(object sender, RoutedEventArgs e)
         {
             if(string.IsNullOrEmpty(PlanTitle))
@@ -30,14 +31,22 @@ namespace PlanZajec.Views
             }
             else
             {
-                DialogResult = true;
+                Plany plan;
+                using (var unit = new UnitOfWork(new PlanPwrContext()))
+                {
+                    plan = new Plany { NazwaPlanu = PlanTitle };
+                    unit.Plany.Add(plan);
+                    unit.SaveChanges();
+                }
+                PlanyViewModel.Instance.DodajPlan(plan);
+                MessageBox.Show("Utworzono nowy plan");
+                this.Close();
             }
         }
         /// <summary>
         /// Metoda pozwalająca anulować dodawanie planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -45,8 +54,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda tworząca scape dla okna głównego
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void sprawdzPrzyciski(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

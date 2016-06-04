@@ -22,8 +22,7 @@ namespace PlanZajec
         /// <summary>
         /// Metoda usuwająca plan
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Usun(object sender, RoutedEventArgs e)
         {
             var plan = (Plany)listaPlanow.SelectedItem;
