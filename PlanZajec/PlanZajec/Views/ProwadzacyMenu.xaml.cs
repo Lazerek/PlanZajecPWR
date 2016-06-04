@@ -21,8 +21,7 @@ namespace PlanZajec
         /// <summary>
         /// Filtorwanie prowadzących po wpisanym tekście
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void SzukajTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             ViewModel.FiltrujProwadzacych(szukajTextBox.Text);

@@ -7,9 +7,7 @@ namespace PlanZajec.Views
     /// </summary>
     public partial class KafelPlanu : UserControl
     {
-        /// <summary>
-        /// Domyślny konstruktor
-        /// </summary>
+
         public KafelPlanu()
         {
             InitializeComponent();

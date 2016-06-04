@@ -49,7 +49,7 @@ namespace PlanZajec.Views
         private long? _otwartyPlanId;
 
         /// <summary>
-        /// Domyslny konstruktor
+        /// Domyslny konstruktor tworzący panel głupy
         /// </summary>
         public PanelGlowny(MainWindow mainWindow)
         {

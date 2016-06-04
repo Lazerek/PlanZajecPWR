@@ -51,8 +51,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zamykająca aplikację przy wyjściu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
@@ -61,8 +60,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pokazująca okno z parserem
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void ShowParserWindow(object sender, EventArgs e)
         {
             ParserWindow pw = new ParserWindow();
@@ -71,8 +69,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pokazująca okno HTML
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void ShowHTMLWindow(object sender, EventArgs e)
         {
             OknoDanychEdukacji ode = new OknoDanychEdukacji();
@@ -82,8 +79,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pozwalająca dodać nowy plan z poziomu menu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuNowyPlan(object sender, EventArgs e)
         {
             AddPlanWindow addPlan = new AddPlanWindow();
@@ -93,8 +89,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pozwalająca utworzyć alternatywny plan na podstawie istniejącego
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuNowyAlternatywnyPlan(object sender, EventArgs e)
         {
             ListaPlanow lp = preparePlanList();
@@ -134,8 +129,7 @@ namespace Wpf
         /// <summary>
         /// Metoda pozwalająca otworzyć zapisany plik z planem
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuOtworz(object sender, EventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -152,8 +146,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno z zapisem planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuZapisz(object sender, EventArgs e)
         {
             ZapisWindow zw = new ZapisWindow();
@@ -163,8 +156,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno z zapisem planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuZapiszJako(object sender, EventArgs e)
         {
             ZapisWindow zw = new ZapisWindow();
@@ -174,8 +166,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno do drukowania planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuDrukuj(object sender, EventArgs e)
         {
             DrukujWindow dw = new DrukujWindow();
@@ -185,8 +176,7 @@ namespace Wpf
         /// <summary>
         /// Metoda ekposrtująca plik jako pdf
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuEksportujPDF(object sender, EventArgs e)
         {
             Eksportuj eks = new Eksportuj(true);
@@ -196,8 +186,7 @@ namespace Wpf
         /// <summary>
         /// Metoda eksportująca plan jako plik graficzny
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuEksportujPlikGraficzny(object sender, EventArgs e)
         {
             Eksportuj eks = new Eksportuj(false);
@@ -207,8 +196,7 @@ namespace Wpf
         /// <summary>
         /// Metoda zakończająca działanie programu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuZakoncz(object sender, EventArgs e)
         {
             this.Close();
@@ -217,8 +205,7 @@ namespace Wpf
         /// <summary>
         /// Metoda otwierająca okno z informacjami
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         public void menuInformacje(object sender, EventArgs e)
         {
             OknoInformacji o = new OknoInformacji();

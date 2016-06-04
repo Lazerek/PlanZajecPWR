@@ -33,8 +33,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda dodająca wolne przydziały do planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void DodajWolneButton_OnClick(object sender, RoutedEventArgs e)
         {
             if(SelectPlanComboBox.SelectedItem != null)

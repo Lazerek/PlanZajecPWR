@@ -38,8 +38,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda przygotowująca do otwarcia menu kontekstowego
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void PrepareOpenContextMenu(object sender, ContextMenuEventArgs e)
         {
             KafelekGrup kafelek = sender as KafelekGrup;
@@ -90,8 +89,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Obsługa na dodanie kafelka do planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnAddToPlanHandler(object sender, RoutedEventArgs e)
         {
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
@@ -103,8 +101,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Obsługa na usunięciu z planu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void OnRemoveFromPlanHandler(object sender, RoutedEventArgs e)
         {
             using (var unitOfWork = new UnitOfWork(new PlanPwrContext()))
@@ -127,7 +124,9 @@ namespace PlanZajec.Views
                 otworzPanel();
             }
         }
-
+        /// <summary>
+        /// Funkcja otwierająca panel
+        /// </summary>
         private void otworzPanel()
         {
             panelIsOpen = true;
@@ -138,7 +137,9 @@ namespace PlanZajec.Views
             Grid.SetRow(nazwaK, 1);
             nazwaK.Margin = new Thickness(0, 0, 0, 0);
         }
-
+        /// <summary>
+        /// Funkcja zamykająca panel
+        /// </summary>
         private void zamknijPanel()
         {
             panelIsOpen = false;
@@ -161,8 +162,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Obsługa przycisku filtruj
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void filtruj_Click(object sender, RoutedEventArgs e)
         {
             Boolean lab = false, projekt = false, cwiczenia = false, wszystko = false, wyklad = false, wolne = false;

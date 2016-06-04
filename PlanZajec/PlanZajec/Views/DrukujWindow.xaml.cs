@@ -40,10 +40,9 @@ namespace PlanZajec.Views
             PlanyComboBox.SelectedIndex = 0;
         }
         /// <summary>
-        /// Przycisk drukowania
+        /// Metoda wywołująca drukowanie planu
         /// </summary>
-        /// <param name="sender">/param>
-        /// <param name="e"></param>
+
         private void Drukuj(object sender, RoutedEventArgs e)
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
@@ -57,6 +56,9 @@ namespace PlanZajec.Views
                 DrukujPlan(pv, planDoWydruku);
 
         }
+        /// <summary>
+        /// Metoda drukujaca plan
+        /// </summary>
         private void DrukujPlan(PlanView pv, Plany planDoWydruku)
         {
             //MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();

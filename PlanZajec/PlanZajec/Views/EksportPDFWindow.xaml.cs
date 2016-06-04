@@ -20,12 +20,15 @@ using System.Windows.Shapes;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for EksportPDFWindow.xaml
+    /// Klasa pozwalająca zapisać plan w formacie PDF
     /// </summary>
     public partial class EksportPDFWindow : Window
     {
         public ObservableCollection<Plany> plany { get; private set; }
         private long[] tab;
+        /// <summary>
+        /// Konstruktor pobierający plany i je wyświetlajćy w combobox
+        /// </summary>
         public EksportPDFWindow()
         {
             InitializeComponent();
@@ -44,6 +47,10 @@ namespace PlanZajec.Views
             }
             PlanyComboBox.SelectedIndex = 0;
         }
+        /// <summary>
+        /// Metoda zapisująca pdf
+        /// </summary>
+
         private void Zapisz_Click(object sender, RoutedEventArgs e)
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
@@ -53,6 +60,11 @@ namespace PlanZajec.Views
             SaveAsPng(src, outputStream);
 
         }
+        /// <summary>
+        /// Metoda tworząca bitmapę planu
+        /// </summary>
+        /// <param name="view">Widok planu</param>
+        /// <returns>Bitmapa planu</returns>
         public static RenderTargetBitmap GetImage(PlanView view)
         {
             Size size = new Size(view.PlanWidth, view.PlanHeight);
@@ -71,12 +83,18 @@ namespace PlanZajec.Views
             result.Render(drawingvisual);
             return result;
         }
+        /// <summary>
+        /// Metoda zapisująca bitmapę jako png
+        /// </summary>
+        /// <param name="src">Źródło obrazka</param>
+        /// <param name="outputStream">Strumień zapisu</param>
         public static void SaveAsPng(RenderTargetBitmap src, Stream outputStream)
         {
             PngBitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(src));
             encoder.Save(outputStream);
         }
+
         public static void SaveAsPng(RenderTargetBitmap src, string targetFile)
 
         {

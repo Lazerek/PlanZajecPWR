@@ -15,15 +15,20 @@ using System.Windows.Shapes;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for OknoInformacji.xaml
+    /// Klasa okna informacji o programie
     /// </summary>
     public partial class OknoInformacji : Window
     {
+        /// <summary>
+        /// Konstuktor tworzący okno
+        /// </summary>
         public OknoInformacji()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda zamykająca okno przy wciśnięciu przycisku ok
+        /// </summary>
         private void OkClicked(object sender, RoutedEventArgs e)
         {
             this.Close();
