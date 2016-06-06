@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PlanZajec.ViewModels
 {
-    class PlanyViewModel
+    class PlanyViewModel:ViewModel
     {
         public ObservableCollection<Plany> Plany { get; private set; }
 
@@ -53,7 +53,6 @@ namespace PlanZajec.ViewModels
         {
             Plany.Add(plan);
         }
-
     }
 }
 

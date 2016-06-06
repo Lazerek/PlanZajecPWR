@@ -68,18 +68,37 @@ namespace PlanZajec.Views
             {
                 GrupyZajeciowe grupaUW = unitOfWork.GrupyZajeciowe.Get(grupa.KodGrupy);
                 grupaToAddOrDeleteFromPlan = grupaUW;
-
+                var enumerator = PlanyViewModel.Instance.Plany.GetEnumerator();
+                enumerator.MoveNext();
+                while (enumerator.Current.IdPlanu != ActChosenPlanSingleton.Instance.IdPlanu)
+                {
+                    enumerator.MoveNext();
+                }
                 if(unitOfWork.GrupyZajeciowe.InThePlan(grupa.KodGrupy, ActChosenPlanSingleton.Instance.IdPlanu))
                 {
                     menuAddOrRemovFromPlan.Header = "Usuń z planu";
                     menuAddOrRemovFromPlan.Icon = minusIcon;
-                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);             
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);
+                    var enumerator2 = enumerator.Current.GrupyZajeciowe.GetEnumerator();
+                    enumerator2.MoveNext();
+                    while (grupa.KodGrupy != enumerator2.Current.KodGrupy)
+                    {
+                        enumerator2.MoveNext();
+                    }
+                    enumerator.Current.GrupyZajeciowe.Remove(enumerator2.Current);
                 }
                 else
                 {
                     menuAddOrRemovFromPlan.Header = "Dodaj do planu";
                     menuAddOrRemovFromPlan.Icon = addIcon;
                     menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
+                    var enumerator2 = unitOfWork.GrupyZajeciowe.GetAll().GetEnumerator();
+                    enumerator2.MoveNext();
+                    while(enumerator2.Current.KodGrupy != grupa.KodGrupy)
+                    {
+                        enumerator2.MoveNext();
+                    }
+                    enumerator.Current.GrupyZajeciowe.Add(enumerator2.Current);
                     CommandManager.InvalidateRequerySuggested();
                 }
             }
