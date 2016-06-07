@@ -3,6 +3,7 @@ using PlanZajec.DataModel;
 
 namespace PlanZajec.ViewModels
 {
+
     public class GrupaTamplateViewModel
     {
         public GrupyZajeciowe GrupZaj

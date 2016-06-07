@@ -126,7 +126,11 @@ namespace PlanZajec.Parser
             }
             return -1;
         }
-
+        /// <summary>
+        /// Metoda szukająca grup zajęciowych
+        /// </summary>
+        /// <param name="textArray">Wszystkie linie pliku</param>
+        /// <returns>Lista bloków gotowych do parsowania</returns>
         private static List<string[]> GetGroupRawData(string[] textArray)
         {
             var regex = new Regex(@"<a name=.hrefGrupyZajecioweKursuTabela\d{6}.> </a>");
