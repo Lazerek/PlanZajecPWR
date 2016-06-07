@@ -49,10 +49,6 @@ namespace PlanZajec.Views
             PlanView pv = new PlanView(pvm);
             Plany planDoWydruku = plany[PlanyComboBox.SelectedIndex+1];
             // PrintDialog printDialog = new PrintDialog();
-            Boolean test = false;
-            if(test)
-                DrukujPlanTest(pv);
-            else
                 DrukujPlan(pv, planDoWydruku);
 
         }
