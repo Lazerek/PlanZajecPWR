@@ -81,14 +81,9 @@ namespace PlanZajec.Views
             else
                 this.Close();
         }
-        private void DrukujPlanTest(PlanView pv)
-        {
-            PrintDialog Objprint = new PrintDialog();
-            if (Objprint.ShowDialog() == true)
-            {
-                Objprint.PrintVisual(pv, "Plan");
-            }
-        }
+        /// <summary>
+        /// Metoda do anulowania drukowania planu
+        /// </summary>
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();

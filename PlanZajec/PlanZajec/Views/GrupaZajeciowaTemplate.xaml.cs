@@ -10,11 +10,15 @@ using System.Windows.Input;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for GrupaZajeciowaTemplate.xaml
+    /// Template grupy zajęciowej używany do planview
     /// </summary>
     public partial class GrupaZajeciowaTemplate : UserControl
     {
         private GrupaTamplateViewModel viewModel;
+        /// <summary>
+        /// Tworzy instancję kafelka grupy zajęciowej wyświetlanego w planview
+        /// </summary>
+        /// <param name="viewModel">ViewModel grupy zajęciowej</param>
         public GrupaZajeciowaTemplate(GrupaTamplateViewModel viewModel)
         {
             InitializeComponent();
@@ -43,12 +47,17 @@ namespace PlanZajec.Views
             SolidColorBrush solidResult = new SolidColorBrush(colResult);
             Kafel.Background = solidResult;
         }
+        /// <summary>
+        /// Metoda reagująza na zmianę rozmiaru
+        /// </summary>
 
         private void GrupaZajeciowaTemplate_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Nazwa.MaxWidth = e.NewSize.Width;
         }
-
+        /// <summary>
+        /// Metoda pozwalajaca usunąć kafelek z planu przy pomocy podwójnego przyciśnięcia myszki
+        /// </summary>
         private void Usun_DoubleClik(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)

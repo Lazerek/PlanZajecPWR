@@ -12,9 +12,7 @@ namespace PlanZajec.Views
     public partial class AddPlanWindow : Window
     {
         public string PlanTitle { get; set; }
-        /// <summary>
-        /// Domyślny konstruktor
-        /// </summary>
+
         public AddPlanWindow()
         {
             InitializeComponent();

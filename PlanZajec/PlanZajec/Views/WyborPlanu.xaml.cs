@@ -23,20 +23,27 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda zmieniająca kolor kafelka na nakierowanie myszki
+        /// </summary>
         private void ZmienKolorMouseEnter(object sender, MouseEventArgs e)
         {
             KafelPlanu plan = sender as KafelPlanu;
             plan.WypelnieniePlansza.Background = new SolidColorBrush(Colors.GreenYellow);
             
         }
+        /// <summary>
+        /// Metoda zmieniająca kolor kafelka na opuszczenie pola przez myszkę
+        /// </summary>
 
         private void ZmienKolorMouseLeave(object sender, MouseEventArgs e)
         {
             KafelPlanu plan = sender as KafelPlanu;
             plan.WypelnieniePlansza.Background = new SolidColorBrush(Colors.LightBlue);
         }
-
+        /// <summary>
+        /// Metoda zmieniająca kolor buttona na nakierowanie myszką
+        /// </summary>
         private void ButtonPlanMouseEnter(object sender, MouseEventArgs e)
         {
             Button button = sender as Button;

@@ -370,7 +370,10 @@ namespace PlanZajec.ViewModels
                 uw.SaveChanges();
             }
         }
-
+        /// <summary>
+        /// Metoda filtrująca wedługo zadeklarowanego czasu wolnego
+        /// </summary>
+        /// <param name="planId">IdPlanu, dla którego filtrujemy</param>
         public void FiltrujWedlugCzasuWolnego(long planId)
         {
             string[] wolneGodziny;
@@ -398,7 +401,12 @@ namespace PlanZajec.ViewModels
                 Items = new ObservableCollection<GrupyZajeciowe>(WyrbaneGrupyZajeciowey);
             }
         }
-
+        /// <summary>
+        /// Metoda sprawdzająca czy grupy zajęciowe kolidują już ze sobą
+        /// </summary>
+        /// <param name="item">Grupa zajęciowa</param>
+        /// <param name="sparsowaneWolneGodziny">Godziny sprawdzanej grupy zajęciowej</param>
+        /// <returns>Informacja czy następuje kolizja</returns>
         private bool KolidujeZWlonymi(GrupyZajeciowe item, List<Tuple<double, double, string>> sparsowaneWolneGodziny)
         {
             double godzinaRozpoczeciaZajec;
@@ -440,7 +448,11 @@ namespace PlanZajec.ViewModels
             }
             return false;
         }
-
+        /// <summary>
+        /// Metoda zaokrąglająca minuta do pełnej godziny
+        /// </summary>
+        /// <param name="godzinaZMinutaki">Godzina z minutami</param>
+        /// <returns>Pełną godzinę</returns>
         public double ZaokraglijMinuty(double godzinaZMinutaki)
         {
             if (godzinaZMinutaki % 1 > 0.3f)
@@ -453,7 +465,11 @@ namespace PlanZajec.ViewModels
             }
             return godzinaZMinutaki;
         }
-
+        /// <summary>
+        /// Metoda parsująca czas wolny ze stringa na krotkę odpowiednich odzin godzin
+        /// </summary>
+        /// <param name="czasWolnyStringArray">String z godzinami zajęć</param>
+        /// <returns>Krotka z godzinami zajęć</returns>
         private List<Tuple<double, double, string>> parsujCzasWolny(IEnumerable<string> czasWolnyStringArray)
         {
             var wolneGodzinySformatowane = new List<Tuple<double, double, string>>();
