@@ -15,7 +15,9 @@ namespace PlanZajec.ViewModels
     /// Klasa ViewModel odpowiedzialna za przeglądanie dostępnych grup zajęciowych
     /// </summary>
     public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
-    { 
+    {
+        private long wybranyPlan = -1;
+
         public static PrzegladanieGrupViewModel przegladanieGrupViewModel = new PrzegladanieGrupViewModel();
         private readonly string cwiczeniaString = "Ćwiczenia";
         private readonly string labString = "Zajęcia laboratoryjne";
@@ -107,6 +109,10 @@ namespace PlanZajec.ViewModels
                 }
             }
             ItemsChanged.Clear();
+            if (this.wybranyPlan >= 0)
+            {
+                FiltrujWedlugCzasuWolnegoRun(wybranyPlan);
+            }
             NotifyPropertyChanged("Items");
         }
 
@@ -375,6 +381,11 @@ namespace PlanZajec.ViewModels
         /// </summary>
         /// <param name="planId">IdPlanu, dla którego filtrujemy</param>
         public void FiltrujWedlugCzasuWolnego(long planId)
+        {
+            this.wybranyPlan = planId;
+        }
+
+        public void FiltrujWedlugCzasuWolnegoRun(long planId)
         {
             string[] wolneGodziny;
 
