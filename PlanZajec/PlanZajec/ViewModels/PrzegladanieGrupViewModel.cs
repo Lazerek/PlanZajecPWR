@@ -36,8 +36,9 @@ namespace PlanZajec.ViewModels
         /// <summary>
         /// Konstruktor domyślny, który wczytuje grupy zajęciowe z bazy danych
         /// </summary>
-        private PrzegladanieGrupViewModel()
+        public PrzegladanieGrupViewModel()
         {
+            przegladanieGrupViewModel = this;
             using (var uw = new UnitOfWork(new PlanPwrContext()))
             {
                 Items =

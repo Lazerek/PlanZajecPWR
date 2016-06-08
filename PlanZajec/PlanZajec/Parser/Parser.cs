@@ -26,8 +26,11 @@ namespace PlanZajec.Parser
             //foreach file content, main functions in for loop to reduce List type variables
             foreach (var singleFileEntrie in fileEntries)
             {
-                var fullTextInFile = File.ReadAllLines(singleFileEntrie);
-                if (!RunParserForAllLine(fullTextInFile)) return false;
+                if (singleFileEntrie.Contains(".html"))
+                {
+                    var fullTextInFile = File.ReadAllLines(singleFileEntrie);
+                    if (!RunParserForAllLine(fullTextInFile)) return false;
+                }
             }
             return true;
         }
