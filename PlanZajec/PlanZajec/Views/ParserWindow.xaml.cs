@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
 using Wpf;
+using Application = System.Windows.Application;
 
 namespace PlanZajec.Views
 {
@@ -25,6 +28,18 @@ namespace PlanZajec.Views
             {
                 MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
                 window.ReloadWindowComponents();
+            }
+        }
+
+        private void SzukajButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            DialogResult result = fbd.ShowDialog();
+
+            if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            {
+                SzukajTextBlock.Text = fbd.SelectedPath;
             }
         }
     }

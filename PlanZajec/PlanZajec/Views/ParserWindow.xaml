@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanZajec.Views"
         mc:Ignorable="d"
-        Title="Wczytywanie grup zajęciowych" Height="300" Width="300">
+        Title="Wczytywanie grup zajęciowych" Height="200" Width="500" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="RunParserButton" Content="Uruchom parser" HorizontalAlignment="Left" Margin="95,51,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="RunParserButton_OnClick"/>
+        <Button x:Name="RunParserButton" Content="Uruchom parser" HorizontalAlignment="Left" Margin="189,127,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="RunParserButton_OnClick"/>
+        <Button x:Name="SzukajButton" Content="Szukaj" HorizontalAlignment="Left" Margin="342,54,0,0" VerticalAlignment="Top" Width="80" Click="SzukajButton_OnClick"/>
+        <TextBlock x:Name="SzukajTextBlock" HorizontalAlignment="Left" Margin="23,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="303" Height="20" Text="C:\Program Files\" 
+                   IsEnabled="False" Background="WhiteSmoke" TextTrimming="WordEllipsis" ToolTip="C:\Program Files\"/>
+        <Label x:Name="WybeirzLokalizajceLabel" Content="Wybierz lokalizacje plików do sparsowania" HorizontalAlignment="Left" Margin="23,25,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
