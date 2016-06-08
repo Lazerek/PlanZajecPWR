@@ -29,6 +29,6 @@
             <ComboBoxItem Content="*.png"/>
         </ComboBox>
         <Button x:Name="anulujButton" Content="Anuluj" Grid.Row="6" Click="Anuluj" HorizontalAlignment="Left" Width="70" Height="30"/>
-        <Button x:Name="eksportujButton" Content="Eksportuj" Grid.Row="6" Click="Anuluj" HorizontalAlignment="Right" Width="70" Height="30"/>
+        <Button x:Name="eksportujButton" Content="Eksportuj" Grid.Row="6" Click="Eksport" HorizontalAlignment="Right" Width="70" Height="30"/>
     </Grid>
 </Window>

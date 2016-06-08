@@ -1,6 +1,7 @@
 ﻿using PlanZajec.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -50,32 +52,105 @@ namespace PlanZajec.Views
 
         private void Eksport(object sender, RoutedEventArgs e)
         {
-            if (typ)
+            if (sciezka.Text.Length < 1)
             {
-                //TODO Przygotowanie pliku PDF -> zapis do pliku
+                System.Windows.MessageBox.Show("Podaj ścieżkę zapisu pliku");
             }
             else
             {
-                //TODO Eksportuj jako plik graficzny
-                /*
-                if(format.SelectedIndex == 0){
-                    Eksport JPG
-                }else{
-                    if(format.SelectedIndex == 1)...
+                if (plany.SelectedIndex == -1)
+                {
+                    System.Windows.MessageBox.Show("Wybierz plan do zapisu");
                 }
-                Formaty w xaml tam gdzie jest typ
-                */
+                else
+                {
+                    if (typ)
+                    {
+                        PlanViewModel pvm = new PlanViewModel(plany.SelectedIndex);
+                        PlanView pv = new PlanView(pvm);
+                        RenderTargetBitmap src = GetImage(pv);
+                        Stream outputStream = File.Create(sciezka.Text + "/" + plany.Text + ".png");
+                        SaveAsPng(src, outputStream);
+                    }
+                    else
+                    {
+                        if (format.SelectedIndex == -1)
+                        {
+                            System.Windows.MessageBox.Show("Podaj format pliku");
+                        }
+                        else
+                        {
+                            PlanViewModel pvm = new PlanViewModel(plany.SelectedIndex);
+                            PlanView pv = new PlanView(pvm);
+                            RenderTargetBitmap src = GetImage(pv);
+                            Stream outputStream = File.Create(sciezka.Text + "/" + plany.Text + ".png");
+                            SaveAsPng(src, outputStream);
+                        }
+                    }
+                }
             }
         }
 
         private void wyborSciezki(object sender, RoutedEventArgs e)
         {
-
+            FolderBrowserDialog directchoosedlg = new FolderBrowserDialog();
+            directchoosedlg.ShowDialog();
+            sciezka.Text = directchoosedlg.SelectedPath;
         }
 
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        public static RenderTargetBitmap GetImage(PlanView view)
+        {
+            Size size = new Size(view.PlanWidth, view.PlanHeight);
+            if (size.IsEmpty)
+                return null;
+
+            RenderTargetBitmap result = new RenderTargetBitmap((int)size.Width, (int)size.Height, 96, 96, PixelFormats.Pbgra32);
+
+            DrawingVisual drawingvisual = new DrawingVisual();
+            using (DrawingContext context = drawingvisual.RenderOpen())
+            {
+                context.DrawRectangle(new VisualBrush(view), null, new Rect(new Point(), size));
+                context.Close();
+            }
+
+            result.Render(drawingvisual);
+            return result;
+        }
+        /// <summary>
+        /// Metoda zapisująca bitmapę jako png
+        /// </summary>
+        /// <param name="src">Źródło obrazka</param>
+        /// <param name="outputStream">Strumień zapisu</param>
+        public static void SaveAsPng(RenderTargetBitmap src, Stream outputStream)
+        {
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(src));
+            encoder.Save(outputStream);
+        }
+
+        public static void SaveAsPng(RenderTargetBitmap src, string targetFile)
+
+        {
+
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+
+            encoder.Frames.Add(BitmapFrame.Create(src));
+
+
+
+            using (var stm = System.IO.File.Create(targetFile))
+
+            {
+
+                encoder.Save(stm);
+
+            }
+
         }
     }
 }
