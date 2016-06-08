@@ -14,7 +14,7 @@ namespace PlanZajec.Parser
     /// </summary>
     internal class Parser
     {
-        private static string folderPath = @"../../TestResources";
+        public static string FolderPath { get; set; } // = @"../../TestResources";
 
         /// <summary>
         /// Metoda wczytująca plik i wywołująca zapis danych do bazy
@@ -22,7 +22,7 @@ namespace PlanZajec.Parser
         /// <returns>Powodzenia metody</returns>
         public static bool Run()
         {
-            var fileEntries = Directory.GetFiles(folderPath);
+            var fileEntries = Directory.GetFiles(FolderPath);
             //foreach file content, main functions in for loop to reduce List type variables
             foreach (var singleFileEntrie in fileEntries)
             {

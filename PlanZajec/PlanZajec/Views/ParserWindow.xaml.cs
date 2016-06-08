@@ -23,6 +23,7 @@ namespace PlanZajec.Views
 
         private void RunParserButton_OnClick(object sender, RoutedEventArgs e)
         {
+            Parser.Parser.FolderPath = SzukajTextBlock.Text;
             bool loaded = Parser.Parser.Run();
             if (loaded)
             {

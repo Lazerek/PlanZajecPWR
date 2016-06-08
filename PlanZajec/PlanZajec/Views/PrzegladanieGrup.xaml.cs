@@ -23,7 +23,7 @@ namespace Wpf
         public PrzegladanieGrup()
         {
             InitializeComponent();
-            viewModel = new PrzegladanieGrupViewModel();
+            viewModel = PrzegladanieGrupViewModel.przegladanieGrupViewModel;
             this.DataContext = viewModel;
         }
         void onCheckBoxClick(object sender, RoutedEventArgs e)

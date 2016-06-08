@@ -30,7 +30,7 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
             this.DataContext = PlanyViewModel.Instance;
-            przegladanieViewModel = new PrzegladanieGrupViewModel();
+            przegladanieViewModel = PrzegladanieGrupViewModel.przegladanieGrupViewModel;
             listaKursow = new List<string>();
             numerWczytywanego = 0;
             utworzListeKursow(listaKursow);
