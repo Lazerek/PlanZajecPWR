@@ -17,6 +17,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -42,6 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\PlanZajec.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +55,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>PlanZajec.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ikonaPlanu.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -397,28 +401,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TestResources\biod_L1.txt" />
-    <Resource Include="TestResources\biod_L2.txt" />
-    <Resource Include="TestResources\biod_W.txt" />
-    <Resource Include="TestResources\HD_L.txt" />
-    <Resource Include="TestResources\HD_W.txt" />
-    <Resource Include="TestResources\lin_l.txt" />
-    <Resource Include="TestResources\lin_w.txt" />
-    <Resource Include="TestResources\prosemin.txt" />
-    <Resource Include="TestResources\rsi_L1.txt" />
-    <Resource Include="TestResources\rsi_L2.txt" />
-    <Resource Include="TestResources\rsi_W.txt" />
-    <Resource Include="TestResources\SI_L1.txt" />
-    <Resource Include="TestResources\SI_L2.txt" />
-    <Resource Include="TestResources\SI_W.txt" />
-    <Resource Include="TestResources\win_L.txt" />
-    <Resource Include="TestResources\win_w.txt" />
-    <Resource Include="TestResources\zpi.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="TestResources\del_l.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Views\Images\gear.png" />
   </ItemGroup>
   <ItemGroup>
@@ -447,19 +429,6 @@
     <Resource Include="Views\Images\minusIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TestResources\prezapisy10.txt" />
-    <Resource Include="TestResources\prezapisy11.txt" />
-    <Resource Include="TestResources\prezapisy12.txt" />
-    <Resource Include="TestResources\prezapisy2.txt" />
-    <Resource Include="TestResources\prezapisy3.txt" />
-    <Resource Include="TestResources\prezapisy4.txt" />
-    <Resource Include="TestResources\prezapisy5.txt" />
-    <Resource Include="TestResources\prezapisy6.txt" />
-    <Resource Include="TestResources\prezapisy7.txt" />
-    <Resource Include="TestResources\prezapisy8.txt" />
-    <Resource Include="TestResources\prezapisy9.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
@@ -470,6 +439,43 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikonaPlanu.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\ikonaPlanu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestResources\biod_L1.html" />
+    <Content Include="TestResources\biod_L2.html" />
+    <Content Include="TestResources\biod_W.html" />
+    <Content Include="TestResources\del_l.html" />
+    <Content Include="TestResources\HD_L.html" />
+    <Content Include="TestResources\HD_W.html" />
+    <Content Include="TestResources\lin_l.html" />
+    <Content Include="TestResources\lin_w.html" />
+    <Content Include="TestResources\prezapisy10.html" />
+    <Content Include="TestResources\prezapisy11.html" />
+    <Content Include="TestResources\prezapisy12.html" />
+    <Content Include="TestResources\prezapisy2.html" />
+    <Content Include="TestResources\prezapisy3.html" />
+    <Content Include="TestResources\prezapisy4.html" />
+    <Content Include="TestResources\prezapisy5.html" />
+    <Content Include="TestResources\prezapisy6.html" />
+    <Content Include="TestResources\prezapisy7.html" />
+    <Content Include="TestResources\prezapisy8.html" />
+    <Content Include="TestResources\prezapisy9.html" />
+    <Content Include="TestResources\prosemin.html" />
+    <Content Include="TestResources\rsi_L1.html" />
+    <Content Include="TestResources\rsi_L2.html" />
+    <Content Include="TestResources\rsi_W.html" />
+    <Content Include="TestResources\SI_L1.html" />
+    <Content Include="TestResources\SI_L2.html" />
+    <Content Include="TestResources\SI_W.html" />
+    <Content Include="TestResources\win_L.html" />
+    <Content Include="TestResources\win_w.html" />
+    <Content Include="TestResources\zpi.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />

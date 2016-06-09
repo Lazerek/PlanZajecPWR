@@ -49,10 +49,6 @@ namespace PlanZajec.Views
             PlanView pv = new PlanView(pvm);
             Plany planDoWydruku = plany[PlanyComboBox.SelectedIndex];
             // PrintDialog printDialog = new PrintDialog();
-            Boolean test = false;
-            if(test)
-                DrukujPlanTest(pv);
-            else
                 DrukujPlan(pv, planDoWydruku);
 
         }
@@ -81,14 +77,9 @@ namespace PlanZajec.Views
             else
                 this.Close();
         }
-        private void DrukujPlanTest(PlanView pv)
-        {
-            PrintDialog Objprint = new PrintDialog();
-            if (Objprint.ShowDialog() == true)
-            {
-                Objprint.PrintVisual(pv, "Plan");
-            }
-        }
+        /// <summary>
+        /// Metoda do anulowania drukowania planu
+        /// </summary>
         private void Anuluj(object sender, RoutedEventArgs e)
         {
             this.Close();

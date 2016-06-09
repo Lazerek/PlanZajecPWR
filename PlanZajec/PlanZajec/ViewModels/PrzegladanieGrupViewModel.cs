@@ -15,8 +15,10 @@ namespace PlanZajec.ViewModels
     /// Klasa ViewModel odpowiedzialna za przeglądanie dostępnych grup zajęciowych
     /// </summary>
     public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
-    { 
-        public static PrzegladanieGrupViewModel przegladanieGrupViewModel;
+    {
+        private long wybranyPlan = -1;
+
+        public static PrzegladanieGrupViewModel przegladanieGrupViewModel = new PrzegladanieGrupViewModel();
         private readonly string cwiczeniaString = "Ćwiczenia";
         private readonly string labString = "Zajęcia laboratoryjne";
         private readonly string projektString = "Projekt";
@@ -107,6 +109,10 @@ namespace PlanZajec.ViewModels
                 }
             }
             ItemsChanged.Clear();
+            if (this.wybranyPlan >= 0)
+            {
+                FiltrujWedlugCzasuWolnegoRun(wybranyPlan);
+            }
             NotifyPropertyChanged("Items");
         }
 
@@ -370,8 +376,16 @@ namespace PlanZajec.ViewModels
                 uw.SaveChanges();
             }
         }
-
+        /// <summary>
+        /// Metoda filtrująca wedługo zadeklarowanego czasu wolnego
+        /// </summary>
+        /// <param name="planId">IdPlanu, dla którego filtrujemy</param>
         public void FiltrujWedlugCzasuWolnego(long planId)
+        {
+            this.wybranyPlan = planId;
+        }
+
+        public void FiltrujWedlugCzasuWolnegoRun(long planId)
         {
             string[] wolneGodziny;
 
@@ -382,7 +396,7 @@ namespace PlanZajec.ViewModels
 
             if (wolneGodziny != null)
             {
-                var sparsowaneWolneGodziny = parsujCzasWolny(wolneGodziny);
+                var sparsowaneWolneGodziny = ParsujCzasWolny(wolneGodziny);
 
                 List<GrupyZajeciowe> WyrbaneGrupyZajeciowey = new List<GrupyZajeciowe>();
 
@@ -398,7 +412,12 @@ namespace PlanZajec.ViewModels
                 Items = new ObservableCollection<GrupyZajeciowe>(WyrbaneGrupyZajeciowey);
             }
         }
-
+        /// <summary>
+        /// Metoda sprawdzająca czy grupy zajęciowe kolidują już ze sobą
+        /// </summary>
+        /// <param name="item">Grupa zajęciowa</param>
+        /// <param name="sparsowaneWolneGodziny">Godziny sprawdzanej grupy zajęciowej</param>
+        /// <returns>Informacja czy następuje kolizja</returns>
         private bool KolidujeZWlonymi(GrupyZajeciowe item, List<Tuple<double, double, string>> sparsowaneWolneGodziny)
         {
             double godzinaRozpoczeciaZajec;
@@ -440,8 +459,12 @@ namespace PlanZajec.ViewModels
             }
             return false;
         }
-
-        public double ZaokraglijMinuty(double godzinaZMinutaki)
+        /// <summary>
+        /// Metoda zaokrąglająca minuta do pełnej godziny
+        /// </summary>
+        /// <param name="godzinaZMinutaki">Godzina z minutami</param>
+        /// <returns>Pełną godzinę</returns>
+        private static double ZaokraglijMinuty(double godzinaZMinutaki)
         {
             if (godzinaZMinutaki % 1 > 0.3f)
             {
@@ -453,8 +476,12 @@ namespace PlanZajec.ViewModels
             }
             return godzinaZMinutaki;
         }
-
-        private List<Tuple<double, double, string>> parsujCzasWolny(IEnumerable<string> czasWolnyStringArray)
+        /// <summary>
+        /// Metoda parsująca czas wolny ze stringa na krotkę odpowiednich odzin godzin
+        /// </summary>
+        /// <param name="czasWolnyStringArray">String z godzinami zajęć</param>
+        /// <returns>Krotka z godzinami zajęć</returns>
+        private static List<Tuple<double, double, string>> ParsujCzasWolny(IEnumerable<string> czasWolnyStringArray)
         {
             var wolneGodzinySformatowane = new List<Tuple<double, double, string>>();
             foreach (var czas in czasWolnyStringArray)

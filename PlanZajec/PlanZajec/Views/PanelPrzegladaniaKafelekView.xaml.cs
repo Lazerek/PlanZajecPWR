@@ -22,7 +22,7 @@ namespace PlanZajec.Views
         private PrzegladanieGrupViewModel viewModel;
 
         /// <summary>
-        /// Domyślny konstruktor
+        /// Domyślny konstruktor tworzący panel przeglądani kafelek
         /// </summary>
         public PanelPrzegladaniaKafelekView()
         {
@@ -68,18 +68,37 @@ namespace PlanZajec.Views
             {
                 GrupyZajeciowe grupaUW = unitOfWork.GrupyZajeciowe.Get(grupa.KodGrupy);
                 grupaToAddOrDeleteFromPlan = grupaUW;
-
+                var enumerator = PlanyViewModel.Instance.Plany.GetEnumerator();
+                enumerator.MoveNext();
+                while (enumerator.Current.IdPlanu != ActChosenPlanSingleton.Instance.IdPlanu)
+                {
+                    enumerator.MoveNext();
+                }
                 if(unitOfWork.GrupyZajeciowe.InThePlan(grupa.KodGrupy, ActChosenPlanSingleton.Instance.IdPlanu))
                 {
                     menuAddOrRemovFromPlan.Header = "Usuń z planu";
                     menuAddOrRemovFromPlan.Icon = minusIcon;
-                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);             
+                    menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnRemoveFromPlanHandler);
+                    var enumerator2 = enumerator.Current.GrupyZajeciowe.GetEnumerator();
+                    enumerator2.MoveNext();
+                    while (grupa.KodGrupy != enumerator2.Current.KodGrupy)
+                    {
+                        enumerator2.MoveNext();
+                    }
+                    enumerator.Current.GrupyZajeciowe.Remove(enumerator2.Current);
                 }
                 else
                 {
                     menuAddOrRemovFromPlan.Header = "Dodaj do planu";
                     menuAddOrRemovFromPlan.Icon = addIcon;
                     menuAddOrRemovFromPlan.Click += new RoutedEventHandler(OnAddToPlanHandler);
+                    var enumerator2 = unitOfWork.GrupyZajeciowe.GetAll().GetEnumerator();
+                    enumerator2.MoveNext();
+                    while(enumerator2.Current.KodGrupy != grupa.KodGrupy)
+                    {
+                        enumerator2.MoveNext();
+                    }
+                    enumerator.Current.GrupyZajeciowe.Add(enumerator2.Current);
                     CommandManager.InvalidateRequerySuggested();
                 }
             }
@@ -110,7 +129,9 @@ namespace PlanZajec.Views
             }
             PlanView.RefreshSchedule();
         }
-
+        /// <summary>
+        /// Przycisk chowający i pokazujący panel
+        /// </summary>
         private void panelClick(object sender, RoutedEventArgs e)
         {
             if (panelIsOpen)
@@ -150,7 +171,9 @@ namespace PlanZajec.Views
             Grid.SetRow(nazwaK, 0);
             nazwaK.Margin = new Thickness(80, 0, 0, 0);
         }
-
+        /// <summary>
+        /// Metoda sprawdzający czy wpisawany tekst jest liczbą
+        /// </summary>
         private void PreviewTextInput2(object sender, TextCompositionEventArgs e)
         {
             char c = Convert.ToChar(e.Text);
@@ -183,8 +206,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda uruchamiająca filtrowanie po wyciśnięciu przycisku enter na polu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void filtrujEnter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -193,8 +215,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda reagująca na zaznaczenie pola "wszystko" i ustawienie pozostałych checkboxów na true
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void checkBoxWszystko_Checked(object sender, RoutedEventArgs e)
         {
             wlaczFiltr();
@@ -226,8 +247,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda obsługi zaznaczenia checkboxa
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void check(object sender, RoutedEventArgs e)
         {
             wlaczFiltr();
@@ -235,8 +255,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda obsługi odznaczenia checkboxa
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void uncheck(object sender, RoutedEventArgs e)
         {
             cb_wsz.IsChecked = false;
@@ -245,8 +264,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda obsługi tylko wolnych zajęć
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void pokazTylkoWolne(object sender, RoutedEventArgs e)
         {
             wlaczFiltr();
@@ -254,8 +272,7 @@ namespace PlanZajec.Views
         /// <summary>
         /// Metoda czyszcząca filtry
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void wyczyscFiltr(object sender, RoutedEventArgs e)
         {
             cb_wsz.IsChecked = true;

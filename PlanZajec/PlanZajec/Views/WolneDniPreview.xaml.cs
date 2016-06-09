@@ -18,15 +18,21 @@ using PlanZajec.DataModel;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for WolneDniPreview.xaml
+    /// Klasa typu view pokazująca dni i godziny wykluczone z planu
     /// </summary>
     public partial class WolneDniPreview : UserControl
     {
+        /// <summary>
+        /// Konstruktor tworzący view
+        /// </summary>
         public WolneDniPreview()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda wyświetlająca dni i godziny wykluczone z planu
+        /// </summary>
+        /// <param name="idPlanu">idPlanu, z którego wykluczone są dni i godzine</param>
         public void WyswietlWyklucznieaZPlanu(long idPlanu)
         {
             WolnyCzasListBox.Items.Clear();

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using PlanZajec.ViewModels;
 using PlanZajec.DataModel;
+using System;
 
 namespace Wpf
 {
@@ -15,7 +16,6 @@ namespace Wpf
     public partial class PrzegladanieGrup : UserControl
     {
         long lastLong;
-        TextBox tbox;
         private PrzegladanieGrupViewModel viewModel;
         /// <summary>
         /// Domyślny konstuktor przeglądania grup
@@ -90,13 +90,18 @@ namespace Wpf
         void onTextboxLeave(object sender, RoutedEventArgs e)
         {
             GrupyZajeciowe gz = (GrupyZajeciowe)DgUsers.CurrentCell.Item;
+            TextBox tbox = (TextBox)sender;
+            ustalMiejsca(tbox, gz);
+        }
+
+        private void ustalMiejsca(TextBox tbox, GrupyZajeciowe gz)
+        {
             long l = 0;
-            tbox = (TextBox)sender;
-            if(tbox.Text.Length != 0)
+            if (tbox.Text.Length != 0)
             {
                 if (long.TryParse(tbox.Text, out l))
                 {
-                    if(l > -1 && l < gz.Miejsca)
+                    if (l > -1 && l < gz.Miejsca)
                     {
                         gz.ZajeteMiejsca = l;
                         viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, l);
@@ -126,39 +131,10 @@ namespace Wpf
         {
             if (e.Key == Key.Enter)
             {
-                TextBox t = (TextBox)sender;
                 Keyboard.ClearFocus();
                 GrupyZajeciowe gz = (GrupyZajeciowe)DgUsers.CurrentCell.Item;
-                long l = 0;
-                tbox = (TextBox)sender;
-                if (tbox.Text.Length != 0)
-                {
-                    if (long.TryParse(tbox.Text, out l))
-                    {
-                        if (l > -1 && l < gz.Miejsca)
-                        {
-                            gz.ZajeteMiejsca = l;
-                            viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, l);
-                            CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
-                            c.IsChecked = true;
-                        }
-                        else
-                        {
-                            gz.ZajeteMiejsca = gz.Miejsca;
-                            viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, (long)gz.Miejsca);
-                            CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
-                            c.IsChecked = false;
-                        }
-                    }
-                }
-                else
-                {
-                    tbox.Text = "0";
-                    gz.ZajeteMiejsca = 0;
-                    viewModel.ZmienLiczbeMiejsc(gz.KodGrupy, 0);
-                    CheckBox c = (CheckBox)VisualTreeHelper.GetChild(DgUsers.Columns[9].GetCellContent(gz), 0);
-                    c.IsChecked = true;
-                }
+                TextBox tbox = (TextBox)sender;
+                ustalMiejsca(tbox, gz);
                 e.Handled = true;
             }
         }

@@ -15,7 +15,9 @@ namespace Wpf
     {
         private bool lpm;
         private readonly MainWindow _mainWindow;
-
+        /// <summary>
+        /// Domyślny konstruktor
+        /// </summary>
         public PanelFiltrow(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -24,6 +26,10 @@ namespace Wpf
             _mainWindow = mainWindow;
         }
 
+        /// <summary>
+        /// Metoda zmieniająca okno na okno z listą prowadzących
+        /// </summary>
+        /// 
         private void OnSelectedLecturers(object sender, RoutedEventArgs e)
         {
             if (PrawePodmenu == null) return;
@@ -59,16 +65,6 @@ namespace Wpf
                 PrawePodmenu.Children.Remove(PrawePodmenu.Children[0]);
             PrawePodmenu.Children.Add(new ProwadzacyOpinie());
             
-        }
-
-        public void imgClick1(object sender, MouseEventArgs e)
-        {
-            lpm = true;
-        }
-
-        public void imgClickC(object sender, MouseEventArgs e)
-        {
-            lpm = false;
         }
         /// <summary>
         /// Metoda zmieniająca okno na okno z filtrowanie grup

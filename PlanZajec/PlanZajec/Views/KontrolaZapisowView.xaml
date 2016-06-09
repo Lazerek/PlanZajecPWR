@@ -5,15 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PlanZajec.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="200"
-             >
-    <ListBox x:Name="lista" ItemsSource="{Binding Plany}">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <StackPanel Orientation="Horizontal">
-                    
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+      d:DesignHeight="500" d:DesignWidth="200">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ItemsControl x:Name="items" ItemsSource="{Binding Plany}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="0"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding NazwaPlanu, StringFormat= ' ▼ {0}'}" Grid.Row="0" MouseDown="otworzGrupy"/>
+                        <StackPanel Grid.Row="1" Initialized="wypelnijListe"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
 </UserControl>

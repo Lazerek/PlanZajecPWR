@@ -14,7 +14,7 @@ namespace PlanZajec.Parser
     /// </summary>
     internal class Parser
     {
-        private static string folderPath = @"../../TestResources";
+        public static string FolderPath { get; set; } // = @"../../TestResources";
 
         /// <summary>
         /// Metoda wczytująca plik i wywołująca zapis danych do bazy
@@ -22,12 +22,15 @@ namespace PlanZajec.Parser
         /// <returns>Powodzenia metody</returns>
         public static bool Run()
         {
-            var fileEntries = Directory.GetFiles(folderPath);
+            var fileEntries = Directory.GetFiles(FolderPath);
             //foreach file content, main functions in for loop to reduce List type variables
             foreach (var singleFileEntrie in fileEntries)
             {
-                var fullTextInFile = File.ReadAllLines(singleFileEntrie);
-                if (!RunParserForAllLine(fullTextInFile)) return false;
+                if (singleFileEntrie.Contains(".html"))
+                {
+                    var fullTextInFile = File.ReadAllLines(singleFileEntrie);
+                    if (!RunParserForAllLine(fullTextInFile)) return false;
+                }
             }
             return true;
         }
@@ -126,7 +129,11 @@ namespace PlanZajec.Parser
             }
             return -1;
         }
-
+        /// <summary>
+        /// Metoda szukająca grup zajęciowych
+        /// </summary>
+        /// <param name="textArray">Wszystkie linie pliku</param>
+        /// <returns>Lista bloków gotowych do parsowania</returns>
         private static List<string[]> GetGroupRawData(string[] textArray)
         {
             var regex = new Regex(@"<a name=.hrefGrupyZajecioweKursuTabela\d{6}.> </a>");

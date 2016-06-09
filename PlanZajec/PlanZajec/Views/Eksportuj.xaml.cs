@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace PlanZajec.Views
 {
     /// <summary>
-    /// Interaction logic for Eksportuj.xaml
+    /// Klasa pozwalająca eksportować plan
     /// </summary>
     public partial class Eksportuj : Window
     {
@@ -25,6 +25,10 @@ namespace PlanZajec.Views
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Konstruktor tworzący okno do eksportu planu
+        /// </summary>
+        /// <param name="typ">Informacja czy plik ma być eskportowany jako pdf czy graficzny</param>
         public Eksportuj(bool typ)
         {
             InitializeComponent();
