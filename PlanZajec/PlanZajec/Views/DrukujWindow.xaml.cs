@@ -47,7 +47,7 @@ namespace PlanZajec.Views
         {
             PlanViewModel pvm = new PlanViewModel(tab[PlanyComboBox.SelectedIndex]);
             PlanView pv = new PlanView(pvm);
-            Plany planDoWydruku = plany[PlanyComboBox.SelectedIndex+1];
+            Plany planDoWydruku = plany[PlanyComboBox.SelectedIndex];
             // PrintDialog printDialog = new PrintDialog();
             Boolean test = false;
             if(test)
