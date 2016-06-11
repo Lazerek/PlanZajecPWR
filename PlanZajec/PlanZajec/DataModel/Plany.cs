@@ -130,5 +130,30 @@ namespace PlanZajec.DataModel
             wynik=wynik+ str2.Substring(6, 2);
             return wynik;
         }
+
+        public void UsunWolnyPrzedzial(string dzien, string godzPocz)
+        {
+            var wolneDni = GetWolneDni();
+            string noweDni = "";
+            foreach (var jeden in wolneDni)
+            {
+                var temp = jeden.Split(':');
+                if (!(temp[2] == dzien && temp[0] == godzPocz))
+                    noweDni += jeden;
+            }
+            if (noweDni == "")
+                noweDni = null;
+            using (var uw = new UnitOfWork(new PlanPwrContext()))
+            {
+                var plany = uw.Plany.GetAll();
+                foreach (var plan in plany)
+                {
+                    if (plan.IdPlanu == this.IdPlanu)
+                        plan.WolneDni = noweDni;
+                }
+                uw.SaveChanges();
+            }
+            WolneDni = noweDni;
+        }
     }
 }

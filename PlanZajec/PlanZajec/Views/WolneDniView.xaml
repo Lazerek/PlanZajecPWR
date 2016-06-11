@@ -74,5 +74,6 @@
         <Grid Grid.Row="7" Name="WolneDniPreviewGrid">
             
         </Grid>
+        <Button x:Name="UsunButton" Content="Usun" HorizontalAlignment="Left" Margin="0,3,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="UsunButton_OnClick"/>
     </Grid>
 </UserControl>
