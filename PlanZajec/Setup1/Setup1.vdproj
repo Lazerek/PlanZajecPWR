@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9C25879A63B54062A5068AD4437235BD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A9575AAB8D6F4F71A56D1FDA2FBEDF16"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -77,6 +83,12 @@
         {
         "MsmKey" = "8:_C20FBF0B857E88F91A981A4A2485DF80"
         "OwnerKey" = "8:_D2C302FC09713730741AC25F5C2C0020"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE2D36607E55AABE6763FB711D91632A"
+        "OwnerKey" = "8:_ACEC9CB9B54B422A8429527753C5468A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -161,6 +173,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EBF8665709DA8179529FB28A32FD3FB5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CE2D36607E55AABE6763FB711D91632A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -409,6 +427,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C25879A63B54062A5068AD4437235BD"
+            {
+            "SourcePath" = "8:C:\\Users\\Lucas\\Desktop\\ikonaPlanu.ico"
+            "TargetName" = "8:ikonaPlanu.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_76B31FE97BED4D70A35A669D4636FF57"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9575AAB8D6F4F71A56D1FDA2FBEDF16"
             {
             "SourcePath" = "8:..\\PlanZajec\\Super-egatron-5000X-DB.sqlite"
@@ -474,6 +512,37 @@
                     }
                 }
             "SourcePath" = "8:System.Data.SQLite.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_76B31FE97BED4D70A35A669D4636FF57"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CE2D36607E55AABE6763FB711D91632A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_CE2D36607E55AABE6763FB711D91632A"
+                    {
+                    "Name" = "8:HtmlAgilityPack.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HtmlAgilityPack.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_76B31FE97BED4D70A35A669D4636FF57"
@@ -630,11 +699,22 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_8BAA5C81AAA7440682DE3736654D3364"
+                    {
+                    "Name" = "8:Planer Zajęć PWr"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_174F37E65D9849FB895A8715A662339F"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_76B31FE97BED4D70A35A669D4636FF57"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][JL2MG]\\[PlanerZajec]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\[PlanerZajec]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -707,7 +787,7 @@
         "ARPHELPLINK" = "8:"
         "Title" = "8:Planer Zajec PWr"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:2LG Company"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -814,9 +894,23 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3153EFEF71AF4A34BFD8B370074738B5"
+            {
+            "Name" = "8:Planer Zajęć PWr"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_ACEC9CB9B54B422A8429527753C5468A"
+            "Folder" = "8:_8BAA5C81AAA7440682DE3736654D3364"
+            "WorkingFolder" = "8:_76B31FE97BED4D70A35A669D4636FF57"
+            "Icon" = "8:_9C25879A63B54062A5068AD4437235BD"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FC584A7A57FC4451899E3EACDFF5A660"
             {
-            "Name" = "8:PlanerZajec"
+            "Name" = "8:Planer Zajec PWr"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -825,7 +919,7 @@
             "Target" = "8:_ACEC9CB9B54B422A8429527753C5468A"
             "Folder" = "8:_B9BAA8AC6DA44EF5B6A20E520E2BF3B5"
             "WorkingFolder" = "8:_76B31FE97BED4D70A35A669D4636FF57"
-            "Icon" = "8:"
+            "Icon" = "8:_9C25879A63B54062A5068AD4437235BD"
             "Feature" = "8:"
             }
         }
@@ -1369,7 +1463,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F92A801414304DC8AF161DD7BEBECE0B"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\PlanZajec\\bin\\Debug\\PlanZajec.XML"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_76B31FE97BED4D70A35A669D4636FF57"

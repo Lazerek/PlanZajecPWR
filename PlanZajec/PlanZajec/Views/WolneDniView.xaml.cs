@@ -46,6 +46,7 @@ namespace PlanZajec.Views
                 }
                 Info.Text = "Dodano wolne godziny do planu";
                 Info.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                _wolneDniPreview.WyswietlWyklucznieaZPlanu(plan.IdPlanu);
             }
             else
             {
@@ -159,6 +160,15 @@ namespace PlanZajec.Views
             if (plan != null)
             {
                 _wolneDniPreview.WyswietlWyklucznieaZPlanu(plan.IdPlanu);
+            }
+        }
+
+        private void UsunButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var plan = (Plany)SelectPlanComboBox.SelectedItem;
+            if (plan != null)
+            {
+                _wolneDniPreview.UsunWykluczenieZPlanu(plan.IdPlanu);
             }
         }
     }

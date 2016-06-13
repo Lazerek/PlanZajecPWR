@@ -15,8 +15,10 @@ namespace PlanZajec.ViewModels
     /// Klasa ViewModel odpowiedzialna za przeglądanie dostępnych grup zajęciowych
     /// </summary>
     public class PrzegladanieGrupViewModel : ViewModel, INotifyPropertyChanged
-    { 
-        public static PrzegladanieGrupViewModel przegladanieGrupViewModel;
+    {
+        private long wybranyPlan = -1;
+
+        public static PrzegladanieGrupViewModel przegladanieGrupViewModel = new PrzegladanieGrupViewModel();
         private readonly string cwiczeniaString = "Ćwiczenia";
         private readonly string labString = "Zajęcia laboratoryjne";
         private readonly string projektString = "Projekt";
@@ -107,6 +109,10 @@ namespace PlanZajec.ViewModels
                 }
             }
             ItemsChanged.Clear();
+            if (this.wybranyPlan >= 0)
+            {
+                FiltrujWedlugCzasuWolnegoRun(wybranyPlan);
+            }
             NotifyPropertyChanged("Items");
         }
 
@@ -376,6 +382,11 @@ namespace PlanZajec.ViewModels
         /// <param name="planId">IdPlanu, dla którego filtrujemy</param>
         public void FiltrujWedlugCzasuWolnego(long planId)
         {
+            this.wybranyPlan = planId;
+        }
+
+        public void FiltrujWedlugCzasuWolnegoRun(long planId)
+        {
             string[] wolneGodziny;
 
             using (var uw = new UnitOfWork(new PlanPwrContext()))
@@ -385,7 +396,7 @@ namespace PlanZajec.ViewModels
 
             if (wolneGodziny != null)
             {
-                var sparsowaneWolneGodziny = parsujCzasWolny(wolneGodziny);
+                var sparsowaneWolneGodziny = ParsujCzasWolny(wolneGodziny);
 
                 List<GrupyZajeciowe> WyrbaneGrupyZajeciowey = new List<GrupyZajeciowe>();
 
@@ -453,7 +464,7 @@ namespace PlanZajec.ViewModels
         /// </summary>
         /// <param name="godzinaZMinutaki">Godzina z minutami</param>
         /// <returns>Pełną godzinę</returns>
-        public double ZaokraglijMinuty(double godzinaZMinutaki)
+        private static double ZaokraglijMinuty(double godzinaZMinutaki)
         {
             if (godzinaZMinutaki % 1 > 0.3f)
             {
@@ -470,7 +481,7 @@ namespace PlanZajec.ViewModels
         /// </summary>
         /// <param name="czasWolnyStringArray">String z godzinami zajęć</param>
         /// <returns>Krotka z godzinami zajęć</returns>
-        private List<Tuple<double, double, string>> parsujCzasWolny(IEnumerable<string> czasWolnyStringArray)
+        private static List<Tuple<double, double, string>> ParsujCzasWolny(IEnumerable<string> czasWolnyStringArray)
         {
             var wolneGodzinySformatowane = new List<Tuple<double, double, string>>();
             foreach (var czas in czasWolnyStringArray)

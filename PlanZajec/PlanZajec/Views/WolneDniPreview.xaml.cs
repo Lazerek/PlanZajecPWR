@@ -45,8 +45,24 @@ namespace PlanZajec.Views
             foreach (var czas in wolneDni)
             {
                 var tempCzas = czas.Split(':');
-                WolnyCzasListBox.Items.Add(tempCzas[2] + " od " + tempCzas[0] + "do " + tempCzas[1]);
+                WolnyCzasListBox.Items.Add(tempCzas[2] + " od " + tempCzas[0] + " do " + tempCzas[1]);
             }
+        }
+
+        public void UsunWykluczenieZPlanu(long idPlanu)
+        {
+            if (WolnyCzasListBox.SelectedValue != null)
+            {
+                string wartosc = WolnyCzasListBox.SelectedValue.ToString();
+                var tab = wartosc.Split(' ');
+
+                using (var dataBaseUnitOfWork = new UnitOfWork(new PlanPwrContext()))
+                {
+                    dataBaseUnitOfWork.Plany.Get(idPlanu).UsunWolnyPrzedzial(tab[0], tab[2]);
+                }
+                WyswietlWyklucznieaZPlanu(idPlanu);
+            }
+
         }
     }
 }
